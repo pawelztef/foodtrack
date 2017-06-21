@@ -4,11 +4,7 @@ class ApplicationController < ActionController::Base
   layout :layout_by_resource
 
   def after_sign_in_path_for(resource)
-    if current_user
-      user_path(current_user)
-    elsif current_admin
       backend_dashboards_path
-    end
   end
 
   protected
