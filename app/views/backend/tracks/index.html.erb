@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Backend Tracks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @backend_tracks.each do |backend_track| %>
+      <tr>
+        <td><%= link_to 'Show', backend_track %></td>
+        <td><%= link_to 'Edit', edit_backend_track_path(backend_track) %></td>
+        <td><%= link_to 'Destroy', backend_track, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Track', new_backend_track_path %>

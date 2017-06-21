@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   namespace :backend do
     resources :dashboards
     resources :admins
+    resources :tracks
   end
 
 end
