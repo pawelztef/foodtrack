@@ -17,9 +17,8 @@ Rails.application.routes.draw do
   get 'pages/historia', path: 'historia'
   get 'posts/index', path: 'blog'
   get 'posts/show', path: 'post'
-  get 'zapytania/new', path: 'kontakt'
-  get 'zapytania/create'
-
+  get 'queries/new', path: 'kontakt'
+  post 'queries/create'
   namespace :backend do
     resources :dashboards
     resources :admins

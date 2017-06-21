@@ -1,6 +1,6 @@
-class CreateZapytanies < ActiveRecord::Migration
+class CreateQueries < ActiveRecord::Migration
   def change
-    create_table :zapytanies do |t|
+    create_table :queries do |t|
       t.string :fullname
       t.string :email
       t.string :phone
