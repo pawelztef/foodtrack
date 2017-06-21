@@ -1,0 +1,2 @@
+module ZapytaniaHelper
+end

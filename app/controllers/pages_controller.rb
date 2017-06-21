@@ -3,10 +3,16 @@ class PagesController < ApplicationController
   def home
   end
 
-  def contact
+  def katering 
   end
 
-  def about
+  def galeria
+  end
+
+  def produkty
+  end
+
+  def historia
   end
 
 end
