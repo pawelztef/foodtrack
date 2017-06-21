@@ -26,6 +26,7 @@ pl:
       invalid: 'Niepoprawny format'
       taken: '%{model} z takim atrybutem już istnieje'
       not_a_number: 'Niepoprawny format'
+      record_invalid: 'Niepoprawny rekord'
   activerecord:
     models:
       user: 'Urzytkownik'
