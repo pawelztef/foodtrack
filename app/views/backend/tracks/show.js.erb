@@ -1,0 +1,11 @@
+
+$('body').append('<%= j render("show") %>');
+$("#trasaShowModal").modal('show');
+$(".closeTrasa").on("click", function() {
+  $("#trasaShowModal").modal('hide');
+});
+$('body').on('hidden.bs.modal', '.modal', function (e) {
+  $(e.target).removeData('bs.modal');
+  $('.modal').remove();
+});
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170619134140) do
+ActiveRecord::Schema.define(version: 20170621043416) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
@@ -55,6 +55,29 @@ ActiveRecord::Schema.define(version: 20170619134140) do
   add_index "admins", ["invited_by_id"], name: "index_admins_on_invited_by_id", using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
+  create_table "stops", force: :cascade do |t|
+    t.string   "address_line1", limit: 255
+    t.string   "address_line2", limit: 255
+    t.string   "town",          limit: 255
+    t.string   "code",          limit: 255
+    t.string   "date",          limit: 255
+    t.integer  "track_id",      limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "stops", ["track_id"], name: "index_stops_on_track_id", using: :btree
+
+  create_table "tracks", force: :cascade do |t|
+    t.string   "route_name",  limit: 255
+    t.string   "driver",      limit: 255
+    t.string   "truck",       limit: 255
+    t.boolean  "active",                    default: false
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "encrypted_password",     limit: 255, default: "", null: false
@@ -80,4 +103,5 @@ ActiveRecord::Schema.define(version: 20170619134140) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "stops", "tracks"
 end
