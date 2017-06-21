@@ -12,15 +12,21 @@ class Backend::TracksController < ApplicationController
   # GET /backend/tracks/1
   # GET /backend/tracks/1.json
   def show
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   # GET /backend/tracks/new
   def new
     @track = Track.new
+    @track.stops.build
   end
 
   # GET /backend/tracks/1/edit
   def edit
+    @track.stops.build
   end
 
   # POST /backend/tracks
@@ -30,7 +36,7 @@ class Backend::TracksController < ApplicationController
 
     respond_to do |format|
       if @track.save
-        format.html { redirect_to @track, notice: 'Track was successfully created.' }
+        format.html { redirect_to backend_tracks_url, notice: 'Track was successfully created.' }
         format.json { render :show, status: :created, location: @track }
       else
         format.html { render :new }
@@ -44,7 +50,8 @@ class Backend::TracksController < ApplicationController
   def update
     respond_to do |format|
       if @track.update(track_params)
-        format.html { redirect_to @track, notice: 'Track was successfully updated.' }
+
+        format.html { redirect_to backend_tracks_url, notice: 'Track was successfully updated.' }
         format.json { render :show, status: :ok, location: @track }
       else
         format.html { render :edit }
@@ -64,13 +71,20 @@ class Backend::TracksController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_track
-      @track = Track.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_track
+    @track = Track.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def track_params
-      params.fetch(:track, {})
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def track_params
+    params
+    .require(:track)
+    .permit(:route_name,
+            :driver,
+            :truck,
+            :active,
+            :description,
+            stops_attributes: Stop.attribute_names.map(&:to_sym).push(:_destroy))
+  end
 end

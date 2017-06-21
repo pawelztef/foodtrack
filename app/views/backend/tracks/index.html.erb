@@ -1,25 +1,33 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Lista Tras</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tracks.each do |track| %>
+<div class="col-md-12">
+  <h2>Lista Tras</h2>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><%= link_to 'Pokaż', backend_track %></td>
-        <td><%= link_to 'Edytuj', edit_backend_track_path(track) %></td>
-        <td><%= link_to 'Wykasuj', backend_track, method: :delete, data: { confirm: 'Jesteś pewien?' } %></td>
+        <th>Nazwa trasy</th>
+        <th>Imię kierowcy</th>
+        <th>Licza postoi</th>
+        <th>Akcje</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @tracks.each do |track| %>
+        <tr>
+          <td> <%= track.route_name %>  </td>
+          <td> <%= track.driver %>  </td>
+          <td> <%= track.stops.count %>  </td>
+          <td>
+            <%= link_to 'Pokaż', backend_track_path(track), remote: true %>
+            <%= link_to 'Edytuj', edit_backend_track_path(track) %>
+            <%= link_to 'Usuń', backend_track_path(track), method: :delete, data: { confirm: 'Jesteś pewien?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% if @tracks.empty? %> 
+    <div class="well text-center">Brak danych.</div>
+  <% end %> 
+  <br>
 
-<br>
-
-<%= link_to 'Nowa Lista', new_backend_track_path %>
+  <%= link_to 'Nowa Lista', new_backend_track_path, class: 'btn btn-default' %>
+</div>
