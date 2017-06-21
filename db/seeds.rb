@@ -12,3 +12,22 @@ a.code = "88-888"
 a.owner = true
 a.skip_confirmation!
 a.save!
+
+10.times do |n| 
+ track = Track.create( route_name: Faker::Pokemon.location,
+                         truck: Faker::Vehicle.manufacture,
+                         driver: Faker::Name.first_name,
+                         description: Faker::Lorem.sentence(3))
+  5.times do |n|
+    stop = Stop.create(address_line1: Faker::Address.secondary_address,
+                           address_line2: Faker::Address.street_name,
+                           town: Faker::Address.city,
+                           code: Faker::Address.postcode,
+                           date: '10/10/2010' )
+                               
+    track.stops << stop
+  end
+  track.save!
+end
+
+

@@ -26,10 +26,12 @@ pl:
       invalid: 'Niepoprawny format'
       taken: '%{model} z takim atrybutem już istnieje'
       not_a_number: 'Niepoprawny format'
+      record_invalid: 'Niepoprawny rekord'
   activerecord:
     models:
       user: 'Urzytkownik'
       admin: 'Administrator'
+      track: 'Trasa'
     attributes:
       email: 'Email'
       first_name: 'Imię'
@@ -39,3 +41,11 @@ pl:
       address_line2: 'Ulica'
       town: 'Miasto'
       code: 'Kod pocztowy'
+  helpers:
+    submit:
+      track:
+        create: "Zapisz"
+        update: "Zapisz"
+        new: 'Nowy'
+        delete: 'Wykasuj'
+        back: 'Cofinij'

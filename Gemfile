@@ -19,6 +19,7 @@ gem 'devise-i18n'
 gem 'devise_invitable'
 
 gem 'letter_opener_web'
+gem 'cocoon'
 
 # gem "unicorn-rails"
 gem 'puma'

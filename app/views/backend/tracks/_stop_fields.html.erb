@@ -1,0 +1,10 @@
+<div class="form-inline">
+  <div class="nested-fields">
+    <%= f.input :address_line1, label: false, placeholder: 'Nr domu', input_html: { style: 'width:100px; margin:0 0 10px 0'} %> 
+    <%= f.input :address_line2, label: false, placeholder: 'Ulica', input_html: { style: 'width:130px;margin:0 0 10px 10px'} %> 
+    <%= f.input :town, label: false, placeholder: 'Miasto', input_html: { style: 'width:130px;margin:0 0 10px 10px'} %> 
+    <%= f.input :code, label: false, placeholder: 'Kod pocztowy', input_html: { style: 'width:130px;margin:0 0 10px 10px'} %> 
+    <%= f.input :date, label: false, placeholder: 'Data', input_html: { style: 'width:100px;margin:0 30px 10px 10px'} %> 
+    <%= link_to_remove_association 'Usuń postój', f %>
+  </div>
+</div>
