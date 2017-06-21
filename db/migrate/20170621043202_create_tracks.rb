@@ -3,8 +3,8 @@ class CreateTracks < ActiveRecord::Migration
     create_table :tracks do |t|
       t.string :route_name
       t.string :driver
-      t.string :track
-      t.boolean :active
+      t.string :truck
+      t.boolean :active, default: false
       t.text :description
 
       t.timestamps null: false

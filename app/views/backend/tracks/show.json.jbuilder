@@ -1,1 +1,1 @@
-json.partial! "backend_tracks/backend_track", backend_track: @backend_track
+json.partial! "backend_tracks/backend_track", backend_track: @track

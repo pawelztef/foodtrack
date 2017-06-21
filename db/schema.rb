@@ -71,11 +71,11 @@ ActiveRecord::Schema.define(version: 20170621043416) do
   create_table "tracks", force: :cascade do |t|
     t.string   "route_name",  limit: 255
     t.string   "driver",      limit: 255
-    t.string   "track",       limit: 255
-    t.boolean  "active"
+    t.string   "truck",       limit: 255
+    t.boolean  "active",                    default: false
     t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   create_table "users", force: :cascade do |t|

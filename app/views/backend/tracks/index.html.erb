@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Backend Tracks</h1>
+<h1>Lista Tras</h1>
 
 <table>
   <thead>
@@ -10,11 +10,11 @@
   </thead>
 
   <tbody>
-    <% @backend_tracks.each do |backend_track| %>
+    <% @tracks.each do |track| %>
       <tr>
-        <td><%= link_to 'Show', backend_track %></td>
-        <td><%= link_to 'Edit', edit_backend_track_path(backend_track) %></td>
-        <td><%= link_to 'Destroy', backend_track, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Pokaż', backend_track %></td>
+        <td><%= link_to 'Edytuj', edit_backend_track_path(track) %></td>
+        <td><%= link_to 'Wykasuj', backend_track, method: :delete, data: { confirm: 'Jesteś pewien?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -22,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Track', new_backend_track_path %>
+<%= link_to 'Nowa Lista', new_backend_track_path %>

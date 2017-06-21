@@ -1,10 +1,12 @@
 class Backend::TracksController < ApplicationController
-  before_action :set_backend_track, only: [:show, :edit, :update, :destroy]
+  before_action :set_track, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!
+  layout 'backend_layout'
 
   # GET /backend/tracks
   # GET /backend/tracks.json
   def index
-    @backend_tracks = Backend::Track.all
+    @tracks = Track.all
   end
 
   # GET /backend/tracks/1
@@ -14,7 +16,7 @@ class Backend::TracksController < ApplicationController
 
   # GET /backend/tracks/new
   def new
-    @backend_track = Backend::Track.new
+    @track = Track.new
   end
 
   # GET /backend/tracks/1/edit
@@ -24,15 +26,15 @@ class Backend::TracksController < ApplicationController
   # POST /backend/tracks
   # POST /backend/tracks.json
   def create
-    @backend_track = Backend::Track.new(backend_track_params)
+    @track = Track.new(track_params)
 
     respond_to do |format|
-      if @backend_track.save
-        format.html { redirect_to @backend_track, notice: 'Track was successfully created.' }
-        format.json { render :show, status: :created, location: @backend_track }
+      if @track.save
+        format.html { redirect_to @track, notice: 'Track was successfully created.' }
+        format.json { render :show, status: :created, location: @track }
       else
         format.html { render :new }
-        format.json { render json: @backend_track.errors, status: :unprocessable_entity }
+        format.json { render json: @track.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -41,12 +43,12 @@ class Backend::TracksController < ApplicationController
   # PATCH/PUT /backend/tracks/1.json
   def update
     respond_to do |format|
-      if @backend_track.update(backend_track_params)
-        format.html { redirect_to @backend_track, notice: 'Track was successfully updated.' }
-        format.json { render :show, status: :ok, location: @backend_track }
+      if @track.update(track_params)
+        format.html { redirect_to @track, notice: 'Track was successfully updated.' }
+        format.json { render :show, status: :ok, location: @track }
       else
         format.html { render :edit }
-        format.json { render json: @backend_track.errors, status: :unprocessable_entity }
+        format.json { render json: @track.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -54,7 +56,7 @@ class Backend::TracksController < ApplicationController
   # DELETE /backend/tracks/1
   # DELETE /backend/tracks/1.json
   def destroy
-    @backend_track.destroy
+    @track.destroy
     respond_to do |format|
       format.html { redirect_to backend_tracks_url, notice: 'Track was successfully destroyed.' }
       format.json { head :no_content }
@@ -63,12 +65,12 @@ class Backend::TracksController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_backend_track
-      @backend_track = Backend::Track.find(params[:id])
+    def set_track
+      @track = Track.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def backend_track_params
-      params.fetch(:backend_track, {})
+    def track_params
+      params.fetch(:track, {})
     end
 end

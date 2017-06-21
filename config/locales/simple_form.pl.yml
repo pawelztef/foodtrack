@@ -25,6 +25,11 @@ pl:
         address_line2: 'Ulica'
         code: 'Kod pocztowy'
         town: 'Miasto'
+        route_name: 'Nazwa Trasy'
+        driver: 'Imię i nazwisko kierowcy'
+        truck: 'Nazwa pojazdu'
+        active: 'Aktywna'
+        description: 'Opis'
       user:
         new:
         edit:

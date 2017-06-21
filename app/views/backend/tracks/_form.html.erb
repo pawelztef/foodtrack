@@ -1,7 +1,12 @@
-<%= simple_form_for(@backend_track) do |f| %>
+<%= simple_form_for([:backend, @track]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :route_name %> 
+    <%= f.input :driver %> 
+    <%= f.input :truck %> 
+    <%= f.input :active, as: :boolean %> 
+    <%= f.input  :description, as: :text %>
   </div>
 
   <div class="form-actions">
