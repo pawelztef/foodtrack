@@ -20,6 +20,7 @@ gem 'devise_invitable'
 
 gem 'letter_opener_web'
 gem 'cocoon'
+gem 'faker'
 
 # gem "unicorn-rails"
 gem 'puma'
@@ -39,7 +40,6 @@ group :development do
   gem 'rack-livereload'
   gem 'pry-rails'
   gem 'pry-byebug' 
-  gem 'faker'
   gem 'guard-livereload', '~> 2.5', require: false
   gem 'mysql2', '>= 0.3.13', '< 0.5'
   gem 'spring'
