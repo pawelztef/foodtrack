@@ -6,6 +6,7 @@ class Backend::AdminsController < ApplicationController
   
   def index
     @admins = Admin.all
+    @title = "Administratorzy"
   end
 
   private
