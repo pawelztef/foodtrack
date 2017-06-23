@@ -11,7 +11,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 
 gem "twitter-bootstrap-rails"
-gem 'font-awesome-sass', '~> 4.7.0'
+gem "font-awesome-rails"
 gem 'material_icons'
 gem 'simple_form'
 gem 'devise'
@@ -21,6 +21,8 @@ gem 'devise_invitable'
 gem 'letter_opener_web'
 gem 'cocoon'
 gem 'faker'
+
+gem 'bootstrap_sb_admin_base_v2'
 
 # gem "unicorn-rails"
 gem 'puma'
