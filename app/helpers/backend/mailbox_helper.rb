@@ -1,0 +1,2 @@
+module Backend::MailboxHelper
+end
