@@ -8,6 +8,7 @@ class CateringQueriesController < ApplicationController
     @query = Query.new(query_params)
     @query.catering_flag = true
     if @query.save
+      ClientQueriesMailer.client_query(@query).deliver
       redirect_to catering_queries_new_url, notice: 'Query was successfully created.'
     else
       render :new

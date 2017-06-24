@@ -13,38 +13,38 @@
                   <div class="panel panel-default">
                     <div class="panel-heading"><h4>Szczegóły Zapytania</h4></div>
                     <div class="panel-body">
-                      <table id="zapytanie" class="table">
-                        <tr>
-                          <td><strong>Od: </strong></td>
-                          <td><%= @query.fullname %></td>
-                        </tr>
-                        <tr>
-                          <td><strong>Email: </strong></td>
-                          <td><%= @query.email %></td>
-                        </tr>
-                        <tr>
-                          <td><strong>Telefon:</strong></td>
-                          <td><%= @query.phone %></td>
-                        </tr>
-                        <% if @query.catering_flag %>
+                      <div class="well"><table id="zapytanie" class="table">
                           <tr>
-                            <td><strong>Miasto:</strong></td>
-                            <td> <%= @query.town %> </td>
+                            <td><strong>Od: </strong></td>
+                            <td><%= @query.fullname %></td>
                           </tr>
                           <tr>
-                            <td><strong>Od:</strong></td>
-                            <td> <%= @query.from_date %> </td>
+                            <td><strong>Email: </strong></td>
+                            <td><%= @query.email %></td>
                           </tr>
                           <tr>
-                            <td><strong>Do:</strong></td>
-                            <td> <%= @query.to_date %> </td>
+                            <td><strong>Telefon:</strong></td>
+                            <td><%= @query.phone %></td>
                           </tr>
-                        <% end %> 
-                        <tr>
-                          <td> <strong>Treść:</strong></td>
-                          <td> <%= @query.body %> </td>
-                        </tr>
-                      </table>
+                          <% if @query.catering_flag %>
+                            <tr>
+                              <td><strong>Miasto:</strong></td>
+                              <td> <%= @query.town %> </td>
+                            </tr>
+                            <tr>
+                              <td><strong>Od:</strong></td>
+                              <td> <%= @query.from_date %> </td>
+                            </tr>
+                            <tr>
+                              <td><strong>Do:</strong></td>
+                              <td> <%= @query.to_date %> </td>
+                            </tr>
+                          <% end %> 
+                          <tr>
+                            <td> <strong>Treść:</strong></td>
+                            <td> <%= @query.body %> </td>
+                          </tr>
+                        </table></div>
                     </div>
                   </div>
                 </div>

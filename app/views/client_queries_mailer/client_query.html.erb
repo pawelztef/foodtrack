@@ -1,0 +1,32 @@
+<table>
+  <tr>
+    <td><strong>Od: </strong></td>
+    <td><%= @query.fullname %></td>
+  </tr>
+  <tr>
+    <td><strong>Email: </strong></td>
+    <td><%= @query.email %></td>
+  </tr>
+  <tr>
+    <td><strong>Telefon:</strong></td>
+    <td><%= @query.phone %></td>
+  </tr>
+  <% if @query.catering_flag %>
+    <tr>
+      <td><strong>Miasto:</strong></td>
+      <td> <%= @query.town %> </td>
+    </tr>
+    <tr>
+      <td><strong>Od:</strong></td>
+      <td> <%= @query.from_date %> </td>
+    </tr>
+    <tr>
+      <td><strong>Do:</strong></td>
+      <td> <%= @query.to_date %> </td>
+    </tr>
+  <% end %> 
+  <tr>
+    <td> <strong>Treść:</strong></td>
+    <td> <%= @query.body %> </td>
+  </tr>
+</table>
