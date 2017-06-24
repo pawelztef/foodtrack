@@ -1,0 +1,33 @@
+<div class="modal fade" id="trasaShowModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="containter">
+              <div class="row">
+                <div class="col-sm-12">
+                  <button type="button" class="closeTrasa close">x</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="panel panel-default">
+                    <div class="panel-heading"><h4>Szczegóły Zapytania</h4></div>
+                    <div class="panel-body">
+                      
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12">
+                  <button type="button" class="closeTrasa btn btn-default">close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

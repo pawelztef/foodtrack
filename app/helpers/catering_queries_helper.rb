@@ -1,0 +1,2 @@
+module CateringQueriesHelper
+end

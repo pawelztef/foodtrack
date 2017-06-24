@@ -1,12 +1,14 @@
 class QueriesController < ApplicationController
+
   def new
     @query = Query.new
   end
 
   def create
     @query = Query.new(query_params)
+    @query.catering_flag = false
     if @query.save
-      redirect_to queries_new_path, notice: 'Query was successfully created.'
+      redirect_to queries_new_url, notice: 'Query was successfully created.'
     else
       render :new
     end

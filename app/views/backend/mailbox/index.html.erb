@@ -1,0 +1,31 @@
+<div class="col-md-12">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Imię i nazwisko</th>
+        <th>Email</th>
+        <th>Telefon</th>
+        <th>Katering</th>
+        <th>Akcje</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @queries.each do |query| %>
+        <tr>
+          <td> <%= query.fullname %>  </td>
+          <td> <%= query.email %>  </td>
+          <td> <%= query.phone %>  </td>
+          <td> <%= catering_status(query) %>  </td>
+          <td>
+            <%= link_to 'Pokaż', backend_mailbox_path(query), remote: true %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% if @queries.empty? %> 
+    <div class="well text-center">Brak danych.</div>
+  <% end %> 
+  <br>
+
+</div>

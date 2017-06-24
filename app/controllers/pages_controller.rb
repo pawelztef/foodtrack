@@ -4,6 +4,11 @@ class PagesController < ApplicationController
   end
 
   def katering 
+    @query = Query.new
+  end
+
+  def kontakt
+    @query = Query.new
   end
 
   def galeria

@@ -1,7 +1,14 @@
 class Backend::MailboxController < ApplicationController
-  def contact_form
+  layout 'backend_layout'
+  def index
+    @queries = Query.all
+    @title = 'Zapytania'
   end
-
-  def catering_form
+  def show
+    @query = Query.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 end

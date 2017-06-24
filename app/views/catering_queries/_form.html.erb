@@ -1,4 +1,4 @@
-<%= simple_form_for(@query, url: queries_create_path, method: :post ) do |f| %>
+<%= simple_form_for(@query, url: catering_queries_create_path, method: :post ) do |f| %>
   <%= f.error_notification %>
 
 
@@ -6,6 +6,9 @@
     <%= f.input :fullname %> 
     <%= f.input :email %> 
     <%= f.input :phone %> 
+    <%= f.input :town %> 
+    <%= f.input :from_date, as: :date %>
+    <%= f.input :to_date, as: :date %>
     <%= f.input :body, as: :text %> 
   </div>
 
