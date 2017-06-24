@@ -1,0 +1,15 @@
+<%= simple_form_for(@query, url: queries_create_path, method: :post ) do |f| %>
+  <%= f.error_notification %>
+
+
+  <div class="form-inputs">
+    <%= f.input :fullname %> 
+    <%= f.input :email %> 
+    <%= f.input :phone %> 
+    <%= f.input :body, as: :text %> 
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

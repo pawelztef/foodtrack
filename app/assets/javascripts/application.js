@@ -12,12 +12,13 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require cocoon
 //= require twitter/bootstrap
+//= require bootstrap_sb_admin_base_v2
 //= require turbolinks
+//= require cocoon
 //= require_tree .
 //
 
-// $(function() {
-//   alert("hello  while load");
-// })
+$(document).ready(function(){
+  $('.dropdown-toggle').dropdown();
+})

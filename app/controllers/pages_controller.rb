@@ -3,10 +3,21 @@ class PagesController < ApplicationController
   def home
   end
 
-  def contact
+  def katering 
+    @query = Query.new
   end
 
-  def about
+  def kontakt
+    @query = Query.new
+  end
+
+  def galeria
+  end
+
+  def produkty
+  end
+
+  def historia
   end
 
 end

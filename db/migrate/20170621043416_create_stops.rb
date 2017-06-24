@@ -5,7 +5,7 @@ class CreateStops < ActiveRecord::Migration
       t.string :address_line2
       t.string :town
       t.string :code
-      t.string :date
+      t.datetime :date 
       t.references :track, index: true, foreign_key: true
 
       t.timestamps null: false

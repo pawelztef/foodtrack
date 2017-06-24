@@ -7,41 +7,29 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+    <div id="wrapper">
 
-    <%= render 'partials/backend_nav' %> 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="well">backend-layout</div>
-          <%= render "partials/flash_messages" %>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-3">
-          <div class="well sidebar-nav">
-            <h3>Sidebar</h3>
-            <ul class="nav nav-list">
-              <li><%= link_to "Administratorzy", backend_admins_path  %></li>
-              <li><%= link_to "Trasy", backend_tracks_path %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div><!--/.well -->
-        </div>
-        <div class="col-lg-9">
+      <%= render 'partials/backend_nav' %> 
+
+      <div id="page-wrapper">
+        <div class="container-fluid">
           <div class="row">
             <div class="col-md-12">
-              <%# <h2>Administratorzy</h2> %>
-              <div class="panel panel-default">
-                <div class="panel-body">
-                  <div class="row">
-
-                    <%= yield %>
-                  </div>
-                </div>
-              </div>
+              <%= render "partials/flash_messages" %>
             </div>
           </div>
-        </div><!--/row-->
-
+          <div class="row">
+            <div class="col-lg-12">
+              <h1 class="page-header"> <%= @title ? @title : "Blank" %> </h1>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-lg-12">
+              <%= yield %> 
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

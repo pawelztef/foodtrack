@@ -1,0 +1,60 @@
+<div class="modal fade" id="trasaShowModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="closeTrasa close">x</button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="containter">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="panel panel-default">
+                    <div class="panel-heading"><h4>Szczegóły Zapytania</h4></div>
+                    <div class="panel-body">
+                      <div class="well"><table id="zapytanie" class="table">
+                          <tr>
+                            <td><strong>Od: </strong></td>
+                            <td><%= @query.fullname %></td>
+                          </tr>
+                          <tr>
+                            <td><strong>Email: </strong></td>
+                            <td><%= @query.email %></td>
+                          </tr>
+                          <tr>
+                            <td><strong>Telefon:</strong></td>
+                            <td><%= @query.phone %></td>
+                          </tr>
+                          <% if @query.catering_flag %>
+                            <tr>
+                              <td><strong>Miasto:</strong></td>
+                              <td> <%= @query.town %> </td>
+                            </tr>
+                            <tr>
+                              <td><strong>Od:</strong></td>
+                              <td> <%= @query.from_date %> </td>
+                            </tr>
+                            <tr>
+                              <td><strong>Do:</strong></td>
+                              <td> <%= @query.to_date %> </td>
+                            </tr>
+                          <% end %> 
+                          <tr>
+                            <td> <strong>Treść:</strong></td>
+                            <td> <%= @query.body %> </td>
+                          </tr>
+                        </table></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="closeTrasa btn btn-default">close</button>
+      </div>
+    </div>
+

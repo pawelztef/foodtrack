@@ -4,5 +4,6 @@ class Backend::DashboardsController < ApplicationController
 
   def index
     @welcome_msg = "Welcome to backend"
+    @title = 'Panel administracyjny'
   end
 end

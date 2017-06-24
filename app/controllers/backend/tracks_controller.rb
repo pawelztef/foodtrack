@@ -7,6 +7,7 @@ class Backend::TracksController < ApplicationController
   # GET /backend/tracks.json
   def index
     @tracks = Track.all
+    @title = "Lista tras"
   end
 
   # GET /backend/tracks/1
@@ -22,11 +23,13 @@ class Backend::TracksController < ApplicationController
   def new
     @track = Track.new
     @track.stops.build
+    @title = "Nowa trasa"
   end
 
   # GET /backend/tracks/1/edit
   def edit
     @track.stops.build
+    @title = "Edycja Trasy"
   end
 
   # POST /backend/tracks

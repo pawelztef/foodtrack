@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621043416) do
+ActiveRecord::Schema.define(version: 20170624045228) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
@@ -55,12 +55,32 @@ ActiveRecord::Schema.define(version: 20170621043416) do
   add_index "admins", ["invited_by_id"], name: "index_admins_on_invited_by_id", using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
 
+  create_table "posts", force: :cascade do |t|
+    t.string   "title",      limit: 255
+    t.text     "body",       limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "queries", force: :cascade do |t|
+    t.string   "fullname",      limit: 255
+    t.string   "email",         limit: 255
+    t.string   "phone",         limit: 255
+    t.text     "body",          limit: 65535
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.date     "from_date"
+    t.date     "to_date"
+    t.string   "town",          limit: 255
+    t.boolean  "catering_flag"
+  end
+
   create_table "stops", force: :cascade do |t|
     t.string   "address_line1", limit: 255
     t.string   "address_line2", limit: 255
     t.string   "town",          limit: 255
     t.string   "code",          limit: 255
-    t.string   "date",          limit: 255
+    t.datetime "date"
     t.integer  "track_id",      limit: 4
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
