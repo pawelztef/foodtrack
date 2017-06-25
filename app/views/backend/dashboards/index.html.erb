@@ -1,4 +1,52 @@
-<div class='well'>
-  <h1>Admin Dashboard</h1>
-  <h2> Msg from controller: <%= @welcome_msg %> </h2>
+
+<div class="col-md-7"><div class="panel panel-default">
+    <div class="panel-heading">
+      Aktualna Trasa - <%= @track.blank? ? "brak" : @track.route_name %> 
+    <% if !@track.blank? %> 
+      <div class="dropdown pull-right">
+        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+          <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu"  role="menu">
+          <li>
+            <%= link_to 'Pokaż', backend_track_path(@track), remote: true %>
+          </li>
+          <li>
+            <%= link_to 'Edytuj', edit_backend_track_path(@track) %>
+          </li>
+          <li>
+            <%= link_to 'Usuń', backend_track_path(@track), method: :delete, data: { confirm: 'Jesteś pewien?' } %>
+          </li>
+        </ul>
+      </div>
+    <% end %> 
+    </div>
+    <div class="panel-body">
+      <ul class="timeline">
+        <% if @track.blank? %>
+          <li class="<%= cycle("", "timeline-inverted") %>">
+            <div class="timeline-badge"> <%= material_icon.remove %> </div>
+            <div class="timeline-panel">
+              <div class="timeline-heading">
+                <h5 class="timeline-title brak-danych-trasy"> Brak danych </h5>
+              </div>
+            </div>
+          </li>
+        <% else %>
+          <% @track.stops.each do |stop| %>
+            <li class="<%= cycle("", "timeline-inverted") %>">
+              <div id="<%= stop.id %>" class="timeline-badge <%= stop.active ? "success" : "" %> "> <%= material_icon.directions_bus %> </div>
+              <div class="timeline-panel">
+                <div class="timeline-heading">
+                  <h5 class="timeline-title"> <%= stop.full_street_address %> </h5>
+                  <p><small class="text-muted"> <%= material_icon.access_time %> <%= stop.date.strftime("%d/%m/%Y %H:%M") %>  </small>
+                  </p>
+                </div>
+              </div>
+            </li>
+          <% end %> 
+        <% end %> 
+      </ul>
+    </div>
+  </div>
 </div>

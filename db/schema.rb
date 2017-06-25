@@ -80,10 +80,11 @@ ActiveRecord::Schema.define(version: 20170624045228) do
     t.string   "address_line2", limit: 255
     t.string   "town",          limit: 255
     t.string   "code",          limit: 255
+    t.boolean  "active",                    default: false
     t.datetime "date"
     t.integer  "track_id",      limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
   end
 
   add_index "stops", ["track_id"], name: "index_stops_on_track_id", using: :btree
