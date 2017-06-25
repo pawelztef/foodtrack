@@ -21,6 +21,10 @@
                           <td> <%= @track.route_name %> </td>
                         </tr>
                         <tr>
+                          <td><strong>Aktywna</strong></td>
+                          <td> <%= track_status(@track) %> </td>
+                        </tr>
+                        <tr>
                           <td><strong>Imię kierowcy</strong></td>
                           <td> <%= @track.driver %> </td>
                         </tr>

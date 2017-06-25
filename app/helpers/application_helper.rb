@@ -5,4 +5,12 @@ module ApplicationHelper
     else
     end
   end
+
+  def track_status(track)
+    if track.active
+      "Tak"
+    else
+      "Nie"
+    end
+  end
 end

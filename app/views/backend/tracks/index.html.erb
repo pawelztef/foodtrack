@@ -15,9 +15,24 @@
           <td> <%= track.driver %>  </td>
           <td> <%= track.stops.count %>  </td>
           <td>
-            <%= link_to 'Pokaż', backend_track_path(track), remote: true %>
-            <%= link_to 'Edytuj', edit_backend_track_path(track) %>
-            <%= link_to 'Usuń', backend_track_path(track), method: :delete, data: { confirm: 'Jesteś pewien?' } %>
+            <div class="dropdown">
+
+              <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                Actions
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu"  role="menu">
+                <li>
+                  <%= link_to 'Pokaż', backend_track_path(track), remote: true %>
+                </li>
+                <li>
+                  <%= link_to 'Edytuj', edit_backend_track_path(track) %>
+                </li>
+                <li>
+                  <%= link_to 'Usuń', backend_track_path(track), method: :delete, data: { confirm: 'Jesteś pewien?' } %>
+                </li>
+              </ul>
+            </div>
           </td>
         </tr>
       <% end %>

@@ -10,7 +10,9 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+gem 'bootstrap_sb_admin_base_v2'
 gem "twitter-bootstrap-rails"
 gem "font-awesome-rails"
 gem 'material_icons'
@@ -23,8 +25,8 @@ gem 'figaro'
 gem 'letter_opener_web'
 gem 'cocoon'
 gem 'faker'
+gem 'geocoder'
 
-gem 'bootstrap_sb_admin_base_v2'
 
 # gem "unicorn-rails"
 gem 'puma'

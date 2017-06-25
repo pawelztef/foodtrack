@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
 
+
+
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
 
   devise_for :admins, :controllers => { :invitations => 'admins/invitations' }
@@ -29,6 +31,7 @@ Rails.application.routes.draw do
     resources :tracks
     resources :posts
     resources :mailbox, only: [:index, :show], path: 'mailbox'
+    post 'stops/activate'
   end
 
 end

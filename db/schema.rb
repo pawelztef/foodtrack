@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170624045228) do
+ActiveRecord::Schema.define(version: 20170625073933) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
@@ -80,10 +80,13 @@ ActiveRecord::Schema.define(version: 20170624045228) do
     t.string   "address_line2", limit: 255
     t.string   "town",          limit: 255
     t.string   "code",          limit: 255
+    t.boolean  "active",                    default: false
     t.datetime "date"
     t.integer  "track_id",      limit: 4
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.float    "latitude",      limit: 24
+    t.float    "longitude",     limit: 24
   end
 
   add_index "stops", ["track_id"], name: "index_stops_on_track_id", using: :btree

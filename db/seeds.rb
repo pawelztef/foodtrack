@@ -23,6 +23,7 @@ a.save!
                            address_line2: Faker::Address.street_name,
                            town: Faker::Address.city,
                            code: Faker::Address.postcode,
+                           active: false,
                            date: '10/10/2010' )
                                
     track.stops << stop

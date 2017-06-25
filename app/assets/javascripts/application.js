@@ -12,9 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require twitter/bootstrap
+//= require moment
+//= require bootstrap-datetimepicker
 //= require bootstrap_sb_admin_base_v2
-//= require turbolinks
 //= require cocoon
 //= require_tree .
 //
