@@ -1,25 +1,42 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Backend Posts</h1>
-
 <table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @backend_posts.each do |backend_post| %>
+  <% if @backend_posts.empty? %> 
+    <div class="well text-center">Brak danych.</div>
+  <% else %>
+    <thead>
       <tr>
-        <td><%= link_to 'Show', backend_post %></td>
-        <td><%= link_to 'Edit', edit_backend_post_path(backend_post) %></td>
-        <td><%= link_to 'Destroy', backend_post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Tytuł</th>
+        <th>Data publikacji</th>
+        <th colspan="3">Akcje</th>
       </tr>
-    <% end %>
-  </tbody>
+    </thead>
+    <tbody>
+      <% @backend_posts.each do |backend_post| %>
+        <tr>
+          <td> <%= backend_post.title %> </td>
+          <td> <%= backend_post.publish_date %> </td>
+          <td>
+            <div class="dropdown">
+              <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                Actions
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu"  role="menu">
+                <li>
+                  <%= link_to 'Pokaż', backend_post_path(backend_post), remote: true %>
+                </li>
+                <li>
+                  <%= link_to 'Edytuj', edit_backend_post_path(backend_post) %>
+                </li>
+                <li>
+                  <%= link_to 'Usuń', backend_post_path(backend_post), method: :delete, data: { confirm: 'Jesteś pewien?' } %>
+                </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    <% end %> 
+    </tbody>
 </table>
-
 <br>
-
 <%= link_to 'New Post', new_backend_post_path %>

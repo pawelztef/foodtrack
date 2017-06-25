@@ -1,10 +1,12 @@
 class Backend::PostsController < ApplicationController
   before_action :set_backend_post, only: [:show, :edit, :update, :destroy]
+  layout 'backend_layout'
 
   # GET /backend/posts
   # GET /backend/posts.json
   def index
     @backend_posts = Post.all
+    @title = "Lista Postów"
   end
 
   # GET /backend/posts/1
@@ -15,10 +17,12 @@ class Backend::PostsController < ApplicationController
   # GET /backend/posts/new
   def new
     @backend_post = Post.new
+    @title = 'Nowy post'
   end
 
   # GET /backend/posts/1/edit
   def edit
+    @title = 'Edycja postu'
   end
 
   # POST /backend/posts
@@ -28,11 +32,9 @@ class Backend::PostsController < ApplicationController
 
     respond_to do |format|
       if @backend_post.save
-        format.html { redirect_to @backend_post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @backend_post }
+        format.html { redirect_to backend_posts_url, notice: 'Post was successfully created.' }
       else
         format.html { render :new }
-        format.json { render json: @backend_post.errors, status: :unprocessable_entity }
       end
     end
   end

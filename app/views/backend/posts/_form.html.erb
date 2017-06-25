@@ -1,10 +1,29 @@
-<%= simple_form_for(@backend_post) do |f| %>
+<%= simple_form_for([:backend, @backend_post]) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <div class="row">
+      <div class="col-md-6">
+        <%= f.input :title %> 
+      </div>
+      <div class="col-md-4">
+        <%= f.input :publish_date, as: :string %> 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+        <%= f.input :draft, as: :boolean  %> 
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-10">
+        <%= f.input :body, as: :text %> 
+      </div>
+    </div>
   </div>
 
   <div class="form-actions">
     <%= f.button :submit %>
+    <%= link_to 'Back', backend_posts_path, class: 'btn btn-default' %>
   </div>
 <% end %>
