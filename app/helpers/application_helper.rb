@@ -14,12 +14,13 @@ module ApplicationHelper
     end
   end
 
-  def post_excerpt(post)
-    truncate post.body, length: 60, separator: ''
+  def post_excerpt(post, chars)
+    text = Rails::Html::FullSanitizer.new.sanitize post.body
+    truncate(text, length: chars, separator: '')
   end
 
-  def draft(post)
-    if post.draft
+  def publish(post)
+    if post.publish
       "Tak"
     else
       "Nie"

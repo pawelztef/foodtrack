@@ -12,12 +12,14 @@
     </div>
     <div class="row">
       <div class="col-md-10">
-        <%= f.input :draft, as: :boolean  %> 
+        <%= f.input :publish, as: :boolean  %> 
       </div>
     </div>
     <div class="row">
       <div class="col-md-10">
-        <%= f.input :body, as: :text %> 
+        <%# <%= f.input :body, as: :text, rows: 10, cols: 20 %1> %> 
+        <%= f.text_area :body, class: "tinymce", rows: 10, cols: 20 %>
+        <%= tinymce language: "pl", branding: false %> 
       </div>
     </div>
   </div>

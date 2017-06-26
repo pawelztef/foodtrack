@@ -69,6 +69,6 @@ class Backend::PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def backend_post_params
-      params.require(:post).permit(:title, :publish_date, :draft, :body)
+      params.require(:post).permit(:title, :publish_date, :publish, :body)
     end
 end

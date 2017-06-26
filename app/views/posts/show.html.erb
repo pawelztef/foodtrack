@@ -1,2 +1,12 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h1> <%= @post.title %> </h1>
+    <%= @post.publish_date %> <br>
+  </div>
+  <div class="panel-body">
+    <%= @post.body %> 
+  </div>
+  <div class="panel-footer">
+    <%= link_to 'Wróć', posts_index_path %> 
+  </div>
+</div>

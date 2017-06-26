@@ -14,10 +14,10 @@
     <tbody>
       <% @backend_posts.each do |backend_post| %>
         <tr>
-          <td> <%= backend_post.title %> </td>
-          <td> <%= post_excerpt(backend_post) %> </td>
+          <td> <%= truncate(backend_post.title, lenght: 20, separator: '') %> </td>
+          <td> <%= post_excerpt(backend_post, 70) %> </td>
           <td> <%= backend_post.publish_date %> </td>
-          <td> <%= draft(backend_post) %> </td>
+          <td> <%= publish(backend_post) %> </td>
           <td>
             <div class="dropdown">
               <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">

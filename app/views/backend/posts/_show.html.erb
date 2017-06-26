@@ -11,24 +11,12 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="panel panel-default">
-                    <div class="panel-heading"><h4>Szczegóły Zapytania</h4></div>
+                    <div class="panel-heading">
+                      <h4> <%= @backend_post.title %> </h4> 
+                      Data publikacji: <%= @backend_post.publish_date %> 
+                    </div>
                     <div class="panel-body">
-                      <div class="well">
-                        <table id="zapytanie" class="table">
-                          <tr>
-                            <td><strong>Od: </strong></td>
-                          </tr>
-                          <tr>
-                            <td><strong>Email: </strong></td>
-                          </tr>
-                          <tr>
-                            <td><strong>Telefon:</strong></td>
-                          </tr>
-                          <tr>
-                            <td> <strong>Treść:</strong></td>
-                          </tr>
-                        </table>
-                      </div>
+                       <%= @backend_post.body.html_safe %>  
                     </div>
                   </div>
                 </div>

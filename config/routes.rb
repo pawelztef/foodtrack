@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
 
   devise_for :admins, :controllers => { :invitations => 'admins/invitations' }
+  # post '/tinymce_assets' => 'tinymce_assets#create'
 
   # devise_for :users
   # resources :users
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
   get 'pages/historia', path: 'historia'
 
   get 'posts/index', path: 'blog'
-  get 'posts/show', path: 'post'
+  get 'posts/show/:id', to: 'posts#show', as: 'post'
 
   get 'queries/new', path: 'kontakt'
   post 'queries/create'

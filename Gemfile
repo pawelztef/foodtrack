@@ -26,6 +26,9 @@ gem 'letter_opener_web'
 gem 'cocoon'
 gem 'faker'
 gem 'geocoder'
+gem 'tinymce-rails'
+gem 'tinymce-rails-langs'
+gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
 
 
 # gem "unicorn-rails"
