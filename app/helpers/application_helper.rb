@@ -13,4 +13,17 @@ module ApplicationHelper
       "Nie"
     end
   end
+
+  def post_excerpt(post)
+    truncate post.body, length: 60, separator: ''
+  end
+
+  def draft(post)
+    if post.draft
+      "Tak"
+    else
+      "Nie"
+    end
+  end
+
 end

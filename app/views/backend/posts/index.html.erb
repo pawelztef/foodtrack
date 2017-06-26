@@ -1,11 +1,13 @@
-<table>
+<table class="table table-striped">
   <% if @backend_posts.empty? %> 
     <div class="well text-center">Brak danych.</div>
   <% else %>
     <thead>
       <tr>
         <th>Tytuł</th>
+        <th>Tekst</th>
         <th>Data publikacji</th>
+        <th>Szkic</th>
         <th colspan="3">Akcje</th>
       </tr>
     </thead>
@@ -13,7 +15,9 @@
       <% @backend_posts.each do |backend_post| %>
         <tr>
           <td> <%= backend_post.title %> </td>
+          <td> <%= post_excerpt(backend_post) %> </td>
           <td> <%= backend_post.publish_date %> </td>
+          <td> <%= draft(backend_post) %> </td>
           <td>
             <div class="dropdown">
               <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">

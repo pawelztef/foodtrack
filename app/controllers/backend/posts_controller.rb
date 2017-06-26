@@ -44,11 +44,9 @@ class Backend::PostsController < ApplicationController
   def update
     respond_to do |format|
       if @backend_post.update(backend_post_params)
-        format.html { redirect_to @backend_post, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @backend_post }
+        format.html { redirect_to backend_posts_url, notice: 'Post was successfully updated.' }
       else
         format.html { render :edit }
-        format.json { render json: @backend_post.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -71,6 +69,6 @@ class Backend::PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def backend_post_params
-      params.fetch(:backend_post, {})
+      params.require(:post).permit(:title, :publish_date, :draft, :body)
     end
 end
