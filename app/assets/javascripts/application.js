@@ -18,6 +18,7 @@
 //= require bootstrap-datetimepicker
 //= require bootstrap_sb_admin_base_v2
 //= require cocoon
+//= require tinymce-jquery
 //= require_tree .
 //
 

@@ -13,4 +13,18 @@ module ApplicationHelper
       "Nie"
     end
   end
+
+  def post_excerpt(post, chars)
+    text = Rails::Html::FullSanitizer.new.sanitize post.body
+    truncate(text, length: chars, separator: '')
+  end
+
+  def publish(post)
+    if post.publish
+      "Tak"
+    else
+      "Nie"
+    end
+  end
+
 end

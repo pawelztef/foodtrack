@@ -1,0 +1,32 @@
+<div class="modal fade" id="postShowModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="closePost close">x</button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="containter">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="panel panel-default">
+                    <div class="panel-heading">
+                      <h4> <%= @backend_post.title %> </h4> 
+                      Data publikacji: <%= @backend_post.publish_date %> 
+                    </div>
+                    <div class="panel-body">
+                       <%= @backend_post.body.html_safe %>  
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="closePost btn btn-default">close</button>
+      </div>
+    </div>
+
