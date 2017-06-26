@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
 
-
-
-
+  mount Ckeditor::Engine => '/ckeditor'
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
 
   devise_for :admins, :controllers => { :invitations => 'admins/invitations' }
-  # post '/tinymce_assets' => 'tinymce_assets#create'
 
   # devise_for :users
   # resources :users

@@ -18,7 +18,7 @@
 //= require bootstrap-datetimepicker
 //= require bootstrap_sb_admin_base_v2
 //= require cocoon
-//= require tinymce-jquery
+//= require ckeditor/init
 //= require_tree .
 //
 
