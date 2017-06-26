@@ -6,5 +6,6 @@ class Backend::DashboardsController < ApplicationController
     @welcome_msg = "Welcome to backend"
     @title = 'Panel administracyjny'
     @track = Track.find_by(active: true)
+    @published_posts = Post.where(publish: true).order(publish_date: :desc).first(5)
   end
 end

@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
-
-
-
+  mount Ckeditor::Engine => '/ckeditor'
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
 
   devise_for :admins, :controllers => { :invitations => 'admins/invitations' }
@@ -18,7 +16,7 @@ Rails.application.routes.draw do
   get 'pages/historia', path: 'historia'
 
   get 'posts/index', path: 'blog'
-  get 'posts/show', path: 'post'
+  get 'posts/show/:id', to: 'posts#show', as: 'post'
 
   get 'queries/new', path: 'kontakt'
   post 'queries/create'

@@ -31,4 +31,19 @@ a.save!
   track.save!
 end
 
+20.times do |n|
+post = Post.new( title: Faker::Book.title,
+                    publish: false,
+                    publish_date: Faker::Date.between(3.years.ago, Date.today),
+                    body: Faker::Lorem.paragraph)
+post.save!
+
+end
+
+10.times do |n|
+  post = Post.find(n+1)
+  post.publish = true
+  post.save!
+end
+
 
