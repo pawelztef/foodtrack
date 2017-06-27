@@ -1,5 +1,5 @@
 <div class="col-md-12">
-  <table class="table table-striped">
+  <table id="mailbox-table" class="table table-striped">
     <thead>
       <tr>
         <th>Imię i nazwisko</th>
@@ -23,9 +23,5 @@
       <% end %>
     </tbody>
   </table>
-  <% if @queries.empty? %> 
-    <div class="well text-center">Brak danych.</div>
-  <% end %> 
   <br>
-
 </div>
