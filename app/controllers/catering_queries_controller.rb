@@ -1,7 +1,9 @@
 class CateringQueriesController < ApplicationController
+  include Reuseable
 
   def new
     @query = Query.new
+    @katering_page = safe_find("KontaktKateringPage")
   end
 
   def create
