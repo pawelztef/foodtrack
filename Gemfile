@@ -30,15 +30,8 @@ gem 'geocoder'
 gem 'ckeditor'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'jquery-datatables-rails'
 
-# gem 'tinymce-rails'
-# gem 'tinymce-rails-langs'
-# gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
-
-# gem 'carrierwave'
-
-
-# gem "unicorn-rails"
 gem 'puma'
 
 group :prodcution do 
