@@ -5,7 +5,7 @@ class Backend::PostsController < ApplicationController
   # GET /backend/posts
   # GET /backend/posts.json
   def index
-    @backend_posts = Post.all
+    @backend_posts = Post.all.order(publish_date: :desc)
     @title = "Lista Postów"
   end
 
