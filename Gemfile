@@ -28,9 +28,9 @@ gem 'faker'
 gem 'geocoder'
 
 gem 'ckeditor'
-gem 'paperclip'
-# gem 'carrierwave'
-# gem 'mini_magick'
+gem 'carrierwave'
+gem 'mini_magick'
+
 # gem 'tinymce-rails'
 # gem 'tinymce-rails-langs'
 # gem 'tinymce-rails-imageupload', github: 'PerfectlyNormal/tinymce-rails-imageupload'
