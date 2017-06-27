@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626165559) do
+ActiveRecord::Schema.define(version: 20170627045825) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
@@ -59,7 +59,6 @@ ActiveRecord::Schema.define(version: 20170626165559) do
     t.string   "data_file_name",    limit: 255, null: false
     t.string   "data_content_type", limit: 255
     t.integer  "data_file_size",    limit: 4
-    t.string   "data_fingerprint",  limit: 255
     t.string   "type",              limit: 30
     t.integer  "width",             limit: 4
     t.integer  "height",            limit: 4
