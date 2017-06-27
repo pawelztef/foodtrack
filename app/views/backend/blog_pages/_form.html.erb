@@ -1,0 +1,43 @@
+<%= simple_form_for([:backend, @track]) do |f| %>
+
+  <div class="form-inputs">
+    <div class="row">
+      <div class="col-md-5">
+        <%= f.input :route_name %> 
+        <%= f.input :driver %> 
+        <%= f.input :truck %> 
+        <%= f.input :active, as: :boolean %> 
+      </div>
+      <div class="col-md-7">
+        <%= f.input  :description, as: :text, input_html: { rows: 10, style: "resize:none" } %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+          <div id="stops">
+          <%= f.label :stops %> 
+          <%= f.simple_fields_for :stops do |stop| %>
+            <%= render "stop_fields", f: stop %>
+          <% end %>  
+          <div class="links">
+            <%= link_to_add_association 'Dodaj miejsce postoju', f, :stops, remote: true %> 
+          </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-actions">
+        <div class="btn-group">
+          <%= f.button :submit %>
+          <%= link_to 'Cofnij', backend_tracks_path, class: 'btn btn-default' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+<% end %>
+

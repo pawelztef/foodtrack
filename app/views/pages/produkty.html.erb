@@ -1,3 +1,8 @@
 <div class="well">
   <h1>Pages#produkty</h1>
 </div>
+<div class="container">
+  <% @produkt_page.pageAdds.each do |add| %> 
+    <%= add.body.html_safe %> 
+  <% end %>
+</div>

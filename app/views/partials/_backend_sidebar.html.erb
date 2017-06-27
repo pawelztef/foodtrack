@@ -16,8 +16,35 @@
       <li>
         <%= link_to '<i class="material-icons">library_books</i> Posty'.html_safe, backend_posts_path %>
       </li>
-
+      <li>
+        <div class="" id="accordion" role="tablist" aria-multiselectable="true">
+          <li> 
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <i class="material-icons">insert_drive_file</i>
+              Strony</a>
+          </li>
+          <ul id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+            <li>
+              <%= link_to 'Home', edit_backend_home_page_path(1)  %> 
+            </li>
+            <li>
+              <%= link_to 'Historia', edit_backend_historia_page_path(1) %>
+            </li>
+            <li>
+              <%= link_to 'Produkty', edit_backend_produkt_page_path(1) %>
+            </li>
+            <li>
+              <%= link_to 'Katering kontakt', edit_backend_kontakt_katering_page_path(1) %>
+            </li>
+            <li>
+              <%= link_to 'Kontakt ', edit_backend_kontakt_page_path(1) %>
+            </li>
+            <li>
+              <%= link_to 'Galeria', edit_backend_galeria_page_path(1) %>
+            </li>
+          </ul>
+        </div> 
+      </li>
     </ul>
   </div>
-  <!-- /.sidebar-collapse -->
 </div>

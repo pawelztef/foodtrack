@@ -1,0 +1,13 @@
+<%= simple_form_for([:backend, @galeria_page]) do |f| %>
+    <%= f.simple_fields_for :pageAdds do |pageAdd| %>
+      <%= pageAdd.input :body, as: :ckeditor, label: false, input_html: { ckeditor: { toolbar: 'full', language: 'pl' } } %> 
+    <% end %>  
+  <br>
+  <br>
+    <div class="btn-group">
+      <%= f.button :submit %>
+      <%= link_to 'Cofnij', backend_dashboards_path, class: 'btn btn-default' %>
+    </div>
+  <br>
+<% end %>
+

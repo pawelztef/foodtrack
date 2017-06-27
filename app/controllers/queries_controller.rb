@@ -1,7 +1,9 @@
 class QueriesController < ApplicationController
+  include Reuseable
 
   def new
     @query = Query.new
+    @kontakt_page_addon = safe_find('KontaktPage')
   end
 
   def create

@@ -1,3 +1,8 @@
+<div class="container">
+  <% @kontakt_page_addon.pageAdds.each do |add| %> 
+    <%= add.body.html_safe %> 
+  <% end %>
+</div>
 <div class="well">
   <%= render 'form' %> 
 </div>
