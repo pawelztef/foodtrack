@@ -15,6 +15,7 @@ module FoodtrackV10
     # Custom directories with classes and modules you want to be autoloadable.
     config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += %w(#{config.root}/app/models/ckeditor)
+    config.assets.precompile += Ckeditor.assets
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
