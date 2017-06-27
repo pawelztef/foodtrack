@@ -16,14 +16,12 @@ class Backend::HomePagesController < ApplicationController
   end
 
   private
-
   def set_page
     @home_page = safe_find("HomePage")
-    @home_page.pageAdds ? @home_page.pageAdds : @home_page.pageAdds << PageAdd.new
+    @home_page.pageAdds.blank? ? @home_page.pageAdds << PageAdd.new : @home_page.pageAdds 
   end
 
   def page_params
     params.require(:home_page).permit(pageAdds_attributes: PageAdd.attribute_names.map(&:to_sym).push(:_destroy))
   end
-
 end

@@ -3,7 +3,7 @@ class CateringQueriesController < ApplicationController
 
   def new
     @query = Query.new
-    @katering_page = safe_find("KontaktKateringPage")
+    @kontakt_katering_page_addon = safe_find('KontaktKateringPage')
   end
 
   def create
