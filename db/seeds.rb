@@ -14,29 +14,31 @@ a.skip_confirmation!
 a.save!
 
 10.times do |n| 
- track = Track.create( route_name: Faker::Pokemon.location,
-                         truck: Faker::Vehicle.manufacture,
-                         driver: Faker::Name.first_name,
-                         description: Faker::Lorem.sentence(3))
+  track = Track.create( route_name: Faker::Pokemon.location,
+                       truck: Faker::Vehicle.manufacture,
+                       driver: Faker::Name.first_name,
+                       description: Faker::Lorem.sentence(3))
   5.times do |n|
     stop = Stop.create(address_line1: Faker::Address.secondary_address,
-                           address_line2: Faker::Address.street_name,
-                           town: Faker::Address.city,
-                           code: Faker::Address.postcode,
-                           active: false,
-                           date: '10/10/2010' )
-                               
+                       address_line2: Faker::Address.street_name,
+                       town: Faker::Address.city,
+                       code: Faker::Address.postcode,
+                       active: false,
+                       date: '10/10/2010' )
+
     track.stops << stop
   end
   track.save!
 end
 
 20.times do |n|
-post = Post.new( title: Faker::Book.title,
-                    publish: false,
-                    publish_date: Faker::Date.between(3.years.ago, Date.today),
-                    body: Faker::Lorem.paragraph)
-post.save!
+  name = Faker::Book.unique.title
+  post = Post.new( title: name,
+                  slug: name,
+                  publish: false,
+                  publish_date: Faker::Date.between(3.years.ago, Date.today),
+                  body: Faker::Lorem.paragraph)
+  post.save!
 
 end
 

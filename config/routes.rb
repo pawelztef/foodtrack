@@ -15,8 +15,7 @@ Rails.application.routes.draw do
   get 'pages/produkty', path: 'produkty'
   get 'pages/historia', path: 'historia'
 
-  get 'posts/index', path: 'blog'
-  get 'posts/show/:id', to: 'posts#show', as: 'post'
+  resources :posts, path: 'blog'
 
   get 'queries/new', path: 'kontakt'
   post 'queries/create'
