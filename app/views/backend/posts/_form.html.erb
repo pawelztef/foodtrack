@@ -1,5 +1,5 @@
 <div id="post-form-wrapper" class='<%= controller.controller_name %>-<%= controller.action_name %>' >
-  <%= simple_form_for([:backend, @backend_post]) do |f| %>
+  <%= simple_form_for([:backend, @backend_post], html: {multipart: true}) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
@@ -15,18 +15,22 @@
         <div class="col-md-2">
           <%= f.input :publish_date, as: :string %> 
         </div>
-        <div class="col-md-1">
+        <div class="col-md-4">
           <%= f.label 'Publikuj' %> 
           <%= f.input :publish, as: :boolean, label: false   %> 
         </div>
         <div class="col-md-4">
+          <% unless @backend_post.image.nil? %>
+            <%= image_tag @backend_post.image_url(:thumb).to_s %> 
+          <% end %> 
+          <%= f.input :image, as: :file %> 
         </div>
       </div>
 
 
       <div class="row">
         <div class="col-md-12">
-          <%= f.input :excerpt, as: :ckeditor, input_html: { value: @backend_post.body, ckeditor: { toolbar: 'excerpt', language: 'pl' } } %> 
+          <%= f.input :excerpt, as: :ckeditor, input_html: { ckeditor: { toolbar: 'excerpt', language: 'pl' } } %> 
         </div>
       </div>
 

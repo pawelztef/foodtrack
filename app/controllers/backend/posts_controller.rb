@@ -62,13 +62,11 @@ class Backend::PostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_backend_post
       @backend_post = Post.find_by_slug(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def backend_post_params
-      params.require(:post).permit(:title, :slug, :publish_date, :publish, :body)
+      params.require(:post).permit(:title, :excerpt, :slug, :image, :publish_date, :publish, :body)
     end
 end
