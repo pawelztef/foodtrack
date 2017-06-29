@@ -1,4 +1,5 @@
 class Backend::StopsController < ApplicationController
+  before_action :authenticate_admin!
   def activate
     @stop = Stop.find(params[:stop_id])
     @stop.active = true

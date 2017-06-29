@@ -1,5 +1,6 @@
 class Backend::ProduktPagesController < ApplicationController
   include Reuseable
+  before_action :authenticate_admin!
   before_action :set_page
   layout 'backend_layout'
 

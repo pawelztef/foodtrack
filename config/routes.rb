@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   mount Ckeditor::Engine => '/ckeditor'
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
 
@@ -33,7 +34,7 @@ Rails.application.routes.draw do
     resources :kontakt_katering_pages
     resources :kontakt_pages
     resources :produkt_pages
-
+    resources :images, only: [:new, :create, :destroy, :index]
     resources :mailbox, only: [:index, :show], path: 'mailbox'
     post 'stops/activate'
   end
