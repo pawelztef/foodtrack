@@ -17,7 +17,14 @@
           <td> <%= query.phone %>  </td>
           <td> <%= catering_status(query) %>  </td>
           <td>
-            <%= link_to 'Pokaż', backend_mailbox_path(query), remote: true %>
+            <div class="actions-btn-group btn-group btn-group-of-two" role="group" >
+              <div class="btn-group" role="group">
+                <%= link_to fa_icon("file-o"), backend_mailbox_path(query), remote: true, class: 'btn btn-default btn-xs' %>
+              </div>
+              <div class="btn-group" role="group">
+                <%= link_to fa_icon("trash-o"), backend_mailbox_path(query), method: :delete, data: { confirm: 'Jesteś pewien?' }, class: 'btn btn-default btn-xs' %>
+              </div>
+            </div>
           </td>
         </tr>
       <% end %>

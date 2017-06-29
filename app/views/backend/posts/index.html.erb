@@ -19,22 +19,16 @@
           <td> <%= backend_post.publish_date %> </td>
           <td> <%= publish(backend_post) %> </td>
           <td>
-            <div class="dropdown">
-              <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                Actions
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu"  role="menu">
-                <li>
-                  <%= link_to 'Pokaż', backend_post_path(backend_post), remote: true %>
-                </li>
-                <li>
-                  <%= link_to 'Edytuj', edit_backend_post_path(backend_post) %>
-                </li>
-                <li>
-                  <%= link_to 'Usuń', backend_post_path(backend_post), method: :delete, data: { confirm: 'Jesteś pewien?' } %>
-                </li>
-              </ul>
+            <div class="actions-btn-group btn-group " role="group" >
+              <div class="btn-group" role="group">
+                <%= link_to fa_icon("file-o"), backend_post_path(backend_post), remote: true, class: 'btn btn-default btn-xs' %>
+              </div>
+              <div class="btn-group" role="group">
+                <%= link_to fa_icon("pencil-square-o"), edit_backend_post_path(backend_post), class: 'btn btn-default btn-xs' %>
+              </div>
+              <div class="btn-group" role="group">
+                <%= link_to fa_icon("trash-o"), backend_post_path(backend_post), method: :delete, data: { confirm: 'Jesteś pewien?' }, class: 'btn btn-default btn-xs' %>
+              </div>
             </div>
           </td>
         </tr>
