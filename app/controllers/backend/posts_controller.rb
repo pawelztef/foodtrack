@@ -61,6 +61,13 @@ class Backend::PostsController < ApplicationController
     end
   end
 
+  def image_delete
+    byebug
+    respond_to do |format|
+      format.js { redirect_to backend_posts_url }
+    end
+  end
+
   private
     def set_backend_post
       @backend_post = Post.find_by_slug(params[:id])

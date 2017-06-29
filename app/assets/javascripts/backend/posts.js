@@ -3,7 +3,7 @@ $(function() {
     format: 'YYYY-MM-DD HH:mm'
   });
   $('#posts-table').dataTable({
-    responsive: true
+    // responsive: true
   });
 
   if ($('#post-form-wrapper').hasClass('posts-new')) {
@@ -24,4 +24,18 @@ $(function() {
       .replace(/^-+/, '')             // Trim - from start of text
       .replace(/-+$/, '');            // Trim - from end of text
   }
+
+
+  $('.delete-image').on('click', function() {
+    var id = $(this).attr("id");
+    $.ajax({
+      type: "POST",
+      dataType: "script",
+      contentType: 'application/json',
+      url: "/backend/posts/image_delete",
+      data: JSON.stringify({
+        post: id
+      })
+    })
+  });
 });

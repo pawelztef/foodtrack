@@ -26,7 +26,13 @@ Rails.application.routes.draw do
     resources :dashboards
     resources :admins
     resources :tracks
-    resources :posts
+
+    resources :posts do
+      collection do
+        post 'image_delete', to: 'posts#image_delete' 
+      end
+    end
+
     resources :home_pages
     resources :galeria_pages
     resources :historia_pages
@@ -34,7 +40,7 @@ Rails.application.routes.draw do
     resources :kontakt_pages
     resources :produkt_pages
 
-    resources :mailbox, only: [:index, :show], path: 'mailbox'
+    resources :mailbox, path: 'mailbox'
     post 'stops/activate'
   end
 

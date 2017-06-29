@@ -20,17 +20,24 @@
           <%= f.input :publish, as: :boolean, label: false   %> 
         </div>
         <div class="col-md-4">
-          <% unless @backend_post.image.nil? %>
-            <%= image_tag @backend_post.image_url(:thumb).to_s %> 
-          <% end %> 
-          <%= f.input :image, as: :file %> 
+          <div class="row">
+            <div class="col-md-6">
+            <% unless @backend_post.image.nil? %>
+              <%= image_tag @backend_post.image_url(:thumb).to_s %> 
+              <%= fa_icon'times', class: "delete-image", id: @backend_post.id  %> 
+            <% end %> 
+          </div>
+          <div class="col-md-6">
+            <%= f.input :image, as: :file %> 
+          </div>
         </div>
       </div>
+    </div>
 
 
       <div class="row">
         <div class="col-md-12">
-          <%= f.input :excerpt, as: :ckeditor, input_html: { ckeditor: { toolbar: 'excerpt', language: 'pl' } } %> 
+          <%= f.input :excerpt, as: :ckeditor, input_html: { ckeditor: { height: '200', toolbar: 'excerpt', language: 'pl' } } %> 
         </div>
       </div>
 

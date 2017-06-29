@@ -20,7 +20,6 @@ class Backend::HistoriaPagesController < ApplicationController
   def set_page
     @historia_page = safe_find("HistoriaPage")
     @historia_page.pageAdds.blank? ? @historia_page.pageAdds << PageAdd.new : @historia_page.pageAdds
-    byebug
   end
 
   def page_params
