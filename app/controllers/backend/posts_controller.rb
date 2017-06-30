@@ -1,4 +1,5 @@
 class Backend::PostsController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_backend_post, only: [:show, :edit, :update, :destroy]
   layout 'backend_layout'
 

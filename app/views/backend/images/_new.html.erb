@@ -1,0 +1,61 @@
+<div class="modal fade" id="imageShowModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="containter">
+              <div class="row">
+                <div class="col-sm-12">
+                  <button type="button" class="closeImage close">x</button>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="panel panel-default">
+                    <div class="panel-heading"><h4>Dodaj zdjęcie</h4></div>
+                    <div class="panel-body">
+                      <%= simple_form_for [:backend, @image], html: { :multipart => true }  do  |f| %> 
+                        <%= f.error_notification %> 
+                        <div class="form-inputs">
+                          <%= f.input :image_title %> 
+                          <%= f.input :image, as: :file, label: 'Wybierz zdjęcie' %> 
+                        </div>
+                        <%= f.submit "Dodaj", class: 'btn btn-default' %> 
+                      <% end %> 
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <button type="button" class="closeImage btn btn-default">close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+
+$(function() {
+  $("#new_image").validate({
+    rules: {
+      'image[image_title]': {
+        required: true
+      },
+      'image[image]': {
+        required: true,
+        extension: "png,jpe?g,gif",
+        filesize: 1048576
+      }
+    }
+  });
+});
+
+
+</script>

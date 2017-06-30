@@ -88,6 +88,13 @@ ActiveRecord::Schema.define(version: 20170628124741) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "images", force: :cascade do |t|
+    t.string   "image",       limit: 255
+    t.string   "image_title", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
   create_table "kontakt_katering_pages", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
