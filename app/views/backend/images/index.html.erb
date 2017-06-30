@@ -1,24 +1,14 @@
 <div class="row">
-  <div class="col-xs-6 col-md-3">
-    <%= link_to image_tag('mock1'), 'http://www.google.com', class: 'thumbnail' %> 
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <%= link_to image_tag('mock2'), 'http://www.google.com', class: 'thumbnail' %> 
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <%= link_to image_tag('mock3'), 'http://www.google.com', class: 'thumbnail' %> 
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <%= link_to image_tag('mock4'), 'http://www.google.com', class: 'thumbnail' %> 
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <%= link_to image_tag('mock4'), 'http://www.google.com', class: 'thumbnail' %> 
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <%= link_to image_tag('mock5'), 'http://www.google.com', class: 'thumbnail' %> 
-  </div>
-  <div class="col-xs-6 col-md-3">
-    <%= link_to image_tag('mock6'), 'http://www.google.com', class: 'thumbnail' %> 
-  </div>
+  <% @images.each do |img| %> 
+    <div class="col-xs-6 col-md-3">
+      <div class="thumbnail">
+        <%= link_to image_tag(img.image_url.to_s), 'http://www.google.com' %> 
+        <div class="caption">
+          <p> <%= img.image_title %> </p>
+          <%= link_to fa_icon('trash-o'), backend_image_path(img), method: :delete, data: {confirm: 'Jesteś pewien?'}, class: 'btn btn-default btn-xs' %> 
+        </div>
+      </div>
+    </div>
+  <% end %> 
+  <%= link_to 'Dodaj', new_backend_image_path, remote: true %> 
 </div>
-<%= link_to 'Dodaj', new_backend_image_path, remote: true %> 

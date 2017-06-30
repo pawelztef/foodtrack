@@ -18,20 +18,26 @@ class Backend::ImagesController < ApplicationController
 
   def create
     @image = Image.new(image_params)
-    if @image.save
-      redirect_to backend_images_path, notice: 'Zdjęcie zostało zapisane.'
-    else 
-      render 'new'
+    respond_to do |format|
+      if @image.save
+        format.js {redirect_to backend_images_url, notice: 'Zdjęcie zostało zapisane.'}
+        format.html {redirect_to backend_images_url, notice: 'Zdjęcie zostało zapisane.'}
+      else 
+        format.js { render :action => 'new' }
+      end
     end
   end
 
   def destroy
+    @image = Image.new(image_params)
+    @image.destroy
+    redirect_to backend_images_url, notice: 'Zdjęcie zostało usunięte.'
   end
 
   private 
 
   def image_params
-    params.requrie(:image).permit(:image, :image_title)
+    params.require(:image).permit(:image, :image_title)
   end
 
   def set_image
