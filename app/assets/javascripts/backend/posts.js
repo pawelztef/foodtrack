@@ -25,17 +25,17 @@ $(function() {
       .replace(/-+$/, '');            // Trim - from end of text
   }
 
-
-  $('.delete-image').on('click', function() {
-    var id = $(this).attr("id");
-    $.ajax({
-      type: "POST",
-      dataType: "script",
-      contentType: 'application/json',
-      url: "/backend/posts/image_delete",
-      data: JSON.stringify({
-        post: id
-      })
-    })
-  });
+  // $('.gallery-image').on('click', function() {
+  //   alert("clicked");
+  //   var id = $(this).attr("id");
+  //   $.ajax({
+  //     type: "POST",
+  //     dataType: "script",
+  //     contentType: 'application/json',
+  //     url: "/backend/posts/add_image",
+  //     data: JSON.stringify({
+  //       image_id: id
+  //     })
+  //   })
+  // });
 });

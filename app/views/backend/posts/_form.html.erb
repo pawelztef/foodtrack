@@ -25,14 +25,14 @@
             <% unless @backend_post.image.blank? %>
               <div class="col-md-6">
                 <%= image_tag @backend_post.image_url(:thumb).to_s %> 
-                <%= link_to fa_icon('times'), image_delete_backend_posts_path(id: @backend_post.id), method: :post, class: "delete-image"  %> 
+                <%= link_to fa_icon('times'), delete_image_backend_posts_path(id: @backend_post.id), method: :post, class: "delete-image"  %> 
               </div>
               <div class="col-md-6">
-                <%= link_to 'Zmień zdjęcie', backend_images_path, remote: true %> 
+                <%= link_to 'Zmień zdjęcie', edit_backend_post_path(@backend_post), remote: true %> 
               </div>
             <% else %>
               <div class="col-md-12">
-                <%= link_to 'Dodaj zdjęcie', backend_images_path, remote: true %> 
+                <%= link_to 'Dodaj zdjęcie', edit_backend_post_path(@backend_post), remote: true %> 
               </div>
             <% end %> 
           </div>

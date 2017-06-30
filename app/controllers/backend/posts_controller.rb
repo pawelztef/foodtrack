@@ -24,6 +24,10 @@ class Backend::PostsController < ApplicationController
   # GET /backend/posts/1/edit
   def edit
     @title = 'Edycja postu'
+    respond_to do |format|
+      format.html
+      format.js { @images = Image.all }
+    end
   end
 
   # POST /backend/posts
@@ -71,6 +75,17 @@ class Backend::PostsController < ApplicationController
       redirect_to edit_packend_post_path(params[:id]), warning: 'Wystąpił proble, nie można usunąć zdjęcia.'
     end
   end
+  def add_image 
+    byebug
+    # @post = Post.find(params[:id])
+    # @post.remove_image
+    # if @post.save
+    #   redirect_to edit_backend_post_path(params[:id]), notice: 'Zdjęcie zostało pomyślnie usunięte z postu.'
+    # else
+    #   redirect_to edit_packend_post_path(params[:id]), warning: 'Wystąpił proble, nie można usunąć zdjęcia.'
+    # end
+  end
+
 
 
   private
