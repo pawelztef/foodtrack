@@ -63,18 +63,22 @@ class Backend::PostsController < ApplicationController
   end
 
   def image_delete
-    byebug
-    respond_to do |format|
-      format.js { redirect_to backend_posts_url }
+    @post = Post.find(params[:id])
+    @post.remove_image
+    if @post.save
+      redirect_to edit_backend_post_path(params[:id]), notice: 'Zdjęcie zostało pomyślnie usunięte z postu.'
+    else
+      redirect_to edit_packend_post_path(params[:id]), warning: 'Wystąpił proble, nie można usunąć zdjęcia.'
     end
   end
 
-  private
-    def set_backend_post
-      @backend_post = Post.find_by_slug(params[:id])
-    end
 
-    def backend_post_params
-      params.require(:post).permit(:title, :excerpt, :slug, :image, :publish_date, :publish, :body)
-    end
+  private
+  def set_backend_post
+    @backend_post = Post.find_by_slug(params[:id])
+  end
+
+  def backend_post_params
+    params.require(:post).permit(:title, :excerpt, :slug, :image, :publish_date, :publish, :body)
+  end
 end

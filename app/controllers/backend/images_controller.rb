@@ -6,6 +6,10 @@ class Backend::ImagesController < ApplicationController
   def index
     @images = Image.all
     @title = "Galeria zdjęć"
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def new

@@ -1,6 +1,6 @@
-$('body').append('<%= j render("new") %>');
+$('body').append('<%= j render("index") %>');
 $("#imageIndexModal").modal('show');
-$(".closeImage").on("click", function() {
+$(".closeImagesIndexModal").on("click", function() {
   $("#imageIndexModal").modal('hide');
 });
 $('body').on('hidden.bs.modal', '.modal', function (e) {
