@@ -22,6 +22,9 @@
 //= require bootstrap_sb_admin_base_v2
 //= require cocoon
 //= require ckeditor/init
+//= require jquery.validate
+//= require jquery.validate.additional-methods
+//= require_jquery.validate.localization/messages_pl
 //= require_tree .
 //
 
