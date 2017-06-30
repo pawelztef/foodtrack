@@ -1,14 +1,19 @@
+
+<% content_for :top_buttons do %>
+  <%= link_to material_icon.library_add, new_backend_image_path, remote: true  %> 
+<% end %> 
+
 <div class="row">
   <% @images.each do |img| %> 
     <div class="col-xs-6 col-md-3">
       <div class="thumbnail">
         <%= link_to image_tag(img.image_url.to_s), 'http://www.google.com' %> 
         <div class="caption">
-          <p> <%= img.image_title %> </p>
-          <%= link_to fa_icon('trash-o'), backend_image_path(img), method: :delete, data: {confirm: 'Jesteś pewien?'}, class: 'btn btn-default btn-xs' %> 
+          <p> <%= img.image_title %>
+          <%= link_to material_icon.delete_forever.md_18, backend_image_path(img.id), method: :delete, data: {confirm: 'Jesteś pewien?'}, class: 'btn btn-default btn-xs pull-right' %> 
+           </p>
         </div>
       </div>
     </div>
   <% end %> 
-  <%= link_to 'Dodaj', new_backend_image_path, remote: true %> 
 </div>

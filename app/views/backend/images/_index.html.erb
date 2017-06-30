@@ -1,4 +1,4 @@
-<div class="modal fade" id="imageShowModal">
+<div class="modal fade" id="imageIndexModal">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-body">
@@ -15,14 +15,19 @@
                   <div class="panel panel-default">
                     <div class="panel-heading"><h4>Dodaj zdjęcie</h4></div>
                     <div class="panel-body">
-                      <%= simple_form_for [:backend, @image], html: { :multipart => true }  do  |f| %> 
-                        <%= f.error_notification %> 
-                        <div class="form-inputs">
-                          <%= f.input :image_title %> 
-                          <%= f.input :image, as: :file, label: 'Wybierz zdjęcie' %> 
-                        </div>
-                        <%= f.submit "Dodaj", class: 'btn btn-default' %> 
-                      <% end %> 
+                      <div class="row">
+                        <% @images.each do |img| %> 
+                          <div class="col-xs-6 col-md-3">
+                            <div class="thumbnail">
+                              <%= link_to image_tag(img.image_url.to_s), 'http://www.google.com' %> 
+                              <div class="caption">
+                                <p> <%= img.image_title %> </p>
+                                <%= link_to fa_icon('trash-o'), backend_image_path(img), method: :delete, data: {confirm: 'Jesteś pewien?'}, class: 'btn btn-default btn-xs' %> 
+                              </div>
+                            </div>
+                          </div>
+                        <% end %> 
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -39,23 +44,3 @@
     </div>
   </div>
 </div>
-
-<script>
-
-$(function() {
-  $("#new_image").validate({
-    rules: {
-      'image[image_title]': {
-        required: true
-      },
-      'image[image]': {
-        required: true,
-        extension: "png,jpe?g,gif",
-        filesize: 1048576
-      }
-    }
-  });
-});
-
-
-</script>

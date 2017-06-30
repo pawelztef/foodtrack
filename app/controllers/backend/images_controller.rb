@@ -29,7 +29,7 @@ class Backend::ImagesController < ApplicationController
   end
 
   def destroy
-    @image = Image.new(image_params)
+    @image = Image.find(params[:id])
     @image.destroy
     redirect_to backend_images_url, notice: 'Zdjęcie zostało usunięte.'
   end
@@ -37,7 +37,7 @@ class Backend::ImagesController < ApplicationController
   private 
 
   def image_params
-    params.require(:image).permit(:image, :image_title)
+    params.require(:image).permit(:id, :image, :image_title)
   end
 
   def set_image
