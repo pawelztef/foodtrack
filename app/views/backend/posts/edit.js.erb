@@ -1,0 +1,33 @@
+$('body').append('<%= j render("edit") %>');
+$("#imageIndexModal").modal('show');
+$(".closeImagesIndexModal").on("click", function() {
+  $("#imageIndexModal").modal('hide');
+});
+$('body').on('hidden.bs.modal', '.modal', function (e) {
+  $(e.target).removeData('bs.modal');
+  $('.modal').remove();
+});
+
+<%# $(function() { %>
+<%#   $('.gallery-image').on('click', function(e) { %>
+<%#     e.preventDefault(); %>
+<%#     var image_var = $(this).attr("id"); %>
+<%#     var post_var = <%= @backend_post.id %1> %> 
+<%#     $.ajax({ %>
+<%#       type: "POST", %>
+<%#       dataType: "script", %>
+<%#       contentType: 'application/json', %>
+<%#       url: "/backend/posts/add_image", %>
+<%#       data: JSON.stringify({ %>
+<%#         image_id: image_var, %>
+<%#         id: post_var %>
+<%#       }) %>
+<%#     }); %>
+<%#     <1%# $("#append-target").append("<h2>Hello</h2>"); %1> %>
+<%#      var i =  $("#append-target").html(); %>
+<%#     console.log(i.text()); %>
+<%#     <1%# alert("h"); %1> %>
+<%#     $("#imageIndexModal").modal('hide'); %>
+
+<%#   }) %>
+<%# }); %>

@@ -12,11 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require twitter/bootstrap
 //= require dataTables/jquery.dataTables
 //= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
 //= require dataTables/extras/dataTables.responsive
-//= require jquery-ui
-//= require twitter/bootstrap
 //= require moment
 //= require bootstrap-datetimepicker
 //= require bootstrap_sb_admin_base_v2

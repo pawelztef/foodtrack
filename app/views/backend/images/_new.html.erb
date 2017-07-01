@@ -45,14 +45,14 @@
 $(function() {
   $("#new_image").validate({
     rules: {
-      'image[image_title]': {
-        required: true
-      },
       'image[image]': {
         required: true,
         extension: "png,jpe?g,gif",
         filesize: 1048576
       }
+    },
+    errorPlacement: function(error, element) {
+        error.insertAfter('#image_image');
     }
   });
 });

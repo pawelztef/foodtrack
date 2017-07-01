@@ -3,7 +3,7 @@ $(function() {
     format: 'YYYY-MM-DD HH:mm'
   });
   $('#posts-table').dataTable({
-    responsive: true
+    // responsive: true
   });
 
   if ($('#post-form-wrapper').hasClass('posts-new')) {
@@ -24,4 +24,18 @@ $(function() {
       .replace(/^-+/, '')             // Trim - from start of text
       .replace(/-+$/, '');            // Trim - from end of text
   }
+
+  // $('.gallery-image').on('click', function() {
+  //   alert("clicked");
+  //   var id = $(this).attr("id");
+  //   $.ajax({
+  //     type: "POST",
+  //     dataType: "script",
+  //     contentType: 'application/json',
+  //     url: "/backend/posts/add_image",
+  //     data: JSON.stringify({
+  //       image_id: id
+  //     })
+  //   })
+  // });
 });

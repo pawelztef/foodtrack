@@ -3,7 +3,7 @@
 </div>
 <div class="container">
   <% @galeria_page.pageAdds.each do |add| %> 
-    <%= add.body.html_safe %> 
+    <%= add.body.html_safe unless add.body.blank? %> 
   <% end %>
 </div>
 

@@ -1,32 +1,46 @@
 <div id="post-form-wrapper" class='<%= controller.controller_name %>-<%= controller.action_name %>' >
-  <%= simple_form_for([:backend, @backend_post]) do |f| %>
+  <%= simple_form_for([:backend, @backend_post], html: {multipart: true}) do |f| %>
     <%= f.error_notification %>
 
     <div class="form-inputs">
       <div class="row">
         <div class="col-md-6">
           <%= f.input :title %> 
-        </div>
-        <div class="col-md-4">
           <%= f.input :slug %> 
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
           <%= f.input :publish_date, as: :string %> 
+          <%= f.label 'Publikuj' %> 
+          <%= f.input :publish, as: :boolean, label: false   %> 
+          <%# <%= f.input :image, as: :file %1> %> 
         </div>
-        <div class="col-md-4">
-          <%= f.input :publish, as: :boolean  %> 
+        <div class="col-md-6 pull-right">
+          <div class="edit-post-thumb-wrapper">
+            <div class="thumbnail">
+              <% unless @backend_post.image.blank? %>
+                <%= image_tag @backend_post.image.image_url.to_s, class: 'img-thumbnail' %> 
+                <div class="caption">
+                  <p> <%= @backend_post.image.image_title %> </p>
+                  <%= link_to "#{fa_icon('exchange')} Zamień".html_safe, edit_backend_post_path(@backend_post), remote: true %> 
+                  <%= link_to "#{fa_icon('trash-o')} Usuń".html_safe, delete_image_backend_posts_path(id: @backend_post.slug), method: :post, class: "delete-image"  %> 
+                </div>
+                <% else %>
+                  <%= link_to "#{fa_icon('file-image-o')} Dodaj zdjęcie".html_safe, edit_backend_post_path(@backend_post), remote: true %> 
+                <% end %> 
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.input :excerpt, as: :ckeditor, input_html: { ckeditor: { height: '200', toolbar: 'excerpt', language: 'pl' } } %> 
         </div>
       </div>
       <div class="row">
-        <div class="col-md-10">
-          <%# <%= f.input :body, as: :text, rows: 10, cols: 20 %1> %> 
+        <div class="col-md-12">
           <%= f.input :body, as: :ckeditor, input_html: { ckeditor: { toolbar: 'custom', language: 'pl' } } %> 
         </div>
       </div>
     </div>
-
     <div class="form-actions">
       <%= f.button :submit %>
       <%= link_to 'Back', backend_posts_path, class: 'btn btn-default' %>
