@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     resources :posts do
       collection do
         post 'delete_image'
-        post 'add_image'
+        get 'add_image', to: 'posts#add_image'
       end
     end
 

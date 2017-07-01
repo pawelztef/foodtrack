@@ -3,6 +3,6 @@
 </div>
 <div class="container">
   <% @produkt_page.pageAdds.each do |add| %> 
-    <%= add.body.html_safe %> 
+    <%= add.body.html_safe unless add.body.blank? %> 
   <% end %>
 </div>

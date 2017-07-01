@@ -10,7 +10,7 @@
     <% @posts.each do |post| %>
       <tr>
         <td>
-          <%= image_tag post.image_url(:thumb).to_s %> 
+          <%= image_tag post.image.image_url.to_s  unless post.image.blank? %> 
           <%= link_to post.title, post_path(post)  %> 
           <%= post.publish_date %>
         </td>

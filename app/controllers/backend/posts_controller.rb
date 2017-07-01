@@ -66,24 +66,25 @@ class Backend::PostsController < ApplicationController
     end
   end
 
-  def image_delete
-    @post = Post.find(params[:id])
-    @post.remove_image
+  def delete_image
+    @post = Post.find_by_slug(params[:id])
+    @post.image = nil
     if @post.save
       redirect_to edit_backend_post_path(params[:id]), notice: 'Zdjęcie zostało pomyślnie usunięte z postu.'
     else
-      redirect_to edit_packend_post_path(params[:id]), warning: 'Wystąpił proble, nie można usunąć zdjęcia.'
+      redirect_to edit_packend_post_path(params[:id]), warning: 'Wystąpił problem, nie można usnąć zdjęcia z postu.'
     end
   end
+
   def add_image 
-    byebug
-    # @post = Post.find(params[:id])
-    # @post.remove_image
-    # if @post.save
-    #   redirect_to edit_backend_post_path(params[:id]), notice: 'Zdjęcie zostało pomyślnie usunięte z postu.'
-    # else
-    #   redirect_to edit_packend_post_path(params[:id]), warning: 'Wystąpił proble, nie można usunąć zdjęcia.'
-    # end
+    @post = Post.find_by_slug(params[:id])
+    @post.image = Image.find(params[:img_id])
+
+    if @post.save
+      redirect_to edit_backend_post_path(params[:id]), notice: 'Zdjęcie zostało przypisane.'
+    else
+      redirect_to edit_packend_post_path(params[:id]), warning: 'Wystąpił problem, nie można przypisać zdjęcia.'
+    end
   end
 
 

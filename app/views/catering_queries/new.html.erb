@@ -1,6 +1,6 @@
 <div class="container">
   <% @kontakt_katering_page_addon.pageAdds.each do |add| %> 
-    <%= add.body.html_safe %> 
+    <%= add.body.html_safe unless add.body.blank? %> 
   <% end %>
 </div>
 <div class="well">

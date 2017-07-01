@@ -13,13 +13,18 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="panel panel-default">
-                    <div class="panel-heading"><h4>Dodaj zdjęcie</h4></div>
+                    <div class="panel-heading">
+                      <p>
+                        <h4>Wybierz zdjęcie</h4>
+                        <%= link_to "#{fa_icon('hdd-o')} Dodaj z dysku".html_safe, backend_images_path, class: 'pull-right', id: 'add-from-disk-link' %> 
+                      </p>
+                    </div>
                     <div class="panel-body">
                       <div class="row">
                         <% @images.each do |img| %> 
                           <div class="col-xs-6 col-md-3">
                             <div class="thumbnail">
-                              <%= image_tag img.image_url.to_s, class: 'gallery-image', id: img.id  %> 
+                              <%= link_to image_tag(img.image_url.to_s), add_image_backend_posts_path(id: params[:id], img_id: img.id), class: 'gallery-image', id: img.id  %> 
                               <div class="caption">
                                 <p> <%= img.image_title %> </p>
                               </div>
@@ -44,18 +49,4 @@
   </div>
 </div>
 <script>
-$(function() {
-  $('.gallery-image').on('click', function() {
-    var id = $(this).attr("id");
-    $.ajax({
-      type: "POST",
-      dataType: "script",
-      contentType: 'application/json',
-      url: "/backend/posts/add_image",
-      data: JSON.stringify({
-        image_id: id
-      })
-    })
-  });
-});
 </script>
