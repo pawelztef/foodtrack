@@ -1,4 +1,5 @@
 class Backend::HistoriaPagesController < ApplicationController
+  before_action :authenticate_admin!
   include Reuseable
   before_action :set_page
   layout 'backend_layout'
@@ -20,7 +21,6 @@ class Backend::HistoriaPagesController < ApplicationController
   def set_page
     @historia_page = safe_find("HistoriaPage")
     @historia_page.pageAdds.blank? ? @historia_page.pageAdds << PageAdd.new : @historia_page.pageAdds
-    byebug
   end
 
   def page_params

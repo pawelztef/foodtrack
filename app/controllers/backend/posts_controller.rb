@@ -1,4 +1,5 @@
 class Backend::PostsController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_backend_post, only: [:show, :edit, :update, :destroy]
   layout 'backend_layout'
 
@@ -23,6 +24,10 @@ class Backend::PostsController < ApplicationController
   # GET /backend/posts/1/edit
   def edit
     @title = 'Edycja postu'
+    respond_to do |format|
+      format.html
+      format.js { @images = Image.all }
+    end
   end
 
   # POST /backend/posts
@@ -61,14 +66,35 @@ class Backend::PostsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_backend_post
-      @backend_post = Post.find(params[:id])
+  def delete_image
+    @post = Post.find_by_slug(params[:id])
+    @post.image = nil
+    if @post.save
+      redirect_to edit_backend_post_path(params[:id]), notice: 'Zdjęcie zostało pomyślnie usunięte z postu.'
+    else
+      redirect_to edit_packend_post_path(params[:id]), warning: 'Wystąpił problem, nie można usnąć zdjęcia z postu.'
     end
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def backend_post_params
-      params.require(:post).permit(:title, :publish_date, :publish, :body)
+  def add_image 
+    @post = Post.find_by_slug(params[:id])
+    @post.image = Image.find(params[:img_id])
+
+    if @post.save
+      redirect_to edit_backend_post_path(params[:id]), notice: 'Zdjęcie zostało przypisane.'
+    else
+      redirect_to edit_packend_post_path(params[:id]), warning: 'Wystąpił problem, nie można przypisać zdjęcia.'
     end
+  end
+
+
+
+  private
+  def set_backend_post
+    @backend_post = Post.find_by_slug(params[:id])
+  end
+
+  def backend_post_params
+    params.require(:post).permit(:title, :excerpt, :slug, :image, :publish_date, :publish, :body)
+  end
 end

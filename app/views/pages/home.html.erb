@@ -3,7 +3,7 @@
 </div>
 <div class="container">
   <% @home_page.pageAdds.each do |add| %> 
-    <%= add.body.html_safe %> 
+    <%= add.body.html_safe unless add.body.blank? %> 
   <% end %>
 </div>
 <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=plac+Zamkowy,Warszawa,+Poland&zoom=12&size=600x600&maptype=roadmap

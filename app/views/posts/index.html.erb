@@ -10,7 +10,8 @@
     <% @posts.each do |post| %>
       <tr>
         <td>
-          <%= link_to post.title, post_path(post.id)  %> 
+          <%= image_tag post.image.image_url.to_s  unless post.image.blank? %> 
+          <%= link_to post.title, post_path(post)  %> 
           <%= post.publish_date %>
         </td>
         <td> <%= post_excerpt(post, 70) %> </td>
@@ -18,3 +19,4 @@
     <% end %>
   </tbody>
 </table>
+

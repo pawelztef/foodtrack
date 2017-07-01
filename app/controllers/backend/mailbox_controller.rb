@@ -1,4 +1,5 @@
 class Backend::MailboxController < ApplicationController
+  before_action :authenticate_admin!
   layout 'backend_layout'
   def index
     @queries = Query.all
@@ -11,4 +12,10 @@ class Backend::MailboxController < ApplicationController
       format.js
     end
   end
+  def destroy
+    @query = Query.find(params[:id])
+    @query.destroy
+    redirect_to backend_mailbox_index_path, notice: 'Post was successfully destroyed.'
+  end
+
 end

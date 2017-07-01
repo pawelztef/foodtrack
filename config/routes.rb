@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   mount Ckeditor::Engine => '/ckeditor'
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
 
@@ -15,8 +16,7 @@ Rails.application.routes.draw do
   get 'pages/produkty', path: 'produkty'
   get 'pages/historia', path: 'historia'
 
-  get 'posts/index', path: 'blog'
-  get 'posts/show/:id', to: 'posts#show', as: 'post'
+  resources :posts, path: 'blog'
 
   get 'queries/new', path: 'kontakt'
   post 'queries/create'
@@ -27,15 +27,22 @@ Rails.application.routes.draw do
     resources :dashboards
     resources :admins
     resources :tracks
-    resources :posts
+
+    resources :posts do
+      collection do
+        post 'delete_image'
+        get 'add_image', to: 'posts#add_image'
+      end
+    end
+
     resources :home_pages
     resources :galeria_pages
     resources :historia_pages
     resources :kontakt_katering_pages
     resources :kontakt_pages
     resources :produkt_pages
-
-    resources :mailbox, only: [:index, :show], path: 'mailbox'
+    resources :mailbox, path: 'mailbox'
+    resources :images, only: [:new, :create, :destroy, :index]
     post 'stops/activate'
   end
 

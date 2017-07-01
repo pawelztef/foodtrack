@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170627084417) do
+ActiveRecord::Schema.define(version: 20170630071827) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
@@ -88,6 +88,16 @@ ActiveRecord::Schema.define(version: 20170627084417) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "images", force: :cascade do |t|
+    t.string   "image",       limit: 255
+    t.string   "image_title", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "post_id",     limit: 4
+  end
+
+  add_index "images", ["post_id"], name: "index_images_on_post_id", using: :btree
+
   create_table "kontakt_katering_pages", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -113,7 +123,11 @@ ActiveRecord::Schema.define(version: 20170627084417) do
     t.boolean  "publish",                    default: false
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
+    t.text     "excerpt",      limit: 65535
+    t.string   "slug",         limit: 255
   end
+
+  add_index "posts", ["slug"], name: "index_posts_on_slug", using: :btree
 
   create_table "produkt_pages", force: :cascade do |t|
     t.datetime "created_at", null: false

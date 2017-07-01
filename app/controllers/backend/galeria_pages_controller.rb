@@ -1,4 +1,5 @@
 class Backend::GaleriaPagesController < ApplicationController
+  before_action :authenticate_admin!
   include Reuseable
   before_action :set_page
   layout 'backend_layout'
