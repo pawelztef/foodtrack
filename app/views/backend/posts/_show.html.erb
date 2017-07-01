@@ -12,11 +12,15 @@
                 <div class="col-md-12">
                   <div class="panel panel-default">
                     <div class="panel-heading">
-                      <h4> <%= @backend_post.title %> </h4> 
-                      Data publikacji: <%= @backend_post.publish_date %> 
+                      <h1> <%= @backend_post.title %> </h1>
+                      <%= @backend_post.publish_date %> <br>
                     </div>
                     <div class="panel-body">
-                       <%= @backend_post.body.html_safe %>  
+                      <%= image_tag @backend_post.image.image_url(:thumb).to_s, class: 'img-thumbnail'  unless @backend_post.image.blank? %> 
+                      <%= @backend_post.body.html_safe %> 
+                    </div>
+                    <div class="panel-footer">
+                      <%= link_to 'Wróć', posts_path %> 
                     </div>
                   </div>
                 </div>
