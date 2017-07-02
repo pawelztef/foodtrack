@@ -9,12 +9,14 @@
 /log/*
 !/log/.keep
 /tmp
+
 # Rails
 .bundle
 *.log
 tmp
 tmp/**/*
 .byebug_history
+
 # Documentation
 doc/**/*
 README*
@@ -23,6 +25,7 @@ TODO
 # Public Uploads
 public/system/*
 public/themes/*
+public/uploads/*
 
 # Public Cache
 public/javascripts/cache
