@@ -14,7 +14,7 @@
 *.log
 tmp
 tmp/**/*
-
+.byebug_history
 # Documentation
 doc/**/*
 README*
