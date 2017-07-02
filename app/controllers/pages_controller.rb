@@ -5,6 +5,7 @@ class PagesController < ApplicationController
     @stop = Stop.find_by(active: true)
     @title = "Home"
     @home_page = safe_find("HomePage")
+    @carousel_products = Product.where(expose: true)
   end
 
 

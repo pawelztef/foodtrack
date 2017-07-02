@@ -56,6 +56,6 @@ class Backend::ProductsController < ApplicationController
     end
 
     def backend_product_params
-      params.require(:product).permit(:name, :slug, :image, :publish, :description, :catchphrase, :expose)
+      params.require(:product).permit(:name, :slug, :price, :image, :publish, :description, :catchphrase, :expose)
     end
 end
