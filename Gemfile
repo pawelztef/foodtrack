@@ -36,6 +36,7 @@ gem 'ckeditor'
 gem 'carrierwave'
 gem 'mini_magick'
 gem "jquery-slick-rails"
+gem 'instagram'
 
 gem 'puma'
 
