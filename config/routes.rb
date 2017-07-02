@@ -34,7 +34,7 @@ Rails.application.routes.draw do
         get 'add_image', to: 'posts#add_image'
       end
     end
-
+    resources :products
     resources :home_pages
     resources :galeria_pages
     resources :historia_pages
