@@ -48,11 +48,11 @@ end
   post.save!
 end
 
-10.times do |n|
+6.times do |n|
   product = Product.new(name: "Product #{n+1}",
                         slug: "Product #{n+1}",
                         price: "#{n+1}0.20",
-                        image: Rails.root.join('app/assets/images/thumb.jpg').open,
+                        image: Rails.root.join("app/assets/images/mock#{n+1}.jpg").open,
                         description: Faker::Lorem.paragraph,
                         catchphrase: Faker::Lorem.paragraph,
                         publish: true,
