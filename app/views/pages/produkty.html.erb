@@ -1,8 +1,30 @@
 <div class="well">
-  <h1>Pages#produkty</h1>
+  content for top
+  <div class="container">
+    <% @produkt_page.pageAdds.each do |add| %> 
+      <%= add.body.html_safe unless add.body.blank? %> 
+    <% end %>
+  </div>
 </div>
-<div class="container">
-  <% @produkt_page.pageAdds.each do |add| %> 
-    <%= add.body.html_safe unless add.body.blank? %> 
-  <% end %>
+
+<div class="well">
+
+  <% @products.each do |product| %> 
+    <div class="list-group">
+      <div class="row">
+        <div class="col-md-3">
+          <%= image_tag product.image_url(:thumb).to_s, class: 'img-thumbnail' %>
+        </div>
+        <div class="col-md-6">
+          <h4 class="list-group-item-heading"> <%= product.name %> </h4>
+          <p class="list-group-item-text"> <%= product.description %> </p>
+          <p> <%= link_to "show", pages_produkt_show_path(id: product.slug), remote: true %> </p>
+        </div>
+        <div class="col-md-3">
+          <h4> <%= currency_view product.price %> </h4>
+        </div>
+      </div>
+    </div>
+
+  <% end %> 
 </div>

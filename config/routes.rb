@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'pages/galeria', path: 'galeria'
   get 'pages/produkty', path: 'produkty'
   get 'pages/historia', path: 'historia'
+  get 'pages/produkt_show', path: 'produkt'
 
   resources :posts, path: 'blog'
 
@@ -34,7 +35,7 @@ Rails.application.routes.draw do
         get 'add_image', to: 'posts#add_image'
       end
     end
-
+    resources :products
     resources :home_pages
     resources :galeria_pages
     resources :historia_pages

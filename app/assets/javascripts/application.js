@@ -24,7 +24,8 @@
 //= require ckeditor/init
 //= require jquery.validate
 //= require jquery.validate.additional-methods
-//= require_jquery.validate.localization/messages_pl
+//= require jquery.validate.localization/messages_pl
+//= require jquery.slick
 //= require_tree .
 //
 

@@ -1,0 +1,10 @@
+$('body').append('<%= j render("new") %>');
+$("#imageShowModal").modal('show');
+$(".closeImage").on("click", function() {
+  $("#imageShowModal").modal('hide');
+});
+$('body').on('hidden.bs.modal', '.modal', function (e) {
+  $(e.target).removeData('bs.modal');
+  $('.modal').remove();
+});
+

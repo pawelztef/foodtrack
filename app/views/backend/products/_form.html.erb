@@ -1,0 +1,59 @@
+<div id="product-form-wrapper" class='<%= controller.controller_name %>-<%= controller.action_name %>' >
+  <%= simple_form_for([:backend, @backend_product]) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="thumbnail">
+            <% if @backend_product.image.blank? %>
+              <%= image_tag('thumb') %>
+            <% else %> 
+              <%= image_tag @backend_product.image_url.to_s %> 
+            <% end %> 
+          </div>
+        </div>
+        <div class="col-md-8">
+          <%= f.input :name %> 
+          <div class="row">
+            <div class="col-md-8">
+              <%= f.input :slug %> 
+            </div>
+            <div class="col-md-4">
+              <%= f.input :price %> 
+            </div>
+          </div>
+          <%= f.label 'Ustawienia' %> 
+          <div class="well well-form">
+            <div class="form-inline">
+              <div class="row">
+                <div class="col-xs-6">
+                  <%= f.input :image, as: :file %> 
+                </div>
+                <div class="col-xs-3">
+                  <%= f.label 'Publikuj' %> <br>
+                  <%= f.input :publish, as: :boolean, label: false   %> 
+                </div>
+                <div class="col-xs-3">
+                  <%= f.label 'Slider' %> <br>
+                  <%= f.input :expose, as: :boolean, label: false   %> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <%= f.input :catchphrase, as: :text %> 
+          <%= f.input :description, as: :text %> 
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+      <%= link_to 'Back', backend_products_path, class: 'btn btn-default' %> 
+    </div>
+  <% end %>
+</div>
