@@ -5,7 +5,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :slug
       t.string :price
       t.text :description
-      t.string :catchphrase
+      t.text :catchphrase
       t.string :image
       t.boolean :publish
       t.boolean :expose
