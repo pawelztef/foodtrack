@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'pages/galeria', path: 'galeria'
   get 'pages/produkty', path: 'produkty'
   get 'pages/historia', path: 'historia'
+  get 'pages/produkt_show', path: 'produkt'
 
   resources :posts, path: 'blog'
 

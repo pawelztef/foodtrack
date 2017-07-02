@@ -17,6 +17,15 @@ class PagesController < ApplicationController
   def produkty
     @title = "Produkty"
     @produkt_page = safe_find("ProduktPage")
+    @products = Product.where(publish: true)
+  end
+
+  def produkt_show
+    @product = Product.find_by_slug(params[:id])
+    respond_to do |f|
+      f.js
+      f.html
+    end
   end
 
   def historia
