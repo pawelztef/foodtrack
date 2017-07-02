@@ -35,6 +35,7 @@ gem 'geocoder'
 gem 'ckeditor'
 gem 'carrierwave'
 gem 'mini_magick'
+gem "jquery-slick-rails"
 
 gem 'puma'
 

@@ -1,0 +1,14 @@
+<div class="list-group">
+  <div class="row">
+    <div class="col-md-3">
+      <%= image_tag @product.image_url(:thumb).to_s, class: 'img-thumbnail' %>
+    </div>
+    <div class="col-md-6">
+      <h4 class="list-group-item-heading"> <%= @product.name %> </h4>
+      <p class="list-group-item-text"> <%= @product.description %> </p>
+    </div>
+    <div class="col-md3">
+      <h4> <%= currency_view @product.price %> </h4>
+    </div>
+  </div>
+</div>

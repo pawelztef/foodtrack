@@ -1,0 +1,10 @@
+$('body').append('<%= j render("produkt_show") %>');
+$("#produktShowModal").modal('show');
+$(".closeProdukt").on("click", function() {
+  $("#produktShowModal").modal('hide');
+});
+$('body').on('hidden.bs.modal', '.modal', function (e) {
+  $(e.target).removeData('bs.modal');
+  $('.modal').remove();
+});
+
