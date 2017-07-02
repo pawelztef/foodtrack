@@ -132,7 +132,7 @@ ActiveRecord::Schema.define(version: 20170701062052) do
     t.string   "slug",        limit: 255
     t.string   "price",       limit: 255
     t.text     "description", limit: 65535
-    t.string   "catchphrase", limit: 255
+    t.text     "catchphrase", limit: 65535
     t.string   "image",       limit: 255
     t.boolean  "publish"
     t.boolean  "expose"
