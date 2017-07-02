@@ -12,7 +12,9 @@ class PagesController < ApplicationController
   def galeria
     @title = "Galeria"
     @galeria_page = safe_find("GaleriaPage")
-    @popular = Instagram.user_recent_media
+    respo = Instagram.get_access_token(params[:code])
+    client = Instagram.client(:access_token => session[:access_token])
+    @popular = client.user_recent_media
   end
 
   def produkty

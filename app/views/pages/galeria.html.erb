@@ -1,9 +1,18 @@
 <div class="well">
-  <h1>Pages#galeria</h1>
+  <div class="container">
+    content for top
+    <% @galeria_page.pageAdds.each do |add| %> 
+      <%= add.body.html_safe unless add.body.blank? %> 
+    <% end %>
+  </div>
 </div>
-<div class="container">
-  <% @galeria_page.pageAdds.each do |add| %> 
-    <%= add.body.html_safe unless add.body.blank? %> 
-  <% end %>
-</div>
-
+<% @popular.each do |popular| %>
+  <div class="col-sm-12 col-md-4">
+    <div class="thumbnail">
+      <%= image_tag popular.images.low_resolution.url %>
+      <%# <div class="caption"> %>
+        <%#   <%= popular.user.username %1> %>
+        <%# </div> %>
+    </div>
+  </div>
+<% end %>
