@@ -28,7 +28,7 @@ class Backend::SettingsController < ApplicationController
                                      :posts_on_gallery,
                                      :smtp_username,
                                      :smtp_password,
-                                     :intagram_id,
+                                     :instagram_id,
                                      :instagram_secret,
                                      :instagram_token)
   end

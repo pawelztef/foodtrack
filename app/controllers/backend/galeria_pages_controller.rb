@@ -1,6 +1,6 @@
 class Backend::GaleriaPagesController < ApplicationController
-  before_action :authenticate_admin!
   include Reuseable
+  before_action :authenticate_admin!
   before_action :set_page
   layout 'backend_layout'
 
@@ -26,4 +26,7 @@ class Backend::GaleriaPagesController < ApplicationController
   def page_params
     params.require(:galeria_page).permit(pageAdds_attributes: PageAdd.attribute_names.map(&:to_sym).push(:_destroy) )
   end
+
+
+
 end
