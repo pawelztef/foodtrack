@@ -21,7 +21,7 @@
         <%= s.input :smtp_username, label: 'Login klienta SMTP' %> 
       </div>
       <div class="col-md-6">
-        <%= s.input :smtp_password, label: 'Hasło klienta SMTP' %> 
+        <%= s.input :smtp_pass, label: 'Hasło klienta SMTP' %> 
       </div>
     </div>
   </div>
@@ -32,12 +32,14 @@
         <%= s.input :instagram_id, label: 'Id klienta API Instagram' %> 
       </div>
       <div class="col-md-12">
-        <%= s.input :instagram_secret, label: 'Secret klienta API Inatagram' %> 
+        <%= s.input :instagram_secret, as: :string, label: 'Secret klienta API Inatagram' %> 
       </div>
       <div class="col-md-12">
         <%= s.input :instagram_token, label: 'Token klienta API Instagram' %> 
       </div>
     </div>
   </div>
-  <%= s.submit 'Zapisz', class: 'btn btn-default' %> 
+  <div class="well">
+    <%= s.submit 'Zapisz', class: 'btn btn-default' %> 
+  </div>
 <% end %> 

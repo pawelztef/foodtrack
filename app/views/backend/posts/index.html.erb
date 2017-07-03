@@ -1,40 +1,43 @@
-<table id="posts-table" class="table responsive no-wrap table-striped">
-  <% if @backend_posts.empty? %> 
-    <div class="well text-center">Brak danych.</div>
-  <% else %>
-    <thead>
-      <tr>
-        <th>Tytuł</th>
-        <th>Tekst</th>
-        <th>Data publikacji</th>
-        <th>Publikacja</th>
-        <th>Akcje</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @backend_posts.each do |backend_post| %>
+<div class="well">
+  <table id="posts-table" class="table responsive no-wrap table-striped">
+    <% if @backend_posts.empty? %> 
+      <div class="well text-center">Brak danych.</div>
+    <% else %>
+      <thead>
         <tr>
-          <td> <%= truncate(backend_post.title, lenght: 20, separator: '') %> </td>
-          <td> <%= post_excerpt(backend_post, 70) %> </td>
-          <td> <%= backend_post.publish_date %> </td>
-          <td> <%= publish(backend_post) %> </td>
-          <td>
-            <div class="actions-btn-group btn-group " role="group" >
-              <div class="btn-group" role="group">
-                <%= link_to fa_icon("file-o"), backend_post_path(backend_post), remote: true, class: 'btn btn-default btn-xs' %>
-              </div>
-              <div class="btn-group" role="group">
-                <%= link_to fa_icon("pencil-square-o"), edit_backend_post_path(backend_post), class: 'btn btn-default btn-xs' %>
-              </div>
-              <div class="btn-group" role="group">
-                <%= link_to fa_icon("trash-o"), backend_post_path(backend_post), method: :delete, data: { confirm: 'Jesteś pewien?' }, class: 'btn btn-default btn-xs' %>
-              </div>
-            </div>
-          </td>
+          <th>Tytuł</th>
+          <th>Tekst</th>
+          <th>Data publikacji</th>
+          <th>Publikacja</th>
+          <th>Akcje</th>
         </tr>
-      <% end %>
-    <% end %> 
-    </tbody>
-</table>
-<br>
-<%= link_to 'New Post', new_backend_post_path %>
+      </thead>
+      <tbody>
+        <% @backend_posts.each do |backend_post| %>
+          <tr>
+            <td> <%= truncate(backend_post.title, lenght: 20, separator: '') %> </td>
+            <td> <%= post_excerpt(backend_post, 70) %> </td>
+            <td> <%= backend_post.publish_date %> </td>
+            <td> <%= publish(backend_post) %> </td>
+            <td>
+              <div class="actions-btn-group btn-group " role="group" >
+                <div class="btn-group" role="group">
+                  <%= link_to fa_icon("file-o"), backend_post_path(backend_post), remote: true, class: 'btn btn-default btn-xs' %>
+                </div>
+                <div class="btn-group" role="group">
+                  <%= link_to fa_icon("pencil-square-o"), edit_backend_post_path(backend_post), class: 'btn btn-default btn-xs' %>
+                </div>
+                <div class="btn-group" role="group">
+                  <%= link_to fa_icon("trash-o"), backend_post_path(backend_post), method: :delete, data: { confirm: 'Jesteś pewien?' }, class: 'btn btn-default btn-xs' %>
+                </div>
+              </div>
+            </td>
+          </tr>
+        <% end %>
+      <% end %> 
+      </tbody>
+  </table>
+</div>
+<div class="well">
+  <%= link_to 'New Post', new_backend_post_path, class: 'btn btn-default' %>
+</div>

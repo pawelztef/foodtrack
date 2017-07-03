@@ -27,7 +27,7 @@ class Backend::SettingsController < ApplicationController
     params.require(:setting).permit(:posts_on_wall, 
                                      :posts_on_gallery,
                                      :smtp_username,
-                                     :smtp_password,
+                                     :smtp_pass,
                                      :instagram_id,
                                      :instagram_secret,
                                      :instagram_token)

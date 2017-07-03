@@ -8,11 +8,11 @@ class Setting < ActiveRecord::Base
    write_to_file('smtp_username', new_username)
  end
 
- def smtp_password
-   Settings.smtp_password
+ def smtp_pass
+   Settings.smtp_pass
  end
- def smtp_password=(new_pass)
-   write_to_file('smtp_password', new_pass)
+ def smtp_pass=(new_pass)
+   write_to_file('smtp_pass', new_pass)
  end
 
  def instagram_id
