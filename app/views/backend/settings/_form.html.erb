@@ -1,0 +1,43 @@
+<%= simple_form_for [:backend, @settings] do |s| %> 
+  <div class="well">
+    <p class="lead">Ustawienia Frontend</p>
+    <div class="row">
+      <div class="col-md-3">
+        <%= s.input :posts_on_wall, label: 'Posty na stronie Home', as: :select, collection: (1..20), default: @settings.posts_on_wall %> 
+      </div>
+      <div class="col-md-3">
+        <%= s.input :posts_on_gallery, label: 'Posty na stronie Galeria', as: :select, collection: (1..30), default: @settings.posts_on_wall %> 
+      </div>
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-3">
+      </div>
+    </div>
+  </div>
+  <div class="well">
+    <p class="lead">Ustawienia poczty SMTP</p>
+    <div class="row">
+      <div class="col-md-6">
+        <%= s.input :smtp_username, label: 'Login klienta SMTP' %> 
+      </div>
+      <div class="col-md-6">
+        <%= s.input :smtp_password, label: 'Hasło klienta SMTP' %> 
+      </div>
+    </div>
+  </div>
+  <div class="well">
+    <p class="lead">Ustawienia API Instagram</p>
+    <div class="row">
+      <div class="col-md-12">
+        <%= s.input :instagram_id, label: 'Id klienta API Instagram' %> 
+      </div>
+      <div class="col-md-12">
+        <%= s.input :instagram_secret, label: 'Secret klienta API Inatagram' %> 
+      </div>
+      <div class="col-md-12">
+        <%= s.input :instagram_token, label: 'Token klienta API Instagram' %> 
+      </div>
+    </div>
+  </div>
+  <%= s.submit 'Zapisz', class: 'btn btn-default' %> 
+<% end %> 
