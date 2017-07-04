@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Reuseable
+
   def catering_status(query)
     if query.catering_flag
       material_icon.done.css_class('text-success catering-flag')
@@ -28,7 +30,7 @@ module ApplicationHelper
   end
 
   def page_logo
-    image_tag Setting.first.image_url(:mini)
+    image_tag Setting.first.image_url(:mini) unless !safe_find('Setting').image.blank?
   end
 
 end

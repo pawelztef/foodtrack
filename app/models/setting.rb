@@ -38,9 +38,9 @@ class Setting < ActiveRecord::Base
 
  private 
  def write_to_file(key, value)
-    config = YAML.load_file(Rails.root.join('config/settings/development.yml'))
+    config = YAML.load_file(Rails.root.join('config/settings.yml'))
     config[key] = value 
-    File.open(Rails.root.join('config/settings/development.yml'), 'w') { |f| f.write config.to_yaml }
+    File.open(Rails.root.join('config/settings.yml'), 'w') { |f| f.write config.to_yaml }
     Settings.reload!
  end
 end
