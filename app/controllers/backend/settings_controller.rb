@@ -45,7 +45,7 @@ class Backend::SettingsController < ApplicationController
   end
 
   def set_settings
-    @settings = safe_find('Setting')
+    @settings = Setting.first
   end
 
 end
