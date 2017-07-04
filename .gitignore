@@ -87,3 +87,8 @@ vendor/extensions/**/spec/dummy
 
 # Ignore application configuration
 /config/application.yml
+
+config/settings.yml
+config/settings/*
+config/settings/*.local.yml
+config/environments/*.local.yml

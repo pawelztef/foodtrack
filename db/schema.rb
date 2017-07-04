@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170701062052) do
+ActiveRecord::Schema.define(version: 20170703053543) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
@@ -156,6 +156,14 @@ ActiveRecord::Schema.define(version: 20170701062052) do
     t.date     "to_date"
     t.string   "town",          limit: 255
     t.boolean  "catering_flag"
+  end
+
+  create_table "settings", force: :cascade do |t|
+    t.integer  "posts_on_wall",    limit: 4,   default: 0
+    t.integer  "posts_on_gallery", limit: 4,   default: 0
+    t.string   "image",            limit: 255
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   create_table "stops", force: :cascade do |t|

@@ -1,4 +1,4 @@
-<div class="col-md-12">
+<div class="well">
   <table id="tracks-table" class="table table-striped">
     <thead>
       <tr>
@@ -36,7 +36,7 @@
   <% if @tracks.empty? %> 
     <div class="well text-center">Brak danych.</div>
   <% end %> 
-  <br>
-
+</div>
+<div class='well'>
   <%= link_to 'Nowa Lista', new_backend_track_path, class: 'btn btn-default' %>
 </div>

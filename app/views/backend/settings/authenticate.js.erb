@@ -1,0 +1,10 @@
+$('body').append('<%= j render("authenticate") %>');
+$("#authenticateShowModal").modal('show');
+$(".closeAuthenticate").on("click", function() {
+  $("#authenticateShowModal").modal('hide');
+});
+$('body').on('hidden.bs.modal', '.modal', function (e) {
+  $(e.target).removeData('bs.modal');
+  $('.modal').remove();
+});
+
