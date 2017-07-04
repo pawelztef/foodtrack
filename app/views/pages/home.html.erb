@@ -2,32 +2,38 @@
   <meta name="turbolinks-cache-control" content="no-cache">
 <% end %>
 <div class="well">
-  content for top
-</div>
-
-<div class="carousel">
-  <% @carousel_products.each do |product| %>
-    <div> <%= image_tag product.image_url.to_s  %> </div>
-  <% end %> 
-</div>
-
-<div class="well">
   <div class="container">
-    content for middle 
+    miejsce na banner 
     <% @home_page.pageAdds.each do |add| %> 
       <%= add.body.html_safe unless add.body.blank? %> 
     <% end %>
   </div>
 </div>
-
-
 <div class="well">
   <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=plac+Zamkowy,Warszawa,+Poland&zoom=12&size=600x600&maptype=roadmap
   &markers=color:blue%7Clabel:S%7C#{@stop.latitude unless @stop.blank? },#{@stop.longitude unless @stop.blank? }
   &key=AIzaSyBj1pRGH4TSlkpRZrTBmzef2iDYYnDqfJA" %> 
 <%# &markers=color:red%7Clabel:C%7C40.718217,-73.998284 %>
 </div>
+<div class="well">
+  <div class="carousel">
+    <% @carousel_products.each do |product| %>
+      <div> <%= image_tag product.image_url.to_s  %> </div>
+    <% end %> 
+  </div>
+</div>
 
 <div class="well">
-  content for bottom
+  <table>
+      <% @posts.each do |post| %>
+        <tr>
+          <td>
+            <%= image_tag post.image.image_url(:thumb).to_s  unless post.image.blank? %> 
+            <%= link_to post.title, post_path(post)  %> 
+            <%= post.publish_date %>
+          </td>
+          <td> <%=  post.excerpt %> </td>
+        </tr>
+      <% end %>
+  </table>
 </div>

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
 
+  namespace :backend do
+  get 'settings/index'
+  end
+
   mount Ckeditor::Engine => '/ckeditor'
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
 
@@ -45,6 +49,14 @@ Rails.application.routes.draw do
     resources :mailbox, path: 'mailbox'
     resources :images, only: [:new, :create, :destroy, :index]
     post 'stops/activate'
+
+    resources :settings do
+      collection do
+        get 'authenticate'
+        post 'index'
+      end
+    end
+
   end
 
 end
