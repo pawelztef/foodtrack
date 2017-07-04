@@ -13,6 +13,9 @@ a.owner = true
 a.skip_confirmation!
 a.save!
 
+Setting.create(posts_on_wall: 4,
+               posts_on_gallery: 4)
+
 10.times do |n| 
   track = Track.create( route_name: Faker::Pokemon.location,
                        truck: Faker::Vehicle.manufacture,
