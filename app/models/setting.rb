@@ -1,5 +1,5 @@
 class Setting < ActiveRecord::Base
-
+ mount_uploader :image, LogoUploader
   
  def smtp_username
    Settings.smtp_username

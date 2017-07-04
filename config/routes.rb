@@ -50,7 +50,13 @@ Rails.application.routes.draw do
     resources :images, only: [:new, :create, :destroy, :index]
     post 'stops/activate'
 
-    resources :settings
+    resources :settings do
+      collection do
+        get 'authenticate'
+        post 'index'
+      end
+    end
+
   end
 
 end

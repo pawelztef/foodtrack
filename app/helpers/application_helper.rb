@@ -27,4 +27,8 @@ module ApplicationHelper
     end
   end
 
+  def page_logo
+    image_tag Setting.first.image_url(:mini)
+  end
+
 end

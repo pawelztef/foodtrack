@@ -159,10 +159,11 @@ ActiveRecord::Schema.define(version: 20170703053543) do
   end
 
   create_table "settings", force: :cascade do |t|
-    t.integer  "posts_on_wall",    limit: 4, default: 0
-    t.integer  "posts_on_gallery", limit: 4, default: 0
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
+    t.integer  "posts_on_wall",    limit: 4,   default: 0
+    t.integer  "posts_on_gallery", limit: 4,   default: 0
+    t.string   "image",            limit: 255
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   create_table "stops", force: :cascade do |t|

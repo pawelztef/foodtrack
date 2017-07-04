@@ -1,4 +1,4 @@
-<%= simple_form_for [:backend, @settings] do |s| %> 
+<%= simple_form_for [:backend, @settings], html: {multipart: true} do |s| %> 
   <div class="well">
     <p class="lead">Ustawienia Frontend</p>
     <div class="row">
@@ -8,9 +8,12 @@
       <div class="col-md-3">
         <%= s.input :posts_on_gallery, label: 'Posty na stronie Galeria', as: :select, collection: (1..30), default: @settings.posts_on_wall %> 
       </div>
-      <div class="col-md-3">
+      <div class="col-md-2">
+        <%= s.label 'Aktualne logo' %><br> 
+        <%= @settings.image.blank? ? 'Brak' : File.basename(@settings.image_url) %>
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
+        <%= s.input :image, as: :file, label: 'Wybierz logo' %> 
       </div>
     </div>
   </div>

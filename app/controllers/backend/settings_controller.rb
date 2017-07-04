@@ -4,8 +4,17 @@ class Backend::SettingsController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_settings
 
+  def authenticate
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def index
     @title = 'Ustawienia aplikacji'
+    if !current_admin.valid_password?(params[:password])
+      redirect_to backend_dashboards_path, notice: 'Niepoprawne hasło - brak dostępu.' 
+    end
   end
 
   def new
@@ -25,12 +34,14 @@ class Backend::SettingsController < ApplicationController
   private
   def settings_params 
     params.require(:setting).permit(:posts_on_wall, 
-                                     :posts_on_gallery,
-                                     :smtp_username,
-                                     :smtp_pass,
-                                     :instagram_id,
-                                     :instagram_secret,
-                                     :instagram_token)
+                                    :posts_on_gallery,
+                                    :smtp_username,
+                                    :password,
+                                    :smtp_pass,
+                                    :instagram_id,
+                                    :instagram_secret,
+                                    :instagram_token,
+                                    :image)
   end
 
   def set_settings

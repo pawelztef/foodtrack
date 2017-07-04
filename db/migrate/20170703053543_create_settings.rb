@@ -3,6 +3,7 @@ class CreateSettings < ActiveRecord::Migration
     create_table :settings do |t|
       t.integer :posts_on_wall, default: 0
       t.integer :posts_on_gallery, default: 0
+      t.string  :image
 
       t.timestamps null: false
     end
