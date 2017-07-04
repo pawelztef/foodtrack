@@ -30,7 +30,9 @@ module ApplicationHelper
   end
 
   def page_logo
-    image_tag Setting.first.image_url(:mini) unless !safe_find('Setting').image.blank?
+    if !Setting.first.image.blank?
+      image_tag Setting.first.image_url(:mini)
+    end
   end
 
 end
