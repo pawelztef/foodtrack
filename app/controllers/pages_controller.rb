@@ -8,6 +8,8 @@ class PagesController < ApplicationController
     @title = "Home"
     @home_page = safe_find("HomePage")
     @carousel_products = Product.where(expose: true)
+    number_of_posts = Setting.first.posts_on_wall
+    @posts = Post.where(publish: true).order(publish_date: :desc).first(number_of_posts)
   end
 
 
