@@ -37,7 +37,8 @@ end
                   slug: name,
                   publish: false,
                   publish_date: Faker::Date.between(3.years.ago, Date.today),
-                  body: Faker::Lorem.paragraph)
+                  body: Faker::Lorem.paragraph,
+                  excerpt: Faker::Lorem.paragraph)
   post.save!
 
 end
