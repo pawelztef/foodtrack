@@ -17,7 +17,11 @@ class PagesController < ApplicationController
     number_of_posts = safe_find('Setting').posts_on_gallery
     @title = "Galeria"
     @galeria_page = safe_find("GaleriaPage")
-    @popular = Instagram.user_recent_media(count: number_of_posts)
+    begin
+      @popular = Instagram.user_recent_media(count: number_of_posts)
+    rescue => e
+      redirect_to root_path 
+    end
   end
 
   def produkty
@@ -43,9 +47,9 @@ class PagesController < ApplicationController
   private
   def instagram_init
     Instagram.configure do |config|
-        config.client_id = Settings.instagram_id
-        config.client_secret = Settings.instagram_secret
-        config.access_token = Settings.instagram_token
+      config.client_id = Settings.instagram_id
+      config.client_secret = Settings.instagram_secret
+      config.access_token = Settings.instagram_token
     end
   end
 
