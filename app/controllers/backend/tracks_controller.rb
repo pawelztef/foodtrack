@@ -13,6 +13,7 @@ class Backend::TracksController < ApplicationController
   # GET /backend/tracks/1
   # GET /backend/tracks/1.json
   def show
+    @title = "Trasa"
     respond_to do |format|
       format.html
       format.js
@@ -35,6 +36,7 @@ class Backend::TracksController < ApplicationController
   # POST /backend/tracks
   # POST /backend/tracks.json
   def create
+    @title = "Edycja Trasy"
     @track = Track.new(track_params)
 
     respond_to do |format|
@@ -51,6 +53,7 @@ class Backend::TracksController < ApplicationController
   # PATCH/PUT /backend/tracks/1
   # PATCH/PUT /backend/tracks/1.json
   def update
+    @title = "Edycja Trasy"
     respond_to do |format|
       if @track.update(track_params)
 

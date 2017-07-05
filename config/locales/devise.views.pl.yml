@@ -9,8 +9,18 @@ pl:
         remember_me: Zapamiętaj mnie
         reset_password_token: 
         unlock_token: 
+      admin:
+        current_password: Aktualne hasło
+        email: Adres e-mail
+        password: Hasło
+        password_confirmation: Potwierdzenie hasła
+        remember_me: Zapamiętaj mnie
+        reset_password_token: 
+        unlock_token: 
+        
     models:
       user: Użytkownik
+      admin: Administrator
   devise:
     confirmations:
       confirmed: Konto zostało poprawnie aktywowane.
@@ -102,6 +112,7 @@ pl:
         sign_in: Zaloguj się
         sign_in_with_provider: Zaloguj się przez %{provider}
         sign_up: Zarejestruj się
+        log_out: Wyloguj się
     unlocks:
       new:
         resend_unlock_instructions: Wyślij instrukcje odblokowania konta
