@@ -18,18 +18,19 @@
                       <%= simple_form_for [:backend, @image], html: { :multipart => true }  do  |f| %> 
                         <%= f.error_notification %> 
                         <div class="form-inputs">
-                          <%= f.input :image_title %> 
-                          <%= f.input :image, as: :file, label: 'Wybierz zdjęcie' %> 
+                          <div class="row">
+                            <div class="col-md-7">
+                              <%= f.input :image_title, label: 'Nazwa zdjęcia' %> 
+                            </div>
+                            <div class="col-md-5">
+                              <%= f.input :image, as: :file, label: 'Wybierz zdjęcie' %> 
+                            </div>
+                          </div>
                         </div>
                         <%= f.submit "Dodaj", class: 'btn btn-default' %> 
                       <% end %> 
                     </div>
                   </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <button type="button" class="closeImage btn btn-default">close</button>
                 </div>
               </div>
             </div>

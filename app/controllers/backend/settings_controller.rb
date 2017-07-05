@@ -11,7 +11,6 @@ class Backend::SettingsController < ApplicationController
   end
 
   def index
-    @title = 'Ustawienia aplikacji'
     if !current_admin.valid_password?(params[:password])
       redirect_to backend_dashboards_path, notice: 'Niepoprawne hasło - brak dostępu.' 
     end
@@ -47,6 +46,7 @@ class Backend::SettingsController < ApplicationController
 
   def set_settings
     @settings = safe_find('Setting')
+    @title = 'Ustawienia aplikacji'
   end
 
 end

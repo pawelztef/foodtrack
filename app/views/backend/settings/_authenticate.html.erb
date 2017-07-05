@@ -4,13 +4,11 @@
       <div class="modal-body">
         <div class="row">
           <div class="col-xs-12">
-            <p class="lead">Proszę o hasło
             <button type="button" class="closeAuthenticate close">x</button>
-            </p>
             <%= form_tag backend_settings_path do %> 
               <div class="form-group">
+                <%= label_tag 'Podaj hasło' %> 
                 <%= password_field_tag :password, nil, class: 'form-control' %> 
-                <br>
                 <%= submit_tag "Potwierdź", class: 'btn btn-default btn-sm' %> 
               </div>
             <% end %> 

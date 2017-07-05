@@ -9,6 +9,10 @@ class Backend::ProductsController < ApplicationController
   end
 
   def show
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def new
@@ -25,7 +29,7 @@ class Backend::ProductsController < ApplicationController
 
     respond_to do |format|
       if @backend_product.save
-        format.html { redirect_to backend_products_path, notice: 'Product was successfully created.' }
+        format.html { redirect_to backend_products_path, notice: 'Produkt został zapisany.' }
       else
         format.html { render :new }
       end
@@ -33,9 +37,10 @@ class Backend::ProductsController < ApplicationController
   end
 
   def update
+    @product = Product.find_by_slug(params[:id])
     respond_to do |format|
-      if @backend_product.update(backend_product_params)
-        format.html { redirect_to backend_products_path, notice: 'Product was successfully updated.' }
+      if @product.update(backend_product_params)
+        format.html { redirect_to backend_products_path, notice: 'Produkt został zapisany.' }
       else
         format.html { render :edit }
       end
@@ -45,7 +50,7 @@ class Backend::ProductsController < ApplicationController
   def destroy
     @backend_product.destroy
     respond_to do |format|
-      format.html { redirect_to backend_products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to backend_products_url, notice: 'Produkt został wykasowany.' }
       format.json { head :no_content }
     end
   end
