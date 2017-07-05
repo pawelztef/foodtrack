@@ -5,6 +5,9 @@
 
 <div class="well">
   <div class="row">
+    <% if @images.blank? %> 
+      <p class="lead text-center">Brak zdjęć w galerii.</p>
+    <% end %> 
     <% @images.each do |img| %> 
       <div class="col-xs-6 col-md-3">
         <div class="thumbnail">

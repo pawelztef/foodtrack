@@ -5,9 +5,9 @@
     <div class="form-inputs">
       <div class="row">
         <div class="col-md-6">
-          <%= f.input :title %> 
+          <%= f.input :title, label: 'Tytuł' %> 
           <%= f.input :slug %> 
-          <%= f.input :publish_date, as: :string %> 
+          <%= f.input :publish_date, label: 'Data publikacji', as: :string %> 
           <%= f.label 'Publikuj' %> 
           <%= f.input :publish, as: :boolean, label: false   %> 
           <%# <%= f.input :image, as: :file %1> %> 
@@ -23,7 +23,7 @@
                   <%= link_to "#{fa_icon('trash-o')} Usuń".html_safe, delete_image_backend_posts_path(id: @backend_post.slug), method: :post, class: "delete-image"  %> 
                 </div>
                 <% else %>
-                  <%= link_to "#{fa_icon('file-image-o')} Dodaj zdjęcie".html_safe, edit_backend_post_path(@backend_post), remote: true %> 
+                  <%# <%= link_to "#{fa_icon('file-image-o')} Dodaj zdjęcie".html_safe, edit_backend_post_path(@backend_post), remote: true %1> %> 
                 <% end %> 
             </div>
           </div>
@@ -32,18 +32,18 @@
 
       <div class="row">
         <div class="col-md-12">
-          <%= f.input :excerpt, as: :ckeditor, input_html: { ckeditor: { height: '200', toolbar: 'excerpt', language: 'pl' } } %> 
+          <%= f.input :excerpt, label: "Wyimek", as: :ckeditor, input_html: { ckeditor: { height: '200', toolbar: 'excerpt', language: 'pl' } } %> 
         </div>
       </div>
       <div class="row">
         <div class="col-md-12">
-          <%= f.input :body, as: :ckeditor, input_html: { ckeditor: { toolbar: 'custom', language: 'pl' } } %> 
+          <%= f.input :body, label: "Treść główna", as: :ckeditor, input_html: { ckeditor: { toolbar: 'custom', language: 'pl' } } %> 
         </div>
       </div>
     </div>
     <div class="form-actions">
       <%= f.button :submit %>
-      <%= link_to 'Back', backend_posts_path, class: 'btn btn-default' %>
+      <%= link_to 'Cofnij', backend_posts_path, class: 'btn btn-default' %>
     </div>
   <% end %>
 </div>

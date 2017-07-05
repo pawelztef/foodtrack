@@ -32,6 +32,8 @@ pl:
       user: 'Urzytkownik'
       admin: 'Administrator'
       track: 'Trasa'
+      post: 'Post'
+      product: 'Produkt'
     attributes:
       email: 'Email'
       first_name: 'Imię'
@@ -49,6 +51,21 @@ pl:
         new: 'Nowy'
         delete: 'Wykasuj'
         back: 'Cofinij'
+      post:
+        create: "Zapisz"
+        update: "Zapisz"
+        new: 'Nowy'
+        delete: 'Wykasuj'
+        back: 'Cofinij'
+      product:
+        update: 'Zapisz zminay'
+        back: 'Cofnij'
+        delete: 'Wykasuj'
+  time:
+    formats:
+      default: "%d%m%Y"
+      short: "%d%b"
+      long: "%B%d, %Y"
   date:
       abbr_day_names:
       - nie
