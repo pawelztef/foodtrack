@@ -25,7 +25,8 @@ class Backend::SettingsController < ApplicationController
 
   def update
     if @settings.update(settings_params)
-      redirect_to backend_settings_path, notice: 'Ustawienia zostały zapisane.'
+      render :index, notice: 'Ustawienia zostały zapisane.'
+      # redirect_to backend_settings_path, notice: 'Ustawienia zostały zapisane.'
     else
       redirect_to backend_settings_path, warning: 'Wystąpił problem, ustawienia nie zoatały zapisane.'
     end
@@ -45,7 +46,7 @@ class Backend::SettingsController < ApplicationController
   end
 
   def set_settings
-    @settings = Setting.first
+    @settings = safe_find('Setting')
   end
 
 end
