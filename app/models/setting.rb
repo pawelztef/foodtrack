@@ -2,6 +2,7 @@ class Setting < ActiveRecord::Base
  mount_uploader :image, LogoUploader
   
  def smtp_username
+   Settings.reload!
    Settings.smtp_username
  end
  def smtp_username=(new_username)
@@ -9,13 +10,16 @@ class Setting < ActiveRecord::Base
  end
 
  def smtp_pass
+   Settings.reload!
    Settings.smtp_pass
  end
  def smtp_pass=(new_pass)
    write_to_file('smtp_pass', new_pass)
+   Settings.reload!
  end
 
  def instagram_id
+   Settings.reload!
    Settings.instagram_id
  end
  def instagram_id=(new_id)
@@ -23,6 +27,7 @@ class Setting < ActiveRecord::Base
  end
 
  def instagram_secret
+   Settings.reload!
    Settings.instagram_secret
  end
  def instagram_secret=(new_secret)
@@ -30,6 +35,7 @@ class Setting < ActiveRecord::Base
  end
 
  def instagram_token
+   Settings.reload!
    Settings.instagram_token
  end
  def instagram_token=(new_token)

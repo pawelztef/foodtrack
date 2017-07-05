@@ -1,14 +1,13 @@
 class PagesController < ApplicationController
   require "instagram"
   include Reuseable
-  before_action :instagram_init
 
   def home
     @stop = Stop.find_by(active: true)
     @title = "Home"
     @home_page = safe_find("HomePage")
     @carousel_products = Product.where(expose: true)
-    number_of_posts = Setting.first.posts_on_wall
+    number_of_posts = safe_find('Setting').posts_on_wall
     @posts = Post.where(publish: true).order(publish_date: :desc).first(number_of_posts)
   end
 
@@ -18,9 +17,11 @@ class PagesController < ApplicationController
     @title = "Galeria"
     @galeria_page = safe_find("GaleriaPage")
     begin
+      instagram_init
       @popular = Instagram.user_recent_media(count: number_of_posts)
     rescue => e
-      redirect_to root_path 
+      @popular = [] 
+      render :galeria 
     end
   end
 
@@ -46,6 +47,7 @@ class PagesController < ApplicationController
 
   private
   def instagram_init
+    Settings.reload!
     Instagram.configure do |config|
       config.client_id = Settings.instagram_id
       config.client_secret = Settings.instagram_secret
