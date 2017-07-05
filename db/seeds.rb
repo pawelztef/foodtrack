@@ -25,7 +25,8 @@ a.save!
                        town: Faker::Address.city,
                        code: Faker::Address.postcode,
                        active: false,
-                       date: '10/10/2010' )
+                       date: '10/10/2010',
+                       date_out: '11/10/2010')
 
     track.stops << stop
   end
