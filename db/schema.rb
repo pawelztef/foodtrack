@@ -171,13 +171,13 @@ ActiveRecord::Schema.define(version: 20170703053543) do
     t.string   "address_line2", limit: 255
     t.string   "town",          limit: 255
     t.string   "code",          limit: 255
+    t.string   "catchphrase",   limit: 100
     t.boolean  "active",                    default: false
     t.datetime "date"
+    t.datetime "date_out"
     t.integer  "track_id",      limit: 4
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
-    t.float    "latitude",      limit: 24
-    t.float    "longitude",     limit: 24
   end
 
   add_index "stops", ["track_id"], name: "index_stops_on_track_id", using: :btree

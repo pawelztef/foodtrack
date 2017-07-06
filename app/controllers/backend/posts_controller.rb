@@ -13,6 +13,7 @@ class Backend::PostsController < ApplicationController
   # GET /backend/posts/1
   # GET /backend/posts/1.json
   def show
+    @title = "Edycja postu"
   end
 
   # GET /backend/posts/new
@@ -33,11 +34,12 @@ class Backend::PostsController < ApplicationController
   # POST /backend/posts
   # POST /backend/posts.json
   def create
+    @title = 'Edycja postu'
     @backend_post = Post.new(backend_post_params)
-
+    update_image
     respond_to do |format|
       if @backend_post.save
-        format.html { redirect_to backend_posts_url, notice: 'Post was successfully created.' }
+        format.html { redirect_to backend_posts_url, notice: 'Post został zapisany.' }
       else
         format.html { render :new }
       end
@@ -47,9 +49,11 @@ class Backend::PostsController < ApplicationController
   # PATCH/PUT /backend/posts/1
   # PATCH/PUT /backend/posts/1.json
   def update
+    @title = 'Edycja postu'
+    update_image
     respond_to do |format|
       if @backend_post.update(backend_post_params)
-        format.html { redirect_to backend_posts_url, notice: 'Post was successfully updated.' }
+        format.html { redirect_to backend_posts_url, notice: 'Post został zapisany.' }
       else
         format.html { render :edit }
       end
@@ -61,7 +65,7 @@ class Backend::PostsController < ApplicationController
   def destroy
     @backend_post.destroy
     respond_to do |format|
-      format.html { redirect_to backend_posts_url, notice: 'Post was successfully destroyed.' }
+      format.html { redirect_to backend_posts_url, notice: 'Post został zapiany.' }
       format.json { head :no_content }
     end
   end
@@ -77,19 +81,22 @@ class Backend::PostsController < ApplicationController
   end
 
   def add_image 
-    @post = Post.find_by_slug(params[:id])
-    @post.image = Image.find(params[:img_id])
-
-    if @post.save
-      redirect_to edit_backend_post_path(params[:id]), notice: 'Zdjęcie zostało przypisane.'
-    else
-      redirect_to edit_packend_post_path(params[:id]), warning: 'Wystąpił problem, nie można przypisać zdjęcia.'
+    respond_to do |format|
+      format.html
+      format.js { @images = Image.all }
     end
   end
 
 
 
   private
+
+  def update_image
+    if !params[:post_image_id].empty? 
+      @backend_post.image = Image.find(params[:post_image_id]) 
+    end
+  end
+
   def set_backend_post
     @backend_post = Post.find_by_slug(params[:id])
   end

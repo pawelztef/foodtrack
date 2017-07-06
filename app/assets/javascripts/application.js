@@ -31,4 +31,7 @@
 
 $(document).ready(function(){
   $('.dropdown-toggle').dropdown();
+  $("#flash").delay(500).show('normal', function(){
+    $(this).delay(2500).slideUp();
+  });
 });
