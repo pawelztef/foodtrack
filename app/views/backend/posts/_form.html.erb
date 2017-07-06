@@ -1,49 +1,55 @@
 <div id="post-form-wrapper" class='<%= controller.controller_name %>-<%= controller.action_name %>' >
   <%= simple_form_for([:backend, @backend_post], html: {multipart: true}) do |f| %>
     <%= f.error_notification %>
-
+    <div id="con"></div>
     <div class="form-inputs">
-      <div class="row">
-        <div class="col-md-6">
-          <%= f.input :title, label: 'Tytuł' %> 
-          <%= f.input :slug %> 
-          <%= f.input :publish_date, label: 'Data publikacji', as: :string %> 
-          <%= f.label 'Publikuj' %> 
-          <%= f.input :publish, as: :boolean, label: false   %> 
-          <%# <%= f.input :image, as: :file %1> %> 
-        </div>
-        <div class="col-md-6 pull-right">
-          <div class="edit-post-thumb-wrapper">
-            <div class="thumbnail">
-              <% unless @backend_post.image.blank? %>
-                <%= image_tag @backend_post.image.image_url.to_s, class: 'img-thumbnail' %> 
-                <div class="caption">
-                  <p> <%= @backend_post.image.image_title %> </p>
-                  <%= link_to "#{fa_icon('exchange')} Zamień".html_safe, edit_backend_post_path(@backend_post), remote: true %> 
-                  <%= link_to "#{fa_icon('trash-o')} Usuń".html_safe, delete_image_backend_posts_path(id: @backend_post.slug), method: :post, class: "delete-image"  %> 
-                </div>
+      <div class="well">
+        <div class="row">
+          <div id='post-details-con' class="col-md-6">
+            <%= f.input :title, label: 'Tytuł' %> 
+            <%= f.input :slug %> 
+            <%= f.input :publish_date, label: 'Data publikacji', as: :string %> 
+            <%= f.label 'Publikuj' %> 
+            <%= f.input :publish, as: :boolean, label: false   %> 
+          </div>
+          <div class="col-md-6 ">
+            <div class="edit-post-thumb-wrapper">
+              <div class="thumbnail">
+                <%= image_tag (@backend_post.image.nil? ? 'thumb' : @backend_post.image.image_url), class: 'img-thumbnail', id: 'post-thumb'  %> 
+                <%= hidden_field_tag 'post_image_id' %> 
+                <% unless @backend_post.image.blank? %>
+                  <div class="caption">
+                    <p> <%= @backend_post.image.image_title %> </p>
+                    <%= link_to "#{fa_icon('file-image-o')} Zamień zdjęcie".html_safe, add_image_backend_posts_path(send_to: @backend_post), remote: true %> 
+                    <%= link_to "#{fa_icon('trash-o')} Usuń".html_safe, delete_image_backend_posts_path(id: @backend_post.slug), method: :post, class: "delete-image"  %> 
+                  </div>
                 <% else %>
-                  <%# <%= link_to "#{fa_icon('file-image-o')} Dodaj zdjęcie".html_safe, edit_backend_post_path(@backend_post), remote: true %1> %> 
+                  <div class="caption">
+                    <%= link_to "#{fa_icon('file-image-o')} Dodaj zdjęcie".html_safe, add_image_backend_posts_path(send_to: @backend_post), remote: true %> 
+                  </div>
                 <% end %> 
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-md-12">
-          <%= f.input :excerpt, label: "Wyimek", as: :ckeditor, input_html: { ckeditor: { height: '200', toolbar: 'excerpt', language: 'pl' } } %> 
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.input :excerpt, label: "Wyimek", as: :ckeditor, input_html: { ckeditor: { height: '200', toolbar: 'excerpt', language: 'pl' } } %> 
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <%= f.input :body, label: "Treść główna", as: :ckeditor, input_html: { ckeditor: { toolbar: 'custom', language: 'pl' } } %> 
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.input :body, label: "Treść główna", as: :ckeditor, input_html: { ckeditor: { toolbar: 'custom', language: 'pl' } } %> 
+          </div>
         </div>
       </div>
     </div>
-    <div class="form-actions">
-      <%= f.button :submit %>
-      <%= link_to 'Cofnij', backend_posts_path, class: 'btn btn-default' %>
+    <div class='well'>
+      <div class="form-actions">
+        <%= f.button :submit %>
+        <%= link_to 'Cofnij', backend_posts_path, class: 'btn btn-default' %>
+      </div>
     </div>
   <% end %>
 </div>

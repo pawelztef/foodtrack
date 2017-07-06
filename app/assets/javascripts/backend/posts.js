@@ -46,17 +46,4 @@ $(function() {
       .replace(/-+$/, '');            // Trim - from end of text
   }
 
-  // $('.gallery-image').on('click', function() {
-  //   alert("clicked");
-  //   var id = $(this).attr("id");
-  //   $.ajax({
-  //     type: "POST",
-  //     dataType: "script",
-  //     contentType: 'application/json',
-  //     url: "/backend/posts/add_image",
-  //     data: JSON.stringify({
-  //       image_id: id
-  //     })
-  //   })
-  // });
 });
