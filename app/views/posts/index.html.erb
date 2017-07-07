@@ -4,11 +4,20 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @posts.each do |post| %>
       <tr>
+        <td>
+          <div
+       class="fb-like"
+       data-share="true"
+       data-width="450"
+       data-show-faces="true">
+          </div>
+        </td>
         <td>
           <%= image_tag post.image.image_url(:thumb).to_s  unless post.image.blank? %> 
           <%= link_to post.title, post_path(post)  %> 
