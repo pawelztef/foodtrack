@@ -35,4 +35,11 @@ module ApplicationHelper
     end
   end
 
+  def set_active_class(path)
+    if current_page?(path)
+      ' active'
+    end
+  end
+
+
 end

@@ -30,6 +30,14 @@
 //
 
 $(document).ready(function(){
+  $("#nav-icon3").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+    // $('.menu-toggle').toggleClass("rotate");
+    // $('.menu-toggle').toggleClass("rotate-reset");
+    $('#nav-icon3').toggleClass('open');
+
+  });
   $('.dropdown-toggle').dropdown();
   $("#flash").delay(500).show('normal', function(){
     $(this).delay(2500).slideUp();
