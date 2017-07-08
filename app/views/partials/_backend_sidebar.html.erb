@@ -1,59 +1,55 @@
-<div class="navbar-default sidebar" role="navigation">
-  <div class="sidebar-nav navbar-collapse">
-    <ul class="nav" id="side-menu">
-      <li>
-        <%= link_to '<i class="material-icons">dashboard</i> Dashboard'.html_safe, backend_dashboards_path %> 
-      </li>
-      <li>
-        <%= link_to '<i class="material-icons">people_outline</i> Administratorzy'.html_safe, backend_admins_path  %>
-      </li>
-      <li>
-        <%= link_to '<i class="material-icons">map</i> Trasy'.html_safe, backend_tracks_path %>
-      </li>
-      <li>
-        <%= link_to '<i class="material-icons">inbox</i> Zapytania'.html_safe, backend_mailbox_index_path %>
-      </li>
-      <li>
-        <%= link_to '<i class="material-icons">library_books</i> Posty'.html_safe, backend_posts_path %>
-      </li>
-      <li>
-        <%= link_to '<i class="material-icons">photo_album</i> Zdjęcia'.html_safe, backend_images_path %>
-      </li>
-      <li>
-        <%= link_to "<i class='material-icons'>local_pizza</i> Produkty".html_safe, backend_products_path %>
-      </li>
-      <li>
-        <%= link_to "<i class='material-icons'>settings_applications</i> Ustawienia".html_safe, authenticate_backend_settings_path, remote: true %>
-      </li>
-      <li>
-        <div class="" id="accordion" role="tablist" aria-multiselectable="true">
-          <li> 
-            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              <i class="material-icons">insert_drive_file</i>
-              Strony</a>
-          </li>
-          <ul id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-            <li>
-              <%= link_to 'Home', edit_backend_home_page_path(1)  %> 
-            </li>
-            <li>
-              <%= link_to 'Historia', edit_backend_historia_page_path(1) %>
-            </li>
-            <li>
-              <%= link_to 'Produkty', edit_backend_produkt_page_path(1) %>
-            </li>
-            <li>
-              <%= link_to 'Katering kontakt', edit_backend_kontakt_katering_page_path(1) %>
-            </li>
-            <li>
-              <%= link_to 'Kontakt ', edit_backend_kontakt_page_path(1) %>
-            </li>
-            <li>
-              <%= link_to 'Galeria', edit_backend_galeria_page_path(1) %>
-            </li>
-          </ul>
-        </div> 
-      </li>
-    </ul>
-  </div>
+<%# <%= material_icon.chevron_right.md_48.css_class('menu-toggle') %1> %> 
+<div id="nav-icon3">
+  <span></span>
+  <span></span>
+  <span></span>
+  <span></span>
 </div>
+<ul class="sidebar-nav">
+  <li>
+    <%= link_to '<i class="material-icons">dashboard</i> Dashboard'.html_safe, backend_dashboards_path %> 
+  </li>
+  <li>
+    <%= link_to '<i class="material-icons">people_outline</i> Administratorzy'.html_safe, backend_admins_path  %>
+  </li>
+  <li>
+    <%= link_to '<i class="material-icons">map</i> Trasy'.html_safe, backend_tracks_path %>
+  </li>
+  <li>
+    <%= link_to '<i class="material-icons">inbox</i> Zapytania'.html_safe, backend_mailbox_index_path %>
+  </li>
+  <li>
+    <%= link_to '<i class="material-icons">library_books</i> Posty'.html_safe, backend_posts_path %>
+  </li>
+  <li>
+    <%= link_to '<i class="material-icons">photo_album</i> Zdjęcia'.html_safe, backend_images_path %>
+  </li>
+  <li>
+    <%= link_to "<i class='material-icons'>local_pizza</i> Produkty".html_safe, backend_products_path %>
+  </li>
+  <li>
+    <%= link_to "<i class='material-icons'>settings_applications</i> Ustawienia".html_safe, authenticate_backend_settings_path, remote: true %>
+  </li>
+  <li>
+    <%= link_to "<i class='material-icons'>insert_drive_file</i> Podstrony".html_safe, authenticate_backend_settings_path, remote: true %>
+  </li>
+  <%# <li> %>
+  <%#   <%= link_to 'Home', edit_backend_home_page_path(1)  %1> %> 
+  <%# </li> %>
+  <%# <li> %>
+  <%#   <%= link_to 'Historia', edit_backend_historia_page_path(1) %1> %>
+  <%# </li> %>
+  <%# <li> %>
+  <%#   <%= link_to 'Produkty', edit_backend_produkt_page_path(1) %1> %>
+  <%# </li> %>
+  <%# <li> %>
+  <%#   <%= link_to 'Katering kontakt', edit_backend_kontakt_katering_page_path(1) %1> %>
+  <%# </li> %>
+  <%# <li> %>
+  <%#   <%= link_to 'Kontakt ', edit_backend_kontakt_page_path(1) %1> %>
+  <%# </li> %>
+  <%# <li> %>
+  <%#   <%= link_to 'Galeria', edit_backend_galeria_page_path(1) %1> %>
+  <%# </li> %>
+</ul>
+
