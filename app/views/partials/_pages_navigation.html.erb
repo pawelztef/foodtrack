@@ -1,0 +1,23 @@
+<div class="tabs-navigation">
+  <ul class="nav nav-tabs" role="tablist">
+    <%= content_tag :li, class: set_active_class(edit_backend_home_page_path(1)) do %> 
+      <%= link_to 'Home', edit_backend_home_page_path(1)  %> 
+    <% end %> 
+    <%= content_tag :li, class: set_active_class(edit_backend_historia_page_path(1)) do %> 
+      <%= link_to 'Historia', edit_backend_historia_page_path(1) %>
+    <% end %> 
+    <%= content_tag :li, class: set_active_class(edit_backend_produkt_page_path(1)) do %> 
+      <%= link_to 'Produkty', edit_backend_produkt_page_path(1) %>
+    <% end %> 
+    <%= content_tag :li, class: set_active_class(edit_backend_galeria_page_path(1)) do %> 
+      <%= link_to 'Galeria', edit_backend_galeria_page_path(1) %>
+    <% end %> 
+    <%= content_tag :li, class: set_active_class(edit_backend_kontakt_katering_page_path(1)) do %> 
+      <%= link_to 'Katering kontakt', edit_backend_kontakt_katering_page_path(1) %>
+    <% end %> 
+    <%= content_tag :li, class: set_active_class(edit_backend_kontakt_page_path(1)) do %> 
+      <%= link_to 'Home', edit_backend_kontakt_page_path(1)  %> 
+    <% end %> 
+  </ul>
+</div>
+
