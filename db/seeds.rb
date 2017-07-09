@@ -13,6 +13,7 @@ a.owner = true
 a.skip_confirmation!
 a.save!
 
+Setting.first_or_create(id: 1)
 
 track1 = Track.create( route_name: 'Trasa nr 1',
                       truck: 'Truck 1',
