@@ -9,8 +9,8 @@ class PagesController < ApplicationController
     @carousel_products = Product.where(expose: true)
     number_of_posts = safe_find('Setting').posts_on_wall
     @posts = Post.where(publish: true).order(publish_date: :desc).first(number_of_posts)
-    if @truck = Track.find_by_active(true)
-      @markers_hash = Gmaps4rails.build_markers(@truck.stops) do |stop, marker|
+    if @track = Track.find_by_active(true)
+      @markers_hash = Gmaps4rails.build_markers(@track.stops) do |stop, marker|
         marker.lat stop.latitude
         marker.lng stop.longitude
         marker.infowindow stop.full_street_address

@@ -14,23 +14,31 @@
     <div id="map" style='width: 100%; height: 400px;'></div>
   </div>
   <script type="text/javascript">
-$(function() {
-  handler = Gmaps.build('Google');
-  handler.buildMap({
-    provider: { maxZoom: 15},
-    internal: { id: 'map' }
-  },
-  function(){
-    markers = handler.addMarkers(<%= raw @markers_hash.to_json %>);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-  }
-  );
-});
+  $(function() {
+    handler = Gmaps.build('Google');
+    handler.buildMap({
+      provider: { maxZoom: 15},
+      internal: { id: 'map' }
+    },
+    function(){
+      markers = handler.addMarkers(<%= raw @markers_hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+    }
+    );
+  });
   </script>
 </div>
 <div class="well">
-  miejsce na postoje
+  <div class="stops-wrap">
+    <% @track.stops.try(:each) do |stop| %>
+      <div class="stop-con">
+        <div><%= stop.date.strftime("%d/%m/%Y %H:%M") %></div>
+        <div><%= stop.date_out.strftime("%d/%m/%Y %H:%M") %></div>
+        <div><%= stop.full_street_address %></div>
+      </div>
+    <% end %> 
+  </div>
 </div>
 <div class="well">
   <div class="carousel">
