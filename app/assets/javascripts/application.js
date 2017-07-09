@@ -26,6 +26,8 @@
 //= require jquery.validate.additional-methods
 //= require jquery.validate.localization/messages_pl
 //= require jquery.slick
+//= require underscore
+//= require gmaps/google
 //= require_tree .
 //
 
@@ -33,8 +35,6 @@ $(document).ready(function(){
   $("#nav-icon3").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
-    // $('.menu-toggle').toggleClass("rotate");
-    // $('.menu-toggle').toggleClass("rotate-reset");
     $('#nav-icon3').toggleClass('open');
 
   });
@@ -42,4 +42,9 @@ $(document).ready(function(){
   $("#flash").delay(500).show('normal', function(){
     $(this).delay(2500).slideUp();
   });
+
+
+
+
+
 });
