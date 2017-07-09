@@ -9,6 +9,23 @@ class PagesController < ApplicationController
     @carousel_products = Product.where(expose: true)
     number_of_posts = safe_find('Setting').posts_on_wall
     @posts = Post.where(publish: true).order(publish_date: :desc).first(number_of_posts)
+
+    @truck = Track.find_by_active(true)
+    @stops = @truck.stops
+    @markers_hash = Gmaps4rails.build_markers(@stops) do |stop, marker|
+      marker.lat stop.latitude
+      marker.lng stop.longitude
+      marker.infowindow stop.full_street_address
+      marker.title stop.full_street_address
+      if stop.active 
+        marker.picture({
+          :url    => ActionController::Base.helpers.asset_path('icon.png'),
+          :width  => "36",
+          :height => "36",
+        })
+      end
+    end
+
   end
 
 
