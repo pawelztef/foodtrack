@@ -37,7 +37,7 @@ $(function() {
 <div class="well">
   <div class="stops-wrap">
     <% @track.try(:stops).try(:each) do |stop| %>
-      <div class="stop-con">
+      <div class="stop-con <%= " active" if stop.active %> ">
         <div><%= stop.date.strftime("%d/%m/%Y %H:%M") %></div>
         <div><%= stop.date_out.strftime("%d/%m/%Y %H:%M") %></div>
         <div><%= stop.full_street_address %></div>
