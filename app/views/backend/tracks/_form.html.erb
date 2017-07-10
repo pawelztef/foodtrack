@@ -1,48 +1,49 @@
 <%= simple_form_for([:backend, @track]) do |f| %>
 
   <div class="form-inputs">
-    <div class="row">
-      <div class="col-md-5">
-        <%= f.input :route_name %> 
-        <%= f.input :driver %> 
-        <div class="row">
-          <div class='col-md-9'>
-            <%= f.input :truck %> 
+    <div class="well">
+      <div class="row">
+        <div class="col-md-5">
+          <%= f.input :route_name %> 
+          <%= f.input :driver %> 
+          <div class="row">
+            <div class='col-md-9'>
+              <%= f.input :truck %> 
+            </div>
+            <div class="col-md-3 active-checkbox-con">
+              <%= f.label :active %> 
+              <%= f.input :active, as: :boolean, label: false %> 
+            </div>
           </div>
-          <div class="col-md-3 active-checkbox-con">
-            <%= f.label :active %> 
-            <%= f.input :active, as: :boolean, label: false %> 
+        </div>
+        <div class="col-md-7">
+          <%= f.input  :description, as: :text, input_html: { rows: 9, style: "resize:none" } %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div id="stops">
+            <%= f.label :stops %> 
+            <%= f.simple_fields_for :stops do |stop| %>
+              <%= render "stop_fields", f: stop %>
+            <% end %>  
+            <div class="links">
+              <%= link_to_add_association "#{fa_icon('plus')} Dodaj miejsce postoju".html_safe, f, :stops, remote: true %> 
+            </div>
           </div>
         </div>
       </div>
-      <div class="col-md-7">
-        <%= f.input  :description, as: :text, input_html: { rows: 9, style: "resize:none" } %>
-      </div>
     </div>
+  </div>
+  <div class="well">
     <div class="row">
       <div class="col-md-12">
-        <div id="stops">
-          <%= f.label :stops %> 
-          <%= f.simple_fields_for :stops do |stop| %>
-            <%= render "stop_fields", f: stop %>
-          <% end %>  
-          <div class="links">
-            <%= link_to_add_association "#{fa_icon('plus')} Dodaj miejsce postoju".html_safe, f, :stops, remote: true %> 
-          </div>
+        <div class="form-actions">
+          <%= f.button :submit, class: 'btn btn-default' %>
+          <%= link_to 'Cofnij', backend_tracks_path, class: 'btn btn-default' %>
         </div>
       </div>
     </div>
   </div>
-  <br>
-  <br>
-  <div class="row">
-    <div class="col-md-12">
-      <div class="form-actions">
-        <%= f.button :submit, class: 'btn btn-default' %>
-        <%= link_to 'Cofnij', backend_tracks_path, class: 'btn btn-default' %>
-      </div>
-    </div>
-  </div>
-  <br>
 <% end %>
 

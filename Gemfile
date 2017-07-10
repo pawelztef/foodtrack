@@ -4,6 +4,7 @@ gem 'rails', '4.2.5'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', platforms: :ruby
+gem 'coffee-rails'
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -31,6 +32,8 @@ gem 'letter_opener_web'
 gem 'cocoon'
 gem 'faker'
 gem 'geocoder'
+gem 'gmaps4rails'
+gem 'underscore-rails'
 
 gem 'ckeditor'
 gem 'carrierwave'

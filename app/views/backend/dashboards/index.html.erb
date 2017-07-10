@@ -55,6 +55,7 @@
     <div class="panel panel-default last-published-posts">
       <div class="panel-heading">
         Ostatnie publikowane posty
+        <%= link_to fa_icon('plus'), new_backend_post_path, class: 'btn btn-default btn-xs pull-right', data: {toggle: 'tooltip'}, title: 'Nowy post'  %> 
       </div>
       <div class="panel-body">
         <div class="list-group">

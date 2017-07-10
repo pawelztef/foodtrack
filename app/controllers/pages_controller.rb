@@ -9,6 +9,8 @@ class PagesController < ApplicationController
     @carousel_products = Product.where(expose: true)
     number_of_posts = safe_find('Setting').posts_on_wall
     @posts = Post.where(publish: true).order(publish_date: :desc).first(number_of_posts)
+    @track = Track.find_by_active(true)
+    create_markers(@track)
   end
 
 
@@ -52,6 +54,40 @@ class PagesController < ApplicationController
       config.client_id = Settings.instagram_id
       config.client_secret = Settings.instagram_secret
       config.access_token = Settings.instagram_token
+    end
+  end
+
+  def create_markers(track)
+    if track 
+      @markers_hash = Gmaps4rails.build_markers(track.stops) do |stop, marker|
+        marker.lat stop.latitude
+        marker.lng stop.longitude
+        marker.infowindow stop.full_street_address
+        marker.title stop.full_street_address
+        if stop.active 
+          marker.picture({
+            :url    => ActionController::Base.helpers.asset_path('icon.png'),
+            :width  => "36",
+            :height => "36"
+          })
+        else
+          marker.picture({
+            :url    => ActionController::Base.helpers.asset_path('icon-gray.png'),
+            :width  => "36",
+            :height => "36"
+          })
+        end
+      end
+    else
+      @markers_hash = Gmaps4rails.build_markers(Stop.new) do |stop, marker|
+        marker.lat 52.249
+        marker.lng 20.979
+        marker.picture({
+          :url    => ActionController::Base.helpers.asset_path(''),
+          :width  => "36",
+          :height => "36"
+        })
+      end
     end
   end
 

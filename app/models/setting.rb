@@ -42,6 +42,14 @@ class Setting < ActiveRecord::Base
    write_to_file('instagram_token', new_token)
  end
 
+ def maps_api_key
+   Settings.reload!
+   Settings.maps_api_key
+ end
+ def maps_api_key=(new_api)
+   write_to_file('maps_api_key', new_api)
+ end
+
  private 
  def write_to_file(key, value)
     config = YAML.load_file(Rails.root.join('config/settings.yml'))

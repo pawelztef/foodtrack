@@ -4,20 +4,51 @@
 <div class="well">
   <div class="container">
     miejsce na banner 
-    <% @home_page.pageAdds.each do |add| %> 
+    <% @home_page.pageAdds.try(:each) do |add| %> 
       <%= add.body.html_safe unless add.body.blank? %> 
     <% end %>
   </div>
 </div>
 <div class="well">
-  <%= image_tag "https://maps.googleapis.com/maps/api/staticmap?center=plac+Zamkowy,Warszawa,+Poland&zoom=12&size=600x600&maptype=roadmap
-  &markers=color:blue%7Clabel:S%7C#{@stop.latitude unless @stop.blank? },#{@stop.longitude unless @stop.blank? }
-  &key=AIzaSyBj1pRGH4TSlkpRZrTBmzef2iDYYnDqfJA" %> 
-<%# &markers=color:red%7Clabel:C%7C40.718217,-73.998284 %>
+  <div style='width: 100%;'>
+    <div id="map" style='width: 100%; height: 400px;'></div>
+  </div>
+  <script type="text/javascript">
+$(function() {
+  handler = Gmaps.build('Google');
+  handler.buildMap({
+    provider: { 
+      maxZoom: 12,
+      disableDefaultUI: true
+    },
+    internal: { 
+      id: 'map' 
+    }
+  },
+  function(){
+    markers = handler.addMarkers(<%= raw @markers_hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+  }
+  );
+});
+  </script>
+</div>
+<div class="well">
+  <div class="stops-wrap">
+    <% @track.try(:stops).try(:each) do |stop| %>
+      <div class="stop-con <%= " active" if stop.active %> ">
+        <div><%= stop.date.strftime("%d/%m/%Y %H:%M") %></div>
+        <div><%= stop.date_out.strftime("%d/%m/%Y %H:%M") %></div>
+        <div><%= stop.full_street_address %></div>
+        <div><%= stop.catchphrase %></div>
+      </div>
+    <% end %> 
+  </div>
 </div>
 <div class="well">
   <div class="carousel">
-    <% @carousel_products.each do |product| %>
+    <% @carousel_products.try(:each) do |product| %>
       <div> <%= image_tag product.image_url.to_s  %> </div>
     <% end %> 
   </div>
@@ -25,15 +56,15 @@
 
 <div class="well">
   <table>
-      <% @posts.each do |post| %>
-        <tr>
-          <td>
-            <%= image_tag post.image.image_url(:thumb).to_s  unless post.image.blank? %> 
-            <%= link_to post.title, post_path(post)  %> 
-            <%= post.publish_date %>
-          </td>
-          <td> <%=  post.excerpt %> </td>
-        </tr>
-      <% end %>
+    <% @posts.try(:each) do |post| %>
+      <tr>
+        <td>
+          <%= image_tag post.image.image_url(:thumb).to_s  unless post.image.blank? %> 
+          <%= link_to post.title, post_path(post)  %> 
+          <%= post.publish_date %>
+        </td>
+        <td> <%=  post.excerpt %> </td>
+      </tr>
+    <% end %>
   </table>
 </div>

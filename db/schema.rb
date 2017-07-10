@@ -159,11 +159,11 @@ ActiveRecord::Schema.define(version: 20170703053543) do
   end
 
   create_table "settings", force: :cascade do |t|
-    t.integer  "posts_on_wall",    limit: 4,   default: 0
-    t.integer  "posts_on_gallery", limit: 4,   default: 0
+    t.integer  "posts_on_wall",    limit: 4
+    t.integer  "posts_on_gallery", limit: 4
     t.string   "image",            limit: 255
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "stops", force: :cascade do |t|
@@ -178,6 +178,8 @@ ActiveRecord::Schema.define(version: 20170703053543) do
     t.integer  "track_id",      limit: 4
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
+    t.float    "latitude",      limit: 24
+    t.float    "longitude",     limit: 24
   end
 
   add_index "stops", ["track_id"], name: "index_stops_on_track_id", using: :btree
