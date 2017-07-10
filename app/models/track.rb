@@ -1,7 +1,7 @@
 class Track < ActiveRecord::Base
   before_save :set_active_flag
   has_many :stops, dependent: :destroy
-  validates :route_name, :driver, :truck, :description, presence: true
+  validates :route_name, :driver, :truck, presence: true
   accepts_nested_attributes_for :stops, reject_if: :all_blank, allow_destroy: true
 
 

@@ -27,6 +27,7 @@ pl:
       taken: '%{model} z takim atrybutem już istnieje'
       not_a_number: 'Niepoprawny format'
       record_invalid: 'Niepoprawny rekord'
+      to_long: 'Maksymalna liczba znaków wynosi 100'
   activerecord:
     models:
       user: 'Urzytkownik'
@@ -43,6 +44,7 @@ pl:
       address_line2: 'Ulica'
       town: 'Miasto'
       code: 'Kod pocztowy'
+      catchphrase: 'Wyimek'
   helpers:
     submit:
       track:
