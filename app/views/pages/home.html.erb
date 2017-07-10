@@ -17,8 +17,13 @@
 $(function() {
   handler = Gmaps.build('Google');
   handler.buildMap({
-    provider: { maxZoom: 15},
-    internal: { id: 'map' }
+    provider: { 
+      maxZoom: 12,
+      disableDefaultUI: true
+    },
+    internal: { 
+      id: 'map' 
+    }
   },
   function(){
     markers = handler.addMarkers(<%= raw @markers_hash.to_json %>);
@@ -30,7 +35,16 @@ $(function() {
   </script>
 </div>
 <div class="well">
-  miejsce na postoje
+  <div class="stops-wrap">
+    <% @track.try(:stops).try(:each) do |stop| %>
+      <div class="stop-con">
+        <div><%= stop.date.strftime("%d/%m/%Y %H:%M") %></div>
+        <div><%= stop.date_out.strftime("%d/%m/%Y %H:%M") %></div>
+        <div><%= stop.full_street_address %></div>
+        <div><%= stop.catchphrase %></div>
+      </div>
+    <% end %> 
+  </div>
 </div>
 <div class="well">
   <div class="carousel">
@@ -41,16 +55,16 @@ $(function() {
 </div>
 
 <div class="well">
-    <table>
-      <% @posts.try(:each) do |post| %>
-        <tr>
-          <td>
-            <%= image_tag post.image.image_url(:thumb).to_s  unless post.image.blank? %> 
-            <%= link_to post.title, post_path(post)  %> 
-            <%= post.publish_date %>
-          </td>
-          <td> <%=  post.excerpt %> </td>
-        </tr>
-      <% end %>
-    </table>
+  <table>
+    <% @posts.try(:each) do |post| %>
+      <tr>
+        <td>
+          <%= image_tag post.image.image_url(:thumb).to_s  unless post.image.blank? %> 
+          <%= link_to post.title, post_path(post)  %> 
+          <%= post.publish_date %>
+        </td>
+        <td> <%=  post.excerpt %> </td>
+      </tr>
+    <% end %>
+  </table>
 </div>
