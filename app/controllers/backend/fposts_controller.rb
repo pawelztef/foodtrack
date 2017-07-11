@@ -5,7 +5,8 @@ class Backend::FpostsController < ApplicationController
   # GET /backend/fposts
   # GET /backend/fposts.json
   def index
-    @backend_fposts = Fpost.all
+    @backend_fposts = Fpost.all.order(created_at: 'DESC')
+    @title = 'Linia czasu Facebooka'
   end
 
   # GET /backend/fposts/1
@@ -16,10 +17,12 @@ class Backend::FpostsController < ApplicationController
   # GET /backend/fposts/new
   def new
     @backend_fpost = Fpost.new
+    @title = 'Nowy post'
   end
 
   # GET /backend/fposts/1/edit
   def edit
+    @title = 'Edycja postu'
   end
 
   # POST /backend/fposts
@@ -29,7 +32,7 @@ class Backend::FpostsController < ApplicationController
 
     respond_to do |format|
       if @backend_fpost.save
-        format.html { redirect_to @backend_fpost, notice: 'Fpost was successfully created.' }
+        format.html { redirect_to backend_fposts_url, notice: 'Fpost was successfully created.' }
         format.json { render :show, status: :created, location: @backend_fpost }
       else
         format.html { render :new }
@@ -41,9 +44,10 @@ class Backend::FpostsController < ApplicationController
   # PATCH/PUT /backend/fposts/1
   # PATCH/PUT /backend/fposts/1.json
   def update
+    @title = 'Edycja postu'
     respond_to do |format|
       if @backend_fpost.update(backend_fpost_params)
-        format.html { redirect_to @backend_fpost, notice: 'Fpost was successfully updated.' }
+        format.html { redirect_to backend_fposts_url, notice: 'Fpost was successfully updated.' }
         format.json { render :show, status: :ok, location: @backend_fpost }
       else
         format.html { render :edit }
@@ -70,6 +74,6 @@ class Backend::FpostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def backend_fpost_params
-      params.fetch(:backend_fpost, {})
+      params.require(:fpost).permit(:body)
     end
 end
