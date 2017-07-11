@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703053543) do
+ActiveRecord::Schema.define(version: 20170710103328) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
@@ -72,6 +72,13 @@ ActiveRecord::Schema.define(version: 20170703053543) do
   end
 
   add_index "ckeditor_assets", ["type"], name: "index_ckeditor_assets_on_type", using: :btree
+
+  create_table "fposts", force: :cascade do |t|
+    t.string   "facebook_id", limit: 255
+    t.text     "body",        limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
 
   create_table "galeria_pages", force: :cascade do |t|
     t.datetime "created_at", null: false
