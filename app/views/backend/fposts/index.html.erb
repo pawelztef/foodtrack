@@ -1,45 +1,48 @@
 <% content_for :top_buttons do %>
   <%= link_to material_icon.add, new_backend_fpost_path, data: { toggle: 'tooltip' }, title: 'Dodaj post', class: 'btn btn-default btn-xs'  %> 
 <% end %> 
-<div class="well">
-  <div class="panel-body">
-    <% if @backend_fposts.blank? %>
-      <div class="lead text-center">
-        <%= link_to 'Dodaj post', new_backend_post_path, class: 'btn btn-default'  %> 
-      </div>
-    <% else %>
-      <div class="timeline-fposts-wrapper">
-        <ul class="timeline">
-          <% @backend_fposts.each do |post| %>
-            <li class="<%= cycle("", "timeline-inverted") %>">
-              <div id="<%= post.id %>" class="timeline-badge"></div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h5 class="timeline-title"> Title </h5>
-                </div>
-                <div class="timeline-body">
-                  <%= post.body %> 
-                </div>
-                <div class="timeline-footer">
-                  <div class="actions-btn-group btn-group " role="group" >
-                    <div class="btn-group" role="group">
-                      <%= link_to fa_icon("pencil-square-o"), edit_backend_fpost_path(post), class: 'btn btn-default btn-xs' %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="well">
+      <div class="panel-body">
+        <% if @backend_fposts.blank? %>
+          <div class="lead text-center">
+            <%= link_to 'Dodaj post', new_backend_post_path, class: 'btn btn-default'  %> 
+          </div>
+        <% else %>
+          <div class="timeline-fposts-wrapper">
+            <ul class="timeline">
+              <% @backend_fposts.each do |post| %>
+                <li class="<%= cycle("", "timeline-inverted") %>">
+                  <div id="<%= post.id %>" class="timeline-badge"></div>
+                  <div class="timeline-panel">
+                    <div class="timeline-heading">
+                      <h5 class="timeline-title"> Title </h5>
                     </div>
-                    <div class="btn-group" role="group">
-                      <%= link_to fa_icon("trash-o"), backend_fpost_path(post), method: :delete, data: { confirm: 'Jesteś pewien?' }, class: 'btn btn-default btn-xs' %>
+                    <div class="timeline-body">
+                      <%= post.body %> 
+                    </div>
+                    <div class="timeline-footer">
+                      <div class="actions-btn-group btn-group " role="group" >
+                        <div class="btn-group" role="group">
+                          <%= link_to fa_icon("pencil-square-o"), edit_backend_fpost_path(post), class: 'btn btn-default btn-xs' %>
+                        </div>
+                        <div class="btn-group" role="group">
+                          <%= link_to fa_icon("trash-o"), backend_fpost_path(post), method: :delete, data: { confirm: 'Jesteś pewien?' }, class: 'btn btn-default btn-xs' %>
+                        </div>
+                      </div>
+                      <small class="text-muted pull-right"> <%= material_icon.access_time %> <%= post.created_at.strftime("%d/%m/%Y %H:%M") %> </small>
                     </div>
                   </div>
-                  <small class="text-muted pull-right"> <%= material_icon.access_time %> <%= post.created_at.strftime("%d/%m/%Y %H:%M") %> </small>
-                </div>
-              </div>
-            </li>
-          <% end %> 
-        </ul>
+                </li>
+              <% end %> 
+            </ul>
+          </div>
+        <% end %> 
       </div>
-    <% end %> 
+    </div>
   </div>
 </div>
-
 
 <div class="well">
   <%= link_to "Nowy post", new_backend_fpost_path, class: 'btn btn-default' %> 

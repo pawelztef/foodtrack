@@ -9,8 +9,6 @@ class Backend::FpostsController < ApplicationController
   def index
     @backend_fposts = Fpost.all.order(created_at: 'DESC')
     @title = 'Linia czasu Facebooka'
-    @koala = Koala::Facebook::API.new(@auth.get_app_access_token)
-    byebug
   end
 
   # GET /backend/fposts/1
@@ -82,7 +80,5 @@ class Backend::FpostsController < ApplicationController
   end
 
   def fb_auth
-    @auth = Koala::Facebook::OAuth.new(Settings.facebook_app_id, Settings.facebook_secret)
-    byebug
   end
 end

@@ -16,7 +16,8 @@
     <%= link_to '<i class="material-icons">library_books</i> Posty'.html_safe, backend_posts_path %>
   </li>
   <li>
-    <%= link_to "<i class='fa fa-facebook-official'></i> Facebook Wall".html_safe, backend_fposts_path %>
+    <%# <%= link_to "<i class='fa fa-facebook-official'></i> Facebook Wall".html_safe, backend_fposts_path %1> %>
+    <%= link_to "<i class='fa fa-facebook-official'></i> Facebook Wall".html_safe, '/auth/facebook' %>
   </li>
   <li>
     <%= link_to '<i class="material-icons">map</i> Trasy'.html_safe, backend_tracks_path %>

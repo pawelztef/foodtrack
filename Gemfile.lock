@@ -99,8 +99,6 @@ GEM
     faraday_middleware (0.9.2)
       faraday (>= 0.7.4, < 0.10)
     ffi (1.9.18)
-    figaro (1.1.1)
-      thor (~> 0.14)
     font-awesome-rails (4.7.0.2)
       railties (>= 3.2, < 5.2)
     formatador (0.2.5)
@@ -337,7 +335,6 @@ DEPENDENCIES
   devise-i18n
   devise_invitable
   faker
-  figaro
   font-awesome-rails
   geocoder
   gmaps4rails
