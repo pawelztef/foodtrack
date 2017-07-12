@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
 
 
+  get 'sessions/create'
+
+  get 'sessions/delete'
+
   namespace :backend do
   get 'settings/index'
   end
+
+
 
   mount Ckeditor::Engine => '/ckeditor'
   mount LetterOpenerWeb::Engine, at: "/letter_opener"

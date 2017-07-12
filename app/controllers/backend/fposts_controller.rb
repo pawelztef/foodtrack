@@ -1,5 +1,7 @@
 class Backend::FpostsController < ApplicationController
+  before_action :authenticate_admin!
   before_action :set_backend_fpost, only: [:show, :edit, :update, :destroy]
+  before_action :fb_auth
   layout 'backend_layout'
 
   # GET /backend/fposts
@@ -7,6 +9,8 @@ class Backend::FpostsController < ApplicationController
   def index
     @backend_fposts = Fpost.all.order(created_at: 'DESC')
     @title = 'Linia czasu Facebooka'
+    @koala = Koala::Facebook::API.new(@auth.get_app_access_token)
+    byebug
   end
 
   # GET /backend/fposts/1
@@ -67,13 +71,18 @@ class Backend::FpostsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_backend_fpost
-      @backend_fpost = Fpost.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_backend_fpost
+    @backend_fpost = Fpost.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def backend_fpost_params
-      params.require(:fpost).permit(:body)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def backend_fpost_params
+    params.require(:fpost).permit(:body)
+  end
+
+  def fb_auth
+    @auth = Koala::Facebook::OAuth.new(Settings.facebook_app_id, Settings.facebook_secret)
+    byebug
+  end
 end
