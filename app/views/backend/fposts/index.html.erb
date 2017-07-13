@@ -7,9 +7,10 @@
       <div class="panel-body">
         <% if @backend_fposts.blank? %>
           <div class="lead text-center">
-            <%= link_to 'Dodaj post', new_backend_post_path, class: 'btn btn-default'  %> 
+            <%= link_to 'Dodaj post', new_backend_fpost_path, class: 'btn btn-default'  %> 
           </div>
         <% else %>
+      <%= paginate @backend_fposts %> 
           <div class="timeline-fposts-wrapper">
             <ul class="timeline">
               <% @backend_fposts.each do |post| %>
@@ -40,6 +41,7 @@
           </div>
         <% end %> 
       </div>
+      <%= paginate @backend_fposts %> 
     </div>
   </div>
 </div>

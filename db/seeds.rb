@@ -98,11 +98,11 @@
 # end
 
 
-20.times do |n|
-  # name = Faker::Book.unique.title
-  post = Fpost.new( body: Faker::Lorem.paragraph) 
-  post.save!
-end
+# 20.times do |n|
+#   # name = Faker::Book.unique.title
+#   post = Fpost.new( body: Faker::Lorem.paragraph) 
+#   post.save!
+# end
 
 # 10.times do |n|
 #   post = Post.find(n+1)

@@ -33,6 +33,7 @@ gem 'faker'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem 'kaminari'
 
 gem 'ckeditor'
 gem 'carrierwave'

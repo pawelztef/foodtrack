@@ -1,84 +1,118 @@
 class Backend::FpostsController < ApplicationController
+  require 'uri'
+
   before_action :authenticate_admin!
   before_action :set_backend_fpost, only: [:show, :edit, :update, :destroy]
-  before_action :fb_auth
+  before_action :retrive_facebook_page, only: [:create, :update, :destroy]
   layout 'backend_layout'
 
-  # GET /backend/fposts
-  # GET /backend/fposts.json
   def index
-    @backend_fposts = Fpost.all.order(created_at: 'DESC')
+    @backend_fposts = Fpost.order(created_at: 'DESC').page(params[:page])
     @title = 'Linia czasu Facebooka'
   end
 
-  # GET /backend/fposts/1
-  # GET /backend/fposts/1.json
   def show
   end
 
-  # GET /backend/fposts/new
   def new
     @backend_fpost = Fpost.new
     @title = 'Nowy post'
   end
 
-  # GET /backend/fposts/1/edit
   def edit
     @title = 'Edycja postu'
   end
 
-  # POST /backend/fposts
-  # POST /backend/fposts.json
   def create
+    # File.open(Rails.root.join('config/settings.yml'), 'w') { |f| f.write config.to_yaml }
+    # post = @page_graph.put_wall_post(backend_fpost_params[:body])
+    image_url = "http://188.166.152.13/uploads/image/image/1/mock1.jpg"
+    image = URI.encode(image_url)
+    pic = URI.parse(image)
+    byebug
+    post = @page_graph.put_connections(@page_id, message: backend_fpost_params[:body], picture: pic, link: pic)
     @backend_fpost = Fpost.new(backend_fpost_params)
+    @backend_fpost.facebook_id = post['id']
 
     respond_to do |format|
       if @backend_fpost.save
-        format.html { redirect_to backend_fposts_url, notice: 'Fpost was successfully created.' }
-        format.json { render :show, status: :created, location: @backend_fpost }
+        format.html { redirect_to backend_fposts_url, notice: 'Post został umieszczony na osi czasu.' }
       else
         format.html { render :new }
-        format.json { render json: @backend_fpost.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /backend/fposts/1
-  # PATCH/PUT /backend/fposts/1.json
   def update
     @title = 'Edycja postu'
-    respond_to do |format|
-      if @backend_fpost.update(backend_fpost_params)
-        format.html { redirect_to backend_fposts_url, notice: 'Fpost was successfully updated.' }
-        format.json { render :show, status: :ok, location: @backend_fpost }
-      else
-        format.html { render :edit }
-        format.json { render json: @backend_fpost.errors, status: :unprocessable_entity }
+    msg = 'Post został umieszczony na osi czasu.'
+    begin
+      @page_graph.delete_object(@backend_fpost.facebook_id)
+    rescue
+      msg = 'Post nie istniał na osi czasu facebooka aczkolwiek został ponownie na niej umieszczony.'
+      post = @page_graph.put_wall_post(backend_fpost_params[:body])
+      @backend_fpost.facebook_id = post["id"]
+    ensure
+      respond_to do |format|
+        if @backend_fpost.update(backend_fpost_params)
+          format.html { redirect_to backend_fposts_url, notice: msg }
+        else
+          format.html { render :edit }
+        end
       end
     end
   end
 
-  # DELETE /backend/fposts/1
-  # DELETE /backend/fposts/1.json
   def destroy
-    @backend_fpost.destroy
-    respond_to do |format|
-      format.html { redirect_to backend_fposts_url, notice: 'Fpost was successfully destroyed.' }
-      format.json { head :no_content }
+    msg = 'Post został unięty z osi czasu.'
+    begin
+      @page_graph.delete_object(@backend_fpost.facebook_id)
+    rescue
+      msg = 'Post nie istniał na osi czasu Facebooka aczkolwiek został usnięty z osi czasu aplikacji.'
+    ensure
+      @backend_fpost.destroy
+      respond_to do |format|
+        format.html { redirect_to backend_fposts_url, notice: msg }
+      end
     end
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
   def set_backend_fpost
     @backend_fpost = Fpost.find(params[:id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
   def backend_fpost_params
-    params.require(:fpost).permit(:body)
+    params.require(:fpost).permit(:body, :facebook_id)
   end
 
-  def fb_auth
+  def retrive_facebook_page
+    if auth = Koala::Facebook::API.new(session[:auth_token])
+      page = auth.get_connections('me', 'accounts').first
+      @page_token = page['access_token']
+      @page_id = page['id']
+      @page_graph = Koala::Facebook::API.new(@page_token)
+    else
+      redirect_to backend_dashboards_url, notice: 'Token sesji Facebooka wygasł.'
+    end
+  end
+
+  def post_to_timeline(msg, pic, ln)
+    image_url = full_image_url(pic)
+    link = ln
+    if ln.nil?
+      link = image_url
+    end
+    byebug
+    @page_graph.put_connections(@page_id, 'feed', message: msg, picture: image_url, link: link)
+  end
+
+  def post_picture(pic)
+    image_url = full_image_url(pic)
+    @page_graph.put_picture(image_url)
+  end
+
+  def full_image_url(image)
+    root_url + image.image_url
   end
 end
