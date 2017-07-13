@@ -1,4 +1,5 @@
 class Backend::FpostsController < ApplicationController
+  require 'addressable/uri'
 
   before_action :authenticate_admin!
   before_action :set_backend_fpost, only: [:show, :edit, :update, :destroy]
@@ -25,11 +26,11 @@ class Backend::FpostsController < ApplicationController
   def create
     # File.open(Rails.root.join('config/settings.yml'), 'w') { |f| f.write config.to_yaml }
     # post = @page_graph.put_wall_post(backend_fpost_params[:body])
-    image_url = "http://188.166.152.13/uploads/image/image/1/mock1.jpg"
-    image = URI.encode(image_url)
-    pic = URI.parse(image)
+    # image_url = "http://188.166.152.13/uploads/image/image/1/mock1.jpg"
+    image_url = "http://localhost:3000/uploads/image/image/1/mock1.jpg"
+
     byebug
-    post = @page_graph.put_connections(@page_id, message: backend_fpost_params[:body], picture: pic, link: pic)
+    post = @page_graph.put_connections(@page_id, 'feed', message: backend_fpost_params[:body], picture: image_url, link: image_url)
     @backend_fpost = Fpost.new(backend_fpost_params)
     @backend_fpost.facebook_id = post['id']
 
@@ -74,6 +75,16 @@ class Backend::FpostsController < ApplicationController
         format.html { redirect_to backend_fposts_url, notice: msg }
       end
     end
+  end
+
+  def add_image
+    respond_to do |format|
+      format.html
+      format.js { @images = Image.all }
+    end
+  end
+
+  def delete_image
   end
 
   private

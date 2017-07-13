@@ -34,6 +34,7 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'underscore-rails'
 gem 'kaminari'
+gem 'addressable'
 
 gem 'ckeditor'
 gem 'carrierwave'

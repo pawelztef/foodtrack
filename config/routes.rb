@@ -38,7 +38,12 @@ Rails.application.routes.draw do
     resources :mailbox, path: 'mailbox'
     resources :images, only: [:new, :create, :destroy, :index]
     resources :products
-    resources :fposts 
+    resources :fposts do
+      collection do
+        post 'delete_image'
+        get 'add_image', to: 'fposts#add_image'
+      end
+    end
     post 'stops/activate'
 
     resources :posts do

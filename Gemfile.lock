@@ -334,6 +334,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  addressable
   awesome_print
   bootstrap3-datetimepicker-rails (~> 4.17.47)
   bootstrap_sb_admin_base_v2
