@@ -65,7 +65,7 @@ $(function() {
               <%= image_tag post.image.image_url(:thumb).to_s  unless post.image.blank? %> 
               <%= link_to post.title, post_path(post)  %> 
             </td>
-            <td> <%=  post.excerpt %> </td>
+            <td> <%=  post.excerpt.html_safe %> </td>
           </tr>
         <% end %>
       </table>

@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   validates :slug, uniqueness: true
   before_save :update_slug
   # mount_uploader :image, PostImageUploader 
-  has_one :image
+  has_one :image, as: :imageable
 
 
   def update_slug

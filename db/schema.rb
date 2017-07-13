@@ -96,14 +96,15 @@ ActiveRecord::Schema.define(version: 20170710103328) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.string   "image",       limit: 255
-    t.string   "image_title", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "post_id",     limit: 4
+    t.string   "image",          limit: 255
+    t.string   "image_title",    limit: 255
+    t.integer  "imageable_id",   limit: 4
+    t.string   "imageable_type", limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
-  add_index "images", ["post_id"], name: "index_images_on_post_id", using: :btree
+  add_index "images", ["imageable_id", "imageable_type"], name: "index_images_on_imageable_id_and_imageable_type", using: :btree
 
   create_table "kontakt_katering_pages", force: :cascade do |t|
     t.datetime "created_at", null: false
