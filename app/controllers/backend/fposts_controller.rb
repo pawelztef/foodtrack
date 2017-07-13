@@ -1,5 +1,4 @@
 class Backend::FpostsController < ApplicationController
-  require 'uri'
 
   before_action :authenticate_admin!
   before_action :set_backend_fpost, only: [:show, :edit, :update, :destroy]
