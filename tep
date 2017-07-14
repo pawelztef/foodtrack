@@ -1,0 +1,28 @@
+
+[1mFrom:[0m /home/pawelztef/Projects/rails_projects/klienci/Foodtrack/foodtrack-v1.0/app/controllers/backend/fposts_controller.rb @ line 36 Backend::FpostsController#create:
+
+    [1;34m26[0m: [32mdef[0m [1;34mcreate[0m
+    [1;34m27[0m:   image = [1;36mnil[0m
+    [1;34m28[0m:   [1;34m# image_url = image.image_url unless image.nil?[0m
+    [1;34m29[0m:   image_url = [31m[1;31m"[0m[31mhttp://r.ddmcdn.com/s_f/o_1/APL/uploads/2014/10/5-human-foods-cats-can-eat0.jpg[1;31m"[0m[31m[0m
+    [1;34m30[0m:   link_url = backend_fpost_params[[33m:link_url[0m].present? ? backend_fpost_params[[33m:link_url[0m] : image_url 
+    [1;34m31[0m:   @backend_fpost = [1;34;4mFpost[0m.new(backend_fpost_params)
+    [1;34m32[0m: 
+    [1;34m33[0m:   [32mif[0m !params[[33m:post_image_id[0m].empty?
+    [1;34m34[0m:     gallery_image = [1;34;4mImage[0m.find(params[[33m:post_image_id[0m])
+    [1;34m35[0m:     binding.pry
+ => [1;34m36[0m:     @backend_fpost.image = gallery_image 
+    [1;34m37[0m:   [32mend[0m
+    [1;34m38[0m: 
+    [1;34m39[0m:   post = @page_graph.put_connections(@page_id, [31m[1;31m'[0m[31mfeed[1;31m'[0m[31m[0m, [35mmessage[0m: backend_fpost_params[[33m:body[0m], [35mpicture[0m: image_url, [35mlink[0m: link_url)
+    [1;34m40[0m:   @backend_fpost.facebook_id = post[[31m[1;31m'[0m[31mid[1;31m'[0m[31m[0m]
+    [1;34m41[0m: 
+    [1;34m42[0m:   respond_to [32mdo[0m |format|
+    [1;34m43[0m:     [32mif[0m @backend_fpost.save
+    [1;34m44[0m:       format.html { redirect_to backend_fposts_url, [35mnotice[0m: [31m[1;31m'[0m[31mPost został umieszczony na osi czasu.[1;31m'[0m[31m[0m }
+    [1;34m45[0m:     [32melse[0m
+    [1;34m46[0m:       format.html { render [33m:new[0m }
+    [1;34m47[0m:     [32mend[0m
+    [1;34m48[0m:   [32mend[0m
+    [1;34m49[0m: [32mend[0m
+

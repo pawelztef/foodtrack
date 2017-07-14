@@ -7,7 +7,7 @@
       <div class="panel-body">
         <% if @backend_fposts.blank? %>
           <div class="lead text-center">
-            <%= link_to 'Dodaj post', new_backend_fpost_path, class: 'btn btn-default'  %> 
+            <%= link_to 'Dodaj post', new_backend_fpost_path, remote: true, class: 'btn btn-default'  %> 
           </div>
         <% else %>
       <%= paginate @backend_fposts %> 

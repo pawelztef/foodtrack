@@ -1,42 +1,25 @@
 <% content_for :top_buttons do %>
   <%= link_to material_icon.reply, backend_fposts_path, data: { toggle: 'tooltip' }, title: 'Wróć', class: 'btn btn-default btn-xs'  %> 
 <% end %> 
-<div class="row">
-  <div class="col-md-6">
-    <%= simple_form_for([:backend, @backend_fpost]) do |f| %>
-      <div class="well">
+<%= simple_form_for([:backend, @backend_fpost]) do |f| %>
+  <div class="well">
+    <div class="row">
+      <div class="col-md-12">
         <%= f.error_notification %>
-
         <div class="form-inputs">
           <%= f.input :body %> 
         </div>
-      </div>
-
-      <div class="well">
-        <div class="form-actions">
-          <%= f.button :submit %>
+        <div class="form-inputs">
+          <%= f.input :link_url %> 
         </div>
       </div>
-    <% end %>
-  </div>
-  <div class="col-md-6">
-    <div class="edit-post-thumb-wrapper">
-      <div class="thumbnail">
-        <%= image_tag (@backend_fpost.image.nil? ? 'thumb' : @backend_fpost.image.image_url), class: 'img-thumbnail', id: 'post-thumb'  %> 
-        <%= hidden_field_tag 'post_image_id' %> 
-        <% unless @backend_fpost.image.blank? %>
-          <div class="caption">
-            <p> <%= @backend_fpost.image.image_title %> </p>
-            <%= link_to "#{fa_icon('file-image-o')} Zamień zdjęcie".html_safe, add_image_backend_fposts_path(send_to: @backend_fpost), remote: true %> 
-            <%= link_to "#{fa_icon('trash-o')} Usuń".html_safe, delete_image_backend_fposts_path(id: @backend_fpost), method: :post, class: "delete-image"  %> 
-          </div>
-        <% else %>
-          <div class="caption">
-            <%= link_to "#{fa_icon('file-image-o')} Dodaj zdjęcie".html_safe, add_image_backend_posts_path(send_to: @backend_fpost), remote: true %> 
-          </div>
-        <% end %> 
-      </div>
     </div>
-    <%= link_to "#{fa_icon('file-image-o')} Dodaj zdjęcie".html_safe, add_image_backend_fposts_path(send_to: @backend_fpost), remote: true %> 
   </div>
-</div>
+
+  <div class="well">
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  </div>
+<% end %>
+

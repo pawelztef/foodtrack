@@ -17,6 +17,11 @@ class Backend::FpostsController < ApplicationController
   def new
     @backend_fpost = Fpost.new
     @title = 'Nowy post'
+    @images = Image.all
+    respond_to do |format|
+      format.js
+      format.html
+    end
   end
 
   def edit
@@ -24,14 +29,25 @@ class Backend::FpostsController < ApplicationController
   end
 
   def create
-    # File.open(Rails.root.join('config/settings.yml'), 'w') { |f| f.write config.to_yaml }
-    # post = @page_graph.put_wall_post(backend_fpost_params[:body])
-    # image_url = "http://188.166.152.13/uploads/image/image/1/mock1.jpg"
-    image_url = "http://localhost:3000/uploads/image/image/1/mock1.jpg"
-
-    byebug
-    post = @page_graph.put_connections(@page_id, 'feed', message: backend_fpost_params[:body], picture: image_url, link: image_url)
+    image = nil
+    # image_url = image.image_url unless image.nil?
+    image_url = "http://r.ddmcdn.com/s_f/o_1/APL/uploads/2014/10/5-human-foods-cats-can-eat0.jpg"
+    link_url = backend_fpost_params[:link_url].present? ? backend_fpost_params[:link_url] : image_url 
     @backend_fpost = Fpost.new(backend_fpost_params)
+
+    if !params[:post_image_id].empty?
+      gallery_image = Image.find(params[:post_image_id])
+      @backend_fpost.image = gallery_image 
+    end
+
+    # post = @page_graph.put_connections(@page_id, 'feed', message: backend_fpost_params[:body], picture: image_url, picture: image_url, link: link_url)
+     # post = @page_graph.put_wall_post( "Testing post", {
+     #  name: 'Iam a wall post',
+     #  caption: 'Caption',
+     #  picture: "https://d4n5pyzr6ibrc.cloudfront.net/media/27FB7F0C-9885-42A6-9E0C19C35242B5AC/D968A2D0-35B8-41C6-A94A0C5C5FCA0725/thul-3208cb1e-3118-5df2-8ab9-58e73f6da2b0.jpg?response-content-disposition=inline",
+     #  link: image_url,
+     #  link: "https://d4n5pyzr6ibrc.cloudfront.net/media/27FB7F0C-9885-42A6-9E0C19C35242B5AC/D968A2D0-35B8-41C6-A94A0C5C5FCA0725/thul-3208cb1e-3118-5df2-8ab9-58e73f6da2b0.jpg?response-content-disposition=inline",
+     # })
     @backend_fpost.facebook_id = post['id']
 
     respond_to do |format|
@@ -93,7 +109,7 @@ class Backend::FpostsController < ApplicationController
   end
 
   def backend_fpost_params
-    params.require(:fpost).permit(:body, :facebook_id)
+    params.require(:fpost).permit(:body, :facebook_id, :link_url)
   end
 
   def retrive_facebook_page
