@@ -16,8 +16,8 @@ class Backend::FpostsController < ApplicationController
 
   def new
     @backend_fpost = Fpost.new
-    @title = 'Nowy post'
     @images = Image.all
+    @title = 'Nowy post'
     respond_to do |format|
       format.js
       format.html
@@ -33,6 +33,7 @@ class Backend::FpostsController < ApplicationController
     # image_url = image.image_url unless image.nil?
     image_url = "http://r.ddmcdn.com/s_f/o_1/APL/uploads/2014/10/5-human-foods-cats-can-eat0.jpg"
     link_url = backend_fpost_params[:link_url].present? ? backend_fpost_params[:link_url] : image_url 
+    byebug
     @backend_fpost = Fpost.new(backend_fpost_params)
 
     if !params[:post_image_id].empty?

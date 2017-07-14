@@ -1,5 +1,5 @@
 <% content_for :top_buttons do %>
-  <%= link_to material_icon.add, new_backend_fpost_path, data: { toggle: 'tooltip' }, title: 'Dodaj post', class: 'btn btn-default btn-xs'  %> 
+  <%= link_to material_icon.add, new_backend_fpost_path, remote: true, data: { toggle: 'tooltip' }, title: 'Dodaj post', class: 'btn btn-default btn-xs'  %> 
 <% end %> 
 <div class="row">
   <div class="col-md-12">
@@ -10,7 +10,7 @@
             <%= link_to 'Dodaj post', new_backend_fpost_path, remote: true, class: 'btn btn-default'  %> 
           </div>
         <% else %>
-      <%= paginate @backend_fposts %> 
+          <%= paginate @backend_fposts %> 
           <div class="timeline-fposts-wrapper">
             <ul class="timeline">
               <% @backend_fposts.each do |post| %>
@@ -47,5 +47,5 @@
 </div>
 
 <div class="well">
-  <%= link_to "Nowy post", new_backend_fpost_path, class: 'btn btn-default' %> 
+  <%= link_to 'Dodaj post', new_backend_fpost_path, remote: true, class: 'btn btn-default'  %> 
 </div>
