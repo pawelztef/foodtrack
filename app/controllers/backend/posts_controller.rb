@@ -3,26 +3,20 @@ class Backend::PostsController < ApplicationController
   before_action :set_backend_post, only: [:show, :edit, :update, :destroy]
   layout 'backend_layout'
 
-  # GET /backend/posts
-  # GET /backend/posts.json
   def index
     @backend_posts = Post.all.order(publish_date: :desc)
     @title = "Lista Postów"
   end
 
-  # GET /backend/posts/1
-  # GET /backend/posts/1.json
   def show
     @title = "Edycja postu"
   end
 
-  # GET /backend/posts/new
   def new
     @backend_post = Post.new
     @title = 'Nowy post'
   end
 
-  # GET /backend/posts/1/edit
   def edit
     @title = 'Edycja postu'
     respond_to do |format|
@@ -31,12 +25,10 @@ class Backend::PostsController < ApplicationController
     end
   end
 
-  # POST /backend/posts
-  # POST /backend/posts.json
   def create
     @title = 'Edycja postu'
     @backend_post = Post.new(backend_post_params)
-    update_image
+    @backend_post.image = fetch_image
     respond_to do |format|
       if @backend_post.save
         format.html { redirect_to backend_posts_url, notice: 'Post został zapisany.' }
@@ -46,11 +38,9 @@ class Backend::PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /backend/posts/1
-  # PATCH/PUT /backend/posts/1.json
   def update
     @title = 'Edycja postu'
-    update_image
+    @backend_post.image = fetch_image
     respond_to do |format|
       if @backend_post.update(backend_post_params)
         format.html { redirect_to backend_posts_url, notice: 'Post został zapisany.' }
@@ -60,8 +50,6 @@ class Backend::PostsController < ApplicationController
     end
   end
 
-  # DELETE /backend/posts/1
-  # DELETE /backend/posts/1.json
   def destroy
     @backend_post.destroy
     respond_to do |format|
@@ -87,13 +75,11 @@ class Backend::PostsController < ApplicationController
     end
   end
 
-
-
   private
 
-  def update_image
+  def fetch_image
     if !params[:post_image_id].empty? 
-      @backend_post.image = Image.find(params[:post_image_id]) 
+      Image.find(params[:post_image_id]) 
     end
   end
 
@@ -104,4 +90,5 @@ class Backend::PostsController < ApplicationController
   def backend_post_params
     params.require(:post).permit(:title, :excerpt, :slug, :image, :publish_date, :publish, :body)
   end
+
 end

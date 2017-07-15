@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20170710103328) do
   add_index "ckeditor_assets", ["type"], name: "index_ckeditor_assets_on_type", using: :btree
 
   create_table "fposts", force: :cascade do |t|
+    t.string   "title",       limit: 255
     t.string   "facebook_id", limit: 255
     t.string   "link_url",    limit: 255
     t.text     "body",        limit: 65535

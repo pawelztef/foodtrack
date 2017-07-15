@@ -17,13 +17,18 @@
             </div>
           <% else %>
             <div class="caption">
-              <%= link_to "#{fa_icon('file-image-o')} Dodaj zdjęcie".html_safe, add_image_backend_fposts_path(send_to: @backend_fpost), remote: true %> 
+              <%= link_to "#{fa_icon('file-image-o')} Dodaj zdjęcie".html_safe, add_image_backend_fposts_path(send_to: @backend_fpost), remote: true, id: 'add_fpost_image_link' %> 
+              <%= content_tag 'a', "#{fa_icon('chain-broken')} Usuń zdjęcie".html_safe, id: 'remove_fpost_image_link', class: 'hidden' %> 
+              <%# <%= content_tag 'a', 'Usuń zdjęcie' %1> %>
             </div>
           <% end %> 
         </div>
       </div>
       <div class="col-md-9">
         <%= f.error_notification %>
+        <div class="form-inputs">
+          <%= f.input :title, label: 'Tytuł' %> 
+        </div>
         <div class="form-inputs">
           <%= f.input :body, label: 'Treść' %> 
         </div>
@@ -36,7 +41,7 @@
 
   <div class="well">
     <div class="form-actions">
-      <%= f.button :submit %>
+      <%= f.button :submit, 'Wyślij' %>
     </div>
   </div>
 <% end %>
