@@ -23,31 +23,30 @@
       <% end %> 
       </div>
       <div class="panel-body">
-        <ul class="timeline">
-          <% if @track.blank? %>
-            <li class="<%= cycle("", "timeline-inverted") %>">
-              <div class="timeline-badge"> <%= material_icon.remove %> </div>
-              <div class="timeline-panel">
-                <div class="timeline-heading">
-                  <h5 class="timeline-title brak-danych-trasy"> Brak danych </h5>
-                </div>
-              </div>
-            </li>
-          <% else %>
-            <% @track.stops.each do |stop| %>
-              <li class="<%= cycle("", "timeline-inverted") %>">
-                <div id="<%= stop.id %>" class="timeline-badge <%= stop.active ? "success" : "" %> "> <%= material_icon.directions_bus %> </div>
-                <div class="timeline-panel">
-                  <div class="timeline-heading">
-                    <h5 class="timeline-title"> <%= stop.full_street_address %> </h5>
-                    <p><small class="text-muted"> <%= material_icon.access_time %> <%= stop.date.strftime("%d/%m/%Y %H:%M") %>  </small>
-                    </p>
+        <% if @track.blank? %>
+          <div class="lead text-center">
+            <%= link_to 'Wybierz trasę', backend_tracks_path, class: 'btn btn-default'  %> 
+          </div>
+        <% else %>
+          <div class="timeline-stops-wrapper">
+            <ul class="timeline">
+              <% @track.stops.each do |stop| %>
+                <li class="<%= cycle("", "timeline-inverted") %>">
+                  <div id="<%= stop.id %>" class="timeline-badge <%= stop.active ? "success" : "" %> "> <%= material_icon.directions_bus %> </div>
+                  <div class="timeline-panel">
+                    <div class="timeline-heading">
+                      <h5 class="timeline-title"> <%= stop.full_street_address %> </h5>
+                      <p>
+                      <small class="text-muted"> <%= material_icon.access_time %> <%= stop.date.strftime("%d/%m/%Y %H:%M") %>  </small><br>
+                      <small class="text-muted"> <%= material_icon.update %> <%= stop.date_out.strftime("%d/%m/%Y %H:%M") %>  </small>
+                      </p>
+                    </div>
                   </div>
-                </div>
-              </li>
-            <% end %> 
-          <% end %> 
-        </ul>
+                </li>
+              <% end %> 
+            </ul>
+          </div>
+        <% end %> 
       </div>
     </div>
   </div>

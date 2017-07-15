@@ -1,0 +1,65 @@
+<% content_for :top_buttons do %>
+  <%= link_to material_icon.add, new_backend_fpost_path, data: { toggle: 'tooltip' }, title: 'Dodaj post', class: 'btn btn-default btn-xs'  %> 
+<% end %> 
+<div class="row">
+  <div class="col-md-12">
+    <div class="well">
+      <div class="panel-body">
+        <% if @backend_fposts.blank? %>
+          <div class="lead text-center">
+            <%= link_to 'Dodaj post', new_backend_fpost_path, remote: true, class: 'btn btn-default'  %> 
+          </div>
+        <% else %>
+          <%= paginate @backend_fposts %> 
+          <div class="timeline-fposts-wrapper">
+            <ul class="timeline">
+              <% @backend_fposts.each do |post| %>
+                <li class="<%= cycle("", "timeline-inverted") %>">
+                  <div id="<%= post.id %>" class="timeline-badge"></div>
+                  <div class="timeline-panel">
+                    <div class="timeline-heading">
+                      <h5 class="timeline-title"> <%= post.title %> </h5>
+                    </div>
+                    <div class="timeline-body">
+                      <div class="row">
+                        <% if !post.image.nil? %>
+                          <div class="col-md-4">
+                            <%= image_tag post.image.image_url(:thumb) if !post.image.nil? %>
+                          </div>
+                          <div class="col-md-8">
+                              <%= post.body %> <br>
+                              <%= post.link_url unless post.link_url.blank? %> 
+                          <% else %>
+                            <div class="col-md-12">
+                              <%= post.body %> <br>
+                              <%= post.link_url unless post.link_url.blank? %> 
+                            <% end %> 
+                            </div>
+                          </div>
+                      </div>
+                      <div class="timeline-footer">
+                        <div class="actions-btn-group btn-group " role="group" >
+                          <div class="btn-group" role="group">
+                            <%= link_to fa_icon("pencil-square-o"), edit_backend_fpost_path(post), class: 'btn btn-default btn-xs' %>
+                          </div>
+                          <div class="btn-group" role="group">
+                            <%= link_to fa_icon("trash-o"), backend_fpost_path(post), method: :delete, data: { confirm: 'Jesteś pewien?' }, class: 'btn btn-default btn-xs' %>
+                          </div>
+                        </div>
+                        <small class="text-muted pull-right"> <%= material_icon.access_time %> <%= post.created_at.strftime("%d/%m/%Y %H:%M") %> </small>
+                      </div>
+                    </div>
+                </li>
+              <% end %> 
+            </ul>
+                  </div>
+                <% end %> 
+          </div>
+          <%= paginate @backend_fposts %> 
+      </div>
+    </div>
+  </div>
+
+  <div class="well">
+    <%= link_to 'Dodaj post', new_backend_fpost_path, remote: true, class: 'btn btn-default'  %> 
+  </div>

@@ -43,8 +43,13 @@ $(document).ready(function(){
     $(this).delay(2500).slideUp();
   });
 
-
-
-
+  $('#settings-info').popover({
+    container: 'body',
+    content: 'Niektóre ustawienia wymagają ponownego uruchomienia aplikacji.<br> W tym celu skontaktuj się z administratorem servera.',
+    html: true
+  });
+  if (window.location.href.indexOf('#_=_') > 0) {
+    window.location = window.location.href.replace(/#.*/, '');
+  }
 
 });

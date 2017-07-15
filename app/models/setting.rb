@@ -49,6 +49,22 @@ class Setting < ActiveRecord::Base
  def maps_api_key=(new_api)
    write_to_file('maps_api_key', new_api)
  end
+ 
+ def facebook_app_id
+   Settings.reload!
+   Settings.facebook_app_id
+ end
+ def facebook_app_id=(new_id)
+   write_to_file('facebook_app_id', new_id)
+ end
+
+ def facebook_secret
+   Settings.reload!
+   Settings.facebook_secret
+ end
+ def facebook_secret=(new_secret)
+   write_to_file('facebook_secret', new_secret)
+ end
 
  private 
  def write_to_file(key, value)

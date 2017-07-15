@@ -10,16 +10,20 @@
     <%= link_to '<i class="material-icons">dashboard</i> Dashboard'.html_safe, backend_dashboards_path %> 
   </li>
   <li>
-    <%= link_to '<i class="material-icons">people_outline</i> Administratorzy'.html_safe, backend_admins_path  %>
+    <%= link_to '<i class="material-icons">inbox</i> Zapytania'.html_safe, backend_mailbox_index_path %>
+  </li>
+  <li>
+    <%= link_to '<i class="material-icons">library_books</i> Posty'.html_safe, backend_posts_path %>
+  </li>
+  <li>
+    <%# <%= link_to "<i class='fa fa-facebook-official'></i> Facebook Wall".html_safe, backend_fposts_path %1> %>
+    <%= link_to "<i class='fa fa-facebook-official'></i> Facebook Wall".html_safe, '/auth/facebook' %>
   </li>
   <li>
     <%= link_to '<i class="material-icons">map</i> Trasy'.html_safe, backend_tracks_path %>
   </li>
   <li>
-    <%= link_to '<i class="material-icons">inbox</i> Zapytania'.html_safe, backend_mailbox_index_path %>
-  </li>
-  <li>
-    <%= link_to '<i class="material-icons">library_books</i> Posty'.html_safe, backend_posts_path %>
+    <%= link_to "<i class='material-icons'>insert_drive_file</i> Podstrony".html_safe, edit_backend_home_page_path(1) %>
   </li>
   <li>
     <%= link_to '<i class="material-icons">photo_album</i> Zdjęcia'.html_safe, backend_images_path %>
@@ -28,28 +32,10 @@
     <%= link_to "<i class='material-icons'>local_pizza</i> Produkty".html_safe, backend_products_path %>
   </li>
   <li>
-    <%= link_to "<i class='material-icons'>settings_applications</i> Ustawienia".html_safe, authenticate_backend_settings_path, remote: true %>
+    <%= link_to '<i class="material-icons">people_outline</i> Administratorzy'.html_safe, backend_admins_path  %>
   </li>
   <li>
-    <%= link_to "<i class='material-icons'>insert_drive_file</i> Podstrony".html_safe, edit_backend_home_page_path(1) %>
+    <%= link_to "<i class='material-icons'>settings_applications</i> Ustawienia".html_safe, authenticate_backend_settings_path, remote: true %>
   </li>
-  <%# <li> %>
-  <%#   <%= link_to 'Home', edit_backend_home_page_path(1)  %1> %> 
-  <%# </li> %>
-  <%# <li> %>
-  <%#   <%= link_to 'Historia', edit_backend_historia_page_path(1) %1> %>
-  <%# </li> %>
-  <%# <li> %>
-  <%#   <%= link_to 'Produkty', edit_backend_produkt_page_path(1) %1> %>
-  <%# </li> %>
-  <%# <li> %>
-  <%#   <%= link_to 'Katering kontakt', edit_backend_kontakt_katering_page_path(1) %1> %>
-  <%# </li> %>
-  <%# <li> %>
-  <%#   <%= link_to 'Kontakt ', edit_backend_kontakt_page_path(1) %1> %>
-  <%# </li> %>
-  <%# <li> %>
-  <%#   <%= link_to 'Galeria', edit_backend_galeria_page_path(1) %1> %>
-  <%# </li> %>
 </ul>
 

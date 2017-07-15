@@ -1,3 +1,7 @@
+<% content_for :top_buttons do %>
+  <%# <%= link_to material_icon.info_outline, nil, data: { toggle: 'tooltip' }, title: 'Dodaj post', class: 'btn btn-default btn-xs'  %1> %> 
+  <button type='button' id='settings-info' class='btn btn-default btn-xs' data-placement='left' data-toggle='popover' > <%= material_icon.info_outline %> </button>
+<% end %> 
 <%= simple_form_for [:backend, @settings], html: {multipart: true} do |s| %> 
   <div class="well">
     <p class="lead">Ustawienia Frontend</p>
@@ -35,7 +39,7 @@
         <%= s.input :instagram_id, label: 'Id klienta API Instagram' %> 
       </div>
       <div class="col-md-12">
-        <%= s.input :instagram_secret, as: :string, label: 'Secret klienta API Inatagram' %> 
+        <%= s.input :instagram_secret, as: :string, label: 'Klucz klienta API Inatagram' %> 
       </div>
       <div class="col-md-12">
         <%= s.input :instagram_token, label: 'Token klienta API Instagram' %> 
@@ -43,10 +47,21 @@
     </div>
   </div>
   <div class="well">
-    <p class="lead">Ustawienia API map</p>
+    <p class="lead">Ustawienia API Google Maps</p>
     <div class="row">
       <div class="col-md-12">
         <%= s.input :maps_api_key, label: 'Klucz API Google Maps' %> 
+      </div>
+    </div>
+  </div>
+  <div class="well">
+    <p class="lead">Ustawienia API Facebook</p>
+    <div class="row">
+      <div class="col-md-12">
+        <%= s.input :facebook_app_id, label: 'ID aplikacji Facebooka' %> 
+      </div>
+      <div class="col-md-12">
+        <%= s.input :facebook_secret, label: 'Klucz applikacji Facebooka' %> 
       </div>
     </div>
   </div>

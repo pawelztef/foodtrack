@@ -1,0 +1,23 @@
+$('body').append('<%= j render("add_image") %>');
+$("#fimageIndexModal").modal('show');
+$(".closeFImagesIndexModal").on("click", function() {
+  $("#fimageIndexModal").modal('hide');
+});
+
+$(function() {
+  $('.gallery-image').on('click', function(e) {
+    e.preventDefault();
+    var imagePath = $(this).attr('src');
+    var link = "http://" + document.location.host + imagePath 
+    var imageVar = $(this).attr("id");
+    console.log(link);
+    $('#post_image_id').val(imageVar);
+    $('#post-thumb').attr('src', imagePath); 
+    $('#fpost_link_url').val(link);
+    $('#fpost_link_url').prop('disabled', true);
+    $('#add_fpost_image_link').addClass('hidden');
+    $('#remove_fpost_image_link').removeClass('hidden');
+    $("#fimageIndexModal").modal('hide');
+  });
+});
+

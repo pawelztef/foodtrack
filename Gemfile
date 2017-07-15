@@ -27,13 +27,14 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise_invitable'
 
-gem 'figaro'
 gem 'letter_opener_web'
 gem 'cocoon'
 gem 'faker'
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'underscore-rails'
+gem 'kaminari'
+gem 'addressable'
 
 gem 'ckeditor'
 gem 'carrierwave'
@@ -41,6 +42,8 @@ gem 'mini_magick'
 gem "jquery-slick-rails"
 gem 'instagram'
 gem 'config'
+gem 'koala'
+gem 'omniauth-facebook'
 
 gem 'puma'
 
