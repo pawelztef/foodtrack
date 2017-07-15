@@ -42,6 +42,8 @@ class Backend::SettingsController < ApplicationController
                                     :instagram_secret,
                                     :instagram_token,
                                     :maps_api_key,
+                                    :facebook_app_id,
+                                    :facebook_secret,
                                     :image)
   end
 

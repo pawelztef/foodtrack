@@ -1,0 +1,12 @@
+$(function() {
+  $('#remove_fpost_image_link').on('click', function(e) {
+    var imagePath = '<%= asset_path("thumb.jpg") %>';
+    e.preventDefault();
+    $('#post_image_id').val('');
+    $('#post-thumb').attr('src', imagePath); 
+    $('#fpost_link_url').val('');
+    $('#fpost_link_url').prop('disabled', false);
+    $('#add_fpost_image_link').removeClass('hidden');
+    $('#remove_fpost_image_link').addClass('hidden');
+  });
+})

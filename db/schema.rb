@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703053543) do
+ActiveRecord::Schema.define(version: 20170710103328) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
@@ -73,6 +73,15 @@ ActiveRecord::Schema.define(version: 20170703053543) do
 
   add_index "ckeditor_assets", ["type"], name: "index_ckeditor_assets_on_type", using: :btree
 
+  create_table "fposts", force: :cascade do |t|
+    t.string   "title",       limit: 255
+    t.string   "facebook_id", limit: 255
+    t.string   "link_url",    limit: 255
+    t.text     "body",        limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
   create_table "galeria_pages", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -89,14 +98,15 @@ ActiveRecord::Schema.define(version: 20170703053543) do
   end
 
   create_table "images", force: :cascade do |t|
-    t.string   "image",       limit: 255
-    t.string   "image_title", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "post_id",     limit: 4
+    t.string   "image",          limit: 255
+    t.string   "image_title",    limit: 255
+    t.integer  "imageable_id",   limit: 4
+    t.string   "imageable_type", limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
-  add_index "images", ["post_id"], name: "index_images_on_post_id", using: :btree
+  add_index "images", ["imageable_id", "imageable_type"], name: "index_images_on_imageable_id_and_imageable_type", using: :btree
 
   create_table "kontakt_katering_pages", force: :cascade do |t|
     t.datetime "created_at", null: false

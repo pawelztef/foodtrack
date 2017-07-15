@@ -1,27 +1,24 @@
 Rails.application.routes.draw do
-
-
-  namespace :backend do
-  get 'settings/index'
-  end
+  get 'auth/:provider/callback', to: 'facebooksessions#new'
+  get 'auth/failure', to: redirect('/')
+  delete 'signout', to: 'facebooksessions#destroy', as: 'signout'
 
   mount Ckeditor::Engine => '/ckeditor'
   mount LetterOpenerWeb::Engine, at: "/letter_opener"
 
   devise_for :admins, :controllers => { :invitations => 'admins/invitations' }
-
   # devise_for :users
   # resources :users
 
   root 'pages#home'
+
+  resources :posts, path: 'blog'
 
   get 'pages/home', path: 'home'
   get 'pages/galeria', path: 'galeria'
   get 'pages/produkty', path: 'produkty'
   get 'pages/historia', path: 'historia'
   get 'pages/produkt_show', path: 'produkt'
-
-  resources :posts, path: 'blog'
 
   get 'queries/new', path: 'kontakt'
   post 'queries/create'
@@ -32,14 +29,6 @@ Rails.application.routes.draw do
     resources :dashboards
     resources :admins
     resources :tracks
-
-    resources :posts do
-      collection do
-        post 'delete_image'
-        get 'add_image', to: 'posts#add_image'
-      end
-    end
-    resources :products
     resources :home_pages
     resources :galeria_pages
     resources :historia_pages
@@ -48,7 +37,22 @@ Rails.application.routes.draw do
     resources :produkt_pages
     resources :mailbox, path: 'mailbox'
     resources :images, only: [:new, :create, :destroy, :index]
+    resources :products
+    resources :fposts do
+      collection do
+        post 'delete_image'
+        get 'add_image', to: 'fposts#add_image'
+      end
+    end
     post 'stops/activate'
+
+    resources :posts do
+      collection do
+        post 'delete_image'
+        get 'add_image', to: 'posts#add_image'
+      end
+    end
+
 
     resources :settings do
       collection do

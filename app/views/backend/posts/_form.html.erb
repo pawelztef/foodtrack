@@ -5,14 +5,7 @@
     <div class="form-inputs">
       <div class="well">
         <div class="row">
-          <div id='post-details-con' class="col-md-6">
-            <%= f.input :title, label: 'Tytuł' %> 
-            <%= f.input :slug %> 
-            <%= f.input :publish_date, label: 'Data publikacji', as: :string %> 
-            <%= f.label 'Publikuj' %> 
-            <%= f.input :publish, as: :boolean, label: false   %> 
-          </div>
-          <div class="col-md-6 ">
+          <div class="col-md-3">
             <div class="edit-post-thumb-wrapper">
               <div class="thumbnail">
                 <%= image_tag (@backend_post.image.nil? ? 'thumb' : @backend_post.image.image_url), class: 'img-thumbnail', id: 'post-thumb'  %> 
@@ -31,8 +24,14 @@
               </div>
             </div>
           </div>
+          <div id='post-details-con' class="col-md-9">
+            <%= f.input :title, label: 'Tytuł' %> 
+            <%= f.input :slug %> 
+            <%= f.input :publish_date, label: 'Data publikacji', as: :string %> 
+            <%= f.label 'Publikuj' %> 
+            <%= f.input :publish, as: :boolean, label: false   %> 
+          </div>
         </div>
-
         <div class="row">
           <div class="col-md-12">
             <%= f.input :excerpt, label: "Wyimek", as: :ckeditor, input_html: { ckeditor: { height: '200', toolbar: 'excerpt', language: 'pl' } } %> 
@@ -48,7 +47,7 @@
     <div class='well'>
       <div class="form-actions">
         <%= f.button :submit %>
-        <%= link_to 'Cofnij', backend_posts_path, class: 'btn btn-default' %>
+        <%= link_to 'Wróć', backend_posts_path, class: 'btn btn-default' %>
       </div>
     </div>
   <% end %>

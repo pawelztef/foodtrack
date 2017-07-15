@@ -1,3 +1,6 @@
+<% content_for :top_buttons do %>
+  <%= link_to material_icon.add, new_backend_track_path, data: { toggle: 'tooltip' }, title: 'Dodaj trasę', class: 'btn btn-default btn-xs'  %> 
+<% end %> 
 <div class="well">
   <table id="tracks-table" class="table table-striped">
     <thead>
@@ -38,5 +41,5 @@
   <% end %> 
 </div>
 <div class='well'>
-  <%= link_to 'Nowa Lista', new_backend_track_path, class: 'btn btn-default' %>
+  <%= link_to 'Nowa Trasa', new_backend_track_path, class: 'btn btn-default' %>
 </div>
