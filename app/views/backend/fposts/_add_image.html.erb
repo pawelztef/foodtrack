@@ -24,7 +24,8 @@
                         <% @images.each do |img| %> 
                           <div class="col-xs-6 col-md-3">
                             <div class="thumbnail">
-                              <%= link_to image_tag(img.image_url.to_s), add_image_backend_posts_path(id: params[:id], img_id: img.id), class: 'gallery-image', id: img.id  %> 
+                              <%# <%= link_to image_tag(img.image_url.to_s), add_image_backend_fposts_path(id: params[:id], img_id: img.id), class: 'gallery-image', id: img.id  %1> %> 
+                              <%= image_tag img.image_url.to_s, class: 'gallery-image', id: img.id  %> 
                               <div class="caption">
                                 <p> <%= img.image_title %> </p>
                               </div>

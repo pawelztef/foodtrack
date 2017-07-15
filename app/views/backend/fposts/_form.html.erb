@@ -4,13 +4,31 @@
 <%= simple_form_for([:backend, @backend_fpost]) do |f| %>
   <div class="well">
     <div class="row">
-      <div class="col-md-12">
+
+      <div class="col-md-3">
+        <div class="thumbnail">
+          <%= image_tag (@backend_fpost.image.nil? ? 'thumb' : @backend_fpost.image.image_url), class: 'img-thumbnail', id: 'post-thumb'  %> 
+          <%= hidden_field_tag 'post_image_id' %> 
+          <% unless @backend_fpost.image.blank? %>
+            <div class="caption">
+              <p> <%= @backend_fpost.image.image_title %> </p>
+              <%= link_to "#{fa_icon('file-image-o')} Zamień zdjęcie".html_safe, add_image_backend_fposts_path(send_to: @backend_fpost), remote: true %> 
+              <%# <%= link_to "#{fa_icon('trash-o')} Usuń".html_safe, delete_image_backend_fposts_path(id: @backend_fpost.slug), method: :post, class: "delete-image"  %1> %> 
+            </div>
+          <% else %>
+            <div class="caption">
+              <%= link_to "#{fa_icon('file-image-o')} Dodaj zdjęcie".html_safe, add_image_backend_fposts_path(send_to: @backend_fpost), remote: true %> 
+            </div>
+          <% end %> 
+        </div>
+      </div>
+      <div class="col-md-9">
         <%= f.error_notification %>
         <div class="form-inputs">
-          <%= f.input :body %> 
+          <%= f.input :body, label: 'Treść' %> 
         </div>
         <div class="form-inputs">
-          <%= f.input :link_url %> 
+          <%= f.input :link_url, label: 'Link URL' %> 
         </div>
       </div>
     </div>
