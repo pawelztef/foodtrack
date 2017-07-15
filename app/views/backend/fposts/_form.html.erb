@@ -19,7 +19,6 @@
             <div class="caption">
               <%= link_to "#{fa_icon('file-image-o')} Dodaj zdjęcie".html_safe, add_image_backend_fposts_path(send_to: @backend_fpost), remote: true, id: 'add_fpost_image_link' %> 
               <%= content_tag 'a', "#{fa_icon('chain-broken')} Usuń zdjęcie".html_safe, id: 'remove_fpost_image_link', class: 'hidden' %> 
-              <%# <%= content_tag 'a', 'Usuń zdjęcie' %1> %>
             </div>
           <% end %> 
         </div>

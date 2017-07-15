@@ -9,6 +9,7 @@ class Backend::FpostsController < ApplicationController
   def index
     @backend_fposts = Fpost.order(created_at: 'DESC').page(params[:page])
     @title = 'Linia czasu Facebooka'
+    byebug
   end
 
   def show
@@ -114,23 +115,30 @@ class Backend::FpostsController < ApplicationController
   end
 
   def post_to_timeline(post)
-    image_url = fpost_image_url(post)
-    post_link = create_fpost_link(post)
-    if image_url && post_link
-      @page_graph.put_connections(@page_id, 'feed', message: post.body, picture: image_url, link: "http://188.166.152.13")
-    elsif image_url
-      @page_graph.put_connections(@page_id, 'feed', message: post.body, picture: image_url, link: image_url)
+    post_body = create_fpost_body(post)
+    if post.image.present?
+      image_url = fpost_image_url(post)
+      @page_graph.put_connections(@page_id, 'feed', message: post_body, picture: image_url, link: image_url)
+    elsif post.link_url.present?
+      post_link = create_fpost_link(post)
+      @page_graph.put_connections(@page_id, 'feed', message: post_body, picture: nil, link: post_link)
     else
-      @page_graph.put_connections(@page_id, 'feed', message: post.body, picture: nil, link: nil)
+      @page_graph.put_connections(@page_id, 'feed', message: post_body, picture: nil, link: nil)
     end
   end
 
+  def create_fpost_body(post)
+    "#{post.title}\r\n #{post.body}"
+  end
   def create_fpost_link(post)
-    post.link_url unless post.link_url.nil?
+    post.link_url 
   end
 
   def fpost_image_url(post)
-    # root_url + image.image_url unless post.image.nil?
-    "http://r.ddmcdn.com/s_f/o_1/APL/uploads/2014/10/5-human-foods-cats-can-eat0.jpg"
+    if Rails.enf == "development"
+      "http://r.ddmcdn.com/s_f/o_1/APL/uploads/2014/10/5-human-foods-cats-can-eat0.jpg" 
+    else
+      root_url + image.image_url unless post.image.nil?
+    end
   end
 end
