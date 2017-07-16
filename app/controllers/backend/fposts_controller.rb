@@ -9,7 +9,6 @@ class Backend::FpostsController < ApplicationController
   def index
     @backend_fposts = Fpost.order(created_at: 'DESC').page(params[:page])
     @title = 'Linia czasu Facebooka'
-    byebug
   end
 
   def show
