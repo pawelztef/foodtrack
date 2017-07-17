@@ -36,6 +36,7 @@ gem 'underscore-rails'
 gem 'kaminari'
 gem 'addressable'
 
+
 gem 'ckeditor'
 gem 'carrierwave'
 gem 'mini_magick'

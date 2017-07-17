@@ -1,4 +1,4 @@
-#post_draft
+#post_draft, #post_facebook_publish
   -ms-transform: scale(1.2)
   -moz-transform: scale(1.2)
   -webkit-transform: scale(1.2)
@@ -26,7 +26,12 @@ div[id*="mceu"]
   &:hover
     color: lighten(#333, 50%)
 .edit-post-thumb-wrapper
-  padding: 25px
+  position: relative
+  width: 92%
+  margin: 0 auto
+  .thumbnail
+    .caption
+      padding: 5px
 
 #add-from-disk-link
   position: relative
@@ -35,10 +40,5 @@ div[id*="mceu"]
   &:hover
     color: darken(#337ab7, 20%) 
 #post-details-con
-  display: flex
-  flex-direction: column
-  align-content: space-around
-  height: 400px
-  .form-group
-    width: 100%
-    margin: auto
+#post-bulish-date
+  max-width: 125%

@@ -1,6 +1,8 @@
 class Backend::PostsController < ApplicationController
+  include FacebookConnections
   before_action :authenticate_admin!
   before_action :set_backend_post, only: [:show, :edit, :update, :destroy]
+  before_action :retrive_facebook_page, only: [:new, :create, :update]
   layout 'backend_layout'
 
   def index
@@ -26,6 +28,7 @@ class Backend::PostsController < ApplicationController
   end
 
   def create
+    byebug
     @title = 'Edycja postu'
     @backend_post = Post.new(backend_post_params)
     @backend_post.image = fetch_image

@@ -130,7 +130,7 @@ ActiveRecord::Schema.define(version: 20170710103328) do
     t.string   "title",        limit: 255
     t.text     "body",         limit: 65535
     t.date     "publish_date"
-    t.boolean  "publish",                    default: false
+    t.boolean  "draft",                      default: false
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
     t.string   "slug",         limit: 255
