@@ -3,6 +3,7 @@ $(function() {
     format: 'YYYY-MM-DD HH:mm'
   });
   $('#posts-table').dataTable({
+    "order": [[2, "desc"]],
     "language": {
       "processing":     "Przetwarzanie...",
       "search":         "Szukaj:",
@@ -45,5 +46,15 @@ $(function() {
       .replace(/^-+/, '')             // Trim - from start of text
       .replace(/-+$/, '');            // Trim - from end of text
   }
+
+
+  $('#post_draft').on('click', function() {
+    if ($(this).prop("checked")) {
+      $('#publish_on_facebook').attr('disabled', true).attr('checked', false);
+    } else {
+      $('#publish_on_facebook').attr('disabled', false);
+    }
+  });
+
 
 });

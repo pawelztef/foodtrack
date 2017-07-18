@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     @home_page = safe_find("HomePage")
     @carousel_products = Product.where(expose: true)
     number_of_posts = safe_find('Setting').posts_on_wall
-    @posts = Post.where(publish: true).order(publish_date: :desc).first(number_of_posts)
+    @posts = Post.where(draft: false).order(publish_date: :desc).first(number_of_posts)
     @track = Track.find_by_active(true)
     create_markers(@track)
     @fposts = Fpost.limit(10).order(created_at: :desc)

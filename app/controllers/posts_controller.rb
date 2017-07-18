@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.where(publish: true).order(publish_date: :desc)
+    @posts = Post.where(draft: false).order(publish_date: :desc)
   end
 
   def show
