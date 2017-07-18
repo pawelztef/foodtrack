@@ -22,7 +22,7 @@ module ApplicationHelper
   end
 
   def publish(post)
-    if post.publish
+    if post.draft
       "Tak"
     else
       "Nie"

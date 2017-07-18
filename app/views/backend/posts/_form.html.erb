@@ -1,3 +1,6 @@
+<% content_for :top_buttons do %>
+  <%= link_to material_icon.reply, backend_posts_path, data: { toggle: 'tooltip' }, title: 'Wróć', class: 'btn btn-default btn-xs'  %> 
+<% end %> 
 <div id="post-form-wrapper" class='<%= controller.controller_name %>-<%= controller.action_name %>' >
   <%= simple_form_for([:backend, @backend_post], html: {multipart: true}) do |f| %>
     <%= f.error_notification %>
@@ -5,6 +8,29 @@
     <div class="form-inputs">
       <div class="well">
         <div class="row">
+
+          <div id='post-details-con' class="col-md-9">
+            <%= f.input :title, label: 'Tytuł' %> 
+            <%= f.input :slug %> 
+            <div class="form-inline">
+              <div class="row">
+                <div class="col-xs-4">
+                  <%= f.label 'Data publikacji' %><br>
+                  <%= f.input :publish_date, label: false, as: :string %> 
+                </div>
+                <div class="col-xs-3">
+                  <%= f.label 'Szkic' %><br> 
+                  <%= f.input :draft, as: :boolean, label: false   %> 
+                </div>
+                <% if params[:action] == 'new' %>
+                  <div class="col-xs-3">
+                    <%= f.label 'Facebook' %><br> 
+                    <%= check_box_tag :publish_on_facebook %> 
+                  </div>
+                <% end %> 
+              </div>
+            </div>
+          </div>
           <div class="col-md-3">
             <div class="edit-post-thumb-wrapper">
               <div class="thumbnail">
@@ -24,18 +50,6 @@
               </div>
             </div>
           </div>
-          <div id='post-details-con' class="col-md-9">
-            <%= f.input :title, label: 'Tytuł' %> 
-            <%= f.input :slug %> 
-            <%= f.input :publish_date, label: 'Data publikacji', as: :string %> 
-            <%= f.label 'Publikuj' %> 
-            <%= f.input :publish, as: :boolean, label: false   %> 
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <%= f.input :excerpt, label: "Wyimek", as: :ckeditor, input_html: { ckeditor: { height: '200', toolbar: 'excerpt', language: 'pl' } } %> 
-          </div>
         </div>
         <div class="row">
           <div class="col-md-12">
@@ -46,7 +60,7 @@
     </div>
     <div class='well'>
       <div class="form-actions">
-        <%= f.button :submit %>
+        <%= f.button :submit, 'Utwórz' %>
         <%= link_to 'Wróć', backend_posts_path, class: 'btn btn-default' %>
       </div>
     </div>

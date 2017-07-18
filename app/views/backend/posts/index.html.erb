@@ -1,6 +1,7 @@
 <% content_for :top_buttons do %>
   <%= link_to material_icon.add, new_backend_post_path, data: { toggle: 'tooltip' }, title: 'Nowy post', class: 'btn btn-default btn-xs'  %> 
 <% end %> 
+<%= render 'partials/posts_navigation' %> 
 <div class="well">
   <table id="posts-table" class="table responsive no-wrap table-striped">
     <% if @backend_posts.empty? %> 
@@ -11,7 +12,7 @@
           <th>Tytuł</th>
           <th>Tekst</th>
           <th>Data publikacji</th>
-          <th>Publikacja</th>
+          <th>Szkic</th>
           <th>Akcje</th>
         </tr>
       </thead>
