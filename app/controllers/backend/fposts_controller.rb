@@ -70,7 +70,6 @@ class Backend::FpostsController < ApplicationController
     rescue
       msg = 'Post nie istniał na osi czasu Facebooka aczkolwiek został usnięty z osi czasu aplikacji.'
     ensure
-      @backend_fpost.post.update(facebook: false) 
       @backend_fpost.destroy
       respond_to do |format|
         format.html { redirect_to backend_fposts_url, notice: msg }

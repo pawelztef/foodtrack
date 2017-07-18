@@ -21,9 +21,6 @@ class Backend::PostsController < ApplicationController
 
   def edit
     @title = 'Edycja postu'
-    if @backend_post.fpost
-      params[:facebook_publish] = "1"
-    end
     respond_to do |format|
       format.html
       format.js { @images = Image.all }
@@ -35,17 +32,21 @@ class Backend::PostsController < ApplicationController
     @title = 'Edycja postu'
     @backend_post = Post.new(backend_post_params)
     @backend_post.image = fetch_image
-    if @backend_post.facebook && @backend_post.valid?
-      @backend_post.fpost = Fpost.new
-      @backend_post.fpost.title = @backend_post.title
-      @backend_post.fpost.link_url = root_url + "blog/" + @backend_post.slug
+
+    binding.pry
+    if params[:publish_on_facebook] == '1' && @backend_post.valid?
+      @fpost = Fpost.new
+      @fpost.title = @backend_post.title
+      @fpost.link_url = root_url + "blog/" + @backend_post.slug  
       begin
-        posted = post_to_timeline(@backend_post.fpost) 
-        @backend_post.fpost.facebook_id = posted['id']
+        posted = post_to_timeline(@fpost) 
+        @fpost.facebook_id = posted['id']
+        @fpost.save
       rescue
         msg = 'Niestety post nie został umieszczony an osi czasu Facebook. Spróbuj ponownie lub skontaktuj się z administratorem servera.' 
       end
     end
+
     respond_to do |format|
       if @backend_post.save
         format.html { redirect_to backend_posts_url, notice: msg }
@@ -59,45 +60,21 @@ class Backend::PostsController < ApplicationController
     @title = 'Edycja postu bloga'
     msg = 'Post został zapisany.'
     @backend_post = Post.find_by_slug(params[:id])
-    @backend_post.assign_attributes(backend_post_params)
     @backend_post.image = fetch_image
-
-    @page_graph.delete_object(@backend_post.fpost.facebook_id)
-  rescue
-
-    if @backend_post.facebook && @backend_post.valid? 
-      @new_fpost = Fpost.new
-      @new_fpost.title = backend_post_params[:title]
-      @new_fpost.link_url = root_url + "blog/" + backend_post_params[:slug]
-      begin
-        posted = post_to_timeline(@new_fpost)
-        @new_fpost.facebook_id = posted['id']
-      rescue
-        msg = 'Niestety post nie został umieszczony an osi czasu Facebook. Spróbuj ponownie lub skontaktujs się z administratorem servera.' 
-      end
-    end
-    @backend_post.fpost = @new_fpost
-
     respond_to do |format|
-      if @backend_post.save
+      if @backend_post.update(backend_post_params)
         format.html { redirect_to backend_posts_url, notice: msg }
       else
         format.html { render :new }
       end
     end
-
   end
 
   def destroy
     msg = 'Post został unięty.' 
-    begin
-      @page_graph.delete_object(@backend_post.fpost.facebook_id)
-    rescue
-    ensure
-      @backend_post.destroy
-      respond_to do |format|
-        format.html { redirect_to backend_posts_url, notice: msg }
-      end
+    @backend_post.destroy
+    respond_to do |format|
+      format.html { redirect_to backend_posts_url, notice: msg }
     end
   end
 

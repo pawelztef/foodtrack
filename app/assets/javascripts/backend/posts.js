@@ -47,4 +47,14 @@ $(function() {
       .replace(/-+$/, '');            // Trim - from end of text
   }
 
+
+  $('#post_draft').on('click', function() {
+    if ($(this).prop("checked")) {
+      $('#publish_on_facebook').attr('disabled', true).attr('checked', false);
+    } else {
+      $('#publish_on_facebook').attr('disabled', false);
+    }
+  });
+
+
 });

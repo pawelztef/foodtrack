@@ -8,7 +8,7 @@
     <div class="form-inputs">
       <div class="well">
         <div class="row">
-          
+
           <div id='post-details-con' class="col-md-9">
             <%= f.input :title, label: 'Tytuł' %> 
             <%= f.input :slug %> 
@@ -22,10 +22,12 @@
                   <%= f.label 'Szkic' %><br> 
                   <%= f.input :draft, as: :boolean, label: false   %> 
                 </div>
-                <div class="col-xs-3">
-                  <%= f.label 'Facebook' %><br> 
-                  <%= f.input :facebook, as: :boolean, label: false %>
-                </div>
+                <% if params[:action] == 'new' %>
+                  <div class="col-xs-3">
+                    <%= f.label 'Facebook' %><br> 
+                    <%= check_box_tag :publish_on_facebook %> 
+                  </div>
+                <% end %> 
               </div>
             </div>
           </div>
