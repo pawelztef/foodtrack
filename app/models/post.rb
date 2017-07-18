@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
   before_save :update_slug
   # mount_uploader :image, PostImageUploader 
   has_one :image, as: :imageable
+  has_one :fpost, dependent: :destroy
 
 
   def update_slug

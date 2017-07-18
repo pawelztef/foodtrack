@@ -8,7 +8,7 @@ class Backend::FpostsController < ApplicationController
 
   def index
     @backend_fposts = Fpost.order(created_at: 'DESC').page(params[:page])
-    @title = 'Linia czasu Facebooka'
+    @title = 'Wall applikacji'
   end
 
   def show
@@ -45,15 +45,16 @@ class Backend::FpostsController < ApplicationController
   def update
     @title = 'Edycja postu'
     msg = 'Post został umieszczony na osi czasu.'
+    @backend_fpost.assign_attributes(backend_fpost_params)
     begin
       @page_graph.delete_object(@backend_fpost.facebook_id)
     rescue
       msg = 'Post nie istniał na osi czasu facebooka aczkolwiek został ponownie na niej umieszczony.'
-      post = @page_graph.put_wall_post(backend_fpost_params[:body])
-      @backend_fpost.facebook_id = post["id"]
     ensure
+      post = post_to_timeline(@backend_fpost)
+      @backend_fpost.facebook_id = post["id"]
       respond_to do |format|
-        if @backend_fpost.update(backend_fpost_params)
+        if @backend_fpost.save
           format.html { redirect_to backend_fposts_url, notice: msg }
         else
           format.html { render :edit }
@@ -69,6 +70,7 @@ class Backend::FpostsController < ApplicationController
     rescue
       msg = 'Post nie istniał na osi czasu Facebooka aczkolwiek został usnięty z osi czasu aplikacji.'
     ensure
+      @backend_fpost.post.update(facebook: false) 
       @backend_fpost.destroy
       respond_to do |format|
         format.html { redirect_to backend_fposts_url, notice: msg }

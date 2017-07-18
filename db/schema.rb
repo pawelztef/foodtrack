@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170710103328) do
+ActiveRecord::Schema.define(version: 20170718055250) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
@@ -80,7 +80,10 @@ ActiveRecord::Schema.define(version: 20170710103328) do
     t.text     "body",        limit: 65535
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
+    t.integer  "post_id",     limit: 4
   end
+
+  add_index "fposts", ["post_id"], name: "index_fposts_on_post_id", using: :btree
 
   create_table "galeria_pages", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -135,7 +138,11 @@ ActiveRecord::Schema.define(version: 20170710103328) do
     t.datetime "updated_at",                                 null: false
     t.string   "slug",         limit: 255
     t.text     "excerpt",      limit: 65535
+    t.integer  "fposts_id",    limit: 4
+    t.boolean  "facebook",                   default: false
   end
+
+  add_index "posts", ["fposts_id"], name: "index_posts_on_fposts_id", using: :btree
 
   create_table "products", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -229,5 +236,6 @@ ActiveRecord::Schema.define(version: 20170710103328) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "fposts", "posts"
   add_foreign_key "stops", "tracks"
 end

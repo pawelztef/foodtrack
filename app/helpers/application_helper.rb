@@ -29,6 +29,14 @@ module ApplicationHelper
     end
   end
 
+  def facebook_publish(post)
+    if post.facebook
+      "Tak"
+    else
+      "Nie"
+    end
+  end
+
   def page_logo
     if !Setting.first.image.blank?
       image_tag Setting.first.image_url(:mini)

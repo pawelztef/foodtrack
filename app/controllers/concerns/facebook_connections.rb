@@ -41,7 +41,11 @@ module FacebookConnections
     "#{post.title}\r\n #{post.body}"
   end
   def create_fpost_link(post)
-    post.link_url 
+    if Rails.env == "development"
+      "http://google.com"
+    else
+      post.link_url 
+    end
   end
 
   def fpost_image_url(post)

@@ -3,6 +3,7 @@ $(function() {
     format: 'YYYY-MM-DD HH:mm'
   });
   $('#posts-table').dataTable({
+    "order": [[2, "desc"]],
     "language": {
       "processing":     "Przetwarzanie...",
       "search":         "Szukaj:",
