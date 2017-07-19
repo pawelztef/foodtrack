@@ -33,7 +33,6 @@ class Backend::PostsController < ApplicationController
     @backend_post = Post.new(backend_post_params)
     @backend_post.image = fetch_image
 
-    binding.pry
     if params[:publish_on_facebook] == '1' && @backend_post.valid?
       @fpost = Fpost.new
       @fpost.title = @backend_post.title
