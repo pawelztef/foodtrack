@@ -41,5 +41,13 @@ module ApplicationHelper
     end
   end
 
+  def post_link_img(post)
+    if post.image.blank?
+      request.base_url + Setting.first.image_url if Setting.first.image_url
+    else
+      request.base_url + post.image.image_url
+    end
+  end
+
 
 end
