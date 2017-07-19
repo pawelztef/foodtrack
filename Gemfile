@@ -22,6 +22,7 @@ gem "twitter-bootstrap-rails"
 gem "font-awesome-rails"
 gem 'material_icons'
 gem 'simple_form'
+gem 'link_thumbnailer'
 
 gem 'devise'
 gem 'devise-i18n'
