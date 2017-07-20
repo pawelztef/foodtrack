@@ -16,13 +16,6 @@ module FacebookConnections
     end
   end
 
-  def set_backend_fpost
-    @backend_fpost = Fpost.find(params[:id])
-  end
-
-  def backend_fpost_params
-    params.require(:fpost).permit(:body, :facebook_id, :link_url, :title)
-  end
 
   def post_to_timeline(post)
     post_body = create_fpost_body(post)
