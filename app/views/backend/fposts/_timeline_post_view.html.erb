@@ -1,13 +1,7 @@
 <% backend_fposts.each do |post| %>
   <li class="<%= cycle("", "timeline-inverted") %>">
-    <div id="<%= post.id %>" class="timeline-badge"></div>
+    <div id="<%= post.id %>" class="timeline-badge"> <%= fa_icon('facebook') %> </div>
     <div class="timeline-panel">
-      <div class="row">
-        <div class="visible-lg">lg</div>
-        <div class="visible-md">md</div>
-        <div class="visible-sm">sm</div>
-        <div class="visible-xs">xs</div>
-      </div>
 
       <div class="timeline-heading">
         <p class="timeline-title"> <%= post.title %> </p>
@@ -18,21 +12,24 @@
 
           <% if !post.image.nil? %>
 
-            <div class="col-md-4"> <%= image_tag post.image.image_url(:thumb) if !post.image.nil? %> </div>
-
-            <div class="col-md-8" id="fpost-body">
-              <% if post.body.length > 200  %>
-                <%= truncate(post.body, length: 200) %> <br>
-                <%= link_to 'Czytaj Więcej', nil, class: "pull-right read-more-#{post.id}" %> 
-                <script>
+            <div class="col-md-12"> 
+              <div class="fpost-body">
+                <%= image_tag post.image.image_url(:thumb), class: 'hidden-xs' if !post.image.nil? %> 
+                <div class="body-text-wrap">
+                  <% if post.body.length > 150  %>
+                    <%= truncate(post.body, length: 150) %> <br>
+                    <%= link_to 'Czytaj Więcej', nil, class: "pull-right read-more-#{post.id}" %> 
+                    <script>
 $('.read-more-<%= post.id %>').on('click', function(e){
   e.preventDefault();
   $(this).parent().html(' <%= j post.body %> ');
 })
-                </script>
-              <% else %>
-                <%= post.body %> <br>
-              <% end %> 
+                    </script>
+                  <% else %>
+                    <%= post.body %> <br>
+                  <% end %>
+                </div>
+              </div>
             </div>
           <% else %>
 

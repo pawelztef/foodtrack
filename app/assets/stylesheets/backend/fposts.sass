@@ -2,25 +2,31 @@
   ul.timeline
     li
       .timeline-badge
-        width: 17px
-        height: 17px
-        margin-left: -8px
-        top: 34px
+        width: 34px
+        height: 34px
+        margin-left: -16px
+        top: 22px
+        @media screen and (max-width: 767px)
+          margin-left: 8px
+
+        i.fa-facebook
+          position: relative
+          top: -2px
+          font-size: 28px
       .timeline-panel
-        width: 48%
         padding: 0
       .timeline-heading
-        padding: 20px
+        padding: 15px
         .timeline-title
           letter-spacing: 2px
           font-size: 22px
           margin-bottom: 0px
       .timeline-body
-        padding: 0 20px 20px 20px
+        padding: 0 15px 15px 15px
       .timeline-footer
         background: #f8f8f8
         height: 45px
-        padding: 0 20px
+        padding: 0 10px
         small, .actions-btn-group
           position: relative
           top: 50%
@@ -29,11 +35,16 @@
 #fpost_body
   resize: vertical
   
-#fpost-body
+.fpost-body
   margin-bottom: 5px
   text-align: justify
-  padding-right: 25px
-  line-height: 1.7
+  padding-right: 15px
+  line-height: 1.8
+  img
+    float: left
+    margin-right: 20px
+  a
+    margin-top: 10px
 
 #read-more
   padding-right: 25px
