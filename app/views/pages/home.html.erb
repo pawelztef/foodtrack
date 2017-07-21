@@ -65,7 +65,7 @@ $(function() {
               <%= image_tag post.image.image_url(:thumb).to_s  unless post.image.blank? %> 
               <%= link_to post.title, post_path(post)  %> 
             </td>
-            <td> <%=  post.excerpt.html_safe %> </td>
+            <td> <%=  truncate(post.body.html_safe, length: 250) %>
           </tr>
         <% end %>
       </table>
@@ -78,7 +78,8 @@ $(function() {
         <% @fposts.try(:each) do |fpost| %>
           <tr>
             <td>
-              <%= fpost.body %> 
+              <%= fpost.title %> 
+              <%= truncate(fpost.body.html_safe, length: 150) %> 
               <hr>
             </td>
           </tr>
