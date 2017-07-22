@@ -79,7 +79,7 @@ $(function() {
           <tr>
             <td>
               <%= fpost.title %> 
-              <%= truncate(fpost.body.html_safe, length: 150) %> 
+              <%= truncate(fpost.body.try(:html_safe), length: 150) %> 
               <hr>
             </td>
           </tr>
