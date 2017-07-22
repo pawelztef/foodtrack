@@ -1,59 +1,61 @@
 <div id="product-form-wrapper" class='<%= controller.controller_name %>-<%= controller.action_name %>' >
-  <%= simple_form_for([:backend, @backend_product]) do |f| %>
-    <%= f.error_notification %>
+  <div class='well'>
+    <%= simple_form_for([:backend, @backend_product]) do |f| %>
+      <%= f.error_notification %>
 
-    <div class="form-inputs">
-      <div class="row">
-        <div class="col-md-4">
-          <div class="thumbnail">
-            <% if @backend_product.image.blank? %>
-              <%= image_tag('thumb') %>
-            <% else %> 
-              <%= image_tag @backend_product.image_url.to_s %> 
-            <% end %> 
-          </div>
-        </div>
-        <div class="col-md-8">
-          <%= f.input :name, label: 'Nazwa' %> 
-          <div class="row">
-            <div class="col-md-8">
-              <%= f.input :slug %> 
-            </div>
-            <div class="col-md-4">
-              <%= f.input :price, label: 'Cena' %> 
+      <div class="form-inputs">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="thumbnail">
+              <% if @backend_product.image.blank? %>
+                <%= image_tag('thumb') %>
+              <% else %> 
+                <%= image_tag @backend_product.image_url.to_s %> 
+              <% end %> 
             </div>
           </div>
-          <%= f.label 'Ustawienia' %> 
-          <div class="well well-form">
-            <div class="form-inline">
-              <div class="row">
-                <div class="col-xs-6">
-                  <%= f.input :image, label: 'Zdjęcie', as: :file %> 
-                </div>
-                <div class="col-xs-3">
-                  <%= f.label 'Publikuj' %> <br>
-                  <%= f.input :publish, as: :boolean, label: false   %> 
-                </div>
-                <div class="col-xs-3">
-                  <%= f.label 'Slider' %> <br>
-                  <%= f.input :expose, as: :boolean, label: false   %> 
+          <div class="col-md-8">
+            <%= f.input :name, label: 'Nazwa' %> 
+            <div class="row">
+              <div class="col-md-8">
+                <%= f.input :slug %> 
+              </div>
+              <div class="col-md-4">
+                <%= f.input :price, label: 'Cena' %> 
+              </div>
+            </div>
+            <%= f.label 'Ustawienia' %> 
+            <div class="well well-form">
+              <div class="form-inline">
+                <div class="row">
+                  <div class="col-xs-6">
+                    <%= f.input :image, label: 'Zdjęcie', as: :file %> 
+                  </div>
+                  <div class="col-xs-3">
+                    <%= f.label 'Publikuj' %> <br>
+                    <%= f.input :publish, as: :boolean, label: false   %> 
+                  </div>
+                  <div class="col-xs-3">
+                    <%= f.label 'Slider' %> <br>
+                    <%= f.input :expose, as: :boolean, label: false   %> 
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <%= f.input :catchphrase, label: 'Hasło', as: :text %> 
-          <%= f.input :description, label: 'Opis', as: :text %> 
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.input :catchphrase, label: 'Hasło', as: :text %> 
+            <%= f.input :description, label: 'Opis', as: :text %> 
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="form-actions">
-      <%= f.button :submit %>
-      <%= link_to 'Cofnij', backend_products_path, class: 'btn btn-default' %> 
-    </div>
-  <% end %>
+      <div class="form-actions">
+        <%= f.button :submit, 'Zapisz produkt' %>
+        <%= link_to 'Wróć', backend_products_path, class: 'btn btn-default' %> 
+      </div>
+    <% end %>
+  </div>
 </div>
