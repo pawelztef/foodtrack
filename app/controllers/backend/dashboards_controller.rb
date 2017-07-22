@@ -7,6 +7,6 @@ class Backend::DashboardsController < ApplicationController
     @title = 'Panel administracyjny'
     @track = Track.find_by(active: true)
     @published_posts = Post.where(draft: false).order(publish_date: :desc).first(5)
-    @visits = VisitLog.limit(10).order(log_in: :desc)
+    @visits = VisitLog.limit(5).order(log_in: :desc)
   end
 end

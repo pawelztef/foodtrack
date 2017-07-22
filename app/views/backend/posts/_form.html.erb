@@ -1,6 +1,3 @@
-<% content_for :top_buttons do %>
-  <%= link_to material_icon.reply, backend_posts_path, data: { toggle: 'tooltip' }, title: 'Wróć', class: 'btn btn-default btn-xs'  %> 
-<% end %> 
 <div id="post-form-wrapper" class='<%= controller.controller_name %>-<%= controller.action_name %>' >
   <%= simple_form_for([:backend, @backend_post], html: {multipart: true}) do |f| %>
     <%= f.error_notification %>
