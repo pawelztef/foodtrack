@@ -1,3 +1,6 @@
+<% content_for :top_buttons do %>
+  <%= link_to material_icon.add, new_backend_product_path, data: {toggle: 'tooltip'}, title: 'Nowy Produkt', class: 'btn btn-default btn-xs' %> 
+<% end %> 
 <div class="well">
   <table class="table responsive no-wrap table-striped">
     <thead>

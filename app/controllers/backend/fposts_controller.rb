@@ -45,7 +45,10 @@ class Backend::FpostsController < ApplicationController
   def update
     @title = 'Edycja postu'
     msg = 'Post został umieszczony na osi czasu.'
+    byebug
     @backend_fpost.assign_attributes(backend_fpost_params)
+    @backend_fpost.image = fetch_image 
+    @backend_fpost.link_url = params[:post_link]
     begin
       @page_graph.delete_object(@backend_fpost.facebook_id)
     rescue
@@ -85,9 +88,21 @@ class Backend::FpostsController < ApplicationController
   end
 
   def delete_image
+    byebug
+    respond_to do |format|
+      format.html
+      format.js 
+    end
   end
 
   private
+  def set_backend_fpost
+    @backend_fpost = Fpost.find(params[:id])
+  end
+
+  def backend_fpost_params
+    params.require(:fpost).permit(:body, :facebook_id, :link_url, :title)
+  end
 
   def fetch_image
     if !params[:post_image_id].empty? 

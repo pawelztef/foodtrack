@@ -17,6 +17,7 @@
             <td><strong>Imię i Nazwisko</strong></td>
             <td><strong>Email</strong></td>
             <td><strong>Status</strong></td>
+            <th><strong>Akcje</strong></th>
           </tr>
         </thead>
         <tbody>
@@ -25,6 +26,19 @@
               <td> <%= admin.fullname  %> </td>
               <td> <%= admin.email %> </td>
               <td> <%= admin_status(admin) %> </td>
+              <td>
+                <div class="actions-btn-group btn-group " role="group" >
+                  <%# <div class="btn-group" role="group"> %>
+                  <%#   <%= link_to fa_icon("file-o"), backend_post_path(backend_post), remote: true, class: 'btn btn-default btn-xs' %1> %>
+                  <%# </div> %>
+                  <%# <div class="btn-group" role="group"> %>
+                  <%#   <%= link_to fa_icon("pencil-square-o"), edit_backend_post_path(backend_post), class: 'btn btn-default btn-xs' %1> %>
+                  <%# </div> %>
+                  <%# <div class="btn-group" role="group"> %>
+                  <%#   <%= link_to fa_icon("trash-o"), backend_post_path(backend_post), method: :delete, data: { confirm: 'Jesteś pewien?' }, class: 'btn btn-default btn-xs' %1> %>
+                  <%# </div> %>
+                </div>
+              </td>
             </tr>
           <% end %>
         </tbody>

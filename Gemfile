@@ -22,10 +22,12 @@ gem "twitter-bootstrap-rails"
 gem "font-awesome-rails"
 gem 'material_icons'
 gem 'simple_form'
+gem 'link_thumbnailer'
 
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise_invitable'
+
 
 gem 'letter_opener_web'
 gem 'cocoon'

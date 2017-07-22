@@ -9,11 +9,12 @@
         <div class="thumbnail">
           <%= image_tag (@backend_fpost.image.nil? ? 'thumb' : @backend_fpost.image.image_url), class: 'img-thumbnail', id: 'post-thumb'  %> 
           <%= hidden_field_tag 'post_image_id' %> 
+          <%= hidden_field_tag 'post_link' %> 
           <% unless @backend_fpost.image.blank? %>
             <div class="caption">
               <p> <%= @backend_fpost.image.image_title %> </p>
               <%= link_to "#{fa_icon('file-image-o')} Zamień zdjęcie".html_safe, add_image_backend_fposts_path(send_to: @backend_fpost), remote: true %> 
-              <%# <%= link_to "#{fa_icon('trash-o')} Usuń".html_safe, delete_image_backend_fposts_path(id: @backend_fpost.slug), method: :post, class: "delete-image"  %1> %> 
+              <%= link_to "#{fa_icon('trash-o')} Usuń".html_safe, delete_image_backend_fposts_path(id: @backend_fpost.id), remote: true, method: :post, class: "delete-image"  %> 
             </div>
           <% else %>
             <div class="caption">
