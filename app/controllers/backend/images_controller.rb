@@ -21,17 +21,19 @@ class Backend::ImagesController < ApplicationController
   end
 
   def create
+    # @image = Image.create(image_params)
     @image = Image.new(image_params)
     filename = image_params[:image].original_filename
     @image.image_title = filename if @image.image_title.blank?
-    respond_to do |format|
-      if @image.save
-        format.js {redirect_to backend_images_url, notice: 'Zdjęcie zostało zapisane.'}
-        format.html {redirect_to backend_images_url, notice: 'Zdjęcie zostało zapisane.'}
-      else 
-        format.js { render :action => 'new' }
-      end
-    end
+    @image.save
+    # respond_to do |format|
+      # if @image.save
+      #   format.js {redirect_to backend_images_url, notice: 'Zdjęcie zostało zapisane.'}
+      #   format.html {redirect_to backend_images_url, notice: 'Zdjęcie zostało zapisane.'}
+      # else 
+      #   format.js { render :action => 'new' }
+      # end
+    # end
   end
 
   def destroy

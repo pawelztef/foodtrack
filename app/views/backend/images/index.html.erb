@@ -1,15 +1,21 @@
 
 <% content_for :top_buttons do %>
-  <%= link_to material_icon.add, new_backend_image_path, remote: true, data: {toggle: 'tooltip'}, title: 'Dodaj zdjęcie', class: 'btn btn-default btn-xs'  %> 
+  <%= link_to material_icon.add, new_backend_image_path, remote: true, data: {toggle: 'tooltip'}, title: 'Dodaj zdjęcie', id: 'image-link', class: 'btn btn-default btn-xs'  %> 
 <% end %> 
 
+<div id="progress">
+    <div class="bar" style="width: 0%;"></div>
+</div>
 <div class="well">
-  <div class="row">
+  <%= form_for [:backend, Image.new] do |img| %>
+    <%= img.file_field :image, multiple: true, name: 'image[image]' %> 
+  <% end %> 
+  <div class="row" id="paintings">
     <% if @images.blank? %> 
       <p class="lead text-center">Brak zdjęć w galerii.</p>
     <% end %> 
     <% @images.each do |img| %> 
-      <div class="col-xs-6 col-md-3">
+      <div class="col-md-15 col-sm-3 col-xs-6">
         <div class="thumbnail">
           <%= link_to image_tag(img.image_url.to_s), 'http://www.google.com' %> 
           <div class="caption">

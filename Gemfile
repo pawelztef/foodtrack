@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-validation-rails'
 gem 'jquery-datatables-rails'
+gem 'jquery-fileupload-rails'
 
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
