@@ -17,7 +17,8 @@
     <% @images.each do |img| %> 
       <div class="col-md-15 col-sm-3 col-xs-6">
         <div class="thumbnail">
-          <%= link_to image_tag(img.image_url.to_s), 'http://www.google.com' %> 
+          <div class="image-class" style="background: url( <%= img.image_url %> )" ></div>
+          <%# <%= image_tag(img.image_url(:thumb).to_s) %1> %> 
           <div class="caption">
             <p> <%= img.image_title %>
           <%= link_to fa_icon('trash-o'), backend_image_path(img.id), method: :delete, data: {confirm: 'Jesteś pewien?'}, class: 'btn btn-default btn-xs pull-right' %> 
