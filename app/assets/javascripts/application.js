@@ -25,6 +25,8 @@
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require jquery.validate.localization/messages_pl
+//= require jquery-fileupload/basic
+//= require jquery-fileupload/vendor/tmpl
 //= require jquery.slick
 //= require underscore
 //= require gmaps/google
