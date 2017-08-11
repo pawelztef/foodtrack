@@ -4,3 +4,12 @@ $base-3: #999999
 $base-4: #a6a6a6
 $base-5: #e5e5e5
 $bg: #787878
+
+
+=font-face($family, $path, $svg, $weight: normal, $style: normal)
+  @font-face
+    font-family: $family
+    src: asset-url('#{$path}.eot')
+    src: asset-url('#{$path}.eot?#iefix') format('embedded-opentype'), asset-url('#{$path}.woff') format('woff'), asset-url('#{$path}.ttf') format('truetype'), asset-url('#{$path}.svg##{$svg}') format('svg')
+    font-weight: $weight
+    font-style: $style
