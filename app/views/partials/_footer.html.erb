@@ -12,27 +12,13 @@
               <br><span class="subheader-des">Najlepsza pizza z tracka</span>
             </div>
             <div class="col-md-5">
-              <div class="social-media">
-                <%= image_tag 'badznabierzaco', class: 'dop-social' %> 
-                <%= link_to image_tag('facebook'), root_path %> 
-                <%= link_to image_tag('youtube'), root_path %> 
-                <%= link_to image_tag('tweeter'), root_path %> 
-                <%= link_to image_tag('google'), root_path %> 
-              </div>
+              <%= render "partials/social_media" %>
             </div>
           </div>
           <div class="col-md-12">
             <nav class="navbar navbar-inverse">
               <div class="container-fluid">
-                <ul class="nav navbar-nav navbar-right">
-                  <li><a href="index.html">Str.Gówna</a></li>
-                  <li><a href="menu.html">Menu</a></li>
-                  <li><a href="aktualnosci.html">Aktualności</a></li>
-                  <li><a href="onas.html">O nas</a></li>
-                  <li><a href="galeria.html">Galeria</a></li>
-                  <li><a href="rezerwacja.html">Zarezerwój tracka</a></li>
-                  <li><a href="kontakt.html">Kontakt</a></li>
-                </ul>
+                <%= render "partials/navigation_menu" %>
               </div>
             </nav>
           </div>
