@@ -1,0 +1,55 @@
+<section id="slider-product">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1">
+        <%# slider start %>
+        <div class="slider slider-for">
+          <% @carousel_products.try(:each) do |product| %>
+            <div>
+              <div class="row">
+                <div class="col-md-4 col-sm-4">
+                  <div class="wraper-zdj-slider">
+                    <span class="zdj-slider" style="background-image: url( <%=  product.image_url %> );"></span>
+                  </div>
+                </div>
+                <div class="col-md-8 col-sm-8">
+                  <h2> <%= product.name %> <br> <%= product.catchphrase %> </h2>
+                  <p> <%= product.description %> </p>
+                  <ul class="left">
+                    <li>Lorem ipsum</li>
+                    <li>Lorem ipsum</li>
+                    <li>Lorem ipsum</li>
+                    <li>Lorem ipsum</li>
+                  </ul>
+                  <ul class="right">
+                    <li>Lorem ipsum</li>
+                    <li>Lorem ipsum</li>
+                    <li>Lorem ipsum</li>
+                    <li>Lorem ipsum</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          <% end %> 
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bg-pagination-slider">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="slider slider-nav">
+            <% @carousel_products.try(:each) do |product| %>
+              <div>
+                <div class="wraper-zdj-pagination-slider">
+                    <span class="zdj-pagination-slider" style="background-image: url( <%= product.image_url %> );"></span>
+                </div>
+              </div>
+            <% end %> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

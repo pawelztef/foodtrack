@@ -12,10 +12,7 @@
   <body>
 
     <%= render "partials/main_nav" %>
-    <div class="container">
-      <%= render "partials/flash_messages" %>
-      <%= yield %>
-    </div>
+    <%= yield %>
     <%= render "partials/footer" %> 
 
     <script src="//maps.google.com/maps/api/js?key=<%= Settings.maps_api_key %>"></script>

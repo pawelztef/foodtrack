@@ -49,5 +49,28 @@ module ApplicationHelper
     end
   end
 
+  def set_pin(stop)
+    if stop.active
+      image_tag 'pin-active'
+    else
+      image_tag 'pin'
+    end
+  end
+
+  def set_address(stop)
+    content_tag :span, class: 'adres' do
+      "#{stop.address_line1} #{stop.address_line2} <br /> #{stop.code} #{stop.town}".html_safe
+    end
+  end
+
+  def stop_working_hours(stop)
+    tag_one = content_tag :span, class: 'time' do
+      "#{fa_icon('clock-o')} #{stop.date.strftime('%H:%M')} - #{stop.date_out.strftime('%H:%M')}".html_safe
+    end
+    tag_two = content_tag :sapn, class: 'data' do
+      "#{fa_icon('calendar')} #{I18n.localize(stop.date, format: '%d %B %Y')}".html_safe
+    end
+    (tag_one + tag_two).html_safe
+  end
 
 end

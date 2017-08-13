@@ -1,5 +1,9 @@
 +font-face('bebas_neueregular', 'bebasneue-webfont', 'bebas_neueregular' )
 
+*
+  padding: 0
+  margin: 0
+
 body
   background-image: image-url(bg-body)
   font-family: "Lato", sans-serif !important
@@ -12,7 +16,7 @@ h1, h2, h3, h4, h5, h6
   letter-spacing: 2px
 
 ul
-  list-style-image: url(../img/tick.png)
+  list-style-image: image-url(tick)
 
 .slick-slide:focus
   outline: none
@@ -41,7 +45,7 @@ ul
     opacity: 1
 
 header
-  background: url(../img/bg-header.png)
+  background: image-url(bg-header)
   background-position: bottom center
   background-size: cover
   position: relative
@@ -149,7 +153,7 @@ header
     margin-bottom: 50px
 
 .map
-  background: url(../img/map.png)
+  background: image-url(map)
   background-position: top center
   background-size: cover
   width: 100%
@@ -189,7 +193,7 @@ header
     margin-top: -40px
 
 footer
-  background-image: image-url('bg-footer')
+  background-image: image-url(bg-footer)
   background-position: top center
   background-size: cover
   position: relative
@@ -309,6 +313,7 @@ footer
   padding: 10px 0px
   .slider
     padding: 0 50px
+    margin-bottom: -10px
   .slick-slide
     .wraper
       padding: 10px
@@ -335,7 +340,7 @@ footer
         display: block
         font-size: 16px
         color: #fff
-        margin-bottom: 5px
+        margin-bottom: 20px
       i
         color: #43ca28
         margin-right: 7px
@@ -411,7 +416,7 @@ footer
   -moz-osx-font-smoothing: grayscale
 
 .slick-prev
-  background-image: url(../img/arrow.png)
+  background-image: image-url(arrow)
   background-repeat: no-repeat
   background-color: rgba(255, 255, 255, 0.2)
   background-position: center
@@ -431,7 +436,7 @@ footer
   content: 'ÔåÆ'
 
 .slick-next
-  background-image: url(../img/arrow.png)
+  background-image: image-url(arrow)
   background-repeat: no-repeat
   background-color: rgba(255, 255, 255, 0.2)
   background-position: center
@@ -459,7 +464,7 @@ footer
   display: none
 
 #slider-product
-  background: url(../img/bg-slider.png)
+  background: image-url(bg-slider)
   background-position: top center
   background-size: cover
   position: relative
@@ -500,12 +505,12 @@ footer
     ul
       display: inline-block
       margin-top: 20px
-      list-style-image: url(../img/tick.png)
+      list-style-image: image-url(tick)
       li
         font-size: 17px
         font-weight: 700
   .bg-pagination-slider
-    background: url(../img/bg-pagination-slider.png)
+    background: image-url(bg-pagination-slider)
     background-position: top center
     background-size: cover
     position: relative
@@ -646,6 +651,7 @@ footer
 /* Slider
 
 .slick-slider
+  margin-bottom: 0 !important
   position: relative
   display: block
   box-sizing: border-box
@@ -727,7 +733,7 @@ footer
   display: none
 
 .aktualnosci #posts
-  background: url(../img/bg-top-body.png)
+  background: image-url(bg-top-body)
   background-position: top center
   padding: 75px 0px 50px
   margin-top: -50px
@@ -892,7 +898,7 @@ footer
         -webkit-box-orient: vertical
       ul
         display: inline-block
-        list-style-image: url(../img/tick.png)
+        list-style-image: image-url(tick)
         li
           font-size: 17px
           font-weight: 700
@@ -1102,7 +1108,7 @@ footer
       padding-top: inherit
 
 #post
-  background: url(../img/bg-top-body.png)
+  background: image-url(bg-top-body)
   background-position: top center
   padding: 75px 0px 50px
   margin-top: -50px
@@ -1124,14 +1130,14 @@ footer
     border-left: 1px solid transparent
 
 #onas, #galeria
-  background: url(../img/bg-top-body.png)
+  background: image-url(bg-top-body)
   background-position: top center
   padding: 75px 0px 50px
   margin-top: -50px
   background-repeat: no-repeat
 
 #rezerwacja
-  background: url(../img/bg-top-body.png)
+  background: image-url(bg-top-body)
   background-position: top center
   padding: 75px 0px 50px
   margin-top: -50px
@@ -1184,7 +1190,7 @@ footer
     margin: 10px
 
 #kontakt
-  background: url(../img/bg-top-body.png)
+  background: image-url(bg-top-body)
   background-position: top center
   padding: 75px 0px 50px
   margin-top: -50px

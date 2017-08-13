@@ -1,25 +1,24 @@
 <% content_for :head do %>
   <meta name="turbolinks-cache-control" content="no-cache">
 <% end %>
-<div class="well">
-  <div class="container">
-    miejsce na banner 
-    <% @home_page.pageAdds.try(:each) do |add| %> 
-      <%= add.body.html_safe unless add.body.blank? %> 
-    <% end %>
-  </div>
-</div>
-<div class="well">
-  <div style='width: 100%;'>
-    <div id="map" style='width: 100%; height: 400px;'></div>
-  </div>
-  <script type="text/javascript">
+
+<%# Miejsce na banner %>
+
+<% @home_page.pageAdds.try(:each) do |add| %> 
+  <%= add.body.html_safe unless add.body.blank? %> 
+<% end %>
+
+
+<%# Mapa %>
+
+<div id="map" class="map" style="width: 100%; height: 480px;"></div>
+<script type="text/javascript">
 $(function() {
   handler = Gmaps.build('Google');
   handler.buildMap({
     provider: { 
-      maxZoom: 12,
-      disableDefaultUI: true
+      maxZoom: 19,
+      styles: [{ "featureType": "administrative", "elementType": "labels.text.fill", "stylers": [{ "color": "#444444" }] }, { "featureType": "landscape", "elementType": "all", "stylers": [{ "color": "#f2f2f2" }] }, { "featureType": "poi", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "road", "elementType": "all", "stylers": [{ "saturation": -100 }, { "lightness": 45 }] }, { "featureType": "road.highway", "elementType": "all", "stylers": [{ "visibility": "simplified" }] }, { "featureType": "road.arterial", "elementType": "labels.icon", "stylers": [{ "visibility": "off" }] }, { "featureType": "transit", "elementType": "all", "stylers": [{ "visibility": "off" }] }, { "featureType": "water", "elementType": "all", "stylers": [{ "color": "#46bcec" }, { "visibility": "on" }] }]
     },
     internal: { 
       id: 'map' 
@@ -32,27 +31,11 @@ $(function() {
   }
   );
 });
-  </script>
-</div>
-<div class="well">
-  <div class="stops-wrap">
-    <% @track.try(:stops).try(:each) do |stop| %>
-      <div class="stop-con <%= " active" if stop.active %> ">
-        <div><%= stop.date.strftime("%d/%m/%Y %H:%M") %></div>
-        <div><%= stop.date_out.strftime("%d/%m/%Y %H:%M") %></div>
-        <div><%= stop.full_street_address %></div>
-        <div><%= stop.catchphrase %></div>
-      </div>
-    <% end %> 
-  </div>
-</div>
-<div class="well">
-  <div class="carousel">
-    <% @carousel_products.try(:each) do |product| %>
-      <div> <%= image_tag product.image_url.to_s  %> </div>
-    <% end %> 
-  </div>
-</div>
+</script>
+
+<%= render "stops", track: @track %>
+
+<%= render "products", carousel_products: @carousel_products %>
 
 <div class="row">
   <div class="col-md-6">
@@ -66,8 +49,8 @@ $(function() {
               <%= link_to post.title, post_path(post)  %> 
             </td>
             <td> <%=  truncate(post.body.try(:html_safe), length: 250) %>
-          </tr>
-        <% end %>
+        </tr>
+      <% end %>
       </table>
     </div>
   </div>
