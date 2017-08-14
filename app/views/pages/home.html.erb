@@ -2,14 +2,10 @@
   <meta name="turbolinks-cache-control" content="no-cache">
 <% end %>
 
-<%# Miejsce na banner %>
-
 <% @home_page.pageAdds.try(:each) do |add| %> 
   <%= add.body.html_safe unless add.body.blank? %> 
 <% end %>
 
-
-<%# Mapa %>
 
 <div id="map" class="map" style="width: 100%; height: 480px;"></div>
 <script type="text/javascript">
@@ -34,8 +30,5 @@ $(function() {
 </script>
 
 <%= render "stops", track: @track %>
-
 <%= render "products", carousel_products: @carousel_products %>
-
-
 <%= render "posts", posts: @posts %>

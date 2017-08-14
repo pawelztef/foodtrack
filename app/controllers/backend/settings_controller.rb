@@ -44,7 +44,8 @@ class Backend::SettingsController < ApplicationController
                                     :maps_api_key,
                                     :facebook_app_id,
                                     :facebook_secret,
-                                    :image)
+                                    :image,
+                                    :twitter_address)
   end
 
   def set_settings
