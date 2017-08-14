@@ -1,0 +1,31 @@
+<section id="content-home">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 last-post">
+        <% posts.try(:each) do |post| %>
+          <article>
+            <div class="left">
+              <div class="wraper-zdj-post">
+                <a href="post.html"><span class="zdj-post" style="background-image: url( <%= post.image.try(:image_url) ? post.image.image_url : 'img-post.png' %> ); "></span></a>
+              </div>
+              <div class="meta-dane">
+                <div class="day"> <%= post.publish_date.strftime('%d') %> </div>
+                <div class="month"> <%= I18n.localize(post.publish_date, format: '%B') %> </div>
+              </div>
+            </div>
+            <div class="right">
+              <%= link_to post_path(post) do %> 
+                <%= content_tag(:h2, post.title) %> 
+              <% end %> 
+              <p> <%= post.body.html_safe %> </p>
+            </div>
+          </article>
+        <% end %> 
+      </div>
+      <div class="col-md-4">
+        <a class="twitter-timeline" data-lang="pl" data-height="552" data-dnt="true" data-link-color="#43ca28" href="https://twitter.com/creastv"></a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+  </div>
+</section>

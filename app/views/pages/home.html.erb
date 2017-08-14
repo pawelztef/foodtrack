@@ -37,37 +37,5 @@ $(function() {
 
 <%= render "products", carousel_products: @carousel_products %>
 
-<div class="row">
-  <div class="col-md-6">
-    <div class="well">
-      <div class="lead">blog posts</div>
-      <table>
-        <% @posts.try(:each) do |post| %>
-          <tr>
-            <td>
-              <%= image_tag post.image.image_url(:thumb).to_s  unless post.image.blank? %> 
-              <%= link_to post.title, post_path(post)  %> 
-            </td>
-            <td> <%=  truncate(post.body.try(:html_safe), length: 250) %>
-        </tr>
-      <% end %>
-      </table>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="well">
-      <div class="lead">fanpage timeline posts</div>
-      <table>
-        <% @fposts.try(:each) do |fpost| %>
-          <tr>
-            <td>
-              <%= fpost.title %> 
-              <%= truncate(fpost.body.try(:html_safe), length: 150) %> 
-              <hr>
-            </td>
-          </tr>
-        <% end %>
-      </table>
-    </div>
-  </div>
-</div>
+
+<%= render "posts", posts: @posts %>

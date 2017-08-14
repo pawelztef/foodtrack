@@ -11,7 +11,6 @@ class PagesController < ApplicationController
     @posts = Post.where(draft: false).order(publish_date: :desc).first(number_of_posts)
     @track = Track.find_by_active(true)
     create_markers(@track)
-    @fposts = Fpost.limit(10).order(created_at: :desc)
   end
 
 
