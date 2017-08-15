@@ -1,0 +1,7 @@
+<% if current_admin %>
+  <div class='welcome_navigation'>
+    <%= link_to material_icon.dashboard, backend_dashboards_path, data: {toggle: 'tooltip', placement: 'right'}, title: "Zaplecze" %> 
+    <%= link_to "Wyloguj się #{fa_icon('sign-out')}".html_safe, destroy_admin_session_path, method: :delete, class: 'pull-right' %>
+  </div>
+<% end %> 
+

@@ -65,6 +65,13 @@ class Setting < ActiveRecord::Base
  def facebook_secret=(new_secret)
    write_to_file('facebook_secret', new_secret)
  end
+ def twitter_address
+   Settings.reload!
+   Settings.twitter_address
+ end
+ def twitter_address=(new_address)
+   write_to_file('twitter_address', new_address)
+ end
 
  private 
  def write_to_file(key, value)

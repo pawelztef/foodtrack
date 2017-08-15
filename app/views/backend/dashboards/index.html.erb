@@ -25,9 +25,7 @@
       </div>
       <div class="panel-body">
         <% if @track.blank? %>
-          <div class="lead text-center">
-            <%= link_to 'Wybierz trasę', backend_tracks_path, class: 'btn btn-default'  %> 
-          </div>
+            <p class="lead text-center">Brak danych.</p>
         <% else %>
           <div class="timeline-stops-wrapper">
             <ul class="timeline">
@@ -87,13 +85,17 @@
       </div>
       <div class="panel-body">
         <div class="list-group">
-          <% @published_posts.each do |post| %>
-            <%= link_to  edit_backend_post_path(post), class: 'list-group-item'  do %>  
-              <h4 class="list-group-item-heading"> <%= material_icon.chevron_right %>  <%= truncate(post.title, length: 20, separator:  '' ) %></h4>
-              <p class="list-group-item-text"> <%= post_excerpt(post, 60)  %> </p>
-              <p class="list-group-item-text">
-              <small class="text_muted pull-right"> <%= material_icon.access_time %>  <%= post.publish_date %> </small>
-              </p>
+          <% if @published_posts.blank? %>
+            <p class="lead text-center">Brak danych.</p>
+          <% else %>
+            <% @published_posts.each do |post| %>
+              <%= link_to edit_backend_post_path(post), class: 'list-group-item'  do %>  
+                <h4 class="list-group-item-heading"> <%= material_icon.chevron_right %>  <%= truncate(post.title, length: 20, separator:  '' ) %></h4>
+                <p class="list-group-item-text"> <%= post_excerpt(post, 60)  %> </p>
+                <p class="list-group-item-text">
+                <small class="text_muted pull-right"> <%= material_icon.access_time %>  <%= post.publish_date %> </small>
+                </p>
+              <% end %> 
             <% end %> 
           <% end %> 
         </div>

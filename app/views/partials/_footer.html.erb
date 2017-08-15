@@ -1,0 +1,34 @@
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-3">
+        <%= link_to_if !page_logo.nil?, page_logo, root_path %> 
+      </div>
+      <div class="col-md-9 col-sm-9">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="col-md-7">
+              <span class="header-des">Food truck polska</span>
+              <br><span class="subheader-des">Najlepsza pizza z tracka</span>
+            </div>
+            <div class="col-md-5">
+              <%= render "partials/social_media" %>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <nav class="navbar navbar-inverse">
+              <div class="container-fluid">
+                <%= render "partials/navigation_menu" %>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 description">
+        <hr>
+        <p class="text-center"> © Copyright 2017 - Polo Pazzo</p>
+      </div>
+    </div>
+  </div>
+  <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
+</footer>

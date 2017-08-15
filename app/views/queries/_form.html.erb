@@ -1,15 +1,15 @@
-<%= simple_form_for(@query, url: queries_create_path, method: :post ) do |f| %>
-  <%= f.error_notification %>
-
-
+<%= simple_form_for(@query, url: catering_queries_create_path, method: :post ) do |f| %>
+  <%# <%= f.error_notification %1> %>
   <div class="form-inputs">
-    <%= f.input :fullname %> 
-    <%= f.input :email %> 
-    <%= f.input :phone %> 
-    <%= f.input :body, as: :text %> 
+    <%= f.input :fullname, placeholder: 'Imię i nazwisko', label: false %> 
+    <%= f.input :phone, placeholder: 'Nr telefonu', label: false %> 
+    <%= f.input :email, placeholder: 'Adres e-mail', label: false %> 
+    <%= f.input :town, placeholder: 'Miejscowość', label: false %> 
+    <%= f.input :body, as: :text, placeholder: 'Twoja wiadomość...', label: false %> 
   </div>
-
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, 'Wyślij' %>
   </div>
 <% end %>
+
+

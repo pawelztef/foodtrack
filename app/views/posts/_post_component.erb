@@ -1,0 +1,23 @@
+<section id="content-home">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-<%= Settings.twitter_address.blank? ? "12" : "8" %>  last-post">
+        <% posts.try(:each) do |post| %>
+          <article>
+            <div class="left">
+              <%= render "posts/post_image", post: post %>
+            </div>
+            <div class="right">
+              <%= render "posts/post_content", post: post %>
+            </div>
+          </article>
+        <% end %> 
+      </div>
+      <div class="col-md-4">
+        <a class="twitter-timeline" data-lang="pl" data-height="552" data-dnt="true" data-link-color="#43ca28" href="<%= Settings.twitter_address %>" ></a>
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+  </div>
+</section>
+

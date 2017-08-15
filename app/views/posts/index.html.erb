@@ -1,22 +1,24 @@
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td>
-          <%= image_tag post.image.image_url(:thumb).to_s  unless post.image.blank? %> 
-          <%= link_to post.title, post_path(post)  %> 
-          <%= post.publish_date %>
-        </td>
-        <td> <%= post_excerpt(post, 70) %> </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div class="aktualnosci">
+  <section id="posts">
+    <div class="container">
+      <div class="row">
+        <% @posts.each do |post| %>
+          <div class="col-md-4 col-sm-6">
+            <article>
+              <div class="wraper">
+                <%= link_to(post_path(post)) do %> 
+                  <div class="zdj-post" style="background-image: url( <%= post.image.try(:image_url) ? post.image.image_url : 'img-post.png' %> ); "></div>
+                <% end %>
+                <%= render "post_date", post: post %>
+                <%= link_to "Więcej<i class='fa fa-long-arrow-right'></i>".html_safe, post_path(post), class: 'btn-post' %> 
+              </div>
+              <div class="content">
+                <%= render "post_content", post: post %>
+              </div>
+            </article>
+          </div>
+        <% end %> 
+      </div>
+    </div>
+  </section>
+</div>

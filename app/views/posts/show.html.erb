@@ -5,17 +5,48 @@
   <meta property="og:title"  content="<%= @post.title %>" /> 
   <meta property="og:image"  content="<%= post_link_img(@post) %>" /> 
 <% end %>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h1> <%= @post.title %> </h1>
-    <%= @post.publish_date %> <br>
-  </div>
-  <div class="panel-body">
-    <%= image_tag @post.image.image_url.to_s  unless @post.image.blank? %> 
-    <%= @post.body.html_safe %> 
-  </div>
-  <div class="panel-footer">
-    <%= link_to 'Wróć', posts_path %> 
-  </div>
+<div class="post">
+  <section id="post">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="left">
+            <%= render "posts/post_image", post: @post %>
+          </div>
+          <div class="right">
+            <h2> <%= @post.title %> </h2>
+          </div>
+        </div>
+        <div class="col-lg-12 content-post">
+          <%= @post.body.html_safe %> 
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="posts">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="text-center header">Ostatie aktualności</h2>
+        </div>
+        <% @last_posts.try(:each) do |post| %>
+          <div class="col-md-4 col-sm-6">
+            <article>
+              <div class="wraper">
+                <%= link_to(post_path(post)) do %> 
+                  <div class="zdj-post" style="background-image: url( <%= post.image.try(:image_url) ? post.image.image_url : 'img-post.png' %> ); "></div>
+                <% end %>
+                <%= render "posts/post_date", post: post %>
+                <%= link_to "Więcej<i class='fa fa-long-arrow-right'></i>".html_safe, post_path(post), class: 'btn-post' %> 
+              </div>
+              <div class="content">
+                <%= render "posts/post_content", post: post %>
+              </div>
+            </article>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
 </div>
 
