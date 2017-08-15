@@ -29,9 +29,9 @@ module ApplicationHelper
     end
   end
 
-  def page_logo
+  def page_logo(size = nil)
     if !Setting.first.image.blank?
-      image_tag Setting.first.image_url(:mini), class: 'logo img-responsive'
+      image_tag Setting.first.image_url(size), class: 'logo img-responsive'
     end
   end
 
