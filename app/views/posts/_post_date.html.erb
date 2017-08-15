@@ -1,0 +1,4 @@
+<div class="meta-dane">
+  <div class="day"> <%= post.publish_date.strftime('%d') %> </div>
+  <div class="month"> <%= I18n.localize(post.publish_date, format: '%b') %> </div>
+</div>

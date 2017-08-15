@@ -1,0 +1,6 @@
+<div class="wraper-zdj-post">
+  <%= link_to(post_path(post)) do %> 
+    <span class="zdj-post" style="background-image: url( <%= post.image.try(:image_url) ? post.image.image_url : 'img-post.png' %> ); "></span>
+  <% end %>
+</div>
+<%= render "posts/post_date", post: post %>

@@ -1,9 +1,35 @@
-<div class="container">
-  <% @kontakt_katering_page_addon.pageAdds.each do |add| %> 
+  <% @kontakt_katering_page_addon.try(:pageAdds).try(:each) do |add| %> 
     <%= add.body.html_safe unless add.body.blank? %> 
   <% end %>
-</div>
-<div class="well">
-  <%= render 'form' %> 
-</div>
-
+<section id="rezerwacja">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="text-center">chcesz wynająć trucka?</h2>
+      </div>
+      <div class="col-md-8 col-md-offset-2">
+        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor <b>Lorem ipsum dolor sit amet</p>
+        <br><br>
+      </div>
+      <div class="col-md-8">
+        <p class="text-left"><b>Lorem ipsum dolor sit amet</b>, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur <b>Lorem ipsum dolor sit amet</b> adipisicing elit, sed do Lorem ipsum dolor sit </p>
+        <hr>
+        <div class="galeria">
+          <img src="img/img-post.png" alt="">
+          <img src="img/img-post.png" alt="">
+          <img src="img/img-post.png" alt="">
+          <img src="img/img-post.png" alt="">
+        </div>
+        <hr>
+        <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor <b>Lorem ipsum dolor sit amet</b>sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit </p>
+        <hr>
+        <p class="text-right">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor <b>Lorem ipsum dolor sit amet</b> sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit </p>
+        <hr>
+        <br>
+      </div>
+      <div class="col-md-4">
+        <%= render 'form' %> 
+      </div>
+    </div>
+  </div>
+</section>
