@@ -11,7 +11,6 @@ class PagesController < ApplicationController
     @posts = Post.where(draft: false).order(publish_date: :desc).first(number_of_posts)
     @track = Track.find_by_active(true)
     create_markers(@track)
-    @fposts = Fpost.limit(10).order(created_at: :desc)
   end
 
 
@@ -67,15 +66,15 @@ class PagesController < ApplicationController
         marker.title stop.full_street_address
         if stop.active 
           marker.picture({
-            :url    => ActionController::Base.helpers.asset_path('icon.png'),
-            :width  => "36",
-            :height => "36"
+            :url    => ActionController::Base.helpers.asset_path('pin-active.png'),
+            :width  => "72",
+            :height => "72"
           })
         else
           marker.picture({
-            :url    => ActionController::Base.helpers.asset_path('icon-gray.png'),
-            :width  => "36",
-            :height => "36"
+            :url    => ActionController::Base.helpers.asset_path('pin.png'),
+            :width  => "72",
+            :height => "72"
           })
         end
       end
@@ -85,8 +84,8 @@ class PagesController < ApplicationController
         marker.lng 20.979
         marker.picture({
           :url    => ActionController::Base.helpers.asset_path(''),
-          :width  => "36",
-          :height => "36"
+          :width  => "72",
+          :height => "72"
         })
       end
     end

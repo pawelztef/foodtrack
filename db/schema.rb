@@ -161,8 +161,8 @@ ActiveRecord::Schema.define(version: 20170721061932) do
     t.text     "body",          limit: 65535
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-    t.date     "from_date"
-    t.date     "to_date"
+    t.datetime "from_date"
+    t.datetime "to_date"
     t.string   "town",          limit: 255
     t.boolean  "catering_flag"
   end

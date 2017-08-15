@@ -1,8 +1,41 @@
-<div class="container">
-  <% @kontakt_page_addon.pageAdds.each do |add| %> 
+<div class="kontakt">
+  <% @kontakt_page_addon.try(:pageAdds).try(:each) do |add| %> 
     <%= add.body.html_safe unless add.body.blank? %> 
   <% end %>
-</div>
-<div class="well">
-  <%= render 'form' %> 
+  <section id="kontakt">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="text-center">Masz pytanie? napisz do nas!</h2>
+        </div>
+        <div class="col-md-8 col-md-offset-2">
+          <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do Lorem ipsum dolor <b>Lorem ipsum dolor sit amet</p>
+          <br><br>
+        </div>
+
+        <div class="col-md-3">
+          <address>
+            <h3>adres:</h3>
+            1234 Example Street<br>
+            Antartica, Example 0987<br>
+            <abbr title="Phone">P:</abbr> (123) 456-7890
+          </address>
+
+          <address>
+            <h3>adres e-mail:</h3>
+            <a href="mailto:#">exam.ple@example.com</a>
+          </address>
+          <address>
+            <h3>Nr telefonu:</h3>
+            <a href="tel:#">(+48) 567 567 567</a>
+          </address>
+          <hr>
+          <br>
+        </div>
+        <div class="col-md-9">
+          <%= render 'form' %> 
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

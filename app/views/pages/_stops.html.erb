@@ -1,0 +1,31 @@
+<section id="slider-station">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="slider-station slider">
+          <% track.try(:stops).try(:each) do |stop| %>
+            <div>
+              <div class="wraper">
+                <div class="left">
+                  <%= set_pin(stop) %> 
+                </div>
+                <div class="right">
+                  <%= set_address(stop) %> 
+                  <hr>
+                  <%= stop_working_hours(stop) %> 
+                </div>
+                  <hr>
+                  <%# <p><i>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </i></p> %>
+                  <p><i>Lorem ipsum dolor sit amet.</i></p>
+                <% if !stop.catchphrase.blank? %>
+                  <hr>
+                  <p><i>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </i></p>
+                <% end %> 
+              </div>
+            </div>
+          <% end %> 
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

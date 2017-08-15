@@ -12,11 +12,11 @@ Rails.application.routes.draw do
 
   root 'pages#home'
 
-  resources :posts, path: 'blog'
+  resources :posts, path: 'aktualnosci'
 
   get 'pages/home', path: 'home'
   get 'pages/galeria', path: 'galeria'
-  get 'pages/produkty', path: 'produkty'
+  get 'pages/produkty', path: 'menu'
   get 'pages/historia', path: 'historia'
   get 'pages/produkt_show', path: 'produkt'
 
