@@ -9,6 +9,7 @@ class CateringQueriesController < ApplicationController
   def create
     @query = Query.new(query_params)
     @query.catering_flag = true
+    @kontakt_katering_page_addon = safe_find('KontaktKateringPage')
     if @query.save
       ClientQueriesMailer.client_query(@query).deliver
       redirect_to catering_queries_new_url, notice: 'Query was successfully created.'

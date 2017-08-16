@@ -1,12 +1,12 @@
-<div class='posts-addon'>
-  <% @post_page.pageAdds.try(:each) do |add| %> 
-    <%= add.body.html_safe unless add.body.blank? %> 
-  <% end %>
-</div>
 <div class="aktualnosci">
   <section id="posts">
     <div class="container">
       <div class="row">
+        <div class='col-md-12'>
+          <% @post_page.pageAdds.try(:each) do |add| %> 
+            <%= add.body.html_safe unless add.body.blank? %> 
+          <% end %>
+        </div>
         <% @posts.each do |post| %>
           <div class="col-md-4 col-sm-6">
             <article>
