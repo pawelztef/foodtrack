@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     resources :home_pages
     resources :galeria_pages
     resources :historia_pages
+    resources :blog_pages
     resources :kontakt_katering_pages
     resources :kontakt_pages
     resources :produkt_pages

@@ -4,6 +4,7 @@ class QueriesController < ApplicationController
   def new
     @query = Query.new
     @kontakt_page_addon = safe_find('KontaktPage')
+    @settings = Setting.first
   end
 
   def create

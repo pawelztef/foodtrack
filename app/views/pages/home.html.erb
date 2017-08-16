@@ -2,9 +2,6 @@
   <meta name="turbolinks-cache-control" content="no-cache">
 <% end %>
 
-<% @home_page.pageAdds.try(:each) do |add| %> 
-  <%= add.body.html_safe unless add.body.blank? %> 
-<% end %>
 
 
 <div id="map" class="map" style="width: 100%; height: 480px;"></div>
@@ -30,5 +27,10 @@ $(function() {
 </script>
 
 <%= render "stops", track: @track %>
+<div class='home-addon'>
+  <% @home_page.pageAdds.try(:each) do |add| %> 
+    <%= add.body.html_safe unless add.body.blank? %> 
+  <% end %>
+</div>
 <%= render "products", carousel_products: @carousel_products %>
 <%= render "posts/post_component", posts: @posts %>

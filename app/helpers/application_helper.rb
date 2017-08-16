@@ -49,6 +49,14 @@ module ApplicationHelper
     end
   end
 
+  def set_post_img(post, tag_name)
+    if post.image.try(:image_url) 
+      content_tag tag_name.to_sym, nil, class: 'zdj-post', style: "background-image: url(#{post.image.image_url})"
+    else 
+      content_tag tag_name.to_sym, nil, class: 'zdj-post'
+    end 
+  end
+
   def set_pin(stop)
     if stop.active
       image_tag 'pin-active'

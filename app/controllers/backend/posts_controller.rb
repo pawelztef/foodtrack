@@ -32,8 +32,6 @@ class Backend::PostsController < ApplicationController
     @title = 'Edycja postu'
     @backend_post = Post.new(backend_post_params)
     @backend_post.image = fetch_image
-
-
     respond_to do |format|
       if @backend_post.save
         if params[:publish_on_facebook] == '1' && @backend_post.valid?

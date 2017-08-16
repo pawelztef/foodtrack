@@ -45,7 +45,11 @@ class Backend::SettingsController < ApplicationController
                                     :facebook_app_id,
                                     :facebook_secret,
                                     :image,
-                                    :twitter_address)
+                                    :twitter_address,
+                                    :address_line1,
+                                    :address_line2,
+                                    :email,
+                                    :phone)
   end
 
   def set_settings

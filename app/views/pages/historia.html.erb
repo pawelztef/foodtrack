@@ -1,7 +1,4 @@
-<div class="well">
-  <h1>Pages#historia</h1>
-</div>
-<div class="container">
+<div class="o-nas-addon">
   <% @historia_page.pageAdds.each do |add| %> 
     <%= add.body.html_safe unless add.body.blank? %> 
   <% end %>

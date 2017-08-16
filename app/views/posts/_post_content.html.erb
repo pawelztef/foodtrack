@@ -1,4 +1,4 @@
 <%= link_to post_path(post) do %> 
   <%= content_tag(:h2, post.title) %> 
 <% end %> 
-<p> <%= post.body.html_safe %> </p>
+<p> <%= post.excerpt %> </p>

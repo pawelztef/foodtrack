@@ -1,3 +1,8 @@
+<div class='posts-addon'>
+  <% @post_page.pageAdds.try(:each) do |add| %> 
+    <%= add.body.html_safe unless add.body.blank? %> 
+  <% end %>
+</div>
 <div class="aktualnosci">
   <section id="posts">
     <div class="container">
@@ -7,7 +12,7 @@
             <article>
               <div class="wraper">
                 <%= link_to(post_path(post)) do %> 
-                  <div class="zdj-post" style="background-image: url( <%= post.image.try(:image_url) ? post.image.image_url : 'img-post.png' %> ); "></div>
+                  <%= set_post_img(post, 'div') %> 
                 <% end %>
                 <%= render "post_date", post: post %>
                 <%= link_to "Więcej<i class='fa fa-long-arrow-right'></i>".html_safe, post_path(post), class: 'btn-post' %> 
@@ -22,3 +27,4 @@
     </div>
   </section>
 </div>
+

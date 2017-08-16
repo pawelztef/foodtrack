@@ -32,7 +32,7 @@
             <div class="edit-post-thumb-wrapper">
               <div class="thumbnail">
                 <%= image_tag (@backend_post.image.nil? ? 'thumb' : @backend_post.image.image_url), class: 'img-thumbnail', id: 'post-thumb'  %> 
-                <%= hidden_field_tag 'post_image_id' %> 
+                <%= hidden_field_tag 'post_image_id', @backend_post.image.try(:id) %> 
                 <% unless @backend_post.image.blank? %>
                   <div class="caption">
                     <p> <%= @backend_post.image.image_title %> </p>
@@ -50,6 +50,11 @@
         </div>
         <div class="row">
           <div class="col-md-12">
+            <%= f.input :excerpt, as: :text, label: "Wyimek" %> 
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
             <%= f.input :body, label: "Treść główna", as: :ckeditor, input_html: { ckeditor: { toolbar: 'custom', language: 'pl' } } %> 
           </div>
         </div>
@@ -63,3 +68,4 @@
     </div>
   <% end %>
 </div>
+

@@ -33,10 +33,27 @@
     </div>
   </div>
   <div class="well">
+    <p class="lead">Ustawienia danych teleadresowych</p>
+    <div class="row">
+      <div class="col-md-6">
+        <%= s.input :address_line1, label: 'Adres linia nr 1' %> 
+      </div>
+      <div class="col-md-6">
+        <%= s.input :email, label: 'Adres e-mail' %> 
+      </div>
+      <div class="col-md-6">
+        <%= s.input :address_line2, label: 'Adres linia nr 2' %> 
+      </div>
+      <div class="col-md-6">
+        <%= s.input :phone, label: 'Telefon' %> 
+      </div>
+    </div>
+  </div>
+  <div class="well">
     <p class="lead">Ustawienia pluginu Twittera</p>
     <div class="row">
       <div class="col-md-12">
-        <%= s.input :twitter_address, label: 'Address profilu Twittera' %> 
+        <%= s.input :twitter_address, label: 'Adres profilu Twittera' %> 
       </div>
     </div>
   </div>

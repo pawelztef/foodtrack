@@ -1,6 +1,5 @@
 +font-face('bebas_neueregular', 'bebasneue-webfont', 'bebas_neueregular' )
 
-
 body
   background-image: image-url(bg-body)
   font-family: "Lato", sans-serif !important
@@ -17,6 +16,7 @@ ul
 
 .slick-slide:focus
   outline: none
+
 
 #back-to-top
   position: fixed
@@ -44,7 +44,7 @@ header
   background: image-url(bg-header)
   background-position: bottom center
   background-size: cover
-  position: fixed
+  position: relative
   z-index: 2
   width: 100%
   .logo
@@ -149,11 +149,12 @@ header
     margin-bottom: 50px
 
 .map
-  /*  background: image-url(map);
+  background: image-url(map)
   background-position: top center
   background-size: cover
   width: 100%
-  height: 470px
+  height: 400px
+  margin-top: -68px
 
 .affix
   -webkit-transition: all 0.6s
@@ -162,11 +163,6 @@ header
   background: none
   background-color: #028ab7
   top: 0px
-
-.clear-affix
-  height: 130px
-
-.affix
   .header-des, .subheader-des, .social-media
     display: none
   .logo
@@ -179,15 +175,10 @@ header
       font-size: 16px !important
 
 @media only screen and (max-width: 768px)
-  .clear-affix
-    height: 235px
-  .affix
-    + .clear-affix
-      height: 54px
-    .logo
-      width: 56px
-      min-width: 56px
-      margin-left: 0px
+  .affix .logo
+    width: 56px
+    min-width: 56px
+    margin-left: 0px
 
 @media only screen and (max-width: 768px)
   .affix nav
@@ -318,6 +309,7 @@ footer
   padding: 10px 0px
   .slider
     padding: 0 50px
+    margin-bottom: -10px
   .slick-slide
     .wraper
       padding: 10px
@@ -344,7 +336,7 @@ footer
         display: block
         font-size: 16px
         color: #fff
-        margin-bottom: 5px
+        margin-bottom: 20px
       i
         color: #43ca28
         margin-right: 7px
@@ -410,14 +402,6 @@ footer
 .slick-prev.slick-disabled:before, .slick-next.slick-disabled:before
   opacity: .25
 
-.slick-prev
-  &:hover, &:focus
-    background: rgba(255, 255, 255, 0.4) !important
-
-.slick-next
-  &:hover, &:focus
-    background: rgba(255, 255, 255, 0.4) !important
-
 .slick-prev:before, .slick-next:before
   font-family: 'slick'
   font-size: 20px
@@ -432,7 +416,7 @@ footer
   background-repeat: no-repeat
   background-color: rgba(255, 255, 255, 0.2)
   background-position: center
-  height: 112%
+  height: 110%
   top: 0px
   padding: 26px
   left: -5px
@@ -452,7 +436,7 @@ footer
   background-repeat: no-repeat
   background-color: rgba(255, 255, 255, 0.2)
   background-position: center
-  height: 112%
+  height: 110%
   top: 0px
   padding: 26px
   right: -5px
@@ -491,11 +475,10 @@ footer
       height: 300px
       overflow: hidden
       .zdj-slider
-        background: image-url(zaslepka)
         background-position: center
         background-size: cover
-        width: 100%
-        height: 100%
+        width: 300px
+        height: 300px
         display: block
     h2
       margin-top: 1px
@@ -515,8 +498,6 @@ footer
       display: -webkit-box
       -webkit-line-clamp: 4
       -webkit-box-orient: vertical
-      max-height: 80px
-      min-height: 80px
     ul
       display: inline-block
       margin-top: 20px
@@ -546,8 +527,8 @@ footer
           background-position: center
           background-size: cover
           display: block
-          width: 100%
-          height: 100%
+          width: 115px
+          height: 115px
       .wraper-zdj-pagination-slider
         cursor: pointer
         border-radius: 100%
@@ -558,13 +539,12 @@ footer
         display: block
         border: 4px solid #43ca28
         .zdj-pagination-slider
-          background: image-url(zaslepka)
           cursor: pointer
           background-position: center
           background-size: cover
           display: block
-          width: 100%
-          height: 100%
+          width: 115px
+          height: 115px
 
 @media only screen and (max-width: 1200px)
   #slider-product .slider-for .wraper-zdj-slider
@@ -595,7 +575,6 @@ footer
       .wraper-zdj-post
         overflow: hidden
         .zdj-post
-          background: image-url(zaslepka)
           background-position: center
           background-size: cover
           background-repeat: none
@@ -647,8 +626,6 @@ footer
         -webkit-line-clamp: 2
         -webkit-box-orient: vertical
         letter-spacing: 2px
-        min-height: 60px
-        max-height: 60px
       p
         font-weight: 400
         font-size: 14px
@@ -658,8 +635,6 @@ footer
         display: -webkit-box
         -webkit-line-clamp: 4
         -webkit-box-orient: vertical
-        max-height: 80px
-        min-height: 80px
 
 .last-post article:hover
   .zdj-post
@@ -672,6 +647,7 @@ footer
 /* Slider
 
 .slick-slider
+  margin-bottom: 0 !important
   position: relative
   display: block
   box-sizing: border-box
@@ -756,7 +732,7 @@ footer
   background: image-url(bg-top-body)
   background-position: top center
   padding: 75px 0px 50px
-  /*margin-top: -50px;
+  margin-top: -50px
   background-repeat: no-repeat
   article
     padding: 15px 0px
@@ -809,7 +785,6 @@ footer
           -webkit-transition: all 0.3s
           transition: all 0.3s
       .zdj-post
-        background: image-url(zaslepka)
         position: relative
         background-size: cover !important
         background-position: center !important
@@ -838,8 +813,6 @@ footer
         -webkit-box-orient: vertical
         letter-spacing: 2px
         font-size: 21px
-        max-height: 46px
-        min-height: 46px
     p
       font-weight: 400
       font-size: 14px
@@ -850,8 +823,6 @@ footer
       -webkit-line-clamp: 4
       -webkit-box-orient: vertical
       line-height: 16px
-      max-height: 66px
-      min-height: 66px
   .col-md-4
     article:hover
       .zdj-post
@@ -888,7 +859,8 @@ footer
   #slider-product
     z-index: 1
     width: 100%
-    padding-top: 85px
+    padding-top: 69px
+    margin-top: -39px
   #products
     padding: 50px 0
     article
@@ -902,22 +874,15 @@ footer
         display: block
         margin: 0 auto
         .zdj-slider
-          background: image-url(zaslepka)
           background-position: center
           background-size: cover
-          width: 100%
-          height: 100%
+          width: 250px
+          height: 250px
           display: block
       h2
         margin-top: 1px
         font-family: 'bebas_neueregular'
         letter-spacing: 2px
-        max-height: 100px
-        min-height: 100px
-        overflow: hidden
-        display: -webkit-box
-        -webkit-line-clamp: 3
-        -webkit-box-orient: vertical
       p
         font-weight: 400
         font-size: 14px
@@ -925,17 +890,11 @@ footer
         text-overflow: ellipsis
         overflow: hidden
         display: -webkit-box
-        -webkit-line-clamp: 10
+        -webkit-line-clamp: 4
         -webkit-box-orient: vertical
-        max-height: 200px
-        min-height: 200px
       ul
         display: inline-block
         list-style-image: image-url(tick)
-        min-height: 200px
-        max-height: 200px
-        overflow: auto
-        width: 100%
         li
           font-size: 17px
           font-weight: 700
@@ -953,52 +912,19 @@ footer
 
 @media only screen and (max-width: 1200px)
   .menu #products article .wraper-zdj-slider
-    width: 220px
-    height: 220px
+    width: 250px
+    height: 250px
 
 @media only screen and (max-width: 992px)
-  .menu #products article
-    .wraper-zdj-slider
-      width: 200px
-      height: 200px
-    min-height: inherit
-    max-height: inherit
+  .menu #products article .wraper-zdj-slider
+    width: 200px
+    height: 200px
 
 @media only screen and (max-width: 768px)
   .menu #products article .wraper-zdj-slider
     margin: 0 auto
     display: block
     margin-bottom: 15px
-
-@media only screen and (max-width: 1200px)
-  .affix nav li a
-    padding: 15px 7px !important
-
-@media only screen and (max-width: 992px)
-  .menu #products
-    article
-      p, ul, h2
-        min-height: inherit
-        max-height: inherit
-    .product:nth-last-child(2n+1)
-      border-left: 0px !important
-  .affix
-    nav li a
-      font-size: 12px !important
-      padding: 15px 7px !important
-    .logo
-      width: 56px
-      padding-bottom: 0px
-      min-width: 56px
-
-@media only screen and (max-width: 768px)
-  .menu #products
-    article
-      p, ul, h2
-        min-height: inherit
-        max-height: inherit
-    .product:nth-last-child(2n+1)
-      border-left: 0px !important
 
 @media only screen and (max-width: 768px)
   .menu #products .product:nth-last-child(odd)
@@ -1018,14 +944,6 @@ footer
     border-top: 1px solid rgba(0, 0, 0, 0.2)
   #posts
     padding: 50px 0
-
-#post .wyimek
-  padding: 20px 0
-  font-weight: 900
-  font-size: 16px
-
-.post
-  #posts
     article
       padding: 15px 0px
       .wraper
@@ -1077,7 +995,6 @@ footer
             -webkit-transition: all 0.3s
             transition: all 0.3s
         .zdj-post
-          background: image-url(zaslepka)
           position: relative
           background-size: cover !important
           background-position: center !important
@@ -1106,8 +1023,6 @@ footer
           -webkit-box-orient: vertical
           letter-spacing: 2px
           font-size: 21px
-          max-height: 46px
-          min-height: 46px
       p
         font-weight: 400
         font-size: 14px
@@ -1118,8 +1033,6 @@ footer
         -webkit-line-clamp: 4
         -webkit-box-orient: vertical
         line-height: 16px
-        max-height: 66px
-        min-height: 66px
   .left
     position: relative
     width: 25%
@@ -1128,7 +1041,6 @@ footer
     .wraper-zdj-post
       overflow: hidden
       .zdj-post
-        background: image-url(zaslepka)
         background-position: center
         background-size: cover
         background-repeat: none
@@ -1216,15 +1128,15 @@ footer
 #onas, #galeria
   background: image-url(bg-top-body)
   background-position: top center
-  padding: 85px 0px 50px
-  /*margin-top: -50px;
+  padding: 75px 0px 50px
+  margin-top: -50px
   background-repeat: no-repeat
 
 #rezerwacja
   background: image-url(bg-top-body)
   background-position: top center
-  padding: 85px 0px 50px
-  /*margin-top: -50px;
+  padding: 75px 0px 50px
+  margin-top: -50px
   background-repeat: no-repeat
   form
     h3
@@ -1276,8 +1188,8 @@ footer
 #kontakt
   background: image-url(bg-top-body)
   background-position: top center
-  padding: 85px 0px 50px
-  /*margin-top: -50px;
+  padding: 75px 0px 50px
+  margin-top: -50px
   background-repeat: no-repeat
   address
     font-size: 18px
