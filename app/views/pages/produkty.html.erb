@@ -1,8 +1,8 @@
 <% content_for :head do %>
   <meta name="turbolinks-cache-control" content="no-cache">
 <% end %>
-<div class="col-md-12">
-  <% @produkt_page.pageAdds.each do |add| %> 
+<div class="products-addon">
+  <% @produkt_page.pageAdds.try(:each) do |add| %> 
     <%= add.body.html_safe unless add.body.blank? %> 
   <% end %>
 </div>

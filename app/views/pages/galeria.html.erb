@@ -1,6 +1,8 @@
-<% @galeria_page.pageAdds.each do |add| %> 
-  <%= add.body.html_safe unless add.body.blank? %> 
-<% end %>
+<div class='galeria-addon'>
+  <% @galeria_page.pageAdds.each do |add| %> 
+    <%= add.body.html_safe unless add.body.blank? %> 
+  <% end %>
+</div>
 
 <section id="galeria">
   <div class="container">

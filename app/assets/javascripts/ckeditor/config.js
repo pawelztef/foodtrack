@@ -33,6 +33,8 @@ CKEDITOR.editorConfig = function( config )
 
   config.allowedContent = true;
 
+  config.extraPlugins = 'pastecode';
+
   // Toolbar groups configuration.
   config.toolbar_custom = [
     { name: 'document',  items: [ 'Source'] },
