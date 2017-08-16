@@ -1,19 +1,18 @@
-<div class='galeria-addon'>
-  <% @galeria_page.pageAdds.each do |add| %> 
-    <%= add.body.html_safe unless add.body.blank? %> 
-  <% end %>
-</div>
-
 <section id="galeria">
   <div class="container">
     <div class="row">
+      <div class='col-md-12'>
+        <% @galeria_page.pageAdds.each do |add| %> 
+          <%= add.body.html_safe unless add.body.blank? %> 
+        <% end %>
+      </div>
       <% @popular.each do |popular| %>
         <div class="col-sm-12 col-md-3">
           <div class="thumbnail">
             <%= image_tag popular.images.low_resolution.url %>
             <%# <div class="caption"> %>
-            <%#     <%= popular.user.username %1> %>
-            <%#   </div> %>
+              <%#     <%= popular.user.username %1> %>
+              <%#   </div> %>
           </div>
         </div>
       <% end %>

@@ -1,6 +1,11 @@
-<div class="o-nas-addon">
-  <% @historia_page.pageAdds.each do |add| %> 
-    <%= add.body.html_safe unless add.body.blank? %> 
-  <% end %>
-</div>
-
+<section id="onas">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <% @historia_page.pageAdds.each do |add| %> 
+          <%= add.body.html_safe unless add.body.blank? %> 
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

@@ -3,11 +3,13 @@
 <% end %>
 <div class='menu'>
   <%= render "products", carousel_products: @products %>
-  <div class="row">
-    <div class="col-md-12">
-      <% @produkt_page.pageAdds.try(:each) do |add| %> 
-        <%= add.body.html_safe unless add.body.blank? %> 
-      <% end %>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <% @produkt_page.pageAdds.try(:each) do |add| %> 
+          <%= add.body.html_safe unless add.body.blank? %> 
+        <% end %>
+      </div>
     </div>
   </div>
   <section id="products">
