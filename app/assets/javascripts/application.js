@@ -22,6 +22,9 @@
 //= require bootstrap_sb_admin_base_v2
 //= require cocoon
 //= require ckeditor/init
+//= require ckeditor/config
+//= require ckeditor/plugins/pastecode/plugin
+//= require ckeditor/plugins/pastecode/lang/en
 //= require jquery.validate
 //= require jquery.validate.additional-methods
 //= require jquery.validate.localization/messages_pl
