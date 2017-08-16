@@ -88,4 +88,7 @@ module ApplicationHelper
     (tag_one + tag_two).html_safe
   end
 
+  def set_active
+  end
+
 end

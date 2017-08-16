@@ -10,6 +10,7 @@ class QueriesController < ApplicationController
   def create
     @query = Query.new(query_params)
     @query.catering_flag = false
+    @settings = Setting.first
     if @query.save
       ClientQueriesMailer.client_query(@query).deliver
       redirect_to queries_new_url, notice: 'Query was successfully created.'
