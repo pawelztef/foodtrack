@@ -2,7 +2,7 @@
   <%= link_to material_icon.add, new_backend_product_path, data: {toggle: 'tooltip'}, title: 'Nowy Produkt', class: 'btn btn-default btn-xs' %> 
 <% end %> 
 <div class="well">
-  <table class="table responsive no-wrap table-striped">
+  <table id="products-table" class="table responsive no-wrap table-striped">
     <% if @backend_products.empty? %> 
       <p class="lead text-center">Brak danych.</p>
     <% else %> 
@@ -13,7 +13,7 @@
           <th>Cena</th>
           <th>Publikacja</th>
           <th>Slider</th>
-          <th colspan="3">Akcje</th>
+          <th>Akcje</th>
         </tr>
       </thead>
       <tbody>

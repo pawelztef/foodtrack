@@ -3,6 +3,7 @@ $base-2: #7f7f7f
 $base-3: #999999
 $base-4: #a6a6a6
 $base-5: #e5e5e5
+$gray: #777
 $bg: #787878
 // custom theme
 $glowny:#028ab7
@@ -15,6 +16,17 @@ $small: "only screen and (max-width: 768px)"
 $medium: "only screen and (max-width: 992px)"
 $x-medium: "only screen and (max-width: 1200px)"
 $large: "only screen and (max-width: 1920px)"
+
+$phone : '(max-width: 480px)'
+$tablet-portrait: '(max-width: 767px)'
+$tablet-landscape: '(min-width: 768px) and (max-width: 979px)'
+$large-desktop: '(min-width: 1200px)'
+
+=respond-to($media)
+  @media only screen and #{$media} 
+    @content;
+    
+
 
 =font-face($family, $path, $svg, $weight: normal, $style: normal)
   @font-face

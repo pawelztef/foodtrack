@@ -48,34 +48,7 @@
         <% end %> 
       </div>
     </div>
-    <div class="panel panel-default last-published-posts">
-      <div class="panel-heading">
-        Wizyty panelu administracyjnego
-        <%= link_to fa_icon('users'), backend_admins_path, class: 'btn btn-default btn-xs pull-right', data: {toggle: 'tooltip'}, title: 'Administratorzy'  %> 
-      </div>
-      <div class="panel-body">
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <td><strong>Imię i Nazwisko</strong></td>
-              <td><strong>IP</strong></td>
-              <td><strong>Zalogowany</strong></td>
-              <td><strong>Wylogowany</strong></td>
-            </tr>
-          </thead>
-          <tbody>
-            <% @visits.each do |visit| %>
-              <tr>
-                <td> <%= visit.fullname  %> </td>
-                <td> <%= visit.ip %> </td>
-                <td> <%= visit.log_in %> </td>
-                <td> <div class='text-center'><%= visit.log_out.nil? ? material_icon.remove : visit.log_out %></div> </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    
   </div>
   <div class="col-md-5">
     <div class="panel panel-default last-published-posts">
@@ -98,6 +71,36 @@
               <% end %> 
             <% end %> 
           <% end %> 
+        </div>
+      </div>
+    </div>
+    <div class="panel panel-default last-published-posts">
+      <div class="panel-heading">
+        Wizyty panelu administracyjnego
+        <%= link_to fa_icon('users'), backend_admins_path, class: 'btn btn-default btn-xs pull-right', data: {toggle: 'tooltip'}, title: 'Administratorzy'  %> 
+      </div>
+      <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-striped login-statistics">
+            <thead>
+              <tr>
+                <td><strong>Imię i Nazwisko</strong></td>
+                <td><strong>IP</strong></td>
+                <td><strong>Logowanie</strong></td>
+                <%# <td><strong>Wylogowany</strong></td> %>
+              </tr>
+            </thead>
+            <tbody>
+              <% @visits.each do |visit| %>
+                <tr>
+                  <td> <%= visit.fullname  %> </td>
+                  <td> <%= visit.ip %> </td>
+                  <td> <%= visit.log_in %> </td>
+                  <%# <td> <div class='text-center'><%= visit.log_out.nil? ? material_icon.remove : visit.log_out %1></div> </td> %>
+                </tr>
+              <% end %>
+            </tbody>
+            </table>
         </div>
       </div>
     </div>

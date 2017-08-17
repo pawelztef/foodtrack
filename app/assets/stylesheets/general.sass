@@ -73,7 +73,7 @@ body.backend
   background: transparent !important
 
 .page-header
-  margin: -25px 0 20px 0
+  margin: -25px 0 15px 0
   .material-icons
     top: 9px
 .resize-stop
@@ -102,4 +102,24 @@ input[value="Zaloguj się"]
     &:hover
       color: darken(#fff, 10%)
       text-decoration: none
+
+.panel-default
+  .panel-heading
+    color: $glowny
+    .fa
+      color: $glowny
+
+.dataTables_filter
+  label > input
+    @media(max-width: 480px)
+      max-width: 50%
+      
+div.dataTables_length select
+  @media(max-width: 480px)
+    max-width: 40px
+.dataTables_info
+  @media(max-width: 480px)
+    font-size: .8em 
   
+
+

@@ -4,7 +4,7 @@
     <title>Polo Pazzo <%= @title if @title %> </title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Polo Pazo">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
@@ -32,7 +32,7 @@
             <div class="col-md-12">
               <div class="page-header"> 
                 <h2> <%= material_icon.chevron_right.md_36 %> <%= @title ? @title : "Blank" %></h2>
-                <div class="pull-right page-header-buttons">
+                <div class="pull-right page-header-buttons hidden-xs">
                   <%= yield :top_buttons %>
                 </div> 
               </div>
