@@ -5,16 +5,8 @@
 
       <div class="form-inputs">
         <div class="row">
-          <div class="col-md-4">
-            <div class="thumbnail">
-              <% if @backend_product.image.blank? %>
-                <%= image_tag('thumb') %>
-              <% else %> 
-                <%= image_tag @backend_product.image_url.to_s %> 
-              <% end %> 
-            </div>
-          </div>
-          <div class="col-md-8">
+          
+          <div class="col-md-8 product-details">
             <%= f.input :name, label: 'Nazwa' %> 
             <div class="row">
               <div class="col-md-8">
@@ -28,19 +20,28 @@
             <div class="well well-form">
               <div class="form-inline">
                 <div class="row">
-                  <div class="col-xs-6">
+                  <div class="col-md-6 col-xs-12">
                     <%= f.input :image, label: 'Zdjęcie', as: :file %> 
                   </div>
-                  <div class="col-xs-3">
+                  <div class="col-md-3 col-xs-12">
                     <%= f.label 'Publikuj' %> <br>
                     <%= f.input :publish, as: :boolean, label: false   %> 
                   </div>
-                  <div class="col-xs-3">
+                  <div class="col-md-3 col-xs-12">
                     <%= f.label 'Slider' %> <br>
                     <%= f.input :expose, as: :boolean, label: false   %> 
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="thumbnail product-con">
+              <% if @backend_product.image.blank? %>
+                <%= image_tag 'zaslepka' %>
+              <% else %> 
+                <%= image_tag @backend_product.image_url.to_s %> 
+              <% end %> 
             </div>
           </div>
         </div>
