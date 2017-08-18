@@ -21,6 +21,6 @@ class QueriesController < ApplicationController
 
   private
   def query_params
-    params.require(:query).permit(:fullname, :email, :phone, :body)
+    params.require(:query).permit(:fullname, :town, :email, :phone, :body)
   end
 end
