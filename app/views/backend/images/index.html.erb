@@ -1,10 +1,9 @@
 
 <% content_for :top_buttons do %>
-  <%= link_to material_icon.add, new_backend_image_path, remote: true, data: {toggle: 'tooltip'}, title: 'Dodaj zdjęcie', id: 'image-link', class: 'btn btn-default btn-xs'  %> 
 <% end %> 
 
 <div id="progress">
-    <div class="bar" style="width: 0%;"></div>
+  <div class="bar" style="width: 0%;"></div>
 </div>
 <div class="well">
   <%= form_for [:backend, Image.new] do |img| %>
@@ -14,17 +13,37 @@
     <% if @images.blank? %> 
       <p class="lead text-center">Brak zdjęć w galerii.</p>
     <% end %> 
+
+    <%# <% @images.each do |img| %1> %> 
+    <%#   <div class="col-md-15 col-sm-3 col-xs-12"> %>
+      <%#     <div class="thumbnail"> %>
+        <%#       <div class="image-class" style="background: url( <%= img.image_url %1> )" ></div> %>
+        <%#       <div class="caption"> %>
+          <%#         <p> <%= img.image_title %1> %>
+          <%#       <%= link_to fa_icon('trash-o'), backend_image_path(img.id), method: :delete, data: {confirm: 'Jesteś pewien?'}, class: 'btn btn-default btn-xs pull-right' %1> %> 
+          <%#         </p> %>
+          <%#       </div> %>
+        <%#     </div> %>
+      <%#   </div> %>
+    <%# <% end %1> %> 
+
+
+  <div class="row text-center text-lg-left">
+    <% if @images.blank? %> 
+      <p class="lead text-center">Brak zdjęć w galerii.</p>
+    <% end %> 
     <% @images.each do |img| %> 
-      <div class="col-md-15 col-sm-3 col-xs-6">
-        <div class="thumbnail">
-          <div class="image-class" style="background: url( <%= img.image_url %> )" ></div>
-          <div class="caption">
-            <p> <%= img.image_title %>
-          <%= link_to fa_icon('trash-o'), backend_image_path(img.id), method: :delete, data: {confirm: 'Jesteś pewien?'}, class: 'btn btn-default btn-xs pull-right' %> 
-            </p>
+      <div class="col-lg-3 col-md-4 col-xs-12">
+        <div class='gallery-image-wrapper'>
+          <img class="img-fluid img-thumbnail" src= <%= img.image_url %>  alt= <%= img.image_title %> />
+          <div class="cap">
+            <p class="text-left"> <%= img.image_title %> </p>
+            <%= link_to fa_icon('trash-o'), backend_image_path(img.id), method: :delete, data: {confirm: 'Jesteś pewien?'}, class: 'btn btn-default btn-xs pull-right' %> 
           </div>
         </div>
       </div>
     <% end %> 
+  </div>
+
   </div>
 </div>

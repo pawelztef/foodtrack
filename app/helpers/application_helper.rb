@@ -63,6 +63,13 @@ module ApplicationHelper
       content_tag tag_name.to_sym, nil, class: 'zdj-post'
     end 
   end
+  def set_product_image (product, tag_name)
+    if product.try(:image_url) 
+      content_tag tag_name.to_sym, nil, class: 'image-con', style: "background-image: url(#{product.image_url})"
+    else 
+      content_tag tag_name.to_sym, nil, class: 'image-con'
+    end 
+  end
 
   def set_pin(stop)
     if stop.active
