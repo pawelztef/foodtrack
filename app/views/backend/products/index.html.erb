@@ -19,7 +19,7 @@
       <tbody>
         <% @backend_products.each do |backend_product| %>
           <tr>
-            <td> <%= image_tag backend_product.image_url(:thumb).to_s, class: 'img-thumbnail'  %> </td>
+            <td> <%= image_tag backend_product.image_url(:thumb).to_s, class: 'img-thumbnail backend-product-img'  %> </td>
             <td> <%= backend_product.name %> </td>
             <td> <%= backend_product.price %> </td>
             <td> <%= backend_product.publish %> </td>

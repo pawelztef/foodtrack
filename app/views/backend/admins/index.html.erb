@@ -11,38 +11,40 @@
 <div class="well">
   <div class="row">
     <div class="col-md-12">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <td><strong>Imię i Nazwisko</strong></td>
-            <td><strong>Email</strong></td>
-            <td><strong>Status</strong></td>
-            <%# <th><strong>Akcje</strong></th> %>
-          </tr>
-        </thead>
-        <tbody>
-          <% @admins.each do |admin| %> 
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
             <tr>
-              <td> <%= admin.fullname  %> </td>
-              <td> <%= admin.email %> </td>
-              <td> <%= admin_status(admin) %> </td>
-              <%# <td> %>
-              <%#   <div class="actions-btn-group btn-group " role="group" > %>
-              <%#     <1%# <div class="btn-group" role="group"> %1> %>
-              <%#     <1%#   <%= link_to fa_icon("file-o"), backend_post_path(backend_post), remote: true, class: 'btn btn-default btn-xs' %2> %1> %>
-              <%#     <1%# </div> %1> %>
-              <%#     <1%# <div class="btn-group" role="group"> %1> %>
-              <%#     <1%#   <%= link_to fa_icon("pencil-square-o"), edit_backend_post_path(backend_post), class: 'btn btn-default btn-xs' %2> %1> %>
-              <%#     <1%# </div> %1> %>
-              <%#     <1%# <div class="btn-group" role="group"> %1> %>
-              <%#     <1%#   <%= link_to fa_icon("trash-o"), backend_post_path(backend_post), method: :delete, data: { confirm: 'Jesteś pewien?' }, class: 'btn btn-default btn-xs' %2> %1> %>
-              <%#     <1%# </div> %1> %>
-              <%#   </div> %>
-              <%# </td> %>
+              <td><strong>Imię i Nazwisko</strong></td>
+              <td><strong>Email</strong></td>
+              <td><strong>Status</strong></td>
+              <%# <th><strong>Akcje</strong></th> %>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% @admins.each do |admin| %> 
+              <tr>
+                <td> <%= admin.fullname  %> </td>
+                <td> <%= admin.email %> </td>
+                <td> <%= admin_status(admin) %> </td>
+                <%# <td> %>
+                  <%#   <div class="actions-btn-group btn-group " role="group" > %>
+                    <%#     <1%# <div class="btn-group" role="group"> %1> %>
+                      <%#     <1%#   <%= link_to fa_icon("file-o"), backend_post_path(backend_post), remote: true, class: 'btn btn-default btn-xs' %2> %1> %>
+                      <%#     <1%# </div> %1> %>
+                    <%#     <1%# <div class="btn-group" role="group"> %1> %>
+                      <%#     <1%#   <%= link_to fa_icon("pencil-square-o"), edit_backend_post_path(backend_post), class: 'btn btn-default btn-xs' %2> %1> %>
+                      <%#     <1%# </div> %1> %>
+                    <%#     <1%# <div class="btn-group" role="group"> %1> %>
+                      <%#     <1%#   <%= link_to fa_icon("trash-o"), backend_post_path(backend_post), method: :delete, data: { confirm: 'Jesteś pewien?' }, class: 'btn btn-default btn-xs' %2> %1> %>
+                      <%#     <1%# </div> %1> %>
+                    <%#   </div> %>
+                  <%# </td> %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>
