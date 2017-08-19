@@ -7,5 +7,6 @@ $(".closeTrasa").on("click", function() {
 $('body').on('hidden.bs.modal', '.modal', function (e) {
   $(e.target).removeData('bs.modal');
   $('.modal').remove();
+  location.reload();
 });
 

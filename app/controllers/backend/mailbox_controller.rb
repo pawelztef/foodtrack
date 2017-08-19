@@ -7,6 +7,8 @@ class Backend::MailboxController < ApplicationController
   end
   def show
     @query = Query.find(params[:id])
+    @query.read = true
+    @query.save
     respond_to do |format|
       format.html
       format.js

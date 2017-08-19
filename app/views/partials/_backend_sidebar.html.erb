@@ -10,7 +10,13 @@
     <%= link_to '<i class="material-icons">dashboard</i> Dashboard'.html_safe, backend_dashboards_path %> 
   </li>
   <li>
-    <%= link_to '<i class="material-icons">inbox</i> Zapytania'.html_safe, backend_mailbox_index_path %>
+    <%= link_to backend_mailbox_index_path do %>
+      <i class="material-icons">inbox</i>
+      Zapytania
+      <% if @unreaded > 0 %>
+        <div class="inbox-badge"> <%= @unreaded %> </div>
+      <% end %>
+    <% end %> 
   </li>
   <li>
     <%= link_to '<i class="material-icons">create</i> Posty'.html_safe, '/auth/facebook' %>

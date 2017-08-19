@@ -3,9 +3,21 @@ module ApplicationHelper
 
   def catering_status(query)
     if query.catering_flag
-      material_icon.done.css_class('text-success catering-flag')
+      material_icon.done.css_class('catering-flag')
     else
     end
+  end
+
+  def read_status(query)
+    if query.read
+      fa_icon('envelope-open-o', class: 'status ').html_safe
+    else
+      fa_icon('envelope-o', class: 'status ').html_safe
+    end
+  end
+
+  def read_status_class(query)
+    'read ' if query.read
   end
 
   def track_status(track)
