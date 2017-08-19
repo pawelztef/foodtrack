@@ -6,16 +6,18 @@
         <th>Email</th>
         <th>Telefon</th>
         <th>Katering</th>
+        <th>Status</th>
         <th>Akcje</th>
       </tr>
     </thead>
     <tbody>
       <% @queries.each do |query| %>
-        <tr>
+        <tr class="mailbox-row <%= read_status_class(query) %>">
           <td> <%= query.fullname %>  </td>
           <td> <%= query.email %>  </td>
           <td> <%= query.phone %>  </td>
           <td> <%= catering_status(query) %>  </td>
+          <td> <%= read_status(query) %> </td>
           <td>
             <div class="actions-btn-group btn-group btn-group-of-two" role="group" >
               <div class="btn-group" role="group">
