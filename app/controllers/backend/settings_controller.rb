@@ -44,12 +44,15 @@ class Backend::SettingsController < ApplicationController
                                     :address_line1,
                                     :address_line2,
                                     :email,
-                                    :phone)
+                                    :phone,
+                                    social_icons_attributes: SocialIcon.attribute_names.map(&:to_sym).push(:_destroy)) 
   end
 
   def set_settings
     @settings = safe_find('Setting')
     @title = 'Ustawienia aplikacji'
+    @social_icons = @settings.social_icons.limit(4)
+    byebug
   end
 
 end

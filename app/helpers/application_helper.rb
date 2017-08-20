@@ -108,10 +108,8 @@ module ApplicationHelper
   end
 
   def stop_working_hours_modal(stop)
-      "od: #{I18n.localize(stop.date, format: '%d %b %Y - %H:%M')} <br>do: #{I18n.localize(stop.date_out, format: '%d %b %Y - %H:%M')} ".html_safe
+    "od: #{I18n.localize(stop.date, format: '%d %b %Y - %H:%M')} <br>do: #{I18n.localize(stop.date_out, format: '%d %b %Y - %H:%M')} ".html_safe
   end
 
-  def set_active
-  end
 
 end
