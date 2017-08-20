@@ -5,12 +5,17 @@
   <div class="well">
     <p class="lead">Ustawienia Frontend</p>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-5">
         <%= s.input :posts_on_wall, label: 'Posty na stronie Home', as: :select, collection: (1..20), default: @settings.posts_on_wall %> 
       </div>
-      <div class="col-md-2">
+      <div class="col-md-2 col-md-offset-1">
         <%= s.label 'Aktualne logo' %><br> 
-        <%= @settings.image.blank? ? 'Brak' : File.basename(@settings.image_url) %>
+        <% if @settings.image? %>
+          <%= image_tag @settings.image_url(:mini) %> 
+        <% else %>
+          <span>brak</span>
+        <% end %> 
+
       </div>
       <div class="col-md-4">
         <%= s.input :image, as: :file, label: 'Wybierz logo' %> 
@@ -54,29 +59,6 @@
     </div>
   </div>
   <div class="well">
-    <p class="lead">Ustawienia menu social media </p>
-    <div class="row">
-      <div class="col-md-12">
-        <%= s.simple_fields_for :social_icons, @social_icons, html: {multipart: true} do |icon| %> 
-          <div class='well'>
-            <div class="row">
-              <div class="col-md-2">
-                <label class="control-label">Ikona</label><br>
-                <%= image_tag @social_icons[icon.options[:child_index]].image_url(:mini) if @social_icons[icon.options[:child_index]].image? %> 
-              </div>
-              <div class='col-md-6'>
-                <%= icon.input :url_address, label: 'Link' %> 
-              </div>
-              <div class='col-md-4'>
-                <%= icon.input :image, as: :file, label: 'Wybierz plik' %> 
-              </div>
-            </div>
-          </div>
-        <% end %> 
-      </div>
-    </div>
-  </div>
-  <div class="well">
     <p class="lead">Ustawienia API Facebook</p>
     <div class="row">
       <div class="col-md-12">
@@ -87,6 +69,34 @@
       </div>
     </div>
   </div>
+  <div class="well">
+    <p class="lead">Ustawienia menu social media </p>
+    <div class="row">
+      <div class="col-md-12">
+        <%= s.simple_fields_for :social_icons, @social_icons, html: {multipart: true} do |icon| %> 
+          <div class='well'>
+            <div class="row">
+              <div class="col-md-1 social-icons">
+                <label class="control-label">Ikona</label><br>
+                <% if @social_icons[icon.options[:child_index]].image? %>
+                  <%= image_tag @social_icons[icon.options[:child_index]].image_url(:mini)  %> 
+                <% else %>
+                  <span>brak</span>
+                <% end %> 
+              </div>
+              <div class='col-md-8'>
+                <%= icon.input :url_address, label: 'URL' %> 
+              </div>
+              <div class='col-md-3'>
+                <%= icon.input :image, as: :file, label: 'Wybierz plik', input_html: {class: 'social-icons-file-upload'} %> 
+              </div>
+            </div>
+          </div>
+        <% end %> 
+      </div>
+    </div>
+  </div>
+
   <div class="well">
     <%= s.submit 'Zapisz', class: 'btn btn-default' %> 
   </div>

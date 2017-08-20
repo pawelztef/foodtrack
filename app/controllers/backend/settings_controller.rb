@@ -52,7 +52,6 @@ class Backend::SettingsController < ApplicationController
     @settings = safe_find('Setting')
     @title = 'Ustawienia aplikacji'
     @social_icons = @settings.social_icons.limit(4)
-    byebug
   end
 
 end
