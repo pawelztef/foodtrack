@@ -1,5 +1,6 @@
 class Setting < ActiveRecord::Base
  mount_uploader :image, LogoUploader
+ has_many :social_icons, dependent: :destroy
   
  def smtp_username
    Settings.reload!
