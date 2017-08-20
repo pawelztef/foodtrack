@@ -12,7 +12,7 @@ class Backend::SettingsController < ApplicationController
 
   def index
     if !current_admin.valid_password?(params[:password])
-      redirect_to backend_dashboards_path, notice: 'Niepoprawne hasło - brak dostępu.' 
+      redirect_to backend_dashboards_path, alert: 'Niepoprawne hasło - brak dostępu.' 
     end
   end
 
@@ -25,9 +25,8 @@ class Backend::SettingsController < ApplicationController
   def update
     if @settings.update(settings_params)
       render :index, notice: 'Ustawienia zostały zapisane.'
-      # redirect_to backend_settings_path, notice: 'Ustawienia zostały zapisane.'
     else
-      redirect_to backend_settings_path, warning: 'Wystąpił problem, ustawienia nie zoatały zapisane.'
+      redirect_to backend_settings_path, alert: 'Wystąpił problem, ustawienia nie zoatały zapisane.'
     end
   end
 
