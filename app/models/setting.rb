@@ -17,38 +17,6 @@ class Setting < ActiveRecord::Base
    write_to_file('smtp_pass', new_pass)
    Settings.reload!
  end
-
- def instagram_id
-   Settings.reload!
-   Settings.instagram_id
- end
- def instagram_id=(new_id)
-   write_to_file('instagram_id', new_id)
- end
-
- def instagram_secret
-   Settings.reload!
-   Settings.instagram_secret
- end
- def instagram_secret=(new_secret)
-   write_to_file('instagram_secret', new_secret)
- end
-
- def instagram_token
-   Settings.reload!
-   Settings.instagram_token
- end
- def instagram_token=(new_token)
-   write_to_file('instagram_token', new_token)
- end
-
- def maps_api_key
-   Settings.reload!
-   Settings.maps_api_key
- end
- def maps_api_key=(new_api)
-   write_to_file('maps_api_key', new_api)
- end
  
  def facebook_app_id
    Settings.reload!
