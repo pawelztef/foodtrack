@@ -51,6 +51,15 @@ class Backend::SettingsController < ApplicationController
   def set_settings
     @settings = safe_find('Setting')
     @title = 'Ustawienia aplikacji'
+    social_icons_instances
+  end
+
+  def social_icons_instances
+    if @settings.social_icons.empty?
+      4.times do
+        @settings.social_icons << SocialIcon.new
+      end
+    end 
     @social_icons = @settings.social_icons.limit(4)
   end
 
