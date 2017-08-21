@@ -41,7 +41,7 @@
                         <tr>
                           <td><strong>Nr<strong></td>
                           <td><strong>Postoje</strong></td>
-                          <td><strong>Data</strong></td>
+                          <td><strong>Czas postoju</strong></td>
                         </tr>
                         <% @track.stops.each_with_index do |s, index| %>
                           <tr>
@@ -49,7 +49,9 @@
                             <td>
                               <%= s.full_street_address %>
                             </td>
-                            <td> <%= s.date %> </td>
+                            <td> 
+                              <%= stop_working_hours_modal s %>
+                            </td>
                           </tr>
                         <% end %> 
                       </table>
@@ -58,6 +60,7 @@
                 </div>
                 <div class="col-sm-12">
                   <button type="button" class="closeTrasa btn btn-default">Zamknij</button>
+                  <%= link_to 'Edytuj', edit_backend_track_path(@track), class: 'btn btn-default' %> 
                 </div>
               </div>
             </div>

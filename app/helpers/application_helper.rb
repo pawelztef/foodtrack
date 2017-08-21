@@ -107,7 +107,18 @@ module ApplicationHelper
     (tag_one + tag_two).html_safe
   end
 
-  def set_active
+  def stop_working_hours_modal(stop)
+    "od: #{I18n.localize(stop.date, format: '%d %b %Y - %H:%M')} <br>do: #{I18n.localize(stop.date_out, format: '%d %b %Y - %H:%M')} ".html_safe
   end
+
+
+  def set_social_links(settings)
+    if settings.social_icons.present?
+      settings.social_icons.collect do |i|
+        concat(link_to (image_tag i.image_url(:mini)), i.url_address)
+      end
+    end
+  end
+
 
 end

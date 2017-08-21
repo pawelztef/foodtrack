@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170819082139) do
+ActiveRecord::Schema.define(version: 20170820101348) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
@@ -179,6 +179,14 @@ ActiveRecord::Schema.define(version: 20170819082139) do
     t.string   "address_line2",    limit: 255
     t.string   "email",            limit: 255
     t.string   "phone",            limit: 255
+  end
+
+  create_table "social_icons", force: :cascade do |t|
+    t.string   "url_address", limit: 255
+    t.integer  "setting_id",  limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "image",       limit: 255
   end
 
   create_table "stops", force: :cascade do |t|
