@@ -112,4 +112,13 @@ module ApplicationHelper
   end
 
 
+  def set_social_links(settings)
+    if settings.social_icons.present?
+      settings.social_icons.collect do |i|
+        concat(link_to (image_tag i.image_url(:mini)), i.url_address)
+      end
+    end
+  end
+
+
 end

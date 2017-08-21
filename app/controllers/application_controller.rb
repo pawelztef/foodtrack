@@ -1,13 +1,13 @@
 class ApplicationController < ActionController::Base
+  include Reuseable
   protect_from_forgery with: :exception
   before_action :configure_premitted_parameters, if: :devise_controller?
-  before_action :set_unreaded
+  before_action :set_instances
   layout :layout_by_resource
 
   def after_sign_in_path_for(resource)
     backend_dashboards_path
-    #change when neded
-    end
+  end
 
   protected
   def configure_premitted_parameters
@@ -71,7 +71,8 @@ class ApplicationController < ActionController::Base
     backend_admins_path
   end
 
-  def set_unreaded
+  def set_instances
     @unreaded = Query.where(read: false).count
+    @settings = safe_find('Setting')
   end
 end
