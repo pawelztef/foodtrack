@@ -31,6 +31,7 @@ class Backend::PostsController < ApplicationController
     msg = 'Post został zapisany.'
     @title = 'Edycja postu'
     @backend_post = Post.new(backend_post_params)
+    byebug
     respond_to do |format|
       if @backend_post.save
         if params[:publish_on_facebook] == '1' && @backend_post.valid?
