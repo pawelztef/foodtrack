@@ -23,11 +23,9 @@
                   <%= f.label 'Facebook' %><br> 
                   <%= check_box_tag :publish_on_facebook %> 
                 </div>
-                <%= f.simple_fields_for :image do |img| %> 
                   <div class="col-md-4">
                     <%= img.input :image, label: 'Zdjęcie', as: :file %> 
                   </div>
-                <% end %> 
               <% end %> 
             </div>
           </div>
