@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   validates :title, :publish_date, presence: true
   validates :slug, uniqueness: true
   before_save :update_slug
-  mount_uploader :image, PostImageUploader 
+  mount_uploader :image, ImageUploader 
 
   def update_slug
     self.slug = slug.parameterize
