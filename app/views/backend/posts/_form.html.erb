@@ -9,42 +9,35 @@
           <div id='post-details-con' class="col-md-9">
             <%= f.input :title, label: 'Tytuł' %> 
             <%= f.input :slug %> 
-            <div class="form-inline">
-              <div class="row">
-                <div class="col-xs-4">
-                  <%= f.label 'Data publikacji' %><br>
-                  <%= f.input :publish_date, label: false, as: :string %> 
+            <div class="row" id='post-details-row'>
+              <div class="col-md-4">
+                <%= f.label 'Data publikacji' %><br>
+                <%= f.input :publish_date, label: false, as: :string %> 
+              </div>
+              <div class="col-md-2">
+                <%= f.label 'Szkic' %><br> 
+                <%= f.input :draft, as: :boolean, label: false   %> 
+              </div>
+              <% if params[:action] == 'new' %>
+                <div class="col-md-2">
+                  <%= f.label 'Facebook' %><br> 
+                  <%= check_box_tag :publish_on_facebook %> 
                 </div>
-                <div class="col-xs-3">
-                  <%= f.label 'Szkic' %><br> 
-                  <%= f.input :draft, as: :boolean, label: false   %> 
-                </div>
-                <% if params[:action] == 'new' %>
-                  <div class="col-xs-3">
-                    <%= f.label 'Facebook' %><br> 
-                    <%= check_box_tag :publish_on_facebook %> 
+                <%= f.simple_fields_for :image do |img| %> 
+                  <div class="col-md-4">
+                    <%= img.input :image, label: 'Zdjęcie', as: :file %> 
                   </div>
                 <% end %> 
-              </div>
+              <% end %> 
             </div>
           </div>
           <div class="col-md-3">
-            <div class="edit-post-thumb-wrapper">
-              <div class="thumbnail">
-                <%= image_tag (@backend_post.image.nil? ? 'thumb' : @backend_post.image.image_url), class: 'img-thumbnail', id: 'post-thumb'  %> 
-                <%= hidden_field_tag 'post_image_id', @backend_post.image.try(:id) %> 
-                <% unless @backend_post.image.blank? %>
-                  <div class="caption">
-                    <p> <%= @backend_post.image.image_title %> </p>
-                    <%= link_to "#{fa_icon('file-image-o')} Zamień zdjęcie".html_safe, add_image_backend_posts_path(send_to: @backend_post), remote: true %> 
-                    <%= link_to "#{fa_icon('trash-o')} Usuń".html_safe, delete_image_backend_posts_path(id: @backend_post.slug), method: :post, class: "delete-image"  %> 
-                  </div>
-                <% else %>
-                  <div class="caption">
-                    <%= link_to "#{fa_icon('file-image-o')} Dodaj zdjęcie".html_safe, add_image_backend_posts_path(send_to: @backend_post), remote: true %> 
-                  </div>
-                <% end %> 
-              </div>
+            <div class="thumbnail product-con">
+              <% if @backend_post.image.blank? %>
+                <%= image_tag 'zaslepka', id: 'post-thumb' %>
+              <% else %> 
+                <%= image_tag @backend_post.image_url.to_s, id: 'post-thumb' %> 
+              <% end %> 
             </div>
           </div>
         </div>

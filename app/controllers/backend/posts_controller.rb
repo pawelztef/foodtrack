@@ -31,7 +31,6 @@ class Backend::PostsController < ApplicationController
     msg = 'Post został zapisany.'
     @title = 'Edycja postu'
     @backend_post = Post.new(backend_post_params)
-    @backend_post.image = fetch_image
     respond_to do |format|
       if @backend_post.save
         if params[:publish_on_facebook] == '1' && @backend_post.valid?
@@ -85,27 +84,23 @@ class Backend::PostsController < ApplicationController
     end
   end
 
-  def add_image 
-    respond_to do |format|
-      format.html
-      format.js { @images = Image.all }
-    end
-  end
 
   private
 
-  def fetch_image
-    if !params[:post_image_id].empty? 
-      Image.find(params[:post_image_id]) 
-    end
-  end
 
   def set_backend_post
     @backend_post = Post.find_by_slug(params[:id])
   end
 
   def backend_post_params
-    params.require(:post).permit(:facebook, :title, :excerpt, :slug, :image, :publish_date, :draft, :body)
+    params.require(:post).permit(:facebook, 
+                                 :title, 
+                                 :excerpt, 
+                                 :slug, 
+                                 :image, 
+                                 :publish_date, 
+                                 :draft, 
+                                 :body)
   end
 
 end
