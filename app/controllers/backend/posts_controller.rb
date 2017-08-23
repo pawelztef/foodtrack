@@ -56,7 +56,6 @@ class Backend::PostsController < ApplicationController
     @title = 'Edycja postu bloga'
     msg = 'Post został zapisany.'
     @backend_post = Post.find_by_slug(params[:id])
-    @backend_post.image = fetch_image
     respond_to do |format|
       if @backend_post.update(backend_post_params)
         format.html { redirect_to backend_posts_url, notice: msg }
@@ -71,16 +70,6 @@ class Backend::PostsController < ApplicationController
     @backend_post.destroy
     respond_to do |format|
       format.html { redirect_to backend_posts_url, notice: msg }
-    end
-  end
-
-  def delete_image
-    @post = Post.find_by_slug(params[:id])
-    @post.image = nil
-    if @post.save
-      redirect_to edit_backend_post_path(params[:id]), notice: 'Zdjęcie zostało pomyślnie usunięte z postu.'
-    else
-      redirect_to edit_packend_post_path(params[:id]), warning: 'Wystąpił problem, nie można usnąć zdjęcia z postu.'
     end
   end
 
