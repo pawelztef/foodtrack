@@ -14,7 +14,7 @@
             <div class="containter">
               <div class="row">
                 <div class="col-md-3">
-                  <%= image_tag @backend_post.image.image_url(:thumb).to_s, class: 'img-thumbnail'  unless @backend_post.image.blank? %> 
+                  <%= image_tag @backend_post.image_url(:thumb).to_s, class: 'img-thumbnail'  unless @backend_post.image_url.blank? %> 
                 </div>
                 <div class="col-md-8">
                   <%= @backend_post.body.html_safe %> 
