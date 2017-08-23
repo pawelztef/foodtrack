@@ -54,29 +54,29 @@ module ApplicationHelper
   end
 
   def post_link_img(post)
-    if post.image.blank?
-      request.base_url + Setting.first.image_url if Setting.first.image_url
+    if post.image?
+      request.base_url + post.image_url
     else
-      request.base_url + post.image.image_url
+      request.base_url + Setting.first.image_url if Setting.first.image_url
     end
   end
 
   def set_post_img(post, tag_name)
-    if post.image.try(:image_url) 
-      content_tag tag_name.to_sym, nil, class: 'zdj-post', style: "background-image: url(#{post.image.image_url})"
+    if post.image?
+      content_tag tag_name.to_sym, nil, class: 'zdj-post', style: "background-image: url(#{post.image_url})"
     else 
       content_tag tag_name.to_sym, nil, class: 'zdj-post'
     end 
   end
   def set_product_img (product, tag_name)
-    if product.try(:image_url) 
+    if product.image?
       content_tag tag_name.to_sym, nil, class: 'zdj-post', style: "background-image: url(#{product.image_url})"
     else 
       content_tag tag_name.to_sym, nil, class: 'zdj-post'
     end 
   end
   def set_product_image (product, tag_name)
-    if product.try(:image_url) 
+    if product.image?
       content_tag tag_name.to_sym, nil, class: 'image-con', style: "background-image: url(#{product.image_url})"
     else 
       content_tag tag_name.to_sym, nil, class: 'image-con'

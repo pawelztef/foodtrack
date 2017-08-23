@@ -56,8 +56,13 @@ body.backend
 
 .page-header-buttons
   position: relative
-  bottom: 38px
+  bottom: 40px
   margin-right: 30px
+  float: right
+  @media(max-width: 502px)
+    float: left
+    bottom: 0
+    margin-bottom: 15px
   .btn-xs
     padding: 1px 4px !important
     line-height: 1.4 !important
@@ -123,4 +128,6 @@ div.dataTables_length select
   
 button.close
   padding-bottom: 15px
-
+.nav
+  .active
+    background: none

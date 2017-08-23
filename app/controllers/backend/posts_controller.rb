@@ -31,7 +31,7 @@ class Backend::PostsController < ApplicationController
     msg = 'Post został zapisany.'
     @title = 'Edycja postu'
     @backend_post = Post.new(backend_post_params)
-    @backend_post.image = fetch_image
+    byebug
     respond_to do |format|
       if @backend_post.save
         if params[:publish_on_facebook] == '1' && @backend_post.valid?
@@ -57,7 +57,6 @@ class Backend::PostsController < ApplicationController
     @title = 'Edycja postu bloga'
     msg = 'Post został zapisany.'
     @backend_post = Post.find_by_slug(params[:id])
-    @backend_post.image = fetch_image
     respond_to do |format|
       if @backend_post.update(backend_post_params)
         format.html { redirect_to backend_posts_url, notice: msg }
@@ -75,37 +74,23 @@ class Backend::PostsController < ApplicationController
     end
   end
 
-  def delete_image
-    @post = Post.find_by_slug(params[:id])
-    @post.image = nil
-    if @post.save
-      redirect_to edit_backend_post_path(params[:id]), notice: 'Zdjęcie zostało pomyślnie usunięte z postu.'
-    else
-      redirect_to edit_packend_post_path(params[:id]), warning: 'Wystąpił problem, nie można usnąć zdjęcia z postu.'
-    end
-  end
-
-  def add_image 
-    respond_to do |format|
-      format.html
-      format.js { @images = Image.all }
-    end
-  end
 
   private
 
-  def fetch_image
-    if !params[:post_image_id].empty? 
-      Image.find(params[:post_image_id]) 
-    end
-  end
 
   def set_backend_post
     @backend_post = Post.find_by_slug(params[:id])
   end
 
   def backend_post_params
-    params.require(:post).permit(:facebook, :title, :excerpt, :slug, :image, :publish_date, :draft, :body)
+    params.require(:post).permit(:facebook, 
+                                 :title, 
+                                 :excerpt, 
+                                 :slug, 
+                                 :image, 
+                                 :publish_date, 
+                                 :draft, 
+                                 :body)
   end
 
 end
