@@ -2,7 +2,7 @@ class Stop < ActiveRecord::Base
   belongs_to :track
   before_save :set_active
   validates :address_line1, :address_line2, :town, :code, :date, presence: true
-  validates :catchphrase, length: {maximum: 50}
+  validates :catchphrase, length: {maximum: 200}
 
   geocoded_by :full_street_address
   after_validation :geocode

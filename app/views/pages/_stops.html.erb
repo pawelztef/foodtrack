@@ -14,13 +14,8 @@
                   <hr>
                   <%= stop_working_hours(stop) %> 
                 </div>
-                  <hr>
-                  <%# <p><i>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </i></p> %>
-                  <p><i>Lorem ipsum dolor sit amet.</i></p>
-                <% if !stop.catchphrase.blank? %>
-                  <hr>
-                  <p><i>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </i></p>
-                <% end %> 
+                <hr>
+                <p><i> <%= stop.catchphrase %> </i></p>
               </div>
             </div>
           <% end %> 
