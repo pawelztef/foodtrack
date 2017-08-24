@@ -27,7 +27,7 @@ pl:
       taken: '%{model} z takim atrybutem już istnieje'
       not_a_number: 'Niepoprawny format'
       record_invalid: 'Niepoprawny rekord'
-      to_long: 'Maksymalna liczba znaków wynosi 100'
+      too_long: 'Maksymalna liczba znaków 100'
   activerecord:
     models:
       user: 'Urzytkownik'
