@@ -13,34 +13,44 @@
                   <button type="button" class="closeImagesIndexModal close">x</button>
                 </div>
               </div>
-              <%= simple_form_for([:backend, @backend_fpost]) do |f| %>
-                <div class="row">
-                  <div class="col-md-3">
-                    <div class="thumbnail product-con">
-                      <% if @backend_fpost.image.blank? %>
-                        <%= image_tag 'zaslepka', id: 'post-thumb' %>
-                      <% else %> 
-                        <%= image_tag @backend_fpost.image_url.to_s, id: 'post-thumb' %> 
-                      <% end %> 
+              <div class="panel panel-default">
+                <div class="panel-heading"><h4>Edycja postu</h4></div>
+                <div class="panel-body">
+                  <%= simple_form_for([:backend, @backend_fpost]) do |f| %>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="thumbnail product-con">
+                          <% if @backend_fpost.image.blank? %>
+                            <%= image_tag 'zaslepka', id: 'post-thumb' %>
+                          <% else %> 
+                            <%= image_tag @backend_fpost.image_url.to_s, id: 'post-thumb' %> 
+                          <% end %> 
+                        </div>
+                      </div>
+                      <div class="col-md-9">
+                        <%= f.error_notification %>
+                        <div class="form-inputs">
+                          <%= f.input :title, label: 'Tytuł' %> 
+                        </div>
+                        <div class="form-inputs">
+                          <%= f.input :body, label: 'Treść' %> 
+                        </div>
+                        <div class="form-inputs">
+                          <%= f.input :image, label: 'Zdjęcie', as: :file %> 
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                  <div class="col-md-9">
-                    <%= f.error_notification %>
-                    <div class="form-inputs">
-                      <%= f.input :title, label: 'Tytuł' %> 
-                    </div>
-                    <div class="form-inputs">
-                      <%= f.input :body, label: 'Treść' %> 
-                    </div>
-                    <div class="form-inputs">
-                      <%= f.input :image, label: 'Zdjęcie', as: :file %> 
-                    </div>
-                  </div>
                 </div>
-                <div class="form-actions">
-                  <%= f.button :submit, 'Publikuj na Facebooku' %>
-                </div>
-              <% end %>
+              </div>
+              <div class="form-actions">
+                <%= f.button :submit, 'Wyślij' %>
+                <%# <%= submit_tag type: 'submit', class: 'btn btn-default' do %1> %>
+                <%#   <i class="fa fa-facebook-official"></i> %> 
+                <%#   Publikuj %>
+                <%# <% end %1> %> 
+                <button type="button" class="closeImagesIndexModal btn btn-default">Zamknij</button>
+              </div>
+            <% end %>
             </div>
           </div>
         </div>

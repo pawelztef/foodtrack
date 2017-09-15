@@ -25,14 +25,6 @@
         </div>
         <div class="form-inputs">
           <%= f.input :image, label: 'Zdjęcie', as: :file %> 
-          <%# <div class="row"> %>
-            <%#   <div class="col-md-3"> %>
-              <%#     <%= f.input :image, label: 'Zdjęcie', as: :file %1> %> 
-              <%#   </div> %>
-            <%#   <div class="col-md-9"> %>
-              <%#     <%= f.input :link_url, label: 'URL zdjęcia' %1> %> 
-              <%#   </div> %>
-            <%# </div> %>
         </div>
       </div>
     </div>
@@ -40,7 +32,10 @@
 
   <div class="well">
     <div class="form-actions">
-      <%= f.button :submit, 'Wyślij' %>
+      <%= button_tag type: 'submit', class: 'btn btn-default' do %>
+        <i class="fa fa-facebook-official submit-fpost"></i> 
+        Publikuj
+      <% end %> 
     </div>
   </div>
 <% end %>
