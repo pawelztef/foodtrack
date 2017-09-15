@@ -1,16 +1,17 @@
-<%# <%= material_icon.chevron_right.md_48.css_class('menu-toggle') %1> %> 
-<div id="nav-icon3">
-  <span></span>
-  <span></span>
-  <span></span>
-  <span></span>
+<div data-toggle="tooltip" title="Nawigacja strony">
+  <div id="nav-icon3" >
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 </div>
 <ul class="sidebar-nav">
   <li>
-    <%= link_to '<i class="material-icons">dashboard</i> Dashboard'.html_safe, backend_dashboards_path %> 
+    <%= link_to '<i class="material-icons">dashboard</i> Dashboard'.html_safe, backend_dashboards_path, data: {toggle: 'tooltip'}, title: 'Panel administracyjny' %> 
   </li>
   <li>
-    <%= link_to backend_mailbox_index_path do %>
+    <%= link_to backend_mailbox_index_path, data: {toggle: 'tooltip'}, title: 'Zaptyania' do %>
       <i class="material-icons">inbox</i>
       Zapytania
       <% if @unreaded > 0 %>
@@ -19,25 +20,22 @@
     <% end %> 
   </li>
   <li>
-    <%= link_to '<i class="material-icons">create</i> Posty'.html_safe, '/auth/facebook' %>
+    <%= link_to '<i class="material-icons">create</i> Posty'.html_safe, '/auth/facebook', data: {toggle: 'tooltip' }, title: 'Blog - Logowanie prze Facebooka' %>
   </li>
   <li>
-    <%= link_to '<i class="material-icons">map</i> Trasy'.html_safe, backend_tracks_path %>
+    <%= link_to '<i class="material-icons">map</i> Trasy'.html_safe, backend_tracks_path, data: {toggle: 'tooltip'}, title: 'Trasy' %>
   </li>
   <li>
-    <%= link_to "<i class='material-icons'>insert_drive_file</i> Podstrony".html_safe, edit_backend_home_page_path(1) %>
-  </li>
-  <%# <li> %>
-  <%#   <%= link_to '<i class="material-icons">photo_album</i> Zdjęcia'.html_safe, backend_images_path %1> %>
-  <%# </li> %>
-  <li>
-    <%= link_to "<i class='material-icons'>local_pizza</i> Produkty".html_safe, backend_products_path %>
+    <%= link_to "<i class='material-icons'>insert_drive_file</i> Podstrony".html_safe, edit_backend_home_page_path(1), data: {toggle: 'tooltip'}, title: 'Podstrony' %>
   </li>
   <li>
-    <%= link_to '<i class="material-icons">people_outline</i> Administratorzy'.html_safe, backend_admins_path  %>
+    <%= link_to "<i class='material-icons'>local_pizza</i> Produkty".html_safe, backend_products_path, data: {toggle: 'tooltip'}, title: 'Produkty' %>
   </li>
   <li>
-    <%= link_to "<i class='material-icons'>settings_applications</i> Ustawienia".html_safe, authenticate_backend_settings_path, remote: true %>
+    <%= link_to '<i class="material-icons">people_outline</i> Administratorzy'.html_safe, backend_admins_path, data: {toggle: 'tooltip'}, title: 'Administratorzy'  %>
+  </li>
+  <li>
+    <%= link_to "<i class='material-icons'>settings_applications</i> Ustawienia".html_safe, authenticate_backend_settings_path, remote: true, data: {toggle: 'tooltip'}, title: 'Ustawienia aplikacji' %>
   </li>
 </ul>
 
