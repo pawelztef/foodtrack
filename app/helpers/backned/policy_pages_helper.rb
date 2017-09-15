@@ -1,0 +1,2 @@
+module Backned::PolicyPagesHelper
+end

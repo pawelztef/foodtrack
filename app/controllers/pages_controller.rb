@@ -46,6 +46,11 @@ class PagesController < ApplicationController
     @historia_page = safe_find("HistoriaPage")
   end
 
+  def polityka_prywatnosci
+    @title = "Polityka Prywatnosci"
+    @policy_page = safe_find('PolicyPage') 
+  end
+
 
   private
   def instagram_init
