@@ -6,23 +6,30 @@
     <div class="row">
 
       <div class="col-md-3">
-        <div class="thumbnail">
-          <%= image_tag (@backend_fpost.image.nil? ? 'thumb' : @backend_fpost.image.image_url), class: 'img-thumbnail', id: 'post-thumb'  %> 
-          <%= hidden_field_tag 'post_image_id' %> 
-          <%= hidden_field_tag 'post_link' %> 
-          <% unless @backend_fpost.image.blank? %>
-            <div class="caption">
-              <p> <%= @backend_fpost.image.image_title %> </p>
-              <%= link_to "#{fa_icon('file-image-o')} Zamień zdjęcie".html_safe, add_image_backend_fposts_path(send_to: @backend_fpost), remote: true %> 
-              <%= link_to "#{fa_icon('trash-o')} Usuń".html_safe, delete_image_backend_fposts_path(id: @backend_fpost.id), remote: true, method: :post, class: "delete-image"  %> 
+        <%# <div class="thumbnail"> %>
+        <%#   <%= image_tag (@backend_fpost.image.nil? ? 'thumb' : @backend_fpost.image.image_url), class: 'img-thumbnail', id: 'post-thumb'  %1> %> 
+        <%#   <%= hidden_field_tag 'post_image_id' %1> %> 
+        <%#   <%= hidden_field_tag 'post_link' %1> %> 
+        <%#   <% unless @backend_fpost.image.blank? %1> %>
+        <%#     <div class="caption"> %>
+        <%#       <p> <%= @backend_fpost.image.image_title %1> </p> %>
+        <%#       <%= link_to "#{fa_icon('file-image-o')} Zamień zdjęcie".html_safe, add_image_backend_fposts_path(send_to: @backend_fpost), remote: true %1> %> 
+        <%#       <%= link_to "#{fa_icon('trash-o')} Usuń".html_safe, delete_image_backend_fposts_path(id: @backend_fpost.id), remote: true, method: :post, class: "delete-image"  %1> %> 
+        <%#     </div> %>
+        <%#   <% else %1> %>
+        <%#     <div class="caption"> %>
+        <%#       <%= link_to "#{fa_icon('file-image-o')} Dodaj zdjęcie".html_safe, add_image_backend_fposts_path(send_to: @backend_fpost), remote: true, id: 'add_fpost_image_link' %1> %> 
+        <%#       <%= content_tag 'a', "#{fa_icon('chain-broken')} Usuń zdjęcie".html_safe, id: 'remove_fpost_image_link', class: 'hidden' %1> %> 
+        <%#     </div> %>
+        <%#   <% end %1> %> 
+        <%# </div> %>
+            <div class="thumbnail product-con">
+              <% if @backend_fpost.image.blank? %>
+                <%= image_tag 'zaslepka', id: 'post-thumb' %>
+              <% else %> 
+                <%= image_tag @backend_fpost.image_url.to_s, id: 'post-thumb' %> 
+              <% end %> 
             </div>
-          <% else %>
-            <div class="caption">
-              <%= link_to "#{fa_icon('file-image-o')} Dodaj zdjęcie".html_safe, add_image_backend_fposts_path(send_to: @backend_fpost), remote: true, id: 'add_fpost_image_link' %> 
-              <%= content_tag 'a', "#{fa_icon('chain-broken')} Usuń zdjęcie".html_safe, id: 'remove_fpost_image_link', class: 'hidden' %> 
-            </div>
-          <% end %> 
-        </div>
       </div>
       <div class="col-md-9">
         <%= f.error_notification %>

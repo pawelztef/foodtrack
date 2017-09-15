@@ -14,7 +14,11 @@
 
             <div class="col-md-12"> 
               <div class="fpost-body">
-                <%= image_tag post.image.image_url(:thumb), class: 'hidden-xs' if !post.image.nil? %> 
+
+                <%# TODO change image tag %>
+
+                <%# <%= image_tag post.image.image_url(:thumb), class: 'hidden-xs' if !post.image.nil? %1> %> 
+
                 <div class="body-text-wrap">
                   <% if post.body.length > 150  %>
                     <%= truncate(post.body, length: 150) %> <br>

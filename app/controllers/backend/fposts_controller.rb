@@ -8,7 +8,7 @@ class Backend::FpostsController < ApplicationController
 
   def index
     @backend_fposts = Fpost.order(created_at: 'DESC').page(params[:page])
-    @title = 'Wall applikacji'
+    @title = 'Wall aplikacji'
   end
 
   def show
