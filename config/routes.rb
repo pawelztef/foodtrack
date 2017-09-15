@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   get 'pages/produkty', path: 'menu'
   get 'pages/historia', path: 'historia'
   get 'pages/produkt_show', path: 'produkt'
+  get 'pages/polityka_prywatnosci', path: 'polityka_prywatnosci'
 
   get 'queries/new', path: 'kontakt'
   post 'queries/create'
@@ -35,6 +36,7 @@ Rails.application.routes.draw do
     resources :blog_pages
     resources :kontakt_katering_pages
     resources :kontakt_pages
+    resources :policy_pages
     resources :produkt_pages
     resources :mailbox, path: 'mailbox'
     resources :images, only: [:new, :create, :destroy, :index]

@@ -1,0 +1,13 @@
+<%= render 'partials/pages_navigation' %> 
+<%= simple_form_for([:backend, @policy_page]) do |f| %>
+  <div class="well">
+    <%= f.simple_fields_for :pageAdds do |pageAdd| %>
+      <%= pageAdd.input :body, as: :ckeditor, label: false, input_html: { ckeditor: { toolbar: 'full', language: 'pl' } } %> 
+    <% end %>  
+  </div>
+  <div class="well">
+    <%= f.button :submit, "Zapisz zminay", class: 'btn btn-default' %>
+    <%= link_to 'Cofnij', backend_dashboards_path, class: 'btn btn-default' %>
+  </div>
+<% end %>
+

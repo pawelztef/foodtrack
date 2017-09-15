@@ -1,0 +1,11 @@
+<section id="policy_page">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <% @policy_page.pageAdds.each do |add| %> 
+          <%= add.body.html_safe unless add.body.blank? %> 
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

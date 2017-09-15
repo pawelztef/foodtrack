@@ -31,7 +31,7 @@
             <ul class="timeline">
               <% @track.stops.each do |stop| %>
                 <li class="<%= cycle("", "timeline-inverted") %>">
-                  <div id="<%= stop.id %>" class="timeline-badge <%= stop.active ? "success" : "" %> "> <%= material_icon.directions_bus %> </div>
+                  <div id="<%= stop.id %>" class="stops timeline-badge <%= stop.active ? "success" : "" %> "> <%= material_icon.directions_bus %> </div>
                   <div class="timeline-panel">
                     <div class="timeline-heading">
                       <h5 class="timeline-title"> <%= stop.full_street_address %> </h5>

@@ -1,5 +1,5 @@
 $(function() {
-  $('.timeline-badge').on('click', function() { 
+  $('.stops').on('click', function() { 
     var id = $(this).attr("id");
     $.ajax({
       type: "POST",
@@ -10,7 +10,7 @@ $(function() {
         stop_id: id
       })
     })
-    $('.timeline-badge').removeClass('success');
+    $('.stops').removeClass('success');
     $(this).addClass('success');
   });
 })

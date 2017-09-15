@@ -2,49 +2,55 @@
   <meta name="turbolinks-cache-control" content="no-cache">
 <% end %>
 <div class="modal fade" id="imageIndexModal">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-body">
         <div class="row">
           <div class="col-xs-12">
             <div class="containter">
-              <%= simple_form_for([:backend, @backend_fpost], input_html: {multipart: true}) do |f| %>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <button type="button" class="closeImagesIndexModal close">x</button>
-                  </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <button type="button" class="closeImagesIndexModal close">x</button>
                 </div>
-                <div class="row">
-                  <div class="col-md-12">
-                    <%= f.error_notification %>
-                    <div class="form-inputs">
-                      <%= f.input :body, label: 'Treść', input_html: { rows: 5, class: 'resize-stop' } %> 
-                    </div>
-                    <div class="form-inputs">
-                      <%= f.input :link_url, label: 'Link URL' %> 
-                    </div>
-                    <button class="btn btn-default btn-xs" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample"> Dodaj zdjęcie </button>
-                    <br>
-                    <br>
-                  </div>
-                    <div class="collapse" id="collapseExample">
-                      <% @images.try(:each) do |img| %> 
-                        <div class="col-xs-6 col-md-3">
-                          <div class="thumbnail">
-                            <%= link_to image_tag(img.image_url.to_s), 'http://www.google.com' %> 
-                          </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading"><h4>Edycja postu</h4></div>
+                <div class="panel-body">
+                  <%= simple_form_for([:backend, @backend_fpost]) do |f| %>
+                    <div class="row">
+                      <div class="col-md-3">
+                        <div class="thumbnail product-con">
+                          <% if @backend_fpost.image.blank? %>
+                            <%= image_tag 'zaslepka', id: 'post-thumb' %>
+                          <% else %> 
+                            <%= image_tag @backend_fpost.image_url.to_s, id: 'post-thumb' %> 
+                          <% end %> 
                         </div>
-                      <% end %> 
+                      </div>
+                      <div class="col-md-9">
+                        <%= f.error_notification %>
+                        <div class="form-inputs">
+                          <%= f.input :title, label: 'Tytuł' %> 
+                        </div>
+                        <div class="form-inputs">
+                          <%= f.input :body, label: 'Treść' %> 
+                        </div>
+                        <div class="form-inputs">
+                          <%= f.input :image, label: 'Zdjęcie', as: :file %> 
+                        </div>
+                      </div>
                     </div>
                 </div>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <br>
-                    <br>
-                    <%= f.button :submit, 'Wyślij' %>
-                  </div>
-                </div>
-              <% end %>
+              </div>
+              <div class="form-actions">
+                <%= f.button :submit, 'Wyślij' %>
+                <%# <%= submit_tag type: 'submit', class: 'btn btn-default' do %1> %>
+                <%#   <i class="fa fa-facebook-official"></i> %> 
+                <%#   Publikuj %>
+                <%# <% end %1> %> 
+                <button type="button" class="closeImagesIndexModal btn btn-default">Zamknij</button>
+              </div>
+            <% end %>
             </div>
           </div>
         </div>
@@ -52,21 +58,4 @@
     </div>
   </div>
 </div>
-<script>
-<%# $(function() { %>
-    <%#   $('.images-carousel').slick({ %>
-        <%#   slidesToShow: 5, %>
-          <%#   slidesToScroll: 1 %>
-          <%#   }); %>
-      <%# }) %>
-</script>
-<%# <% @images.each do |img| %1> %> 
-<%#   <div class="col-xs-2 col-md-2"> %>
-  <%#     <div class="thumbnail"> %>
-    <%#       <%= link_to image_tag(img.image_url.to_s), add_image_backend_posts_path(id: params[:id], img_id: img.id), class: 'gallery-image', id: img.id  %1> %> 
-    <%#       <1%# <div class="caption"> %1> %>
-      <%#         <1%#   <p> <%= img.image_title %2> </p> %1> %>
-      <%#         <1%# </div> %1> %>
-    <%#     </div> %>
-  <%#   </div> %>
-<%# <% end %1> %> 
+

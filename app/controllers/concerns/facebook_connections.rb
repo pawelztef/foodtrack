@@ -45,7 +45,7 @@ module FacebookConnections
     if Rails.env == "development"
       "http://r.ddmcdn.com/s_f/o_1/APL/uploads/2014/10/5-human-foods-cats-can-eat0.jpg" 
     else
-      root_url + post.image.image_url unless post.image.nil?
+      root_url + post.image_url unless post.image.nil?
     end
   end
 

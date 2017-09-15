@@ -8,7 +8,7 @@ class Backend::FpostsController < ApplicationController
 
   def index
     @backend_fposts = Fpost.order(created_at: 'DESC').page(params[:page])
-    @title = 'Wall applikacji'
+    @title = 'Wall Facebooka'
   end
 
   def show
@@ -16,8 +16,7 @@ class Backend::FpostsController < ApplicationController
 
   def new
     @backend_fpost = Fpost.new
-    @images = Image.all
-    @title = 'Nowy post'
+    @title = 'Nowy post Facebooka'
     respond_to do |format|
       format.js
       format.html
@@ -30,7 +29,6 @@ class Backend::FpostsController < ApplicationController
 
   def create
     @backend_fpost = Fpost.new(backend_fpost_params)
-    @backend_fpost.image = fetch_image 
     posted = post_to_timeline(@backend_fpost)
     @backend_fpost.facebook_id = posted['id']
     respond_to do |format|
@@ -45,9 +43,7 @@ class Backend::FpostsController < ApplicationController
   def update
     @title = 'Edycja postu'
     msg = 'Post został umieszczony na osi czasu.'
-    byebug
     @backend_fpost.assign_attributes(backend_fpost_params)
-    @backend_fpost.image = fetch_image 
     @backend_fpost.link_url = params[:post_link]
     begin
       @page_graph.delete_object(@backend_fpost.facebook_id)
@@ -101,7 +97,7 @@ class Backend::FpostsController < ApplicationController
   end
 
   def backend_fpost_params
-    params.require(:fpost).permit(:body, :facebook_id, :link_url, :title)
+    params.require(:fpost).permit(:image, :body, :facebook_id, :link_url, :title)
   end
 
   def fetch_image
