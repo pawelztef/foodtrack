@@ -47,9 +47,9 @@ module ApplicationHelper
     end
   end
 
-  def set_active_class(path)
+  def set_active_class(path, css_class=" active-menu")
     if current_page?(path)
-      ' active-menu'
+      css_class
     end
   end
 
