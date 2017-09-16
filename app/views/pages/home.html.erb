@@ -27,10 +27,14 @@ $(function() {
 </script>
 
 <%= render "stops", track: @track %>
-<div class='home-addon'>
-  <% @home_page.pageAdds.try(:each) do |add| %> 
-    <%= add.body.html_safe unless add.body.blank? %> 
-  <% end %>
+<div class="row">
+  <div class="col-md-12">
+    <div class='home-addon'>
+      <% @home_page.pageAdds.try(:each) do |add| %> 
+        <%= add.body.html_safe unless add.body.blank? %> 
+      <% end %>
+    </div>
+  </div>
 </div>
 <%= render "products", carousel_products: @carousel_products %>
 <%= render "posts/post_component", posts: @posts %>
