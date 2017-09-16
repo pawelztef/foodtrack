@@ -49,7 +49,7 @@ module ApplicationHelper
 
   def set_active_class(path)
     if current_page?(path)
-      ' active'
+      ' active-menu'
     end
   end
 
