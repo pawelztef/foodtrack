@@ -11,8 +11,9 @@ module FacebookConnections
       else
         redirect_to backend_dashboards_url, notice: 'Token sesji Facebooka wygasł.'
       end
-    rescue Koala::Facebook::APIError => e
-      redirect_to backend_dashboards_url, notice: 'Tokens sesji Facebooka wygasł.'
+    # rescue Koala::Facebook::APIError => e
+    rescue Exception
+      redirect_to backend_dashboards_url, alert: 'Wystąpił problem z sesją Facebooka. Skontaktuj się z administratorem.'
     end
   end
 
