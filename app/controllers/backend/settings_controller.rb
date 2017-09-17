@@ -34,6 +34,8 @@ class Backend::SettingsController < ApplicationController
   def settings_params 
     params.require(:setting).permit(:posts_on_wall, 
                                     :posts_on_gallery,
+                                    :motto_line1,
+                                    :motto_line2,
                                     :smtp_username,
                                     :password,
                                     :smtp_pass,

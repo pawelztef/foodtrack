@@ -8,8 +8,8 @@
         <div class="row">
           <div class="col-md-12">
             <div class="col-md-7">
-              <span class="header-des">Food truck polska</span>
-              <br><span class="subheader-des">Najlepsza pizza z tracka</span>
+              <span class="header-des"> <%= @settings.motto_line1 %> </span>
+              <span class="subheader-des"> <%= @settings.motto_line2 %> </span>
             </div>
             <div class="col-md-5">
               <%= render "partials/social_media" %>
@@ -26,7 +26,7 @@
       </div>
       <div class="col-md-12 description">
         <hr>
-	<p class="text-center"> © Copyright 2017 - Polo Pazzo | <%= link_to 'Polityka Prywatnosci', pages_polityka_prywatnosci_path %> </p>
+        <p class="text-center"> © Copyright 2017 - Polo Pazzo | <%= link_to 'Polityka Prywatnosci', pages_polityka_prywatnosci_path %> </p>
       </div>
     </div>
   </div>
