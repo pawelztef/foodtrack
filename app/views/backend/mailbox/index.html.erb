@@ -5,6 +5,7 @@
         <th>Imię i nazwisko</th>
         <th>Email</th>
         <th>Telefon</th>
+        <th>Data</th>
         <th>Katering</th>
         <th>Status</th>
         <th>Akcje</th>
@@ -16,6 +17,7 @@
           <td> <%= query.fullname %>  </td>
           <td> <%= query.email %>  </td>
           <td> <%= query.phone %>  </td>
+          <td> <%= query.created_at.strftime("%d-%m-%Y %H:%M") %>  </td>
           <td> <%= catering_status(query) %>  </td>
           <td> <%= read_status(query) %> </td>
           <td>
