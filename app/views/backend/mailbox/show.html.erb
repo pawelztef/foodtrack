@@ -1,0 +1,41 @@
+<% content_for :top_buttons do %>
+  <%= link_to material_icon.reply, backend_mailbox_index_path, data: {toggle: 'tooltip'}, title: 'Wróć', class: 'btn btn-default btn-xs' %> 
+<% end %> 
+<div class="well">
+  <div class="row">
+    <div class="col-md-12">
+      <table id="zapytanie" class="table">
+        <tr>
+          <td><strong>Od: </strong></td>
+          <td><%= @query.fullname %></td>
+        </tr>
+        <tr>
+          <td><strong>Email: </strong></td>
+          <td><%= @query.email %></td>
+        </tr>
+        <tr>
+          <td><strong>Telefon:</strong></td>
+          <td><%= @query.phone %></td>
+        </tr>
+        <% if @query.catering_flag %>
+          <tr>
+            <td><strong>Miasto:</strong></td>
+            <td> <%= @query.town %> </td>
+          </tr>
+        <% end %> 
+        <tr>
+          <td> <strong>Treść:</strong></td>
+          <td> <%= @query.body %> </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <%= form_tag controller: 'mailbox', action: 'send_reply_mail' do %> 
+    <%= text_area_tag :body, @query.body, class: 'ckeditor' %> 
+</div>
+<div class="well">
+  <%= submit_tag 'Wyślij', class: 'btn btn-default' %> 
+  <%#   <%= link_to "Send Reply", controller: 'mailbox', action: 'send_reply_mail', message: 'hello', subject: 'subject', query_id: 'id' %1> %> 
+</div>
+  <% end %> 
+
