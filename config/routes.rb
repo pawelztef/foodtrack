@@ -41,6 +41,8 @@ Rails.application.routes.draw do
     resources :mailbox, path: 'mailbox' do
       collection do
         post :send_reply_mail, to: 'mailbox#send_reply_mail' 
+        get  :new_mail
+        post :send_mail, to: 'mailbox#send_mail'
       end
     end
     resources :images, only: [:new, :create, :destroy, :index]
