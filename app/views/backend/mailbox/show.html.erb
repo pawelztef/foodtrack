@@ -26,6 +26,7 @@
   <div class="row">
     <div class="col-md-12">
       <%= form_tag({controller: 'mailbox', action: 'send_reply_mail'},{class: 'form-horizontal', id: 'reply-form'}) do %> 
+        <%= hidden_field_tag 'query_id', @query.id %> 
         <div class="form-group">
           <span class="lead">Odpowiedź</span>
         </div>

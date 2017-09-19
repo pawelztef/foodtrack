@@ -19,8 +19,16 @@ class Backend::MailboxController < ApplicationController
   end
 
   def send_reply_mail
-    byebug
-    redirect_to backend_mailbox_index_path, notice: 'Twój email został wysłany.'
+    @response = Response.new
+    @response.query_id = params[:query_id]
+    @response.subject = params[:subject]
+    @response.body = params[:body]
+    if @response.save
+      ReplyMailer.reply_to_query(@response).deliver
+      redirect_to backend_mailbox_index_path, notice: 'Twój email został wysłany.'
+    else
+      redirect_to backend_mailbox_index_path, notice: 'Wystąpił problem z wysłaniem maila.'
+    end
   end
 
   def destroy
