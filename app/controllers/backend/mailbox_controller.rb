@@ -8,6 +8,7 @@ class Backend::MailboxController < ApplicationController
   end
 
   def show
+    @title = 'Odpowiedź na zapytanie'
     @query = Query.find(params[:id])
     @query.read = true
     @query.save
