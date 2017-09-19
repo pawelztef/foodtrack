@@ -18,6 +18,15 @@ class Backend::MailboxController < ApplicationController
     end
   end
 
+  def new_mail
+    @title = 'Nowa wiadomość'
+  end
+
+  def send_mail
+    byebug
+    redirect_to backend_mailbox_index_path, notice: 'Twój email został wysłany.'
+  end
+
   def send_reply_mail
     @response = Reply.new
     @response.query_id = params[:query_id]
