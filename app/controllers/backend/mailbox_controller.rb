@@ -19,7 +19,7 @@ class Backend::MailboxController < ApplicationController
   end
 
   def send_reply_mail
-    @response = Response.new
+    @response = Reply.new
     @response.query_id = params[:query_id]
     @response.subject = params[:subject]
     @response.body = params[:body]
