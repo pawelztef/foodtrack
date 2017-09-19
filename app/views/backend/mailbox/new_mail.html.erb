@@ -8,13 +8,14 @@
         <div class="form-group">
           <label for="inputEmail3" class="col-sm-1 control-label">Do:</label>
           <div class="col-sm-11">
-            <%= text_field_tag :mail, nil, class: 'form-control' %> 
-          </div>
+            <%= text_field_tag :recipient_mail, nil, class: 'form-control input-sm', type: 'email',
+              pattern: "[^ @]*@[^ @]*", required: true %> 
+        </div>
         </div>
         <div class="form-group">
           <label for="inputPassword3" class="col-sm-1 control-label">Temat:</label>
           <div class="col-sm-11">
-            <%= text_field_tag :subject, nil, class: 'form-control' %> 
+            <%= text_field_tag :subject, nil, class: 'form-control input-sm' %> 
           </div>
         </div>
         <div class="form-group">

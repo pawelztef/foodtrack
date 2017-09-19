@@ -23,8 +23,16 @@ class Backend::MailboxController < ApplicationController
   end
 
   def send_mail
-    byebug
-    redirect_to backend_mailbox_index_path, notice: 'Twój email został wysłany.'
+    @custom_mail = CustomMail.new
+    @custom_mail.recipient_mail = params[:recipient_mail]
+    @custom_mail.subject = params[:subject]
+    @custom_mail.body = params[:body]
+    if @custom_mail.save
+      CustomMailer.create_custom_mail(@custom_mail).deliver
+      redirect_to backend_mailbox_index_path, notice: 'Wiadomość została wysłana.'
+    else
+      redirect_to backend_mailbox_index_path, notice: 'Wystąpił problem z wysłaniem wiadomości.'
+    end
   end
 
   def send_reply_mail
@@ -34,9 +42,9 @@ class Backend::MailboxController < ApplicationController
     @response.body = params[:body]
     if @response.save
       ReplyMailer.reply_to_query(@response).deliver
-      redirect_to backend_mailbox_index_path, notice: 'Twój email został wysłany.'
+      redirect_to backend_mailbox_index_path, notice: 'Wiadomość została wysłana.'
     else
-      redirect_to backend_mailbox_index_path, notice: 'Wystąpił problem z wysłaniem maila.'
+      redirect_to backend_mailbox_index_path, notice: 'Wystąpił problem z wysłaniem wiadomości.'
     end
   end
 
