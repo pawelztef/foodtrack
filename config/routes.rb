@@ -38,7 +38,11 @@ Rails.application.routes.draw do
     resources :kontakt_pages
     resources :policy_pages
     resources :produkt_pages
-    resources :mailbox, path: 'mailbox'
+    resources :mailbox, path: 'mailbox' do
+      collection do
+        post :send_reply_mail, to: 'mailbox#send_reply_mail' 
+      end
+    end
     resources :images, only: [:new, :create, :destroy, :index]
     resources :products
     resources :posts

@@ -1,0 +1,58 @@
+<% content_for :top_buttons do %>
+  <%= link_to material_icon.reply, backend_mailbox_index_path, data: {toggle: 'tooltip'}, title: 'Wróć', class: 'btn btn-default btn-xs' %> 
+<% end %> 
+<div class="well">
+  <div class="row">
+    <div class="col-md-12">
+        <span class="lead">Zapytanie</span>
+        <div class="table-responsive">
+          <table class='reply-table table'>
+            <tr>
+              <td><strong>Od: </strong></td>
+              <td><%= @query.fullname %></td>
+            </tr>
+            <tr>
+              <td><strong>Otrzymano: </strong></td>
+              <td> <%= @query.created_at.strftime("%d-%m-%Y %H:%M") %> </td>
+            </tr>
+            <tr>
+              <td><strong>Treść zapytania: </strong></td>
+              <td> <%= @query.body %> </td>
+            </tr>
+          </table>
+        </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <%= form_tag({controller: 'mailbox', action: 'send_reply_mail'},{class: 'form-horizontal', id: 'reply-form'}) do %> 
+        <%= hidden_field_tag 'query_id', @query.id %> 
+        <div class="form-group">
+          <span class="lead">Odpowiedź</span>
+        </div>
+        <div class="form-group">
+          <label for="inputEmail3" class="col-sm-1 control-label">Do:</label>
+          <div class="col-sm-11">
+            <%= text_field_tag :mail, @query.email, class: 'form-control' %> 
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="inputPassword3" class="col-sm-1 control-label">Temat:</label>
+          <div class="col-sm-11">
+            <%= text_field_tag :subject, "Polo Pazzo w odpowiedzi na zapytanie z dnia #{@query.created_at.strftime("%d-%m-%Y")}", class: 'form-control' %> 
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <%= cktext_area_tag :body, nil, class: 'mailbox-editor', ckeditor: { toolbar: 'mail' } %> 
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+<div class="well">
+  <%= submit_tag 'Wyślij', class: 'btn btn-default' %> 
+  <%#   <%= link_to "Send Reply", controller: 'mailbox', action: 'send_reply_mail', message: 'hello', subject: 'subject', query_id: 'id' %1> %> 
+</div>
+  <% end %> 
+

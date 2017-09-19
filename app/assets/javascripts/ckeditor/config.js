@@ -60,6 +60,9 @@ CKEDITOR.editorConfig = function( config )
   //   { name: 'basicstyles', groups: [ 'basicstyles', 'cleanup' ], items: [ 'Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat' ] },
   //   { name: 'insert', items: [ 'Image', 'Table', 'HorizontalRule', 'SpecialChar' ] }
   // ];
+  config.toolbar_mail = [
+    { name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'TextColor', 'FontSize'] },
+  ];
   config.toolbar_excerpt = [
     { name: 'document',  items: [ 'Source'] },
     { name: 'clipboard', groups: [ 'clipboard', 'undo' ], items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },

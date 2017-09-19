@@ -13,37 +13,41 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="panel panel-default">
-                    <div class="panel-heading"><h4>Szczegóły Zapytania</h4></div>
+                    <div class="panel-heading"><h4>Szczegóły Zapytania
+                        <%= link_to material_icon.border_color, backend_mailbox_path(@query), class: 'reply-button btn btn-default btn-xs pull-right', data: {toggle: 'tooltip'}, title: 'Odpowiedz' %>
+                      </h4>
+                    </div>
                     <div class="panel-body">
-                          <table id="zapytanie" class="table">
+                      <table id="zapytanie" class="table">
+                        <tr>
+                          <td><strong>Od: </strong></td>
+                          <td><%= @query.fullname %></td>
+                        </tr>
+                        <tr>
+                          <td><strong>Email: </strong></td>
+                          <td><%= @query.email %></td>
+                        </tr>
+                        <tr>
+                          <td><strong>Telefon:</strong></td>
+                          <td><%= @query.phone %></td>
+                        </tr>
+                        <% if @query.catering_flag %>
                           <tr>
-                            <td><strong>Od: </strong></td>
-                            <td><%= @query.fullname %></td>
+                            <td><strong>Miasto:</strong></td>
+                            <td> <%= @query.town %> </td>
                           </tr>
-                          <tr>
-                            <td><strong>Email: </strong></td>
-                            <td><%= @query.email %></td>
-                          </tr>
-                          <tr>
-                            <td><strong>Telefon:</strong></td>
-                            <td><%= @query.phone %></td>
-                          </tr>
-                          <% if @query.catering_flag %>
-                            <tr>
-                              <td><strong>Miasto:</strong></td>
-                              <td> <%= @query.town %> </td>
-                            </tr>
-                          <% end %> 
-                          <tr>
-                            <td> <strong>Treść:</strong></td>
-                            <td> <%= @query.body %> </td>
-                          </tr>
-                        </table>
+                        <% end %> 
+                        <tr>
+                          <td> <strong>Treść:</strong></td>
+                          <td> <%= @query.body %> </td>
+                        </tr>
+                      </table>
                     </div>
                   </div>
                 </div>
                 <div class="col-sm-12">
                   <button type="button" class="closeTrasa btn btn-default">Zamknij</button>
+                  <%= link_to 'Odpowiedz', backend_mailbox_path(@query), class: 'btn btn-default' %>
                 </div>
               </div>
             </div>
@@ -51,4 +55,5 @@
         </div>
       </div>
     </div>
-
+  </div>
+</div>

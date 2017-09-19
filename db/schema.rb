@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917040925) do
+ActiveRecord::Schema.define(version: 20170918035038) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "",    null: false
@@ -178,6 +178,16 @@ ActiveRecord::Schema.define(version: 20170917040925) do
     t.boolean  "read",                        default: false
   end
 
+  create_table "replies", force: :cascade do |t|
+    t.string   "subject",    limit: 255
+    t.text     "body",       limit: 65535
+    t.integer  "query_id",   limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "replies", ["query_id"], name: "index_replies_on_query_id", using: :btree
+
   create_table "settings", force: :cascade do |t|
     t.integer  "posts_on_wall",    limit: 4
     t.integer  "posts_on_gallery", limit: 4
@@ -263,5 +273,6 @@ ActiveRecord::Schema.define(version: 20170917040925) do
     t.datetime "updated_at",             null: false
   end
 
+  add_foreign_key "replies", "queries"
   add_foreign_key "stops", "tracks"
 end
