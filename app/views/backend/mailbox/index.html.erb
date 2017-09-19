@@ -21,9 +21,12 @@
           <td> <%= catering_status(query) %>  </td>
           <td> <%= read_status(query) %> </td>
           <td>
-            <div class="actions-btn-group btn-group btn-group-of-two" role="group" >
+            <div class="actions-btn-group btn-group" role="group" >
               <div class="btn-group" role="group">
                 <%= link_to fa_icon("file-o"), backend_mailbox_path(query), remote: true, class: 'btn btn-default btn-xs' %>
+              </div>
+              <div class="btn-group" role="group">
+                <%= link_to fa_icon("pencil-square-o"), backend_mailbox_path(query), class: 'btn btn-default btn-xs' %>
               </div>
               <div class="btn-group" role="group">
                 <%= link_to fa_icon("trash-o"), backend_mailbox_path(query), method: :delete, data: { confirm: 'Jesteś pewien?' }, class: 'btn btn-default btn-xs' %>
