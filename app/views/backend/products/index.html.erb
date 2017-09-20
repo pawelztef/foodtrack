@@ -22,8 +22,8 @@
             <td> <%= image_tag backend_product.image_url(:thumb).to_s, class: 'img-thumbnail backend-product-img'  %> </td>
             <td> <%= backend_product.name %> </td>
             <td> <%= backend_product.price %> </td>
-            <td> <%= backend_product.publish %> </td>
-            <td> <%= backend_product.expose %> </td>
+            <td> <%= product_publish backend_product %> </td>
+            <td> <%= product_expose backend_product %> </td>
             <td>
               <div class="actions-btn-group btn-group " role="group" >
                 <div class="btn-group" role="group">
