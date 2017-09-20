@@ -13,7 +13,7 @@ class QueriesController < ApplicationController
     @settings = Setting.first
     if @query.save
       ClientQueriesMailer.client_query(@query).deliver
-      redirect_to queries_new_url, notice: 'Query was successfully created.'
+      redirect_to queries_new_url, notice: 'Zapytanie zostało wysłane.'
     else
       render :new
     end

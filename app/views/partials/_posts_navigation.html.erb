@@ -1,9 +1,9 @@
 <div class="tabs-navigation">
   <ul class="nav nav-tabs" role="tablist">
-    <%= content_tag :li, class: set_active_class(backend_posts_path) do %> 
+    <%= content_tag :li, class: set_active_class(backend_posts_path, 'active-backend') do %> 
       <%= link_to 'Posty bloga', backend_posts_path  %> 
     <% end %> 
-    <%= content_tag :li, class: set_active_class(backend_fposts_path) do %> 
+    <%= content_tag :li, class: set_active_class(backend_fposts_path, 'active-backend') do %> 
       <%= link_to 'Posty Facebooka', backend_fposts_path %>
     <% end %> 
   </ul>

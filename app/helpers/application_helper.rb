@@ -41,6 +41,22 @@ module ApplicationHelper
     end
   end
 
+  def product_publish product
+    if product.publish
+      "Tak"
+    else
+      "Nie"
+    end
+  end
+  
+  def product_expose product
+    if product.expose
+      "Tak"
+    else
+      "Nie"
+    end
+  end
+
   def page_logo(size = nil)
     if !Setting.first.image.blank?
       image_tag Setting.first.image_url(size), class: 'logo img-responsive'
