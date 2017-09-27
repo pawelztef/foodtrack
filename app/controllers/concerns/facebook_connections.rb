@@ -24,19 +24,19 @@ module FacebookConnections
       image_url = fpost_image_url(post)
       @page_graph.put_wall_post(post_body, {"link" => "#{image_url}"})
     elsif post.link_url.present?
-      post_link = create_fpost_link(post)
-      @page_graph.put_wall_post(post_body, {"link" => "#{post_link}"})
+      @page_graph.put_wall_post(post_body, {"link" => "#{post.link_url}"})
     else
       @page_graph.put_wall_post(post_body, {})
     end
   end
 
-  def create_fpost_body(post)
-    "#{post.title}\r\n #{post.body}"
+  def post_blog_link_to_timeline(post)
+    post_body = create_fpost_body(post)
+    @page_graph.put_wall_post(post_body, {"link" => "#{post.link_url}"})
   end
 
-  def create_fpost_link(post)
-    post.link_url 
+  def create_fpost_body(post)
+    "#{post.title}\r\n #{post.body}"
   end
 
   def fpost_image_url(post)
@@ -46,7 +46,5 @@ module FacebookConnections
       root_url + post.image_url unless post.image.nil?
     end
   end
-
-
 
 end

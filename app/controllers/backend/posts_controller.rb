@@ -34,10 +34,10 @@ class Backend::PostsController < ApplicationController
     respond_to do |format|
       if @backend_post.save
         if params[:publish_on_facebook] == '1' && @backend_post.valid?
-          @fpost = Fpost.new
-          @fpost.title = @backend_post.title
-          @fpost.link_url = root_url + "aktualności/" + @backend_post.slug  
           begin
+            @fpost = Fpost.new
+            @fpost.title = @backend_post.title
+            @fpost.link_url = root_url + "aktualności/" + @backend_post.slug  
             posted = post_to_timeline(@fpost) 
             @fpost.facebook_id = posted['id']
             @fpost.save
