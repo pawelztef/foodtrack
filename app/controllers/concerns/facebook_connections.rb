@@ -35,6 +35,7 @@ module FacebookConnections
     "#{post.title}\r\n #{post.body}"
   end
   def create_fpost_link(post)
+    byebug
     if Rails.env == "development"
       "http://google.com"
     else
