@@ -38,7 +38,7 @@ class Backend::PostsController < ApplicationController
             @fpost = Fpost.new
             @fpost.title = @backend_post.title
             @fpost.link_url = root_url + "aktualności/" + @backend_post.slug  
-            posted = post_to_timeline(@fpost) 
+            posted = post_blog_link_to_timeline(@fpost) 
             @fpost.facebook_id = posted['id']
             @fpost.save
           rescue
