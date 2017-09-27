@@ -11,7 +11,7 @@ module FacebookConnections
       else
         redirect_to backend_dashboards_url, notice: 'Token sesji Facebooka wygasł.'
       end
-    # rescue Koala::Facebook::APIError => e
+      # rescue Koala::Facebook::APIError => e
     rescue Exception
       redirect_to backend_dashboards_url, alert: 'Wystąpił problem z sesją Facebooka. Skontaktuj się z administratorem.'
     end
@@ -20,27 +20,24 @@ module FacebookConnections
 
   def post_to_timeline(post)
     post_body = create_fpost_body(post)
+    byebug
     if post.image.present?
       image_url = fpost_image_url(post)
-      @page_graph.put_connections(@page_id, 'feed', message: post_body, picture: image_url, link: image_url)
+      @page_graph.put_wall_post(post_body, {"link" => "#{image_url}"})
     elsif post.link_url.present?
       post_link = create_fpost_link(post)
-      @page_graph.put_connections(@page_id, 'feed', message: post_body, picture: nil, link: post_link)
+      @page_graph.put_wall_post(post_body, {"link" => "#{post_link}"})
     else
-      @page_graph.put_connections(@page_id, 'feed', message: post_body, picture: nil, link: nil)
+      @page_graph.put_wall_post(post_body, {})
     end
   end
 
   def create_fpost_body(post)
     "#{post.title}\r\n #{post.body}"
   end
+
   def create_fpost_link(post)
-    byebug
-    if Rails.env == "development"
-      "http://google.com"
-    else
-      post.link_url 
-    end
+    post.link_url 
   end
 
   def fpost_image_url(post)
