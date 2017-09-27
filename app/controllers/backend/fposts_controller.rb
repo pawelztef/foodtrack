@@ -29,10 +29,10 @@ class Backend::FpostsController < ApplicationController
 
   def create
     @backend_fpost = Fpost.new(backend_fpost_params)
-    posted = post_to_timeline(@backend_fpost)
-    @backend_fpost.facebook_id = posted['id']
     respond_to do |format|
       if @backend_fpost.save
+        posted = post_to_timeline(@backend_fpost)
+        @backend_fpost.facebook_id = posted['id']
         format.html { redirect_to backend_fposts_url, notice: 'Post został umieszczony na osi czasu.' }
       else
         format.html { render :new }
