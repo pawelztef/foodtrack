@@ -6,7 +6,7 @@ module FacebookConnections
       if auth = Koala::Facebook::API.new(session[:auth_token])
         page = auth.get_connections('me', 'accounts').first
         @page_token = page['access_token']
-        @page_id = page['id']
+        @page_id = "253436251768558"
         @page_graph = Koala::Facebook::API.new(@page_token)
       else
         redirect_to backend_dashboards_url, notice: 'Token sesji Facebooka wygasł.'
