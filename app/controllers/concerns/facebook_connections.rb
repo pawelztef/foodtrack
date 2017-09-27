@@ -20,7 +20,6 @@ module FacebookConnections
 
   def post_to_timeline(post)
     post_body = create_fpost_body(post)
-    byebug
     if post.image.present?
       image_url = fpost_image_url(post)
       @page_graph.put_wall_post(post_body, {"link" => "#{image_url}"})
