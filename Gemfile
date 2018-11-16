@@ -5,7 +5,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', platforms: :ruby
 gem 'coffee-rails'
-
+gem 'sqlite3'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-validation-rails'
@@ -54,7 +54,6 @@ gem 'puma'
 group :prodcution do 
   gem 'therubyracer', platforms: :ruby
   gem 'unicorn'
-  gem 'pg'
 end
 
 group :development do
@@ -67,7 +66,6 @@ group :development do
   gem 'pry-rails'
   gem 'pry-byebug' 
   gem 'guard-livereload', '~> 2.5', require: false
-  gem 'mysql2', '>= 0.3.13', '< 0.5'
   gem 'spring'
 end
 
