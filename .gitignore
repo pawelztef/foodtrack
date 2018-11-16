@@ -76,10 +76,10 @@ capybara-*html
 .sass-cache/*
 
 #rvm
-.rvmrc
-.rvmrc.*
+#.rvmrc
+#.rvmrc.*
 #rbenv
-.ruby-version
+#.ruby-version
 
 # vendor/extensions dummy applications.
 vendor/extensions/**/spec/dummy
