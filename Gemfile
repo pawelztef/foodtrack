@@ -5,7 +5,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer', platforms: :ruby
 gem 'coffee-rails'
-gem 'sqlite3'
+gem 'sqlite3', '~> 1.3', '< 1.4'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'jquery-validation-rails'
@@ -28,7 +28,7 @@ gem 'link_thumbnailer'
 gem 'devise'
 gem 'devise-i18n'
 gem 'devise_invitable'
-
+gem 'bcrypt', '~> 3.1.13'
 
 gem 'letter_opener_web'
 gem 'cocoon'
@@ -52,7 +52,6 @@ gem 'omniauth-facebook'
 gem 'puma'
 
 group :prodcution do 
-  gem 'therubyracer', platforms: :ruby
   gem 'unicorn'
 end
 
